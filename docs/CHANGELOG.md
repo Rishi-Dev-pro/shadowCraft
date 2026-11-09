@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] — Kai Phase 02 movement polish
 
 ### Fixed
+- Refined only Kai's forward and backward walk clips with modest hip bob, hip/torso counter-rotation, a purposeful backward torso lean, and stronger opposite arm swing. Leg and foot curves were retained after tuning iterations increased measured foot slide. Crouch, jump, landing, collision, and movement physics remain untouched.
+- Added a live walking sequence runner with idle/start/continuous/stop captures, forward/backward reversals, ground-foot sampling, and genuine Godot before/after movies.
+- Validation note: state transitions passed 7/7. Current sampled grounded-foot horizontal excursion is higher than the baseline, so foot locking remains a known visual limitation for a future walk-only iteration.
 - Repaired Kai's crouch pose: corrected the back knee bend, kept both soles grounded by removing the 29px foot-sprite offsets, and adjusted pelvis height for crouch contact.
 - Added ankle compensation to both walk cycles and restored complete leg and arm chains on idle/walk/jump/landing clips so no stale bone rotations remain when a state changes; transitions now blend through the existing AnimationPlayer.
 - Replaced the overlapping procedural airborne bone writer with authored `jump_air` and `jump_land` clips in Kai's existing animation library.

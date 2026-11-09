@@ -164,3 +164,10 @@ Pursuant to Rule 15 of `AGENTS.md` ("Never claim performance without measurement
 ## 8. PHASE COMPLETION SIGN-OFF
 
 Phase 02 is **COMPLETE**, verified, audited, and ready for human review. Under Rule 4 of `AGENTS.md`, work will now halt. No Phase 03 work will begin without explicit authorization from the user.
+
+## 9. Walk-Only Animation Follow-up (2026-11-09)
+
+- **Scope:** Adjusted only the `walk_fwd` and `walk_bwd` animation tracks. Existing locomotion state selection, movement physics, collision, crouch, jump, and landing systems were not modified.
+- **Pass 1 — Architecture & integration:** Kai remains a 2D Skeleton2D rig; animation properties stay owned by the existing AnimationPlayer. Scene loading and animation library/hierarchy checks passed. Changes are confined to the two walk clips, walking test runner, and this follow-up documentation/evidence.
+- **Pass 2 — Quality & completeness:** `test_player_movement.gd` passed 63/63 and `test_kai_hierarchy.gd` passed 44/44; the live Godot capture runner reported 7/7 state-transition checks. Current grounded-foot excursion measurements worsened from baseline (forward: 11.67/12.10px to 128.42/58.14px; backward: 54.69/51.03px to 105.91/138.88px). This remains a visual quality limitation; the walk polish is not considered visually complete until foot contact is tuned further.
+- Genuine before/after Godot AVI recordings and frame captures are stored in `reports/videos/` and `reports/screenshots/`.

@@ -1,0 +1,12 @@
+WALKING RESULTS: 7 passed, 0 failed
+PASS idle enters forward walk
+PASS forward walk returns to idle
+FORWARD FOOT BOTTOM VERTICAL RANGES (px): front 7.84, back 8.47
+FORWARD MAX CONTIGUOUS PLANTED FOOT SLIP (px): front 128.42, back 58.14
+PASS idle enters backward walk
+PASS backward walk returns to idle
+BACKWARD FOOT BOTTOM VERTICAL RANGES (px): front 7.01, back 6.04
+BACKWARD MAX CONTIGUOUS PLANTED FOOT SLIP (px): front 105.91, back 138.88
+PASS forward reverses smoothly into backward walk
+PASS backward reverses smoothly into forward walk
+PASS direction reversal sequence settles to idle

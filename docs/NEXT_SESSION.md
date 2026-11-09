@@ -1,5 +1,13 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Walking Animation Polish Follow-up (2026-11-09)
+
+- The current task changed only `walk_fwd` and `walk_bwd` animation tracks in Kai's scene. No controller, physics, collision, crouch, jump, or landing behavior was changed.
+- The live Godot walking runner passed 7/7 state-transition checks and recorded `reports/videos/kai_walk_before.avi` and `reports/videos/kai_walk_after.avi` with corresponding `walk_before_*` / `walk_after_*` screenshots.
+- The tracker found that sampled grounded-foot horizontal excursion increased from 11.67/12.10px (forward) and 54.69/51.03px (backward) to 128.42/58.14px and 105.91/138.88px. Treat the walk polish as provisional: inspect the recordings and continue tuning foot contact before claiming the gait is finished.
+- Phase 02 remains the active scope; do not start Phase 03 as part of this follow-up.
+
+
 > **Current Phase:** Phase 02 COMPLETED  
 > **Next Target:** Phase 03 — Core 2D Combat Engine  
 > **Status:** GATED — STRICT STOP ACTIVE (Awaiting User Sign-off)  
