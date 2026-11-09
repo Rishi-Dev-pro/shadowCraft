@@ -32,6 +32,7 @@ func _init() -> void:
 	test_ground_friction_and_stopping()
 	test_crouch_state_and_collision_resizing()
 	test_jump_initiation_and_gravity()
+	test_jump_height_repeat_lockout_and_platform_reachability()
 	test_crouch_jump_lockout()
 	test_landing_reset()
 	test_facing_logic()
@@ -189,6 +190,36 @@ func test_jump_initiation_and_gravity() -> void:
 	
 	kai.free()
 
+func test_jump_height_repeat_lockout_and_platform_reachability() -> void:
+	print("\n--- Test Suite 7: Jump Height, Repeat Lockout & Platform Reachability ---")
+	var kai_scene: PackedScene = load("res://scenes/characters/Kai.tscn")
+	var kai: CharacterController2D = kai_scene.instantiate() as CharacterController2D
+	kai._ready()
+	var delta: float = 1.0 / 60.0
+	kai.update_kinematics(delta, 0.0, true, false, true)
+	var jump_start_y: float = 0.0
+	var apex_height: float = 0.0
+	for frame: int in range(60):
+		kai.update_kinematics(delta, 0.0, true, false, false)
+		jump_start_y += kai.velocity.y * delta
+		apex_height = maxf(apex_height, -jump_start_y)
+		if frame == 0:
+			_assert_true(kai.current_state == CharacterController2D.State.JUMP or kai.current_state == CharacterController2D.State.FALL, "Repeated jump input does not leave airborne states")
+		if frame == 15:
+			_assert_true(kai.velocity.y > kai.jump_velocity, "Held jump input cannot retrigger or reset the airborne impulse")
+	_assert_true(apex_height >= 85.0 and apex_height <= 95.0, "Configured impulse reaches approximately 90px (measured %.1fpx)" % apex_height)
+	_assert_true(kai.velocity.y > 0.0, "Gravity transitions the jump into a falling descent")
+	var arena: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn")
+	var arena_node: Node2D = arena.instantiate() as Node2D
+	var platform: StaticBody2D = arena_node.get_node("Environment/ElevatedPlatform") as StaticBody2D
+	var floor_body: StaticBody2D = arena_node.get_node("Environment/Floor") as StaticBody2D
+	var platform_shape: RectangleShape2D = platform.get_node("CollisionShape2D").shape as RectangleShape2D
+	var floor_shape: RectangleShape2D = floor_body.get_node("CollisionShape2D").shape as RectangleShape2D
+	var platform_rise: float = (floor_body.position.y - floor_shape.size.y * 0.5) - (platform.position.y - platform_shape.size.y * 0.5)
+	_assert_true(platform_rise < apex_height, "Jump-test platform is reachable (rise %.1fpx < jump %.1fpx)" % [platform_rise, apex_height])
+	arena_node.free()
+	kai.free()
+
 # ------------------------------------------------------------------------------
 # Test 7: Jump lockout while crouching
 # ------------------------------------------------------------------------------
@@ -301,8 +332,10 @@ func test_animation_state_mapping() -> void:
 	_assert_true(kai.anim_player.current_animation == "loco/idle", "IDLE state maps to 'loco/idle'")
 	
 	kai._change_state(CharacterController2D.State.MOVE_FORWARD)
+	kai.velocity.x = kai.walk_speed
 	kai._update_animation()
 	_assert_true(kai.anim_player.current_animation == "loco/walk_fwd", "MOVE_FORWARD state maps to 'loco/walk_fwd'")
+	_assert_true(kai.anim_player.speed_scale > 1.0, "Forward walk cycle speeds up to match movement velocity")
 	
 	kai._change_state(CharacterController2D.State.MOVE_BACKWARD)
 	kai._update_animation()
@@ -316,5 +349,6 @@ func test_animation_state_mapping() -> void:
 	kai._change_state(CharacterController2D.State.JUMP)
 	kai._update_animation()
 	_assert_true(kai.anim_player.current_animation != "loco/walk_fwd" and kai.anim_player.current_animation != "loco/walk_bwd", "JUMP does not play ground walking animation (strictly maintains pose)")
+	_assert_true(kai.get_node_or_null("MovementAnimation") is CharacterMovementAnimation, "Kai has a separate skeletal airborne and landing presentation component")
 	
 	kai.free()

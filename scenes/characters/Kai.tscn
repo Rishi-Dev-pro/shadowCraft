@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c7kai001sc"]
+[gd_scene load_steps=20 format=3 uid="uid://c7kai001sc"]
 
 [ext_resource type="Texture2D" path="res://assets/characters/kai/head.png" id="1_head"]
 [ext_resource type="Texture2D" path="res://assets/characters/kai/torso.png" id="2_torso"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" path="res://assets/characters/kai/foot_bwd.png" id="14_footb"]
 [ext_resource type="Script" path="res://scripts/characters/CharacterController2D.gd" id="15_ctrl"]
 [ext_resource type="Resource" path="res://resources/characters/kai.tres" id="16_data"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterMovementAnimation.gd" id="17_movement_animation"]
 
 [sub_resource type="Animation" id="Animation_idle"]
 resource_name = "idle"
@@ -746,3 +747,6 @@ texture = ExtResource("14_footb")
 libraries = {
 "loco": SubResource("AnimationLibrary_loco")
 }
+
+[node name="MovementAnimation" type="Node" parent="."]
+script = ExtResource("17_movement_animation")

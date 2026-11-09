@@ -5,6 +5,15 @@ All notable changes to **ShadowCraft 2D** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] — Kai Phase 02 movement polish
+
+### Fixed
+- Kept locomotion state and cycle active through ground deceleration; animation playback rate now follows horizontal velocity to reduce foot sliding.
+- Froze the active ground pose through both jump and fall, and added a separate skeletal tuck and eased landing settle without changing Kai's artwork or ground cycles.
+- Preserved the pre-collision downward speed for landing feedback, reset vertical speed after contact, and guarded standing capsule expansion against overhead obstruction.
+- Lowered the movement test platform to an 80px rise, reachable within the existing approximately 90px jump arc. Jump impulse and gravity remain unchanged.
+- Added regression assertions for repeated airborne jump input, measured jump height, platform reachability, velocity-matched walking animation, and the airborne presentation component.
+
 ---
 
 ## [0.3.0] — 2026-11-09
@@ -89,4 +98,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Security & Integrity
 - Verified complete isolation and preservation of archived 3D prototype in `..\exp-1` without importing or altering any legacy files.
 - Established strict save-data verification protocols and input clamping standards.
-

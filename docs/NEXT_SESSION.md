@@ -5,6 +5,16 @@
 > **Status:** GATED — STRICT STOP ACTIVE (Awaiting User Sign-off)  
 > **Last Updated:** 2026-11-09
 
+## Movement Polish Follow-up (Phase 02)
+
+- Kai's Phase 02 movement polish has been applied without changing the phase boundary or starting Phase 03.
+- The controller keeps walking presentation through velocity-based deceleration, scales the ground walk cycle against speed, freezes ground motion in the air, reports landing impact before velocity reset, and prevents standing collision expansion into an overhead blocker.
+- `CharacterMovementAnimation.gd` adds a blended airborne martial tuck and landing recovery using Kai's existing rig. Existing ground animations and artwork remain unchanged.
+- The test platform rise is now 80px. With the retained `-420 px/s` impulse and `980 px/s²` gravity, the continuous theoretical peak is 90px.
+- Godot 4.7.2 live playtest runner: 35/35 checks passed; rendered before/after captures are in `reports/screenshots/` with `playtest_*` and `polish_after_*` names.
+- Focused movement assertions were added to `tests/unit/test_player_movement.gd`. The installed GUI Godot executable did not expose output from `--script` runs; live runtime checks are verified through the actual in-engine playtest runner.
+- Next immediate task: human review of the movement polish captures and this corrective report. Phase 03 remains gated on explicit user authorization.
+
 ---
 
 ## 1. CURRENT REPOSITORY STATUS

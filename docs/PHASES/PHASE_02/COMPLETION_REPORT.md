@@ -1,6 +1,32 @@
 # SHADOWCRAFT 2D — PHASE 02 COMPLETION REPORT
 ## PLAYER MOVEMENT & CONTROLS
 
+## Post-Completion Movement Polish (2026-11-09)
+
+The requested Kai movement polish pass retained the Phase 02 controller and approved Phase 01 ground cycles.
+
+### Root causes corrected
+- The state machine requested idle as soon as input was released even while friction was still moving Kai, producing an idle pose during deceleration.
+- Walking animations played at their authored one-cycle-per-second rate regardless of the controller's actual velocity.
+- The airborne branch paused the idle cycle only conditionally and had no jump-specific body pose.
+- Landing feedback sampled vertical speed after `move_and_slide()` had already resolved the floor collision.
+- Standing collision expansion had no overhead clearance guard.
+- The arena platform's top was 152px above the floor (408px versus 560px), beyond the retained jump's theoretical 90px peak.
+
+### Changes and verification
+- Ground locomotion state now follows remaining horizontal velocity during friction deceleration; walk-cycle playback rate scales with horizontal speed.
+- A separate `CharacterMovementAnimation` rig component blends the existing skeleton into a compact airborne tuck and eases back through landing. Ground artwork and authored ground cycles are preserved.
+- Ground animation is paused throughout jump and fall. Landing reports the pre-contact downward velocity, clears vertical speed, and restores the grounded idle/walk/crouch state.
+- Standing capsule growth is tested for upward clearance before leaving crouch.
+- The platform now rises 80px from the floor, keeping the original jump impulse and gravity unchanged.
+- The Godot 4.7.2 live playtest executed 35/35 checks successfully. Genuine rendered before/after walking and jump captures are `reports/screenshots/playtest_01_forward_walk.png`, `reports/screenshots/polish_after_01_forward_walk.png`, `reports/screenshots/playtest_03_jump_apex.png`, and `reports/screenshots/polish_after_03_jump_apex.png`.
+- The existing GUI Godot install produced no test output when invoked with `--headless --script`; automated assertions were added but the script-mode suite could not be verified through that binary. The 35-check live runner did verify the runtime movement, collision, jump, crouch, facing, and stress paths.
+
+### Audit
+- Architecture and integration: changes remain within the Phase 02 2D character movement scope; root collision coordinates and facing scale convention remain intact; no combat or future-phase systems were introduced.
+- Quality and completeness: the modified controller, movement animation component, Kai scene, arena platform, regression assertions, and docs were reviewed. Runtime evidence is limited to the actual in-engine playtest runner and rendered captures; the script-mode headless assertion suite did not provide output.
+- Phase 03 remains gated. This is a corrective polish pass, not authorization to proceed.
+
 > **Phase Identifier:** PHASE-02  
 > **Status:** COMPLETED & AUDITED  
 > **Target Engine:** Godot 4 (gl_compatibility renderer, 1280×720 @ 60 FPS)  

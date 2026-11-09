@@ -39,6 +39,7 @@ enum State {
 @export var ground_friction: float = 2200.0
 @export var air_acceleration: float = 800.0
 @export var air_friction: float = 300.0
+@export var walk_cycle_speed: float = 80.0
 
 @export_group("Jumping & Gravity")
 @export var jump_velocity: float = -420.0
@@ -141,13 +142,14 @@ func _physics_process(delta: float) -> void:
 	update_kinematics(delta, move_input, jump_requested, crouch_requested, on_floor)
 	
 	# 4. Apply physics movement and collision if physics space is valid
+	var impact_velocity_y: float = velocity.y
 	if is_inside_tree() and get_world_2d() != null:
 		move_and_slide()
 		on_floor = is_on_floor()
 	
 	# 5. Check landing transition
 	if not _was_on_floor_last_frame and on_floor:
-		emit_signal("landed", velocity.y)
+		emit_signal("landed", maxf(impact_velocity_y, 0.0))
 		velocity.y = 0.0
 		if crouch_requested:
 			_change_state(State.CROUCH)
@@ -159,12 +161,21 @@ func _physics_process(delta: float) -> void:
 	_was_on_floor_last_frame = on_floor
 	is_grounded = on_floor
 	
-	# 6. Update animation playback based on active state
+	# Keep the state and cycle phase tied to the velocity actually applied.
+	if on_floor and not crouch_requested and not jump_requested:
+		if absf(velocity.x) > 2.0:
+			_change_state(_get_movement_state(signf(velocity.x)))
+		else:
+			velocity.x = 0.0
+			_change_state(State.IDLE)
 	_update_animation()
 
 # --- Kinematics & State Calculation (Separated for Pure Testability) ---
 
 func update_kinematics(delta: float, move_input: float, jump_requested: bool, crouch_requested: bool, on_floor: bool) -> void:
+	# A crouch release cannot grow the capsule into a ceiling or nearby platform.
+	if on_floor and current_state == State.CROUCH and not crouch_requested and not _can_stand_up():
+		crouch_requested = true
 	# Vertical physics
 	if not on_floor:
 		velocity.y += gravity * delta
@@ -191,7 +202,7 @@ func update_kinematics(delta: float, move_input: float, jump_requested: bool, cr
 		velocity.x = move_toward(velocity.x, 0.0, ground_friction * delta)
 		return
 	
-	if jump_requested:
+	if jump_requested and current_state != State.CROUCH:
 		# JUMP: Only allowed if grounded and not crouched
 		velocity.y = jump_velocity
 		_change_state(State.JUMP)
@@ -205,8 +216,12 @@ func update_kinematics(delta: float, move_input: float, jump_requested: bool, cr
 		var target_vx: float = move_input * max_speed
 		velocity.x = move_toward(velocity.x, target_vx, ground_acceleration * delta)
 	else:
-		_change_state(State.IDLE)
 		velocity.x = move_toward(velocity.x, 0.0, ground_friction * delta)
+		if absf(velocity.x) > 2.0:
+			_change_state(_get_movement_state(signf(velocity.x)))
+		else:
+			velocity.x = 0.0
+			_change_state(State.IDLE)
 
 func _check_is_on_floor() -> bool:
 	if override_floor_detection:
@@ -306,6 +321,15 @@ func _set_standing_collision() -> void:
 		_capsule_shape.radius = collision_radius
 		collision_shape.position = Vector2(0.0, -standing_height * 0.5)
 
+func _can_stand_up() -> bool:
+	if current_state != State.CROUCH or collision_shape == null or _capsule_shape == null:
+		return true
+	_set_standing_collision()
+	var blocked: bool = is_inside_tree() and get_world_2d() != null and test_move(global_transform, Vector2(0.0, -1.0))
+	if blocked:
+		_set_crouch_collision()
+	return not blocked
+
 func _set_crouch_collision() -> void:
 	_ensure_references()
 	if _capsule_shape != null and collision_shape != null:
@@ -330,10 +354,14 @@ func _update_animation() -> void:
 		State.CROUCH:
 			_play_animation("loco/crouch")
 		State.JUMP, State.FALL:
-			# Crucial Rule: Jump animation is not part of Phase 01.
-			# Strictly do NOT play ground walking or idle cycles while airborne.
-			if anim_player.is_playing() and anim_player.current_animation != "loco/idle":
+			# The skeletal overlay owns the airborne pose; freeze ground tracks in place.
+			if anim_player.is_playing():
 				anim_player.pause()
+			anim_player.speed_scale = 1.0
+	if current_state == State.MOVE_FORWARD or current_state == State.MOVE_BACKWARD:
+		anim_player.speed_scale = clampf(absf(velocity.x) / walk_cycle_speed, 0.35, 3.0)
+	else:
+		anim_player.speed_scale = 1.0
 
 func _play_animation(anim_name: String) -> void:
 	_ensure_references()
