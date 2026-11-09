@@ -8,6 +8,7 @@ signal target_hit(target: Hurtbox2D, damage: float)
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 var attacker: Node2D
+var current_active_frame: int = -1
 var _hit_targets: Dictionary[int, bool] = {}
 var _is_active: bool = false
 
@@ -24,13 +25,25 @@ func configure(data: AttackData, facing_right: bool) -> void:
 	attack_data = data
 	if data == null:
 		return
-	var signed_x: float = absf(data.hitbox_offset.x) * (1.0 if facing_right else -1.0)
-	position = Vector2(signed_x, data.hitbox_offset.y)
+	current_active_frame = -1
+	_set_offset(data.hitbox_offset, facing_right)
 	var rectangle: RectangleShape2D = collision_shape.shape as RectangleShape2D
 	if rectangle == null:
 		rectangle = RectangleShape2D.new()
 		collision_shape.shape = rectangle
 	rectangle.size = data.hitbox_size
+	_update_debug_draw()
+
+func set_active_frame(frame_index: int, facing_right: bool) -> void:
+	if attack_data == null:
+		return
+	current_active_frame = clampi(frame_index, 0, attack_data.active_frames - 1)
+	_set_offset(attack_data.get_active_hitbox_offset(current_active_frame), facing_right)
+	_update_debug_draw()
+
+func _set_offset(offset: Vector2, facing_right: bool) -> void:
+	var signed_x: float = absf(offset.x) * (1.0 if facing_right else -1.0)
+	position = Vector2(signed_x, offset.y)
 
 func set_active(active: bool) -> void:
 	_is_active = active

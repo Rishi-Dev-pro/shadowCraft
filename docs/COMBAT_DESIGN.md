@@ -108,3 +108,9 @@ When an unblocked attack lands, the defender enters one of four deterministic hi
 - Both attacks use distinct six-frame 512×512 atlas clips at 30 FPS, mapped to 12 fixed physics frames at 60 ticks/s. Attack-specific startup/active/recovery windows, damage, knockback, hitstun and rectangle geometry are held in `AttackData` resources.
 - The player hitbox is on physics layer 4 and scans only target hurtboxes on layer 7. The training dummy uses a CharacterBody2D body on layer 3 plus a Hurtbox2D on layer 7; Kai's hurtbox is layer 6. Each target is damaged at most once per active window.
 - The Combat Test Arena demonstrates these two attacks only. Buffered input, combos, blocking, dodge, poise, knockdown, aerial attacks, specials, and AI remain unimplemented.
+
+### Combat 1.1 polish
+
+- Light Jab and Front Kick preserve their six-frame source clips and 12-physics-frame total duration. Their six-tick startup places the two-tick active window on the authored contact pose; recovery remains four ticks.
+- `AttackData.active_hitbox_offsets` provides one limb-aligned hitbox center per active frame. The Hitbox2D follows the current offset and disables at recovery.
+- Confirmed damage triggers a 40ms jab or 55ms kick hit-stop, a small distinct code-drawn impact spark, and a brief eased training-dummy recoil. No camera shake or particle system is used.

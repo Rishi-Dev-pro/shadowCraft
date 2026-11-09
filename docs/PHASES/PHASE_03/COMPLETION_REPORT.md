@@ -44,6 +44,18 @@
 - Hit reactions are represented by knockback, hitstun and a brief violet flash; no dedicated authored hit-reaction animation is included yet.
 - Manual input play is supported in `scenes/arenas/combat_test_arena.tscn`; the project F5 scene intentionally remains the movement test arena.
 
+## Combat 1.1 — Basic Attack Polish (2026-11-10)
+
+- Reproduced the original attacks and found their active windows ended at or just before the atlas's full contact pose. The static hitboxes also sat behind the visible jab knuckles and kick toe. This made the punch read as an abrupt arm extension and made contact difficult to read.
+- Aligned both six-frame animation clips to the existing 12-tick total action duration: six startup ticks, two active ticks, four recovery ticks. This places the active window over the contact pose while leaving damage and total action duration unchanged.
+- Added two per-active-frame hitbox offsets for each attack. The jab box is narrower and shifted to the fist; the kick box tracks the contact toe and slight retraction. Debug outlines were checked against actual rendered frames.
+- Confirmed hits now trigger a real-time 40ms jab / 55ms kick hit-stop with time-scale restoration, a small code-drawn spark (different size for punch and kick), and eased dummy recoil. No camera shake, particle system, damage rebalance, or gameplay phase was added.
+- Updated the combat regression runner to **52/52** assertions, including whiffs, active timing/offsets, hitbox deactivation, repeat attacks, and time-scale restoration. Re-ran Kai V2 **95/95**, Phase 02 **63/63**, and Phase 01 **44/44**.
+- Actual Compatibility-renderer recordings: `reports/videos/combat11_before.avi`, `reports/videos/combat11_after_showcase.avi` (normal speed, hitbox debug), and `reports/videos/combat11_slow_motion.avi` (0.35× showcase). Selected whiff, contact, impact, and recovery frames are under `reports/screenshots/combat11_after_*.png`.
+- Pass 1 verified 2D-only nodes, valid scene/resource references, existing physics/layers/input, and no movement-scene changes. Pass 2 reread modified code/resources/docs, ran all four suites, and inspected normal and slow-motion rendered footage. No performance benchmark was run. Pre-existing unrelated movement files remain untouched.
+
+Combat 1.1 is complete and waits for visual approval. Combo Engine work remains gated.
+
 ## Git
 
 - Branch: `codex/kai-rebuild-checkpoint-20261110`.

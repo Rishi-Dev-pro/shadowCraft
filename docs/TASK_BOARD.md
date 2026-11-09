@@ -74,12 +74,15 @@
 - [x] **TASK-306**: Build the isolated `CombatTestArena` with playable Kai V2, a training dummy, health bars, state telemetry and opt-in hitbox drawing.
 - [x] **TASK-307**: Verify 35/35 Combat 1 assertions, Kai V2 (95/95), Phase 02 movement (63/63), Phase 01 hierarchy (44/44), and inspect the actual Godot Movie Maker recording and screenshots.
 - [x] **TASK-308**: Complete Combat 1 architecture and quality audits; document the remaining Phase 03 scope and handoff.
+- [x] **TASK-309**: Align jab and kick active phases with their contact poses; add per-active-frame limb-matched hitbox offsets and regression coverage.
+- [x] **TASK-310**: Add confirmed-hit-only hit-stop, restrained punch/kick sparks, and a short eased dummy recoil.
+- [x] **TASK-311**: Capture actual normal, slow-motion, and active-hitbox footage; run all 52 Combat and 202 movement/hierarchy regression assertions; complete both audits.
 
 ---
 
 ## 5. IN PROGRESS / NEXT GATE
 
-Combat 1 is complete and awaits the user's visual approval. Do not begin another Combat milestone until explicitly authorized. `MovementTestArena.tscn` remains the F5 main scene; launch `scenes/arenas/combat_test_arena.tscn` to inspect the new work.
+Combat 1.1 basic attack polish is complete and awaits the user's visual approval. Do not begin the Combo Engine or another Combat milestone until explicitly authorized. `MovementTestArena.tscn` remains the F5 main scene; launch `scenes/arenas/combat_test_arena.tscn` to inspect the work.
 
 ### Remaining Phase 03 work (not authorized yet)
 - [ ] Combo input buffer and chain windows.

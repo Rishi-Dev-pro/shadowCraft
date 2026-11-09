@@ -17,10 +17,13 @@ func _run_tests() -> void:
 		return
 	_check(jab.kind == AttackData.AttackKind.PUNCH and kick.kind == AttackData.AttackKind.KICK, "Jab and kick use distinct attack kinds")
 	_check(jab.get_total_frames() == 12 and kick.get_total_frames() == 12, "Attack timings have bounded startup, active, and recovery phases")
+	_check(jab.startup_frames == 6 and kick.startup_frames == 6, "Jab and kick active windows align with the authored contact pose")
+	_check(jab.active_hitbox_offsets.size() == jab.active_frames and kick.active_hitbox_offsets.size() == kick.active_frames, "Hitbox trajectory data covers every active frame")
 	_check(is_equal_approx(CombatMath.calculate_damage(20.0, 0.25), 15.0), "Damage calculation applies bounded mitigation")
 	_check(InputMap.has_action("light_attack") and InputMap.has_action("kick_attack"), "Z and X combat InputMap actions are configured")
 	var scene: PackedScene = load("res://scenes/arenas/combat_test_arena.tscn") as PackedScene
 	_check(scene != null, "CombatTestArena scene resources load")
+	_check(load("res://scenes/combat/hit_spark_2d.tscn") is PackedScene, "Confirmed-hit spark scene loads")
 	if scene == null:
 		_finish()
 		return
@@ -53,9 +56,17 @@ func _run_tests() -> void:
 	_check(combat.is_animation_locked() and kai.combat_motion_locked, "Attack locks movement and animation ownership")
 	_check(sprite.animation == &"light_jab", "Jab state selects its own animation")
 	_check(is_equal_approx(hitbox.position.y, jab.hitbox_offset.y), "Jab hitbox is aligned to the visible fist line")
+	for _i: int in range(jab.startup_frames):
+		await physics_frame
+	_check(combat.current_state == CombatController.State.ACTIVE and hitbox.current_active_frame == 0, "Jab activates on its authored contact window")
+	await physics_frame
+	await physics_frame
+	_check(combat.current_state == CombatController.State.RECOVERY and not hitbox.monitoring, "Jab hitbox deactivates as recovery begins")
+	_check(hitbox.position == jab.active_hitbox_offsets[1], "Jab hitbox follows the fist recoil on its last active frame")
 	for _i: int in range(jab.startup_frames + jab.active_frames + jab.recovery_frames + 2):
 		await physics_frame
 	_check(combat.current_state == CombatController.State.NEUTRAL and not kai.combat_motion_locked, "Recovery returns to neutral and releases movement lock")
+	_check(is_equal_approx(dummy.health_component.current_health, dummy.health_component.max_health), "Jab whiffs cleanly outside its limb-matched reach")
 	_check(kai.is_facing_right and hitbox.position.x > 0.0, "Facing right places the hitbox in front of Kai")
 	kai.set_facing(false)
 	hitbox.configure(kick, kai.is_facing_right)
@@ -70,6 +81,22 @@ func _run_tests() -> void:
 	_check(dummy.health_component.current_health < health_before, "Active front kick overlaps dummy hurtbox and applies damage")
 	_check(is_equal_approx(dummy.health_component.current_health, health_before - kick.base_damage), "One active hit window applies damage only once")
 	_check(dummy.velocity.x > 0.0, "Successful hit applies directional knockback")
+	_check(is_equal_approx(Engine.time_scale, 1.0), "Hit-stop restores the prior simulation speed")
+	var repeated_health_before: float = dummy.health_component.current_health
+	var repeated_attacks: Array[AttackData] = [jab, kick, jab, kick]
+	for attack: AttackData in repeated_attacks:
+		dummy.global_position = Vector2(760.0, 640.0)
+		dummy.velocity = Vector2.ZERO
+		kai.global_position = Vector2(680.0, 640.0)
+		kai.velocity = Vector2.ZERO
+		kai.is_grounded = true
+		kai.current_state = CharacterController2D.State.IDLE
+		var health_before_repeat: float = dummy.health_component.current_health
+		_check(combat.start_attack(attack), "%s can start after a prior attack recovers" % attack.display_name)
+		for _i: int in range(attack.get_total_frames() + 8):
+			await physics_frame
+		_check(is_equal_approx(dummy.health_component.current_health, health_before_repeat - attack.base_damage), "%s repeat applies one hit" % attack.display_name)
+	_check(is_equal_approx(dummy.health_component.current_health, repeated_health_before - (2.0 * jab.base_damage) - (2.0 * kick.base_damage)), "Repeated jab/kick inputs each register once and recover cleanly")
 	var player_health: HealthComponent = kai.get_node("HealthComponent") as HealthComponent
 	var player_hurtbox: Hurtbox2D = kai.get_node("PlayerHurtbox") as Hurtbox2D
 	var player_before: float = player_health.current_health

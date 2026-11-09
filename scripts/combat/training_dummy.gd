@@ -40,6 +40,11 @@ func on_combat_hit(attacker: Node2D, attack: AttackData, damage: float) -> void:
 	hitstun_frames = maxi(1, roundi(attack.hitstun_seconds * Engine.physics_ticks_per_second))
 	_hit_flash_frames = 6
 	silhouette.modulate = Color(1.5, 1.2, 1.7, 1.0)
+	var recoil_angle: float = deg_to_rad(7.0 if attack.kind == AttackData.AttackKind.KICK else 4.0)
+	silhouette.rotation = 0.0
+	var recoil_tween: Tween = create_tween()
+	recoil_tween.tween_property(silhouette, "rotation", -direction * recoil_angle, 0.045).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	recoil_tween.tween_property(silhouette, "rotation", 0.0, 0.105).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	hit_taken.emit(attack.display_name, damage)
 
 func _on_defeated() -> void:

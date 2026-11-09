@@ -5,7 +5,16 @@ All notable changes to **ShadowCraft 2D** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] — Combat 1 foundation
+## [Unreleased] — Combat 1.1 attack polish
+
+### Combat 1.1 basic attack polish (2026-11-10)
+- Aligned Light Jab and Front Kick contact phases to the authored frame-4 pose within their unchanged 12-physics-frame total duration. Attack data now stores a hitbox offset for each active frame; the hitbox follows the fist recoil and toe retraction, and tighter shapes place the active region over the visible striking limbs.
+- Added confirmed-hit-only 40ms jab / 55ms kick hit-stop, small code-drawn impact sparks with distinct punch/kick scale, and eased dummy recoil. Damage values, collision layers, single-hit-per-window handling, and movement/physics ownership remain unchanged.
+- Expanded Combat foundation regression coverage to 52 assertions, including whiff/contact, active-frame alignment, hitbox trajectory and deactivation, repeat attacks, and hit-stop restoration. Kai V2 95/95, Phase 02 63/63, and Phase 01 44/44 also passed.
+- Captured the normal-speed and reduced-time-scale rendered sequences with active hitbox outlines, plus actual jab/kick whiff, contact, impact, and recovery frames under `reports/videos/combat11_*.avi` and `reports/screenshots/combat11_after_*.png`.
+- Completed both architecture/integration and quality/completeness audits. No performance benchmark was measured. Combo chaining and all later Combat milestones remain gated pending visual approval.
+
+## [Earlier] — Combat 1 foundation
 
 ### Combat 1 foundation (2026-11-10)
 - Added typed `AttackData`, `CombatMath`, `HealthComponent`, `Hitbox2D`, `Hurtbox2D`, and Kai V2's combat state/timing controller. The controller owns startup, active, recovery and hitstun; the existing animation controller yields visual ownership during combat. Attacks are ground-only and once-per-target during each active window.

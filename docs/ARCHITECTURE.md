@@ -20,6 +20,7 @@ ShadowCraft 2D is architected around a strict separation of concerns:
 - `CombatController` owns the state enum and timed attack phases. It activates `Hitbox2D` only for active frames; `Hurtbox2D` applies a valid hit to the target's health and dispatches hit reaction. The movement controller is given an optional horizontal/input lock while the combat controller owns a move.
 - Kai V2's `KaiV2AnimationController` yields while combat owns the `AnimatedSprite2D`, then resumes the existing locomotion state after recovery. The player hitbox targets enemy-hurtbox layer 7; the target hurtbox only accepts player-hitbox layer 4.
 - The implementation currently includes only Light Jab and Front Kick in a separate Combat Test Arena. Defense, buffered combos, poise, aerial/sweep attacks and shadow specials remain design-only.
+- Combat 1.1 aligns the two active windows to the authored contact poses and advances hitbox offsets per active physics frame. Confirmed hits signal only presentation feedback (short hit-stop, code-drawn spark, and dummy recoil); damage resolution and movement/physics ownership remain in their existing components.
 
 ```mermaid
 flowchart TD

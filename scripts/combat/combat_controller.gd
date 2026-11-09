@@ -65,8 +65,10 @@ func _physics_process(_delta: float) -> void:
 			if phase_frame >= current_attack.startup_frames:
 				phase_frame = 0
 				hitbox.set_active(true)
+				hitbox.set_active_frame(0, movement_controller.is_facing_right)
 				_change_state(State.ACTIVE)
 		State.ACTIVE:
+			hitbox.set_active_frame(phase_frame - 1, movement_controller.is_facing_right)
 			if phase_frame >= current_attack.active_frames:
 				hitbox.set_active(false)
 				phase_frame = 0
