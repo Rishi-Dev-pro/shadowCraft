@@ -1,6 +1,6 @@
 # SHADOWCRAFT 2D — PROJECT TASK BOARD
 
-> **Sprint:** Phase 00 Completion & Foundation Gate  
+> **Sprint:** Phase 01 Completed — Gated for Phase 02 Authorization  
 > **Status View:** Active Tasks, Done Column, Backlog  
 > **Rule:** No task outside the authorized phase may be moved to "In Progress" without user sign-off.
 
@@ -9,7 +9,7 @@
 ## 1. COMPLETED TASKS (PHASE 00)
 
 - [x] **TASK-001**: Inspect workspace and confirm new project boundary (`d:\projects 2.0\games\shadowCraft`).
-- [x] **TASK-002**: Confirm preservation of archived 3D prototype in `..\exp-1` without touching or importing legacy files.
+- [x] **TASK-002**: Confirm preservation of archived 3D prototype in `..\exp-1` without touching legacy files.
 - [x] **TASK-003**: Initialize Git repository on `main` branch with Git LFS filter support.
 - [x] **TASK-004**: Create `.gitignore` tailored for Godot 4, GDScript, and GdUnit4.
 - [x] **TASK-005**: Create `.gitattributes` to normalize line endings (`LF`) and identify binary media assets.
@@ -24,24 +24,30 @@
 - [x] **TASK-014**: Setup GitHub Actions continuous integration workflow (`.github/workflows/ci.yml`).
 - [x] **TASK-015**: Execute Two-Pass Audit (Pass 1: Architecture & Consistency; Pass 2: Quality & Completeness).
 - [x] **TASK-016**: Create initial Git commit with Conventional Commit messaging.
+- [x] **TASK-017**: Phase 00 completion report delivered and sign-off granted by user.
 
 ---
 
-## 2. IN PROGRESS (PHASE 00 CLOSEOUT)
+## 2. COMPLETED TASKS (PHASE 01: KAI CHARACTER PIPELINE)
 
-- [ ] **TASK-017**: Present Phase 00 completion summary and audit findings to the user for formal sign-off.
+- [x] **TASK-101**: Establish Kai visual reference sheet (`kai_concept_art.png`) with purple theme, silhouette anatomy, ninja mask, and chest emblem.
+- [x] **TASK-102**: Generate/author transparent 32-bit PNG limb sprites for Kai with rounded joint sockets and transparent margins (Head, Torso, Arms, Hands, Legs, Feet, Emblem).
+- [x] **TASK-103**: Create `CharacterData.gd` resource script and `resources/characters/kai.tres` with identity attributes.
+- [x] **TASK-104**: Build `scenes/characters/Kai.tscn` with `Skeleton2D` and `Bone2D` hierarchical rig and `Socket_Weapon` Marker2D.
+- [x] **TASK-105**: Author 4 required locomotion cycles in `AnimationPlayer` (`loco/idle`, `loco/walk_fwd`, `loco/walk_bwd`, `loco/crouch`).
+- [x] **TASK-106**: Build `scenes/arenas/KaiPreview.tscn` and capture genuine Godot screenshots for Visual Quality Gate.
+- [x] **TASK-107**: Execute automated structural validation tests (`tests/unit/test_kai_hierarchy.gd`) with 100% pass rate (44/44 assertions).
+- [x] **TASK-108**: Execute Pass 1 and Pass 2 audits, update documentation, and produce Phase 01 Completion Report.
 
 ---
 
-## 3. BACKLOG (BLOCKED — PENDING PHASE 01 AUTHORIZATION)
+## 3. IN PROGRESS
 
-### Phase 01: Kai 2D Character Art & Animation Pipeline
-- [ ] **TASK-101**: Establish Kai visual reference sheet (purple theme, silhouette anatomy, headband).
-- [ ] **TASK-102**: Generate/create 2D transparent PNG limb sprites for Kai (head, torso, limbs, clothing).
-- [ ] **TASK-103**: Build `Kai.tscn` with `Skeleton2D` and `Bone2D` hierarchical rig.
-- [ ] **TASK-104**: Attach `Marker2D` weapon socket to right hand bone.
-- [ ] **TASK-105**: Animate neutral locomotion cycles (`idle`, `walk_fwd`, `walk_bwd`, `crouch`).
-- [ ] **TASK-106**: Validate 60 FPS animation playback in Godot 2D editor.
+*None. Strictly stopped at Phase 01 completion gate awaiting user sign-off.*
+
+---
+
+## 4. BACKLOG (BLOCKED — PENDING PHASE 02 AUTHORIZATION)
 
 ### Phase 02: Player Movement & Controls
 - [ ] **TASK-201**: Implement `CharacterController2D` script with velocity integration and gravity.

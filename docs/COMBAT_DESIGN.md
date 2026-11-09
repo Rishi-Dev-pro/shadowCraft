@@ -97,3 +97,4 @@ When an unblocked attack lands, the defender enters one of four deterministic hi
    - Grounded state: Immune to high attacks; vulnerable to ground stomps for 10 frames before automatic roll recovery.
 4. **Wall Splat:**
    - If a heavy knockback drives the opponent into the arena boundary wall, they suffer a Wall Splat (+12 frames of extra stun), allowing extended juggle combos.
+

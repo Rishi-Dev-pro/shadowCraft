@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/CharacterData.gd" id="1_kai_data"]
+
+[resource]
+script = ExtResource("1_kai_data")
+character_id = "kai"
+display_name = "Kai"
+title = "The Shadow Disciple"
+signature_color = Color(0.658824, 0.333333, 0.968627, 1)
+max_health = 100.0
+max_poise = 100.0
+base_walk_speed = 220.0
+base_dash_speed = 450.0
+jump_velocity = -420.0
+weight_class = "agile"

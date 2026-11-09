@@ -235,3 +235,4 @@ The following items are out of scope and strictly excluded from ShadowCraft 2D:
 - Microtransactions, gacha mechanics, energy meters, or loot boxes.
 - Mobile touch overlays during core desktop development.
 - Third-party bloated dependencies or unvetted asset packs.
+

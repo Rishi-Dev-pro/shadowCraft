@@ -29,3 +29,4 @@ We adopt **GdUnit4** as the standard testing framework for ShadowCraft 2D:
 ## Consequences
 - **Positive:** Automated regression protection, confidence during refactoring, quick test cycles (< 5 seconds for full suite).
 - **Negative:** Requires disciplined test authoring for each new component created.
+

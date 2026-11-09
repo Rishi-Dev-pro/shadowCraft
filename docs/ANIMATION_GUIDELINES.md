@@ -104,3 +104,29 @@ All animations inside `AnimationPlayer` must adhere to standard slash-separated 
 - `<weapon_category>/light_1`, `<weapon_category>/light_2`, `<weapon_category>/light_3`: Standard 3-hit string.
 - `<weapon_category>/heavy`: High-commitment strike.
 - `<weapon_category>/special`: Category-unique martial maneuver (e.g., spear retreating thrust, mace spin).
+
+---
+
+## 5. IMPLEMENTED KAI LOCOMOTION CYCLES (PHASE 01)
+
+The following locomotion animations are fully implemented in `scenes/characters/Kai.tscn` under the `"loco"` AnimationLibrary:
+
+| Animation Path | Duration | Loop | Track Count | Anatomical Characteristics |
+|---|---|---|---|---|
+| `loco/idle` | 1.60s | Looping | 8 tracks | Natural martial breathing bounce (hips Y=-350 to -346), subtle torso rotation (0 to 0.02 rad), compensatory head tilt (-0.02 to 0 rad), relaxed resting arm sway. |
+| `loco/walk_fwd` | 1.00s | Looping | 9 tracks | Fluid martial forward stride, hips bobbing at stride apex (Y=-350 to -354), opposing leg swing (-0.30 to +0.28 rad), natural elbow flexion (0 to -0.30 rad). |
+| `loco/walk_bwd` | 1.00s | Looping | 10 tracks | Cautious defensive retreat with slight forward torso lean (-0.03 rad), controlled stride width (-0.22 to +0.24 rad), arms positioned ready for guard transition. |
+| `loco/crouch` | 0.50s | Looping | 13 tracks | Grounded martial crouch guard, center-of-gravity lowered (hips Y=-280), forward torso angle (-0.15 rad), head tilted up to track opponent (+0.12 rad), front arm curled tightly into face/chin guard (upper arm -0.45 rad, forearm -1.65 rad), feet flat on floor line. |
+
+### Bone & Node Structure
+All locomotion tracks animate the following standardized bone hierarchy:
+- `Skeleton2D/Bone_Root` (Origin)
+- `Skeleton2D/Bone_Root/Bone_Hips` (Pelvis)
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Torso`
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Torso/Bone_Head`
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Torso/Bone_Shoulder_Front` -> `Bone_Arm_Upper_Front` -> `Bone_Arm_Lower_Front` -> `Bone_Hand_Front` -> `Socket_Weapon`
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Torso/Bone_Shoulder_Back` -> `Bone_Arm_Upper_Back` -> `Bone_Arm_Lower_Back` -> `Bone_Hand_Back`
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Front` -> `Bone_Leg_Lower_Front` -> `Bone_Foot_Front`
+- `Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Back` -> `Bone_Leg_Lower_Back` -> `Bone_Foot_Back`
+
+

@@ -27,3 +27,4 @@ Key driving factors:
 ## Consequences
 - **Positive:** Instant editor loading, lightweight repository size, native 2D pipeline, full access to engine source if needed, smooth headless testing in CI.
 - **Negative:** GDScript is engine-specific (mitigated by strict static typing and clean design patterns); smaller commercial ecosystem compared to Unity (mitigated by self-contained architecture).
+

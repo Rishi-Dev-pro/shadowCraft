@@ -103,7 +103,23 @@ When facing is inverted (`scale.x = -1.0`), Godot automatically flips the 2D loc
 
 | Asset Path | Origin / Tool | Author / Source | License | Date Added | Verified Clean |
 |---|---|---|---|---|---|
-| `assets/characters/kai/` | Bespoke Original Art | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 01 | Yes |
+| `assets/characters/kai/kai_concept_art.png` | Bespoke Original 2D Concept Art | Subagent `509b8a93` (Image Generator) | Proprietary (Original) | 2026-11-09 | Yes (Zero legacy/external art) |
+| `assets/characters/kai/head.png` | 2D Anatomical Cutout (170x190) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/torso.png` | 2D Anatomical Cutout (185x295) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/arm_upper_fwd.png` | 2D Anatomical Cutout (122x197) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/arm_lower_fwd.png` | 2D Anatomical Cutout (108x180) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/hand_fwd.png` | 2D Anatomical Cutout (96x120) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/leg_upper_fwd.png` | 2D Anatomical Cutout (173x230) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/leg_lower_fwd.png` | 2D Anatomical Cutout (153x185) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/foot_fwd.png` | 2D Anatomical Cutout (165x118) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/arm_upper_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/arm_lower_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/hand_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/leg_upper_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/leg_lower_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/foot_bwd.png` | 2D Depth Layer (Darkened 72%) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
+| `assets/characters/kai/emblem_purple.png` | 2D Signature Star Emblem (49x44) | ShadowCraft Art Pipeline | Proprietary (Original) | 2026-11-09 | Yes |
 | `assets/characters/razen/` | Bespoke Original Art | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 08 | Yes |
 | `assets/weapons/` | Bespoke 2D Sprites | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 04 | Yes |
 | `assets/arenas/` | Bespoke Parallax Art | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 09 | Yes |
+

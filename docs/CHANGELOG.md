@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] — 2026-11-09
+### Phase 01: Kai: 2D Character Art & Animation Pipeline
+
+#### Added
+- **Visual Concept & Sprites:**
+  - Created original high-resolution 2D character concept sheet and side-profile reference for Kai (`assets/characters/kai/kai_concept_art.png`).
+  - Sculpted 16 transparent 32-bit PNG anatomical limb components with convex rounded joint caps and transparent borders (`head.png`, `torso.png` with purple star emblem, `arm_upper_fwd.png`, `arm_lower_fwd.png`, `hand_fwd.png`, `leg_upper_fwd.png`, `leg_lower_fwd.png`, `foot_fwd.png`, plus darkened back limb layers for depth).
+- **Data Architecture:**
+  - Created `CharacterData.gd` resource definition (`scripts/characters/CharacterData.gd`) for character metadata, identity, and combat attributes.
+  - Created `resources/characters/kai.tres` defining Kai's baseline stats (100 HP, 100 poise, 220 walk speed, agile weight class).
+- **Character Rig & Locomotion Scene:**
+  - Built `scenes/characters/Kai.tscn` featuring `Skeleton2D` with an 18-bone humanoid hierarchy, precise joint offsets, and dedicated `Marker2D` weapon socket (`Socket_Weapon`).
+  - Implemented 4 core locomotion cycles under library `"loco"` in `AnimationPlayer`:
+    - `loco/idle`: 1.6s looping martial breathing and weight sway.
+    - `loco/walk_fwd`: 1.0s fluid forward martial stride with opposing limb swing.
+    - `loco/walk_bwd`: 1.0s defensive backward retreat stride.
+    - `loco/crouch`: 0.5s grounded low-center-of-gravity martial guard with raised fists protecting chin and chest.
+- **Verification & Visual Gate:**
+  - Built interactive preview arena `scenes/arenas/KaiPreview.tscn` displaying all 4 states alongside the concept model sheet.
+  - Added automated unit test suite `tests/unit/test_kai_hierarchy.gd` covering 44 assertions across scene nodes, bone structure, animation tracks, and resource integrity.
+  - Captured in-engine Godot screenshots in `reports/screenshots/` verifying visual fidelity, seam quality, and ground alignment.
+
+---
+
 ## [0.1.0] — 2026-11-09
 ### Phase 00: Project Constitution, Architecture & Development Environment
 
@@ -37,3 +61,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Security & Integrity
 - Verified complete isolation and preservation of archived 3D prototype in `..\exp-1` without importing or altering any legacy files.
 - Established strict save-data verification protocols and input clamping standards.
+

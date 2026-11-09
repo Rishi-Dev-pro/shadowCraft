@@ -95,3 +95,4 @@ At the conclusion of each development phase, the agent must perform and document
 ---
 
 *Every agent must review this document at the start of any conversation turn that modifies project code or architecture.*
+

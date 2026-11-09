@@ -28,3 +28,4 @@ We adopt a **Hybrid Animation Strategy**:
 ## Consequences
 - **Positive:** Combines the visual punch and martial weight of classic 2D fighters with the smooth locomotion and low asset overhead of skeletal rigs.
 - **Negative:** Requires careful coordination between bone transforms and sprite visibility tracks within `AnimationPlayer`.
+

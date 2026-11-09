@@ -61,3 +61,4 @@ Agents and developers must adhere to **Rule 15 of AGENTS.md**: *Never claim perf
    - Track `Raster / Draw Calls`
    - Track `Memory / Dynamic (MB)`
 3. Log findings in phase completion reports with concrete numerical metrics.
+

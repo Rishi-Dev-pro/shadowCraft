@@ -122,3 +122,4 @@ godot --headless -s addons/gdUnit4/bin/GdUnitCmdTool.gd run -a tests/
 
 *Shadow Fight 2* (Nekki) and *Minecraft* (Mojang/Microsoft) serve solely as conceptual inspiration for game mechanics and progression models. 
 ShadowCraft 2D does not use, copy, reverse-engineer, or adapt any proprietary sprites, textures, animations, code, audio, branding, or character assets from those franchises. All visual art, audio, code, and character designs are original creations owned by the ShadowCraft Team.
+

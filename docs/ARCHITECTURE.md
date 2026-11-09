@@ -335,3 +335,4 @@ flowchart TD
 ## 9. NON-IMPLEMENTATION IN PHASE 00
 
 As mandated by the Project Constitution, **no gameplay scripts, scenes, or mechanics are implemented during Phase 00**. This document serves as the permanent architectural roadmap for subsequent approved phases.
+

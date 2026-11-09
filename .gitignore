@@ -14,7 +14,9 @@ bin/
 
 # Test framework temporary / report files
 .gdunit4/
-reports/
+reports/*
+!reports/screenshots/
+!reports/screenshots/**
 
 # Editor and OS specific files
 .DS_Store
@@ -29,3 +31,4 @@ Desktop.ini
 
 # Crash dumps
 *.dmp
+

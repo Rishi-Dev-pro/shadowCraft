@@ -26,3 +26,4 @@ This allows designers to create new weapons entirely inside the Godot inspector 
 ## Consequences
 - **Positive:** Adding a new weapon or balancing frame data is purely a resource edit; 100% data-driven; zero code changes needed to tweak numbers or swap movesets.
 - **Negative:** Requires rigorous resource schema validation at boot/load time to ensure no missing attack references.
+

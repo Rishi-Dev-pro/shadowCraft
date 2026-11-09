@@ -146,3 +146,4 @@ enum MaterialTier { WOOD, STONE, IRON, DIAMOND, NETHERITE }
 @export var attack_forward: AttackData
 @export var attack_special: AttackData
 ```
+

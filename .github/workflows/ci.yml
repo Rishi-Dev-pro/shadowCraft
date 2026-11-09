@@ -44,3 +44,4 @@ jobs:
           else
             echo "GdUnit4 runner addon not yet installed. Running structural test assertions."
           fi
+

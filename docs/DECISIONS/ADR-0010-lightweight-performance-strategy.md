@@ -33,3 +33,4 @@ We enforce a lightweight performance strategy:
 ## Consequences
 - **Positive:** Smooth, rock-solid 60 FPS on practically any Windows laptop; minimal fan noise; instant scene loading.
 - **Negative:** Requires art assets and background designs to adhere strictly to texture atlas limits and resolution budgets.
+

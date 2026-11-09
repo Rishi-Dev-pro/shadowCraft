@@ -120,3 +120,4 @@ Upon user authorization, proceed immediately to **Phase 01: Kai 2D Character Art
 2. Generate transparent 32-bit PNG limb cutouts conforming to `docs/ASSET_GUIDELINES.md`.
 3. Construct `scenes/characters/Kai.tscn` using `Skeleton2D` and `Bone2D` rigging.
 4. Animate neutral locomotion cycles (`idle`, `walk_fwd`, `walk_bwd`, `crouch`) in `AnimationPlayer`.
+

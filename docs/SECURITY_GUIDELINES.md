@@ -69,3 +69,4 @@ If local or online multiplayer is ever introduced in a future expansion:
 - The game architecture must remain strictly **server-authoritative**.
 - Clients submit input intents (`move_left`, `press_light_attack`), never combat outcomes (`dealt_50_damage`, `set_health_to_0`).
 - The host or server alone calculates hit collisions, damage formulas, and state changes.
+

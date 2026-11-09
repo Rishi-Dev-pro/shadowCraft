@@ -61,3 +61,4 @@ Before creating a commit closing any phase:
 4. Pass 2 Audit (Quality & Completeness) is executed and documented.
 5. `docs/CHANGELOG.md` and `docs/NEXT_SESSION.md` are updated.
 6. The legacy 3D project in `..\exp-1` is verified untouched.
+

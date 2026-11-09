@@ -11,8 +11,8 @@
 | Phase | Title | Focus Area | Status | Gated Approval |
 |---|---|---|---|---|
 | **Phase 00** | Project Foundation & Architecture | Engine setup, documentation, ADRs, repo governance | **COMPLETED** | Approved |
-| **Phase 01** | Kai 2D Character Art & Animation Pipeline | 2D silhouette sprites, Skeleton2D rig, idle/locomotion | *PLANNED* | Pending Authorization |
-| **Phase 02** | Player Movement & Controls | Kinematic 2D movement, jump, crouch, dash, facing logic | *PLANNED* | Blocked by Phase 01 |
+| **Phase 01** | Kai 2D Character Art & Animation Pipeline | 2D silhouette sprites, Skeleton2D rig, idle/locomotion | **COMPLETED** | Approved |
+| **Phase 02** | Player Movement & Controls | Kinematic 2D movement, jump, crouch, dash, facing logic | *PLANNED* | Pending Authorization |
 | **Phase 03** | Core 2D Combat Engine | Hitbox/Hurtbox layers, damage math, health component | *PLANNED* | Blocked by Phase 02 |
 | **Phase 04** | Wooden Sword & First Moveset | AttackData resources, combo chain, active frames | *PLANNED* | Blocked by Phase 03 |
 | **Phase 05** | Blocking, Parrying, Dodging & Combos | High/low guard, 4-frame parry window, counter-hit stun | *PLANNED* | Blocked by Phase 04 |
@@ -92,3 +92,4 @@
 - **Objective:** Complete full audio mixing, polished HUD, options menu, performance profiling, and Windows export packaging.
 - **Key Deliverables:** Audio tracks, dynamic SFX, settings menu (remapping, volume, resolution), 60 FPS profile report, final standalone build.
 - **Exit Criteria:** Clean executable launch; passes all regression tests; verified stable on modest hardware.
+

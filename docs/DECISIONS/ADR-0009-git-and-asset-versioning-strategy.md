@@ -33,3 +33,4 @@ We establish a standardized Git and asset versioning strategy:
 ## Consequences
 - **Positive:** Clean history, small repo clone size, reproducible CI checkouts, clear attribution of work per phase.
 - **Negative:** Requires contributors to follow commit formatting rules.
+

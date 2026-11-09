@@ -49,3 +49,4 @@ Run a recursive search across the workspace for 3D node references:
 Get-ChildItem -Recurse -Include *.gd,*.tscn,*.tres | Select-String "CharacterBody3D", "MeshInstance3D"
 ```
 *Expected Result:* Zero matches found.
+

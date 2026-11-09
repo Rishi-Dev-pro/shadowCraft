@@ -31,3 +31,4 @@ renderer/rendering_method.mobile="gl_compatibility"
 ## Consequences
 - **Positive:** Maximum hardware compatibility across almost all Windows laptops manufactured in the last 10 years, rapid startup, zero Vulkan initialization latency, lower GPU memory utilization.
 - **Negative:** Advanced 3D rendering features are unavailable, which aligns with our 2D-only architecture.
+

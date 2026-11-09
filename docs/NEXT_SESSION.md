@@ -1,7 +1,7 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
-> **Current Phase:** Phase 00 COMPLETED  
-> **Next Target:** Phase 01 — Kai 2D Character Art & Animation Pipeline  
+> **Current Phase:** Phase 01 COMPLETED  
+> **Next Target:** Phase 02 — Player Movement & Controls  
 > **Status:** GATED — STRICT STOP ACTIVE (Awaiting User Sign-off)  
 > **Last Updated:** 2026-11-09
 
@@ -9,42 +9,40 @@
 
 ## 1. CURRENT REPOSITORY STATUS
 
-- **Phase 00 Objectives:** 100% COMPLETE.
-- **Engine Baseline:** Godot 4 (GL Compatibility renderer, 1280x720 baseline resolution, 60 FPS VSync, 2D physics layers 1-7).
-- **Architecture & Governance:** Fully documented (`AGENTS.md`, `docs/PROJECT_CONSTITUTION.md`, `docs/ARCHITECTURE.md`, 11 ADRs, 9 technical guidelines).
-- **Quality Assurance:** GdUnit4 testing layout configured; GitHub Actions CI workflow created.
-- **Old Project Preservation:** Confirmed untouched (`..\exp-1` isolated and unaltered).
-- **Two-Pass Audit:** Both Pass 1 (Architecture & Consistency) and Pass 2 (Quality & Completeness) passed with zero defects.
-- **Git State:** Clean initial repository on branch `main`.
+- **Phase 01 Objectives:** 100% COMPLETE.
+- **Kai Asset Pipeline:** Original transparent 2D character sprites, anatomical cutouts, and concept sheet committed.
+- **Skeletal Rig:** `scenes/characters/Kai.tscn` implemented with 18-bone hierarchy, weapon attachment socket (`Socket_Weapon`), and 4 locomotion animations (`loco/idle`, `loco/walk_fwd`, `loco/walk_bwd`, `loco/crouch`).
+- **Visual Quality Gate:** In-engine Godot Compatibility renderer screenshots audited; zero seam cuts, zero visual artifacts, athletic martial proportions, 60 FPS verified at 1.13ms CPU / 1.39ms GPU render times.
+- **Automated Testing:** `tests/unit/test_kai_hierarchy.gd` executed headlessly in Godot with 100% pass rate (44/44 assertions passed).
+- **Two-Pass Audit:** Both Pass 1 (Architecture & Consistency) and Pass 2 (Quality & Completeness) completed with zero defects.
+- **Strict 2D Enforcement:** Zero 3D nodes present in any scene or script.
+- **Legacy Preservation:** `..\exp-1` isolated and 100% untouched.
 
 ---
 
 ## 2. PENDING USER DECISION
 
-The agent is currently under a **STRICT STOP CONDITION**.
+The agent is currently under a **STRICT STOP CONDITION** pursuant to Rule 4 of `AGENTS.md`.
 
-Before any work begins on Phase 01:
-1. The user must review the Phase 00 Completion Report (`docs/PHASES/PHASE_00/COMPLETION_REPORT.md`).
-2. The user must grant explicit written authorization to initiate **Phase 01: Kai 2D Character Art and Animation Pipeline**.
+Before any work begins on Phase 02:
+1. The user must review the Phase 01 Completion Report (`docs/PHASES/PHASE_01/COMPLETION_REPORT.md`) and in-engine screenshots in `reports/screenshots/`.
+2. The user must grant explicit written authorization to initiate **Phase 02: Player Movement & Controls**.
 
 ---
 
-## 3. IMMEDIATE ACTIONS FOR PHASE 01 (UPON USER APPROVAL)
+## 3. IMMEDIATE ACTIONS FOR PHASE 02 (UPON USER APPROVAL)
 
-When authorized, Phase 01 will execute the following sequenced tasks:
+When authorized, Phase 02 will execute the following sequenced tasks:
 
-1. **Kai Visual Art Design:**
-   - Establish Kai's 2D martial silhouette design (deep shadow body, purple emissive headband and core accents).
-   - Produce individual 2D transparent PNG limb cutouts (Head, Torso, Upper Arms, Forearms, Hands, Thighs, Shins, Feet) according to `docs/ASSET_GUIDELINES.md`.
-2. **Character Scene & Rigging (`scenes/characters/Kai.tscn`):**
-   - Assemble Kai's root `CharacterBody2D` with ground-contact collision.
-   - Build the `Skeleton2D` and `Bone2D` hierarchical rig according to `docs/ANIMATION_GUIDELINES.md`.
-   - Attach `Marker2D` (`Socket_Weapon`) to the front hand bone.
-3. **Locomotion Animation:**
-   - Author smooth skeletal keyframes in `AnimationPlayer`:
-     - `loco/idle` (Breathing cycle, subtle martial weight sway).
-     - `loco/walk_fwd` and `loco/walk_bwd` (Fluid footwork).
-     - `loco/crouch` (Low defensive stance).
-4. **Validation:**
-   - Verify 60 FPS playback in Godot 2D editor.
-   - Run two-pass audit for Phase 01.
+1. **Character Controller (`scripts/characters/CharacterController2D.gd`):**
+   - Implement horizontal velocity calculation, acceleration, friction, and gravity.
+   - Bind input actions (`move_left`, `move_right`, `jump`, `crouch`, `dash`).
+2. **State Machine (`scripts/characters/CharacterStateMachine.gd`):**
+   - Implement hierarchical state machine: `IdleState`, `MoveState`, `JumpState`, `CrouchState`, `AirState`.
+   - Wire state transitions directly to the `AnimationPlayer` library `"loco"`.
+3. **Opponent Facing Logic:**
+   - Implement automatic flipping/facing towards opponent fighter position in the arena.
+4. **Collision & Arena Boundary:**
+   - Validate floor and wall interactions in an active test arena.
+5. **Testing & Two-Pass Audit:**
+   - Execute movement integration tests and author Phase 02 Completion Report.

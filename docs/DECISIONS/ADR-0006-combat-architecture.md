@@ -34,3 +34,4 @@ We implement a discrete component combat pipeline:
 ## Consequences
 - **Positive:** Deterministic, easily tunable via frame data in `AttackData`, fully testable via unit and integration tests without visual scenes running.
 - **Negative:** Requires disciplined synchronization between visual animation keyframes and active collision shape toggles.
+

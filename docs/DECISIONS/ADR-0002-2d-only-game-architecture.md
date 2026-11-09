@@ -26,3 +26,4 @@ All 3D nodes (`CharacterBody3D`, `MeshInstance3D`, `Camera3D`, 3D physics) are s
 ## Consequences
 - **Positive:** Crystal-clear collision detection, trivial pixel-perfect alignment, predictable hitboxes/hurtboxes, superior performance on low-end laptops, and faithful realization of the shadow fighting visual pillar.
 - **Negative:** Requires creating 2D directional sprite sheets and 2D skeletal rigs instead of rotating 3D meshes (addressed via our hybrid animation strategy).
+

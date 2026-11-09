@@ -32,3 +32,4 @@ We enforce a strict **Original Asset and Copyright Policy**:
 ## Consequences
 - **Positive:** Complete commercial viability, 100% copyright ownership, distinct and memorable visual brand identity.
 - **Negative:** Requires creating all 2D assets from scratch or using fully verified, original creation pipelines.
+

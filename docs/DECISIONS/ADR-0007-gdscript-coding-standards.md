@@ -31,3 +31,4 @@ We enforce **strict static typing and modular GDScript conventions** across all 
 ## Consequences
 - **Positive:** Catch bugs at parse time before running, superior IDE auto-completion, approximately 20-30% faster execution in Godot 4's VM, clean self-documenting code.
 - **Negative:** Slightly more verbose syntax upfront.
+
