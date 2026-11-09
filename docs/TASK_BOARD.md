@@ -1,6 +1,6 @@
 # SHADOWCRAFT 2D — PROJECT TASK BOARD
 
-> **Sprint:** Phase 01 Completed — Gated for Phase 02 Authorization  
+> **Sprint:** Phase 02 Completed — Gated for Phase 03 Authorization  
 > **Status View:** Active Tasks, Done Column, Backlog  
 > **Rule:** No task outside the authorized phase may be moved to "In Progress" without user sign-off.
 
@@ -41,19 +41,29 @@
 
 ---
 
-## 3. IN PROGRESS
+## 3. COMPLETED TASKS (PHASE 02: PLAYER MOVEMENT & CONTROLS)
 
-*None. Strictly stopped at Phase 01 completion gate awaiting user sign-off.*
+- [x] **TASK-201**: Configure standard fighting game Input Map in `project.godot` (`move_forward`, `move_backward`, `move_left`, `move_right`, `jump`, `crouch`).
+- [x] **TASK-202**: Author `scripts/characters/CharacterController2D.gd` with 6-state kinematics FSM, velocity integration, gravity, friction, and landing logic.
+- [x] **TASK-203**: Implement dynamic collision height adjustment in `Kai.tscn` (standing 320px vs crouch 200px) with ground base anchor at Y=0.
+- [x] **TASK-204**: Implement jump lockout rules while crouching.
+- [x] **TASK-205**: Implement opponent-facing orientation logic via visual `Skeleton2D.scale.x` flipping while preserving unscaled root `CharacterBody2D`.
+- [x] **TASK-206**: Connect animation playback cleanly to locomotion cycles (`loco/idle`, `walk_fwd`, `walk_bwd`, `crouch`) with airborne freeze safety.
+- [x] **TASK-207**: Build `scenes/arenas/MovementTestArena.tscn` and `scripts/arenas/MovementTestArenaController.gd` with live telemetry HUD and boundary walls.
+- [x] **TASK-208**: Author automated unit test suite `tests/unit/test_player_movement.gd` and achieve 100% pass rate (55/55 assertions passed).
+- [x] **TASK-209**: Execute Phase 01 regression suite `tests/unit/test_kai_hierarchy.gd` (44/44 assertions passed).
+- [x] **TASK-210**: Capture and verify in-engine screenshots for Visual Quality Gate.
+- [x] **TASK-211**: Execute Pass 1 and Pass 2 audits, update project documentation, and author Phase 02 Completion Report.
 
 ---
 
-## 4. BACKLOG (BLOCKED — PENDING PHASE 02 AUTHORIZATION)
+## 4. IN PROGRESS
 
-### Phase 02: Player Movement & Controls
-- [ ] **TASK-201**: Implement `CharacterController2D` script with velocity integration and gravity.
-- [ ] **TASK-202**: Implement `CharacterStateMachine` and basic locomotion states.
-- [ ] **TASK-203**: Implement automatic opponent-facing logic.
-- [ ] **TASK-204**: Implement input buffer for responsive martial commands.
+*None. Strictly stopped at Phase 02 completion gate awaiting user sign-off.*
+
+---
+
+## 5. BACKLOG (BLOCKED — PENDING PHASE 03 AUTHORIZATION)
 
 ### Phase 03: Core 2D Combat Engine
 - [ ] **TASK-301**: Implement `Hitbox2D` (Area2D) with attack data binding.

@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" path="res://assets/characters/kai/leg_lower_bwd.png" id="12_leglb"]
 [ext_resource type="Texture2D" path="res://assets/characters/kai/foot_fwd.png" id="13_footf"]
 [ext_resource type="Texture2D" path="res://assets/characters/kai/foot_bwd.png" id="14_footb"]
+[ext_resource type="Script" path="res://scripts/characters/CharacterController2D.gd" id="15_ctrl"]
+[ext_resource type="Resource" path="res://resources/characters/kai.tres" id="16_data"]
 
 [sub_resource type="Animation" id="Animation_idle"]
 resource_name = "idle"
@@ -518,6 +520,10 @@ tracks/12/keys = {
 "values": [-1.45, -1.45]
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kai_body"]
+radius = 28.0
+height = 320.0
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_loco"]
 _data = {
 "crouch": SubResource("Animation_crouch"),
@@ -527,9 +533,17 @@ _data = {
 }
 
 [node name="Kai" type="CharacterBody2D"]
-scale = Vector2(0.48, 0.48)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("15_ctrl")
+character_data = ExtResource("16_data")
+
+[node name="MovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -160)
+shape = SubResource("CapsuleShape2D_kai_body")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+scale = Vector2(0.48, 0.48)
 
 [node name="Bone_Root" type="Bone2D" parent="Skeleton2D"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)

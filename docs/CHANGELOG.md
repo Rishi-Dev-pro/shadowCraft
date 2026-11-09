@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] — 2026-11-09
+### Phase 02: Player Movement & Controls
+
+#### Added
+- **Fighting Game Input Map:**
+  - Configured input actions in `project.godot`: `move_forward` (D / Right), `move_backward` (A / Left), `move_left` (A / Left), `move_right` (D / Right), `jump` (Space / W / Up), and `crouch` (S / Down).
+- **Player Kinematics & State Machine:**
+  - Authored `scripts/characters/CharacterController2D.gd` utilizing a statically typed 6-state kinematics machine (`IDLE`, `MOVE_FORWARD`, `MOVE_BACKWARD`, `CROUCH`, `JUMP`, `FALL`).
+  - Implemented decoupled `update_kinematics(delta, move_input, jump, crouch, on_floor)` function allowing deterministic headless simulation and in-engine execution.
+  - Implemented smooth acceleration (1800 px/s²), ground friction (2200 px/s²), walk speed (220 px/s), and retreat speed (180 px/s).
+  - Implemented vertical gravity (980 px/s²), vertical jump impulse (-420 px/s), and terminal fall velocity (1200 px/s).
+- **Collision & Physical Bounds:**
+  - Added dynamic capsule collision resizing in `scenes/characters/Kai.tscn`: standing height (320px, Y=-160px) and crouched height (200px, Y=-100px), maintaining grounded foot base at Y=0.
+  - Implemented strict crouch jump lockout preventing jump initiation while crouching.
+  - Enabled floor landing reset and solid wall collision adherence.
+- **Facing & Animation Integration:**
+  - Implemented automatic and manual opponent tracking by flipping visual `Skeleton2D.scale.x = ±0.48` while preserving normalized root `CharacterBody2D.scale = Vector2(1, 1)` to eliminate inverted collision normal bugs.
+  - Connected states to Phase 01 locomotion cycles (`loco/idle`, `loco/walk_fwd`, `loco/walk_bwd`, `loco/crouch`) with airborne freeze safety.
+- **Movement Test Arena & Telemetry:**
+  - Created `scenes/arenas/MovementTestArena.tscn` with solid floor (Layer 1), left/right perimeter boundaries, elevated test platform (Y=420), dummy opponent target (X=960), and real-time telemetry diagnostics HUD.
+  - Created `scripts/arenas/MovementTestArenaController.gd` providing real-time telemetry display and automated showcase playback capability.
+- **Automated Testing & Visual Verification:**
+  - Authored comprehensive test suite `tests/unit/test_player_movement.gd` covering 55 assertions across 11 test suites (100% pass rate).
+  - Verified Phase 01 regression suite `tests/unit/test_kai_hierarchy.gd` (44/44 assertions passed, combined 99/99).
+  - Captured in-engine visual proof in `reports/screenshots/` (`movement_arena_composite.png`, `movement_walk_fwd.png`, `movement_jump.png`, `movement_crouch.png`).
+
+---
+
 ## [0.2.0] — 2026-11-09
 ### Phase 01: Kai: 2D Character Art & Animation Pipeline
 

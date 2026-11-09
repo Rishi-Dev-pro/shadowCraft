@@ -12,8 +12,8 @@
 |---|---|---|---|---|
 | **Phase 00** | Project Foundation & Architecture | Engine setup, documentation, ADRs, repo governance | **COMPLETED** | Approved |
 | **Phase 01** | Kai 2D Character Art & Animation Pipeline | 2D silhouette sprites, Skeleton2D rig, idle/locomotion | **COMPLETED** | Approved |
-| **Phase 02** | Player Movement & Controls | Kinematic 2D movement, jump, crouch, dash, facing logic | *PLANNED* | Pending Authorization |
-| **Phase 03** | Core 2D Combat Engine | Hitbox/Hurtbox layers, damage math, health component | *PLANNED* | Blocked by Phase 02 |
+| **Phase 02** | Player Movement & Controls | Kinematic 2D movement, jump, crouch, dynamic collision, facing logic | **COMPLETED** | Completed & Audited |
+| **Phase 03** | Core 2D Combat Engine | Hitbox/Hurtbox layers, damage math, health component | *PLANNED* | Pending Authorization |
 | **Phase 04** | Wooden Sword & First Moveset | AttackData resources, combo chain, active frames | *PLANNED* | Blocked by Phase 03 |
 | **Phase 05** | Blocking, Parrying, Dodging & Combos | High/low guard, 4-frame parry window, counter-hit stun | *PLANNED* | Blocked by Phase 04 |
 | **Phase 06** | Weapon Framework & Additional Categories | Axe, Spear, Mace movesets & Material tier scaling | *PLANNED* | Blocked by Phase 05 |
