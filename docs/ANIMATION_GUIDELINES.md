@@ -64,6 +64,13 @@ flowchart TD
   - `idle`: 1.2 to 1.8 seconds (breathing expansion and subtle weight shift).
   - `walk_fwd` / `walk_bwd`: 0.8 to 1.0 seconds per full stride cycle.
 
+### Pose Ownership and Recovery
+- A character's `AnimationPlayer` is the sole writer of any Bone2D property used by its state clips. Do not combine a per-frame skeletal overlay with AnimationPlayer tracks for the same bones.
+- Each destination state keys every joint animated by any source state, including lower legs, feet, and forearms. A transition must restore a complete pose instead of relying on absent tracks or an abrupt skeleton reset.
+- Walk cycles counter-rotate the ankle/foot against the thigh and shin chain where needed to keep the sole approximately level through stance.
+- Airborne and landing poses are authored as clips in the same animation library. The controller selects clips from physics state; pose blending remains presentation logic in AnimationPlayer.
+- Sprite offsets are part of the rig's ground-contact geometry. Validate both foot bottoms against the floor line in a rendered scene after changing a pivot or offset.
+
 ### Frame-by-Frame & Stepped Domain
 - **States:** Attacks (`sword_light_1`, `axe_heavy_slam`), parry deflections, heavy staggers, wall impacts, knockdowns.
 - **Interpolation:** Stepped (`UpdateMode: Discrete`). Keyframes are placed on exact 60 FPS frame boundaries.
@@ -128,5 +135,4 @@ All locomotion tracks animate the following standardized bone hierarchy:
 - `Skeleton2D/Bone_Root/Bone_Hips/Bone_Torso/Bone_Shoulder_Back` -> `Bone_Arm_Upper_Back` -> `Bone_Arm_Lower_Back` -> `Bone_Hand_Back`
 - `Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Front` -> `Bone_Leg_Lower_Front` -> `Bone_Foot_Front`
 - `Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Back` -> `Bone_Leg_Lower_Back` -> `Bone_Foot_Back`
-
 

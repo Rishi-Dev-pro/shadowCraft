@@ -3,6 +3,24 @@
 
 ## Post-Completion Movement Polish (2026-11-09)
 
+### Critical Kai Animation Repair (2026-11-09)
+
+#### Root causes and fixes
+- Crouch-to-idle left both shins and feet in their crouch angles because idle did not key those bones. Idle and locomotion destinations now explicitly restore the full leg chains, with smooth AnimationPlayer crossfades.
+- Forward and backward walk cycles rotated thighs and shins without counter-rotating the feet. Added matching ankle tracks to keep feet aligned through the stride and preserve alternating leg motion.
+- The crouch rear thigh and shin rotated in the same direction, folding the back knee unnaturally. The rear shin and foot rotations now counter the thigh chain; pelvis height was tuned to preserve a low stance.
+- Both foot sprites used a 29px local vertical offset, sinking neutral soles about 14px below the arena floor. Their offsets are now zero; the measured neutral foot bottoms are y=560.52 and crouch bottoms are y=561.23 / 559.03 against floor y=560.
+- The old `CharacterMovementAnimation` node wrote many of the same Bone2D rotations as AnimationPlayer. It was removed so a single player owns the pose; new authored `jump_air` and `jump_land` clips explicitly cover the animated torso, arm, and leg joints.
+
+#### Verification and two-pass audits
+- Godot 4.7.2 live runner: 17/17 checks passed, covering grounded crouch, both sole anchors, crouch recovery, crouch/walk transitions, crouch jump lockout, airborne state, floor landing, forward/backward state, and ten repeated crouch cycles.
+- Existing movement suite: 63/63 passed. Phase 01 hierarchy suite: 44/44 passed. Godot scene/resource validation completed without errors after the final repair.
+- Genuine rendered before/after captures are `reports/screenshots/repair_before_*.png` and `repair_after_*.png`. The before/after movies are `reports/videos/kai_animation_repair_before.avi` and `kai_animation_repair_after.avi`.
+- **Audit 1 — Architecture & integration:** Kai remains a 2D Skeleton2D character; the controller continues to own physics/state and AnimationPlayer owns all pose tracks. Facing remains a visual-only skeleton flip. No Phase 03 or archived project files were touched.
+- **Audit 2 — Quality & completeness:** Changed scene, controller, tests, and docs were reread; all listed automated and live checks passed; screenshots and both movies were inspected. Pre-existing local arena, playtest, and screenshot changes remain outside this repair commit.
+
+This repair supersedes the earlier note below that described a separate `CharacterMovementAnimation` overlay. Phase 03 remains gated and was not started.
+
 The requested Kai movement polish pass retained the Phase 02 controller and approved Phase 01 ground cycles.
 
 ### Root causes corrected
@@ -15,7 +33,7 @@ The requested Kai movement polish pass retained the Phase 02 controller and appr
 
 ### Changes and verification
 - Ground locomotion state now follows remaining horizontal velocity during friction deceleration; walk-cycle playback rate scales with horizontal speed.
-- A separate `CharacterMovementAnimation` rig component blends the existing skeleton into a compact airborne tuck and eases back through landing. Ground artwork and authored ground cycles are preserved.
+- Authored airborne and landing clips now run through the existing AnimationPlayer; a later critical repair removed the former overlapping rig component and preserved the approved artwork and ground cycle design.
 - Ground animation is paused throughout jump and fall. Landing reports the pre-contact downward velocity, clears vertical speed, and restores the grounded idle/walk/crouch state.
 - Standing capsule growth is tested for upward clearance before leaving crouch.
 - The platform now rises 80px from the floor, keeping the original jump impulse and gravity unchanged.

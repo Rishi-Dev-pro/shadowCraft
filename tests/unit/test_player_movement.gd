@@ -348,7 +348,13 @@ func test_animation_state_mapping() -> void:
 	# Verify Rule: Jump does NOT play ground walking animation
 	kai._change_state(CharacterController2D.State.JUMP)
 	kai._update_animation()
-	_assert_true(kai.anim_player.current_animation != "loco/walk_fwd" and kai.anim_player.current_animation != "loco/walk_bwd", "JUMP does not play ground walking animation (strictly maintains pose)")
-	_assert_true(kai.get_node_or_null("MovementAnimation") is CharacterMovementAnimation, "Kai has a separate skeletal airborne and landing presentation component")
+	_assert_true(kai.anim_player.current_animation == "loco/jump_air", "JUMP selects the authored airborne clip on the shared AnimationPlayer")
+	_assert_true(kai.anim_player.has_animation("loco/jump_land"), "AnimationPlayer has an authored landing recovery clip")
+	var jump_animation: Animation = kai.anim_player.get_animation("loco/jump_air")
+	var jump_paths_valid: bool = true
+	for track_index: int in range(jump_animation.get_track_count()):
+		if jump_animation.track_get_path(track_index).get_subname_count() != 1:
+			jump_paths_valid = false
+	_assert_true(jump_paths_valid, "Airborne animation bone tracks target one property each")
 	
 	kai.free()

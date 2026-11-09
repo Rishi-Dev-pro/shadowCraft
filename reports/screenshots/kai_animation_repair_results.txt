@@ -1,0 +1,20 @@
+KAI ANIMATION REPAIR RESULTS: 17 passed, 0 failed
+NEUTRAL FOOT BOTTOMS: 560.95 / 560.95
+PASS idle to crouch stays grounded
+PASS front foot stays on floor during crouch
+PASS back foot stays on floor during crouch
+CROUCH FOOT BOTTOMS: 561.23 / 559.03
+PASS crouch to idle restores both complete leg chains
+PASS crouch to idle restores both foot positions
+PASS crouch to forward walk transitions cleanly
+PASS walk to crouch to walk transitions cleanly
+PASS jump input is ignored while crouched
+PASS crouch release restores standing state
+PASS jump reaches an airborne state
+PASS jump lands on the arena floor
+PASS jump landing to idle restores both complete leg chains
+PASS jump landing to idle restores both foot positions
+PASS forward to backward transition selects retreat cycle
+PASS backward walk decelerates to idle
+PASS ten crouch and stand cycles restores both complete leg chains
+PASS ten crouch and stand cycles restores both foot positions

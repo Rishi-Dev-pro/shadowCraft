@@ -7,13 +7,13 @@
 
 ## Movement Polish Follow-up (Phase 02)
 
-- Kai's Phase 02 movement polish has been applied without changing the phase boundary or starting Phase 03.
-- The controller keeps walking presentation through velocity-based deceleration, scales the ground walk cycle against speed, freezes ground motion in the air, reports landing impact before velocity reset, and prevents standing collision expansion into an overhead blocker.
-- `CharacterMovementAnimation.gd` adds a blended airborne martial tuck and landing recovery using Kai's existing rig. Existing ground animations and artwork remain unchanged.
+- Kai's Phase 02 movement and animation repair is complete; no Phase 03 work was started.
+- One AnimationPlayer now owns Kai's bone animation. Complete leg/arm tracks restore neutral transforms, and authored `jump_air` / `jump_land` clips replace the former overlapping procedural bone writer.
+- The crouch knee angles and pelvis height were corrected. Both foot sprite offsets were reduced from 29 to 0 so sole contact aligns with the arena floor.
+- The controller retains velocity-linked walking, safe standing-capsule clearance, grounded jump restrictions, landing velocity reset, and visual-only Skeleton2D facing flips.
 - The test platform rise is now 80px. With the retained `-420 px/s` impulse and `980 px/s²` gravity, the continuous theoretical peak is 90px.
-- Godot 4.7.2 live playtest runner: 35/35 checks passed; rendered before/after captures are in `reports/screenshots/` with `playtest_*` and `polish_after_*` names.
-- Focused movement assertions were added to `tests/unit/test_player_movement.gd`. The installed GUI Godot executable did not expose output from `--script` runs; live runtime checks are verified through the actual in-engine playtest runner.
-- Next immediate task: human review of the movement polish captures and this corrective report. Phase 03 remains gated on explicit user authorization.
+- Final verification: the live animation runner passed 17/17 checks, `test_player_movement.gd` passed 63/63, and `test_kai_hierarchy.gd` passed 44/44. Godot 4.7.2 rendered before/after movies and captures in `reports/videos/` and `reports/screenshots/`.
+- Next immediate task: human review of this animation repair evidence. Phase 03 remains gated on explicit user authorization.
 
 ---
 

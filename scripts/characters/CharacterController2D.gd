@@ -97,6 +97,8 @@ func _ready() -> void:
 	
 	# Ensure capsule shape exists and is uniquely instanced
 	_setup_collision_shape()
+	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+		anim_player.animation_finished.connect(_on_animation_finished)
 	
 	# Initial state entry
 	_enter_state(State.IDLE)
@@ -148,7 +150,8 @@ func _physics_process(delta: float) -> void:
 		on_floor = is_on_floor()
 	
 	# 5. Check landing transition
-	if not _was_on_floor_last_frame and on_floor:
+	var landed_this_frame: bool = not _was_on_floor_last_frame and on_floor
+	if landed_this_frame:
 		emit_signal("landed", maxf(impact_velocity_y, 0.0))
 		velocity.y = 0.0
 		if crouch_requested:
@@ -169,6 +172,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0.0
 			_change_state(State.IDLE)
 	_update_animation()
+	if landed_this_frame:
+		_play_animation("loco/jump_land", 0.04)
 
 # --- Kinematics & State Calculation (Separated for Pure Testability) ---
 
@@ -354,20 +359,21 @@ func _update_animation() -> void:
 		State.CROUCH:
 			_play_animation("loco/crouch")
 		State.JUMP, State.FALL:
-			# The skeletal overlay owns the airborne pose; freeze ground tracks in place.
-			if anim_player.is_playing():
-				anim_player.pause()
-			anim_player.speed_scale = 1.0
+			_play_animation("loco/jump_air", 0.12)
 	if current_state == State.MOVE_FORWARD or current_state == State.MOVE_BACKWARD:
 		anim_player.speed_scale = clampf(absf(velocity.x) / walk_cycle_speed, 0.35, 3.0)
 	else:
 		anim_player.speed_scale = 1.0
 
-func _play_animation(anim_name: String) -> void:
+func _play_animation(anim_name: String, blend_seconds: float = 0.12) -> void:
 	_ensure_references()
 	if anim_player != null:
 		if anim_player.current_animation != anim_name or not anim_player.is_playing():
-			anim_player.play(anim_name)
+			anim_player.play(anim_name, blend_seconds)
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == &"loco/jump_land":
+		_update_animation()
 
 # --- Helper Methods for Automated Unit Testing ---
 
