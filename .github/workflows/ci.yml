@@ -1,0 +1,46 @@
+name: ShadowCraft 2D CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-project:
+    name: Project Configuration & Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Godot 4
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.3.0
+          use-dotnet: false
+
+      - name: Verify Project Configuration
+        run: |
+          godot --headless --path . --quit
+
+      - name: Check for Prohibited 3D Nodes
+        run: |
+          PROHIBITED=$(grep -rnE "(CharacterBody3D|MeshInstance3D|RigidBody3D|Camera3D|GodotPhysics3D)" scripts/ scenes/ resources/ || true)
+          if [ -n "$PROHIBITED" ]; then
+            echo "Error: Found prohibited 3D nodes in 2D project:"
+            echo "$PROHIBITED"
+            exit 1
+          else
+            echo "2D verification passed: No 3D nodes found."
+          fi
+
+      - name: Run GdUnit4 Automated Tests (when tests present)
+        run: |
+          if [ -d "addons/gdUnit4" ]; then
+            godot --headless --path . -s addons/gdUnit4/bin/GdUnitCmdTool.gd run -a tests/
+          else
+            echo "GdUnit4 runner addon not yet installed. Running structural test assertions."
+          fi

@@ -1,0 +1,31 @@
+# Godot 4 2D Engine files
+.godot/
+*.translation
+
+# Export presets and build outputs
+export_presets.cfg
+build/
+bin/
+*.apk
+*.aab
+*.exe
+*.zip
+*.pck
+
+# Test framework temporary / report files
+.gdunit4/
+reports/
+
+# Editor and OS specific files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.log
+.vscode/
+.idea/
+*.swp
+*~
+
+# Crash dumps
+*.dmp

@@ -1,0 +1,99 @@
+# SHADOWCRAFT 2D — COMBAT DESIGN & MECHANICS SPECIFICATION
+
+> **Status:** APPROVED DESIGN BASELINE  
+> **Target Rhythm:** Tactical, Spacing-Driven, Martial Arts Precision  
+> **Source of Truth:** `docs/PROJECT_CONSTITUTION.md`
+
+---
+
+## 1. COMBAT PHILOSOPHY & GAMEPLAY LOOP
+
+ShadowCraft 2D combat is built on three core tenets:
+1. **Deliberate Commitment:** Every strike carries meaningful startup and recovery. Whiffing an attack at the wrong distance creates a clear vulnerability window for the opponent.
+2. **Dynamic Spacing (The Footsies Game):** Matches are won by mastering the threat range of your weapon versus the opponent's. A spear fighter dictates the match from long range; a mace or sword fighter must weave inside the thrust tip to punish.
+3. **Reactive Defense & Momentum Swings:** Blocking prevents catastrophic health loss, but parrying within the critical 4-frame window turns defense directly into offensive momentum.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Neutral
+    Neutral --> Startup: Press Attack (Buffer Window)
+    Startup --> Active: Startup Frames Finish
+    Startup --> Interrupted: Hit During Startup (Counter-Hit +30% Dmg)
+    Active --> Recovery: Active Frames Finish
+    Recovery --> Neutral: Recovery Finished
+    Recovery --> Interrupted: Punished During Recovery (Whiff Punish)
+    
+    Neutral --> HighGuard: Walk Backward
+    Neutral --> LowGuard: Crouch + Backward
+    Neutral --> ParryWindow: Guard Input within 4 Frames of Impact
+```
+
+---
+
+## 2. DEFENSIVE MECHANICS
+
+### Directional Guarding
+- **High Guard (Neutral Guard):**
+  - Triggered by holding backward movement while standing.
+  - Mitigates 75% of incoming damage from mid and high attacks.
+  - Does NOT protect against low sweeps; crouching low attacks break through high guard.
+- **Low Guard (Crouching Guard):**
+  - Triggered by holding down-backward.
+  - Mitigates 75% of incoming damage from low sweeps and mid thrusts.
+  - Completely vulnerable to jumping attacks and heavy overhead chops (e.g., heavy axe cleaves).
+- **Guard Chip Damage & Poise Depletion:**
+  - Blocked attacks still inflict minor chip damage (10% to 25% of unblocked damage depending on weapon tier) and drain Poise.
+  - When a fighter's Poise gauge reaches zero, they suffer a **Guard Break** (entering heavy stagger for 30 frames).
+
+### The Parry System (High-Skill Deflection)
+- **Execution Window:** Engaging guard within **4 frames (66.6ms)** of an incoming hitbox contacting the hurtbox triggers a **Parry**.
+- **Mechanics:**
+  - Zero health damage taken.
+  - Zero guard meter/poise loss.
+  - Attacker suffers **Recoil Stumble** (+18 frames of recovery disadvantage).
+  - Triggers a 6-frame hitstop (screen freeze) accompanied by a distinct metallic clash sound and directional spark particle burst.
+  - Defender immediately recovers into neutral, enabling a guaranteed punish combo.
+
+---
+
+## 3. DAMAGE FORMULA & COMBAT MATHEMATICS
+
+### Damage Calculation
+```text
+Unmitigated Damage = (Weapon.base_damage * Attack.damage_ratio * Material.damage_multiplier) + Base_Strength
+Final Damage = MAX(1.0, Unmitigated Damage - Opponent.armor_reduction)
+```
+
+### Hit Modifiers
+- **Clean Hit:** Standard calculated damage.
+- **Counter-Hit:** If defender is hit during the **Startup** frames of their own attack:
+  - $\text{Damage} \times 1.30$ (+30% bonus damage).
+  - +6 additional frames of hitstun.
+- **Whiff Punish:** If defender is hit during the **Recovery** frames of their own missed attack:
+  - $\text{Damage} \times 1.20$ (+20% bonus damage).
+- **Blocked Hit:**
+  $$\text{Chip Damage} = \text{Final Damage} \times (1.0 - \text{Mitigation Ratio})$$
+
+### Poise & Stun System
+- **Poise Pool:** Each character possesses a Poise pool (e.g., 100 points for Kai, 160 points for Razen).
+- **Poise Damage:** Heavy weapons (Maces, Axes) deal high poise damage (40–70 points per strike); swords deal moderate poise damage (20–35 points).
+- **Poise Regeneration:** Poise regenerates continuously after 2.0 seconds of not receiving damage or blocking attacks.
+
+---
+
+## 4. HIT REACTIONS & KNOCKBACK
+
+When an unblocked attack lands, the defender enters one of four deterministic hit reactions:
+
+1. **Light Stagger:**
+   - Caused by light sword or spear pokes.
+   - 12 frames of hitstun. Defender pushed back 40px.
+2. **Heavy Stagger:**
+   - Caused by heavy attacks, 3rd hit of combo strings, or counter-hits.
+   - 24 frames of hitstun. Defender pushed back 80px.
+3. **Knockdown:**
+   - Caused by mace smashes, heavy axe chops, or sweep kicks.
+   - Defender is thrown off their feet, landing prone on the ground.
+   - Grounded state: Immune to high attacks; vulnerable to ground stomps for 10 frames before automatic roll recovery.
+4. **Wall Splat:**
+   - If a heavy knockback drives the opponent into the arena boundary wall, they suffer a Wall Splat (+12 frames of extra stun), allowing extended juggle combos.
