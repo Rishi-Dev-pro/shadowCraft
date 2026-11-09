@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] — Kai Phase 02 movement polish
 
+### Signature stance and reference gait pass (2026-11-10)
+- Re-authored Kai's idle guard and forward/backward walk clips with eight explicit gait poses, pelvis transfer, knee/foot articulation, and a distinct retreat profile while retaining the existing Skeleton2D and artwork.
+- Captured the idle stance and every authored forward/backward pose in the running Godot scene under `reports/screenshots/kai_reference_after_*.png`; the walking runner reports 13/13 checks passing, including a sampled support foot in all eight poses per direction.
+- Visual review remains open: measured planted-foot excursion is still large (up to 147.54px forward and 164.59px backward), and some gait poses read stiff. The eight-pose contact checks do not establish convincing foot locking. Treat this pass as provisional pending rig/foot-placement work and human review.
+- No movement controller, physics, collision, crouch, jump, landing, or new art assets were changed in this pass. Phase 03 remains gated.
+
 ### Fixed
 - Refined only Kai's forward and backward walk clips with modest hip bob, hip/torso counter-rotation, a purposeful backward torso lean, and stronger opposite arm swing. Leg and foot curves were retained after tuning iterations increased measured foot slide. Crouch, jump, landing, collision, and movement physics remain untouched.
 - Added a live walking sequence runner with idle/start/continuous/stop captures, forward/backward reversals, ground-foot sampling, and genuine Godot before/after movies.

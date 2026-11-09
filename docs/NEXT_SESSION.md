@@ -1,5 +1,13 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Current Animation Review (2026-11-10)
+
+- Latest task: signature idle stance and reference-driven forward/backward gait rework in `scenes/characters/Kai.tscn`, using the existing rig and artwork.
+- The live runner reports 13/13 transition and pose-contact checks passing; existing movement and hierarchy unit tests passed in headless Godot. Exact-pose captures are `reports/screenshots/kai_reference_after_idle_start.png` and `kai_reference_after_{forward,backward}_pose_*.png`.
+- Visual acceptance is **not complete**: planted-foot excursion still reaches 147.54px forward and 164.59px backward, and the backward cycle remains stiff in some poses. Inspect screenshot sequences and fix foot placement/support before calling the gait done. Do not treat the sampled contact assertion as foot locking.
+- Latest actual scene capture video: `reports/videos/kai_reference_after.avi` (captured before the final small backward-pelvis adjustment); recapture after further changes.
+- No Phase 03 work. Preserve the Phase 02 gate and wait for user approval after this polish pass.
+
 ## Walking Animation Polish Follow-up (2026-11-09)
 
 - The current task changed only `walk_fwd` and `walk_bwd` animation tracks in Kai's scene. No controller, physics, collision, crouch, jump, or landing behavior was changed.

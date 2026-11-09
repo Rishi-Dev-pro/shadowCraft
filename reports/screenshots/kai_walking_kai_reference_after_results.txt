@@ -1,0 +1,50 @@
+WALKING RESULTS: 13 passed, 0 failed
+PASS idle enters forward walk
+PASS forward walk returns to idle
+FORWARD FOOT BOTTOM VERTICAL RANGES (px): front 40.97, back 33.85
+FORWARD MAX CONTIGUOUS PLANTED FOOT SLIP (px): front 132.60, back 74.34
+FORWARD STEADY-SPEED PLANTED FOOT SLIP (px): front 111.75, back 72.05
+1 steady player_x=433.0 anim_t=0.107 front=(487.0,575.8)/C back=(428.3,558.1)/S
+1 steady player_x=451.3 anim_t=0.519 front=(334.9,535.9)/S back=(445.2,577.0)/C
+1 steady player_x=469.7 anim_t=0.748 front=(380.7,561.8)/S back=(431.6,574.0)/C
+1 steady player_x=488.0 anim_t=0.977 front=(470.7,575.6)/C back=(477.1,549.0)/S
+1 steady player_x=506.3 anim_t=0.207 front=(549.9,575.4)/C back=(519.5,569.5)/C
+1 steady player_x=524.7 anim_t=0.436 front=(436.5,561.4)/S back=(510.2,573.5)/C
+PASS idle enters backward walk
+PASS backward walk returns to idle
+BACKWARD FOOT BOTTOM VERTICAL RANGES (px): front 30.84, back 24.45
+BACKWARD MAX CONTIGUOUS PLANTED FOOT SLIP (px): front 88.33, back 75.98
+BACKWARD STEADY-SPEED PLANTED FOOT SLIP (px): front 81.93, back 74.99
+2 steady player_x=225.5 anim_t=0.921 front=(165.2,564.1)/S back=(239.0,584.3)/S
+2 steady player_x=210.5 anim_t=0.241 front=(159.0,574.5)/C back=(169.9,574.4)/C
+2 steady player_x=195.5 anim_t=0.429 front=(199.6,586.8)/S back=(205.8,583.9)/S
+2 steady player_x=180.5 anim_t=0.618 front=(156.2,578.2)/C back=(216.7,586.3)/S
+2 steady player_x=165.5 anim_t=0.805 front=(151.0,557.9)/S back=(238.2,582.1)/S
+2 steady player_x=150.5 anim_t=0.995 front=(86.9,579.7)/C back=(160.5,585.4)/S
+PASS forward reverses smoothly into backward walk
+PASS backward reverses smoothly into forward walk
+PASS direction reversal sequence settles to idle
+FORWARD EIGHT-POSE CYCLE (foot x/y and contact at authored pose):
+frame 01 contact t=0.000 front=(339.0, 576.0) CONTACT back=(336.0, 544.0) SWING
+frame 02 loading t=0.125 front=(399.8, 576.6) CONTACT back=(346.6, 560.8) SWING
+frame 03 passing t=0.250 front=(388.3, 574.1) CONTACT back=(371.3, 572.3) CONTACT
+frame 04 push_off t=0.375 front=(337.4, 570.9) CONTACT back=(400.1, 572.8) CONTACT
+frame 05 swing t=0.500 front=(233.3, 537.3) SWING back=(342.8, 576.7) CONTACT
+frame 06 opposite_contact t=0.625 front=(246.0, 554.2) SWING back=(327.2, 575.7) CONTACT
+frame 07 loading t=0.750 front=(259.9, 561.8) SWING back=(310.4, 574.0) CONTACT
+frame 08 recovery t=0.875 front=(314.0, 565.9) CONTACT back=(330.9, 571.2) CONTACT
+PASS forward walk keeps at least one foot in contact throughout the sampled cycle
+PASS forward gait alternates front-leg support and swing
+PASS forward gait alternates back-leg support and swing
+BACKWARD EIGHT-POSE CYCLE (foot x/y and contact at authored pose):
+frame 01 contact t=0.000 front=(332.3, 580.8) CONTACT back=(280.2, 577.6) CONTACT
+frame 02 loading t=0.125 front=(353.2, 574.3) CONTACT back=(268.7, 571.3) CONTACT
+frame 03 passing t=0.250 front=(296.9, 575.6) CONTACT back=(257.1, 562.6) SWING
+frame 04 push_off t=0.375 front=(321.6, 575.1) CONTACT back=(320.8, 567.9) CONTACT
+frame 05 swing t=0.500 front=(315.6, 585.6) SWING back=(253.2, 567.2) CONTACT
+frame 06 opposite_contact t=0.625 front=(303.8, 585.1) SWING back=(336.3, 569.7) CONTACT
+frame 07 loading t=0.750 front=(285.0, 578.3) CONTACT back=(344.0, 570.7) CONTACT
+frame 08 recovery t=0.875 front=(336.6, 573.5) CONTACT back=(361.2, 570.6) CONTACT
+PASS backward walk keeps at least one foot in contact throughout the sampled cycle
+PASS backward gait alternates front-leg support and swing
+PASS backward gait alternates back-leg support and swing
