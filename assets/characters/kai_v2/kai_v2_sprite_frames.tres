@@ -1,72 +1,122 @@
 [gd_resource type="SpriteFrames" format=3]
 
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_01.png" id="1_usjeb"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_02.png" id="2_3jk4t"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_03.png" id="3_5rret"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_04.png" id="4_l2psr"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_01.png" id="5_3a7pk"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_02.png" id="6_d5fwh"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_03.png" id="7_0210q"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_04.png" id="8_5x2cf"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_05.png" id="9_3x0sd"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_06.png" id="10_v5bcv"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_07.png" id="11_eafme"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_08.png" id="12_2m1xn"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_01.png" id="13_r1s5e"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_02.png" id="14_ei2gi"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_03.png" id="15_pvyba"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_04.png" id="16_4mno5"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_05.png" id="17_bd6ey"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_06.png" id="18_36lty"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_07.png" id="19_5urcv"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_08.png" id="20_j6imb"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_01.png" id="21_8s72t"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_02.png" id="22_gy65w"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_03.png" id="23_drk2j"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_04.png" id="24_gfomp"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_01.png" id="25_vw8sd"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_02.png" id="26_c7rue"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_03.png" id="27_l2vdr"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_04.png" id="28_7rwva"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_01.png" id="29_vvaky"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_02.png" id="30_ucgug"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_03.png" id="31_pd7co"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_04.png" id="32_3xhf3"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_05.png" id="33_ukc0n"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_06.png" id="34_ejs8s"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_07.png" id="35_84mdv"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_08.png" id="36_jff0g"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_01.png" id="37_nruw5"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_02.png" id="38_dnaa1"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_03.png" id="39_r4tpl"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_04.png" id="40_qqbeu"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_05.png" id="41_5ttwo"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_06.png" id="42_vhuu6"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_07.png" id="43_d58q7"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_08.png" id="44_ubci1"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_01.png" id="45_6f7a7"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_02.png" id="46_xfiru"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_03.png" id="47_8lsxs"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_04.png" id="48_81gu1"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_05.png" id="49_t6ig2"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_06.png" id="50_2i5kq"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_07.png" id="51_ww2pj"]
-[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_08.png" id="52_i5gx3"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_01.png" id="1_5rret"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_02.png" id="2_l2psr"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_03.png" id="3_3a7pk"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_04.png" id="4_d5fwh"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_01.png" id="5_0210q"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_02.png" id="6_5x2cf"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_03.png" id="7_3x0sd"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_04.png" id="8_v5bcv"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_05.png" id="9_eafme"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_06.png" id="10_2m1xn"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_07.png" id="11_r1s5e"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_08.png" id="12_ei2gi"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/attacks/front_kick_source.png" id="13_pvyba"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_01.png" id="14_4mno5"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_02.png" id="15_bd6ey"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_03.png" id="16_36lty"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_04.png" id="17_5urcv"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_05.png" id="18_j6imb"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_06.png" id="19_8s72t"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_07.png" id="20_gy65w"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/idle_signature/idle_08.png" id="21_drk2j"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_01.png" id="22_gfomp"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_02.png" id="23_vw8sd"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_03.png" id="24_c7rue"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/jump/jump_04.png" id="25_l2vdr"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_01.png" id="26_7rwva"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_02.png" id="27_vvaky"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_03.png" id="28_ucgug"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/landing/landing_04.png" id="29_pd7co"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/attacks/light_jab_source.png" id="30_3xhf3"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_01.png" id="31_ukc0n"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_02.png" id="32_ejs8s"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_03.png" id="33_84mdv"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_04.png" id="34_jff0g"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_05.png" id="35_nruw5"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_06.png" id="36_dnaa1"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_07.png" id="37_r4tpl"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/run/run_08.png" id="38_qqbeu"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_01.png" id="39_5ttwo"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_02.png" id="40_vhuu6"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_03.png" id="41_d58q7"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_04.png" id="42_ubci1"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_05.png" id="43_6f7a7"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_06.png" id="44_xfiru"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_07.png" id="45_8lsxs"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_backward/walk_backward_08.png" id="46_81gu1"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_01.png" id="47_t6ig2"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_02.png" id="48_2i5kq"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_03.png" id="49_ww2pj"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_04.png" id="50_i5gx3"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_05.png" id="51_b2fi2"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_06.png" id="52_ukoqr"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_07.png" id="53_jdt5j"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_08.png" id="54_j86xu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbd4w"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0fw"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a041"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dls4d"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg82f"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f744e"]
+atlas = ExtResource("13_pvyba")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnftc"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du604"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7x8f"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ojkn"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxn7u"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biv32"]
+atlas = ExtResource("30_3xhf3")
+region = Rect2(1024, 512, 512, 512)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_usjeb")
+"texture": ExtResource("1_5rret")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_3jk4t")
+"texture": ExtResource("2_l2psr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5rret")
+"texture": ExtResource("3_3a7pk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l2psr")
+"texture": ExtResource("4_d5fwh")
 }],
 "loop": 1,
 "name": &"crouch",
@@ -74,28 +124,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_3a7pk")
+"texture": ExtResource("5_0210q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_d5fwh")
+"texture": ExtResource("6_5x2cf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_0210q")
+"texture": ExtResource("7_3x0sd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_5x2cf")
+"texture": ExtResource("8_v5bcv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_3x0sd")
+"texture": ExtResource("9_eafme")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_v5bcv")
+"texture": ExtResource("10_2m1xn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_eafme")
+"texture": ExtResource("11_r1s5e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_2m1xn")
+"texture": ExtResource("12_ei2gi")
 }],
 "loop": 1,
 "name": &"crouch_walk",
@@ -103,28 +153,51 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_r1s5e")
+"texture": SubResource("AtlasTexture_kbd4w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_ei2gi")
+"texture": SubResource("AtlasTexture_uq0fw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_pvyba")
+"texture": SubResource("AtlasTexture_4a041")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_4mno5")
+"texture": SubResource("AtlasTexture_dls4d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_bd6ey")
+"texture": SubResource("AtlasTexture_sg82f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_36lty")
+"texture": SubResource("AtlasTexture_f744e")
+}],
+"loop": 0,
+"name": &"front_kick",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_4mno5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_5urcv")
+"texture": ExtResource("15_bd6ey")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_j6imb")
+"texture": ExtResource("16_36lty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5urcv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_j6imb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8s72t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_gy65w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_drk2j")
 }],
 "loop": 1,
 "name": &"idle_signature",
@@ -132,16 +205,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("21_8s72t")
+"texture": ExtResource("22_gfomp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_gy65w")
+"texture": ExtResource("23_vw8sd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_drk2j")
+"texture": ExtResource("24_c7rue")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_gfomp")
+"texture": ExtResource("25_l2vdr")
 }],
 "loop": 0,
 "name": &"jump",
@@ -149,16 +222,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("25_vw8sd")
+"texture": ExtResource("26_7rwva")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_c7rue")
+"texture": ExtResource("27_vvaky")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_l2vdr")
+"texture": ExtResource("28_ucgug")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_7rwva")
+"texture": ExtResource("29_pd7co")
 }],
 "loop": 0,
 "name": &"landing",
@@ -166,28 +239,51 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("29_vvaky")
+"texture": SubResource("AtlasTexture_pnftc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_ucgug")
+"texture": SubResource("AtlasTexture_du604")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_pd7co")
+"texture": SubResource("AtlasTexture_f7x8f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_3xhf3")
+"texture": SubResource("AtlasTexture_5ojkn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_ukc0n")
+"texture": SubResource("AtlasTexture_pxn7u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("34_ejs8s")
+"texture": SubResource("AtlasTexture_biv32")
+}],
+"loop": 0,
+"name": &"light_jab",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_ukc0n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_84mdv")
+"texture": ExtResource("32_ejs8s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_jff0g")
+"texture": ExtResource("33_84mdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_jff0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_nruw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_dnaa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_r4tpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_qqbeu")
 }],
 "loop": 1,
 "name": &"run",
@@ -195,28 +291,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("37_nruw5")
+"texture": ExtResource("39_5ttwo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_dnaa1")
+"texture": ExtResource("40_vhuu6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_r4tpl")
+"texture": ExtResource("41_d58q7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_qqbeu")
+"texture": ExtResource("42_ubci1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_5ttwo")
+"texture": ExtResource("43_6f7a7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("42_vhuu6")
+"texture": ExtResource("44_xfiru")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_d58q7")
+"texture": ExtResource("45_8lsxs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_ubci1")
+"texture": ExtResource("46_81gu1")
 }],
 "loop": 1,
 "name": &"walk_backward",
@@ -224,28 +320,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("45_6f7a7")
+"texture": ExtResource("47_t6ig2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_xfiru")
+"texture": ExtResource("48_2i5kq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_8lsxs")
+"texture": ExtResource("49_ww2pj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("48_81gu1")
+"texture": ExtResource("50_i5gx3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("49_t6ig2")
+"texture": ExtResource("51_b2fi2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("50_2i5kq")
+"texture": ExtResource("52_ukoqr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_ww2pj")
+"texture": ExtResource("53_jdt5j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("52_i5gx3")
+"texture": ExtResource("54_j86xu")
 }],
 "loop": 1,
 "name": &"walk_forward",

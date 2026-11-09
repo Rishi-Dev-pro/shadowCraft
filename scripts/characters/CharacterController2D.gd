@@ -72,6 +72,7 @@ var is_facing_right: bool = true
 var is_grounded: bool = true
 var is_running: bool = false
 var target_opponent: Node2D = null
+var combat_motion_locked: bool = false
 
 # --- Simulated Input (for automated unit tests) ---
 var use_simulated_input: bool = false
@@ -144,10 +145,10 @@ func _physics_process(delta: float) -> void:
 	_process_facing()
 	
 	# 2. Gather input
-	var move_input: float = _get_horizontal_input()
-	var jump_requested: bool = _is_jump_just_pressed()
-	var crouch_requested: bool = _is_crouch_pressed()
-	var run_requested: bool = _is_run_pressed()
+	var move_input: float = 0.0 if combat_motion_locked else _get_horizontal_input()
+	var jump_requested: bool = false if combat_motion_locked else _is_jump_just_pressed()
+	var crouch_requested: bool = false if combat_motion_locked else _is_crouch_pressed()
+	var run_requested: bool = false if combat_motion_locked else _is_run_pressed()
 	var on_floor: bool = _check_is_on_floor()
 	
 	# 3. Update Kinematics & State Machine

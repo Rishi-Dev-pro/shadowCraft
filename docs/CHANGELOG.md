@@ -5,7 +5,16 @@ All notable changes to **ShadowCraft 2D** are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] — Kai Phase 02 movement polish
+## [Unreleased] — Combat 1 foundation
+
+### Combat 1 foundation (2026-11-10)
+- Added typed `AttackData`, `CombatMath`, `HealthComponent`, `Hitbox2D`, `Hurtbox2D`, and Kai V2's combat state/timing controller. The controller owns startup, active, recovery and hitstun; the existing animation controller yields visual ownership during combat. Attacks are ground-only and once-per-target during each active window.
+- Added original six-pose Light Jab and Front Kick atlases; integrated each as a separate 30 FPS clip in the existing Kai V2 `SpriteFrames`. `AttackData` configures frame timing, hitbox position/size, damage, knockback and hitstun.
+- Added a damageable 2D training dummy and a separate `CombatTestArena` with health bars, state feedback and opt-in hitbox outlines. Combat-arena enemy body collision is local to this scene; the F5 Movement Test Arena remains the main scene.
+- Added Z and X input actions. Adjusted jab/kick hitbox height after inspecting the rendered debug outline against Kai's fist and kick contact. Headless tests passed: Combat 1 35/35, Kai V2 95/95, Phase 02 movement 63/63, Phase 01 hierarchy 44/44.
+- Captured and visually inspected the actual Godot 4.7.2 Compatibility-renderer recording `reports/videos/combat1_foundation_showcase.avi` and the idle/run/jab/kick/recovery frames under `reports/screenshots/combat1_*.png`.
+- Pass 1 verified 2D-only scenes, valid resource links, isolated arena collision, and preserved Phase 01/02 entry scenes. Pass 2 reviewed all new code/resources, ran the four test suites, and inspected the recorded animation and impact frames. No frame-time benchmark was recorded.
+- Phase 03 remains in progress. Combo chaining, defense, advanced moves and specials are not implemented; wait for explicit authorization before starting another Combat milestone.
 
 ### Kai V2 playable integration (2026-11-10)
 - Added `scenes/characters/KaiV2.tscn` as an independent `CharacterBody2D` playable character using imported transparent 512×512 frames through a reusable `SpriteFrames` resource and a presentation-only animation controller. Preserved the former scene as `KaiLegacy.tscn` for rollback, removing only its duplicated scene UID so both files remain independently addressable.

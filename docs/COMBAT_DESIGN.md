@@ -4,6 +4,8 @@
 > **Target Rhythm:** Tactical, Spacing-Driven, Martial Arts Precision  
 > **Source of Truth:** `docs/PROJECT_CONSTITUTION.md`
 
+> **Implementation status (2026-11-10):** Combat 1 foundation only is implemented. See `docs/PHASES/PHASE_03/COMPLETION_REPORT.md`. The rest of this document remains the approved design baseline and is not a statement that defense, combos, poise, weapons, or shadow specials are already playable.
+
 ---
 
 ## 1. COMBAT PHILOSOPHY & GAMEPLAY LOOP
@@ -98,3 +100,11 @@ When an unblocked attack lands, the defender enters one of four deterministic hi
 4. **Wall Splat:**
    - If a heavy knockback drives the opponent into the arena boundary wall, they suffer a Wall Splat (+12 frames of extra stun), allowing extended juggle combos.
 
+---
+
+## 5. COMBAT 1 IMPLEMENTED SLICE
+
+- Kai V2 can perform **Light Jab** (`Z`) and **Front Kick** (`X`) while grounded and not crouched. Each action is rejected outside its neutral start state and during airborne or crouch states.
+- Both attacks use distinct six-frame 512×512 atlas clips at 30 FPS, mapped to 12 fixed physics frames at 60 ticks/s. Attack-specific startup/active/recovery windows, damage, knockback, hitstun and rectangle geometry are held in `AttackData` resources.
+- The player hitbox is on physics layer 4 and scans only target hurtboxes on layer 7. The training dummy uses a CharacterBody2D body on layer 3 plus a Hurtbox2D on layer 7; Kai's hurtbox is layer 6. Each target is damaged at most once per active window.
+- The Combat Test Arena demonstrates these two attacks only. Buffered input, combos, blocking, dodge, poise, knockdown, aerial attacks, specials, and AI remain unimplemented.

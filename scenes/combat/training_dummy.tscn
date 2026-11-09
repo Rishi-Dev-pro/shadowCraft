@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/training_dummy.gd" id="1_dummy"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="2_health"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox_2d.gd" id="3_hurtbox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
+radius = 28.0
+height = 230.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hurtbox"]
+radius = 32.0
+height = 230.0
+
+[node name="TrainingDummy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_dummy")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -115)
+shape = SubResource("CapsuleShape2D_body")
+
+[node name="Silhouette" type="Node2D" parent="."]
+
+[node name="Body" type="Polygon2D" parent="Silhouette"]
+position = Vector2(0, -135)
+color = Color(0.24, 0.16, 0.29, 1)
+polygon = PackedVector2Array(-34, -44, -26, -68, 0, -77, 26, -68, 34, -44, 29, 42, 16, 60, -16, 60, -29, 42)
+
+[node name="Chest" type="Polygon2D" parent="Silhouette"]
+position = Vector2(0, -145)
+color = Color(0.37, 0.25, 0.43, 1)
+polygon = PackedVector2Array(-27, -42, 0, -55, 27, -42, 21, 5, 0, 16, -21, 5)
+
+[node name="Head" type="Polygon2D" parent="Silhouette"]
+position = Vector2(0, -226)
+color = Color(0.35, 0.27, 0.38, 1)
+polygon = PackedVector2Array(-23, -20, -13, -34, 13, -34, 23, -20, 20, 9, 8, 24, -8, 24, -20, 9)
+
+[node name="LeftArm" type="Polygon2D" parent="Silhouette"]
+position = Vector2(-34, -151)
+color = Color(0.3, 0.21, 0.35, 1)
+polygon = PackedVector2Array(-12, -25, 2, -31, 11, -22, 23, 19, 17, 35, 4, 31, -5, 5)
+
+[node name="RightArm" type="Polygon2D" parent="Silhouette"]
+position = Vector2(34, -151)
+color = Color(0.3, 0.21, 0.35, 1)
+polygon = PackedVector2Array(-2, -31, 12, -25, 5, 5, -4, 31, -17, 35, -23, 19, -11, -22)
+
+[node name="Legs" type="Polygon2D" parent="Silhouette"]
+position = Vector2(0, -62)
+color = Color(0.19, 0.14, 0.23, 1)
+polygon = PackedVector2Array(-28, -31, -4, -31, -7, 24, -16, 58, -34, 58, -32, 20, -41, 9, 0, -31, 28, -31, 41, 9, 32, 20, 34, 58, 16, 58, 7, 24, 4, -31)
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_health")
+max_health = 120.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -115)
+collision_layer = 64
+collision_mask = 8
+monitoring = false
+monitorable = true
+script = ExtResource("3_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape2D_hurtbox")

@@ -64,16 +64,28 @@
 
 ---
 
-## 4. IN PROGRESS
+## 4. COMPLETED TASKS (PHASE 03: COMBAT 1 FOUNDATION — 2026-11-10)
 
-*None. The explicitly authorized Kai V2 Phase 02 integration follow-up is complete and awaiting visual approval. Phase 03 remains stopped pending separate user authorization.*
+- [x] **TASK-301**: Implement data-bound `Hitbox2D` with frame-window activation, collision filtering and once-per-target hit handling.
+- [x] **TASK-302**: Implement player and dummy `Hurtbox2D` receiver paths on the existing physics layers 4-7.
+- [x] **TASK-303**: Add `HealthComponent` and bounded damage calculation; apply knockback, timed hitstun and a short hit flash.
+- [x] **TASK-304**: Add a typed combat state machine and `AttackData` resources for Light Jab and Front Kick with separate startup, active and recovery frames.
+- [x] **TASK-305**: Add the original six-frame jab/kick animation atlases and integrate them into Kai V2's existing `SpriteFrames` resource.
+- [x] **TASK-306**: Build the isolated `CombatTestArena` with playable Kai V2, a training dummy, health bars, state telemetry and opt-in hitbox drawing.
+- [x] **TASK-307**: Verify 35/35 Combat 1 assertions, Kai V2 (95/95), Phase 02 movement (63/63), Phase 01 hierarchy (44/44), and inspect the actual Godot Movie Maker recording and screenshots.
+- [x] **TASK-308**: Complete Combat 1 architecture and quality audits; document the remaining Phase 03 scope and handoff.
 
 ---
 
-## 5. BACKLOG (BLOCKED — PENDING PHASE 03 AUTHORIZATION)
+## 5. IN PROGRESS / NEXT GATE
 
-### Phase 03: Core 2D Combat Engine
-- [ ] **TASK-301**: Implement `Hitbox2D` (Area2D) with attack data binding.
-- [ ] **TASK-302**: Implement `Hurtbox2D` (Area2D) with body part vulnerability zones.
-- [ ] **TASK-303**: Implement `HealthComponent` and poise depletion logic.
-- [ ] **TASK-304**: Build unit tests for damage and poise calculation.
+Combat 1 is complete and awaits the user's visual approval. Do not begin another Combat milestone until explicitly authorized. `MovementTestArena.tscn` remains the F5 main scene; launch `scenes/arenas/combat_test_arena.tscn` to inspect the new work.
+
+### Remaining Phase 03 work (not authorized yet)
+- [ ] Combo input buffer and chain windows.
+- [ ] Blocking, dodge and backstep.
+- [ ] Additional attacks, air/sweep moves, shadow specials and finishers.
+- [ ] Complete remaining defense, combo and special-move tests.
+
+### Later phases remain gated
+- Phase 04 weapon framework, Phase 05 complete defense/combos, and subsequent roadmap phases remain planned and untouched.

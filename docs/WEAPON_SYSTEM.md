@@ -97,7 +97,7 @@ In ShadowCraft 2D, a weapon's combat identity is determined by the intersection 
 
 Weapons and attacks are stored strictly as custom Godot `Resource` files (`.tres`):
 
-### `AttackData.gd`
+### `attack_data.gd` (`AttackData` resource class)
 ```gdscript
 class_name AttackData
 extends Resource
@@ -146,4 +146,3 @@ enum MaterialTier { WOOD, STONE, IRON, DIAMOND, NETHERITE }
 @export var attack_forward: AttackData
 @export var attack_special: AttackData
 ```
-

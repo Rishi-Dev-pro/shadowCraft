@@ -14,6 +14,13 @@ ShadowCraft 2D is architected around a strict separation of concerns:
 - **Game Data** resides in serializable, custom Godot `Resource` definitions.
 - **Presentation & Feedback** (animation, visual FX, lighting, audio) listens to engine signals and reacts without polluting combat logic.
 
+### Current Combat 1 implementation boundary (2026-11-10)
+
+- `AttackData` (`Resource`) supplies per-move frame counts, hitbox geometry, damage, knockback, hitstun and animation name. `CombatMath` performs bounded damage-reduction math; `HealthComponent` owns current health and defeat signals.
+- `CombatController` owns the state enum and timed attack phases. It activates `Hitbox2D` only for active frames; `Hurtbox2D` applies a valid hit to the target's health and dispatches hit reaction. The movement controller is given an optional horizontal/input lock while the combat controller owns a move.
+- Kai V2's `KaiV2AnimationController` yields while combat owns the `AnimatedSprite2D`, then resumes the existing locomotion state after recovery. The player hitbox targets enemy-hurtbox layer 7; the target hurtbox only accepts player-hitbox layer 4.
+- The implementation currently includes only Light Jab and Front Kick in a separate Combat Test Arena. Defense, buffered combos, poise, aerial/sweep attacks and shadow specials remain design-only.
+
 ```mermaid
 flowchart TD
     subgraph DataLayer [Data Layer: Godot Resources]
@@ -335,4 +342,3 @@ flowchart TD
 ## 9. NON-IMPLEMENTATION IN PHASE 00
 
 As mandated by the Project Constitution, **no gameplay scripts, scenes, or mechanics are implemented during Phase 00**. This document serves as the permanent architectural roadmap for subsequent approved phases.
-

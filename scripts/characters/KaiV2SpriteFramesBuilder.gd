@@ -27,7 +27,9 @@ func _init() -> void:
 		"crouch": {"speed": 8.0, "loop": true},
 		"crouch_walk": {"speed": 10.0, "loop": true},
 		"jump": {"speed": 8.0, "loop": false},
-		"landing": {"speed": 12.0, "loop": false}
+		"landing": {"speed": 12.0, "loop": false},
+		"light_jab": {"speed": 30.0, "loop": false},
+		"front_kick": {"speed": 30.0, "loop": false}
 	}
 	var failed: bool = false
 	for group_value: Variant in manifest.get("groups", []):
@@ -52,6 +54,26 @@ func _init() -> void:
 		if sprite_frames.get_frame_count(animation_name) != int(group.get("frame_count", -1)):
 			push_error("Kai V2 animation frame count mismatch: %s" % animation_name)
 			failed = true
+	var attack_definitions: Array[Dictionary] = [
+		{"name": "light_jab", "path": "res://assets/characters/kai_v2/animations/attacks/light_jab_source.png"},
+		{"name": "front_kick", "path": "res://assets/characters/kai_v2/animations/attacks/front_kick_source.png"}
+	]
+	for definition: Dictionary in attack_definitions:
+		var animation_name: String = str(definition["name"])
+		var sheet_path: String = str(definition["path"])
+		var sheet: Texture2D = ResourceLoader.load(sheet_path) as Texture2D
+		if sheet == null or sheet.get_width() != 1536 or sheet.get_height() != 1024:
+			push_error("Combat sprite sheet must be 1536x1024: %s" % sheet_path)
+			failed = true
+			continue
+		sprite_frames.add_animation(animation_name)
+		sprite_frames.set_animation_speed(animation_name, 30.0)
+		sprite_frames.set_animation_loop(animation_name, false)
+		for frame_index: int in range(6):
+			var atlas_frame: AtlasTexture = AtlasTexture.new()
+			atlas_frame.atlas = sheet
+			atlas_frame.region = Rect2((frame_index % 3) * 512, int(frame_index / 3) * 512, 512, 512)
+			sprite_frames.add_frame(animation_name, atlas_frame)
 	if failed or sprite_frames.get_animation_names().size() != animation_settings.size():
 		push_error("Kai V2 SpriteFrames resource was not built completely")
 		quit(1)

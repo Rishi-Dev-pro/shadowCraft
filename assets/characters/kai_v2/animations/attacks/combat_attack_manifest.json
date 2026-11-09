@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "engine": "Godot 4.7.2",
+  "frame_layout": "3 columns x 2 rows; row-major order; 512x512 cells",
+  "transparent_background": true,
+  "animations": [
+    {
+      "name": "light_jab",
+      "source_sheet": "res://assets/characters/kai_v2/animations/attacks/light_jab_source.png",
+      "frame_count": 6,
+      "order": ["guard", "coil", "extension_start", "contact", "recoil", "guard_recovery"],
+      "sprite_frames_speed_fps": 30
+    },
+    {
+      "name": "front_kick",
+      "source_sheet": "res://assets/characters/kai_v2/animations/attacks/front_kick_source.png",
+      "frame_count": 6,
+      "order": ["guard", "weight_shift", "knee_chamber", "contact_extension", "retraction", "guard_recovery"],
+      "sprite_frames_speed_fps": 30
+    }
+  ],
+  "generated_sprite_frames": "res://assets/characters/kai_v2/kai_v2_sprite_frames.tres"
+}

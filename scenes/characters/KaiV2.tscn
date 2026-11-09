@@ -1,13 +1,26 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/characters/CharacterController2D.gd" id="1_controller"]
 [ext_resource type="Resource" path="res://resources/characters/kai.tres" id="2_character_data"]
 [ext_resource type="Script" path="res://scripts/characters/KaiV2AnimationController.gd" id="3_animation_controller"]
 [ext_resource type="SpriteFrames" path="res://assets/characters/kai_v2/kai_v2_sprite_frames.tres" id="4_sprite_frames"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="5_health"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_2d.gd" id="6_hitbox"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox_2d.gd" id="7_hurtbox"]
+[ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="8_combat"]
+[ext_resource type="Resource" path="res://resources/attacks/light_jab.tres" id="9_jab"]
+[ext_resource type="Resource" path="res://resources/attacks/front_kick.tres" id="10_kick"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kai_v2"]
 radius = 28.0
 height = 320.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player_hitbox"]
+size = Vector2(78, 42)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_player_hurtbox"]
+radius = 32.0
+height = 300.0
 
 [node name="KaiV2" type="CharacterBody2D"]
 collision_layer = 2
@@ -37,3 +50,35 @@ position = Vector2(18, -190)
 
 [node name="AnimationController" type="Node" parent="."]
 script = ExtResource("3_animation_controller")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_health")
+max_health = 100.0
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 64
+monitoring = false
+monitorable = false
+script = ExtResource("6_hitbox")
+debug_draw = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+shape = SubResource("RectangleShape2D_player_hitbox")
+disabled = true
+
+[node name="PlayerHurtbox" type="Area2D" parent="."]
+position = Vector2(0, -160)
+collision_layer = 32
+collision_mask = 8
+monitoring = false
+monitorable = true
+script = ExtResource("7_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
+shape = SubResource("CapsuleShape2D_player_hurtbox")
+
+[node name="CombatController" type="Node" parent="."]
+script = ExtResource("8_combat")
+punch_attack = ExtResource("9_jab")
+kick_attack = ExtResource("10_kick")
