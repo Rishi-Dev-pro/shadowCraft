@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/CharacterController2D.gd" id="1_controller"]
+[ext_resource type="Resource" path="res://resources/characters/kai.tres" id="2_character_data"]
+[ext_resource type="Script" path="res://scripts/characters/KaiV2AnimationController.gd" id="3_animation_controller"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/kai_v2/kai_v2_sprite_frames.tres" id="4_sprite_frames"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kai_v2"]
+radius = 28.0
+height = 320.0
+
+[node name="KaiV2" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_controller")
+character_data = ExtResource("2_character_data")
+external_animation_control = true
+enable_run_and_crouch_walk = true
+visual_scale = 0.7
+
+[node name="MovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -160)
+shape = SubResource("CapsuleShape2D_kai_v2")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Skeleton2D"]
+position = Vector2(0, -256)
+sprite_frames = ExtResource("4_sprite_frames")
+animation = &"idle_signature"
+autoplay = "idle_signature"
+centered = true
+
+[node name="Socket_Weapon" type="Marker2D" parent="Skeleton2D"]
+position = Vector2(18, -190)
+
+[node name="AnimationController" type="Node" parent="."]
+script = ExtResource("3_animation_controller")

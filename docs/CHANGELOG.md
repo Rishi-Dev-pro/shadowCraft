@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] — Kai Phase 02 movement polish
 
+### Kai V2 playable integration (2026-11-10)
+- Added `scenes/characters/KaiV2.tscn` as an independent `CharacterBody2D` playable character using imported transparent 512×512 frames through a reusable `SpriteFrames` resource and a presentation-only animation controller. Preserved the former scene as `KaiLegacy.tscn` for rollback, removing only its duplicated scene UID so both files remain independently addressable.
+- Integrated idle, forward/backward walk, run, crouch, crouch walk, jump, and landing animations with the existing movement controller. V2-only run and crouch-walk behavior is opt-in; original controller defaults preserve Kai V1 behavior. Added Shift+forward run input.
+- Made Kai V2 the arena character in the existing `run/main_scene`; retained acceleration, gravity, jump impulse, collision, arena boundaries, and player controls. Updated arena instructions for run.
+- Added 95 focused Kai V2 scene/resource/runtime assertions. Godot 4.7.2: Kai V2 95/95, Phase 02 movement 63/63, Phase 01 hierarchy 44/44. Captured a genuine Compatibility-renderer Movie Maker recording and verified idle, walk, run, retreat, crouch, crouch-walk, jump, platform landing, and recovery frames.
+- Pass 1 audit: new scene is 2D-only; all referenced resources resolve; `KaiLegacy.tscn` is retained without a duplicated UID; `exp-1` is untouched; Phase 03 remains gated. Pass 2 audit: changed files re-read, all 202 focused/regression assertions passed, rendered movie inspected, working tree contains unrelated pre-existing files which are excluded from this commit.
+- Evidence: `reports/videos/kai_v2_integration.avi` and actual-game frames `reports/screenshots/kai_v2_{idle,forward,run,backward,crouch,crouch_walk,jump,landing,idle_after}.png`.
+
 ### Signature stance and reference gait pass (2026-11-10)
 - Re-authored Kai's idle guard and forward/backward walk clips with eight explicit gait poses, pelvis transfer, knee/foot articulation, and a distinct retreat profile while retaining the existing Skeleton2D and artwork.
 - Captured the idle stance and every authored forward/backward pose in the running Godot scene under `reports/screenshots/kai_reference_after_*.png`; the walking runner reports 13/13 checks passing, including a sampled support foot in all eight poses per direction.

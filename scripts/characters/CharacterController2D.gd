@@ -40,6 +40,12 @@ enum State {
 @export var air_acceleration: float = 800.0
 @export var air_friction: float = 300.0
 @export var walk_cycle_speed: float = 80.0
+@export var run_speed: float = 300.0
+@export var crouch_walk_speed: float = 90.0
+@export var crouch_backward_speed: float = 75.0
+@export var external_animation_control: bool = false
+@export var enable_run_and_crouch_walk: bool = false
+@export var visual_scale: float = 0.48
 
 @export_group("Jumping & Gravity")
 @export var jump_velocity: float = -420.0
@@ -58,11 +64,13 @@ enum State {
 @export var action_right: String = "move_right"
 @export var action_jump: String = "jump"
 @export var action_crouch: String = "crouch"
+@export var action_run: String = "run"
 
 # --- State Variables ---
 var current_state: State = State.IDLE
 var is_facing_right: bool = true
 var is_grounded: bool = true
+var is_running: bool = false
 var target_opponent: Node2D = null
 
 # --- Simulated Input (for automated unit tests) ---
@@ -71,12 +79,13 @@ var sim_horizontal_axis: float = 0.0
 var sim_jump_pressed: bool = false
 var sim_jump_just_pressed: bool = false
 var sim_crouch_pressed: bool = false
+var sim_run_requested: bool = false
 var override_floor_detection: bool = false
 var sim_is_on_floor: bool = true
 
 # --- Node References ---
-@onready var skeleton: Skeleton2D = $Skeleton2D
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var skeleton: Skeleton2D = get_node_or_null("Skeleton2D") as Skeleton2D
+@onready var anim_player: AnimationPlayer = get_node_or_null("AnimationPlayer") as AnimationPlayer
 @onready var collision_shape: CollisionShape2D = get_node_or_null("MovementCollision")
 
 # --- Private Internal Variables ---
@@ -97,7 +106,7 @@ func _ready() -> void:
 	
 	# Ensure capsule shape exists and is uniquely instanced
 	_setup_collision_shape()
-	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+	if anim_player != null and not anim_player.animation_finished.is_connected(_on_animation_finished):
 		anim_player.animation_finished.connect(_on_animation_finished)
 	
 	# Initial state entry
@@ -138,10 +147,11 @@ func _physics_process(delta: float) -> void:
 	var move_input: float = _get_horizontal_input()
 	var jump_requested: bool = _is_jump_just_pressed()
 	var crouch_requested: bool = _is_crouch_pressed()
+	var run_requested: bool = _is_run_pressed()
 	var on_floor: bool = _check_is_on_floor()
 	
 	# 3. Update Kinematics & State Machine
-	update_kinematics(delta, move_input, jump_requested, crouch_requested, on_floor)
+	update_kinematics(delta, move_input, jump_requested, crouch_requested, on_floor, run_requested)
 	
 	# 4. Apply physics movement and collision if physics space is valid
 	var impact_velocity_y: float = velocity.y
@@ -172,12 +182,13 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0.0
 			_change_state(State.IDLE)
 	_update_animation()
-	if landed_this_frame:
+	if landed_this_frame and not external_animation_control:
 		_play_animation("loco/jump_land", 0.04)
 
 # --- Kinematics & State Calculation (Separated for Pure Testability) ---
 
-func update_kinematics(delta: float, move_input: float, jump_requested: bool, crouch_requested: bool, on_floor: bool) -> void:
+func update_kinematics(delta: float, move_input: float, jump_requested: bool, crouch_requested: bool, on_floor: bool, run_requested: bool = false) -> void:
+	is_running = false
 	# A crouch release cannot grow the capsule into a ceiling or nearby platform.
 	if on_floor and current_state == State.CROUCH and not crouch_requested and not _can_stand_up():
 		crouch_requested = true
@@ -202,9 +213,14 @@ func update_kinematics(delta: float, move_input: float, jump_requested: bool, cr
 	
 	# Grounded behavior
 	if crouch_requested:
-		# CROUCH: Strictly locks jump and decelerates to 0
+		# CROUCH: Strictly locks jump; V2 can use a guarded low step when enabled.
 		_change_state(State.CROUCH)
-		velocity.x = move_toward(velocity.x, 0.0, ground_friction * delta)
+		var crouch_target_speed: float = 0.0
+		if enable_run_and_crouch_walk and absf(move_input) > 0.05:
+			var crouch_move_state: State = _get_movement_state(move_input)
+			crouch_target_speed = crouch_backward_speed if crouch_move_state == State.MOVE_BACKWARD else crouch_walk_speed
+			crouch_target_speed *= signf(move_input)
+		velocity.x = move_toward(velocity.x, crouch_target_speed, ground_acceleration * delta if crouch_target_speed != 0.0 else ground_friction * delta)
 		return
 	
 	if jump_requested and current_state != State.CROUCH:
@@ -218,6 +234,9 @@ func update_kinematics(delta: float, move_input: float, jump_requested: bool, cr
 		_change_state(new_state)
 		
 		var max_speed: float = walk_speed if new_state == State.MOVE_FORWARD else walk_backward_speed
+		if enable_run_and_crouch_walk and new_state == State.MOVE_FORWARD and run_requested:
+			max_speed = run_speed
+			is_running = true
 		var target_vx: float = move_input * max_speed
 		velocity.x = move_toward(velocity.x, target_vx, ground_acceleration * delta)
 	else:
@@ -267,6 +286,11 @@ func _is_crouch_pressed() -> bool:
 	
 	return InputMap.has_action(action_crouch) and Input.is_action_pressed(action_crouch)
 
+func _is_run_pressed() -> bool:
+	if use_simulated_input:
+		return sim_run_requested
+	return InputMap.has_action(action_run) and Input.is_action_pressed(action_run)
+
 # --- Facing Logic ---
 
 func _process_facing() -> void:
@@ -283,7 +307,8 @@ func set_facing(face_right: bool) -> void:
 		is_facing_right = face_right
 		if skeleton != null:
 			# Visual flip only: root CharacterBody2D remains unscaled Vector2(1, 1)
-			skeleton.scale.x = 0.48 if is_facing_right else -0.48
+			skeleton.scale.x = visual_scale if is_facing_right else -visual_scale
+			skeleton.scale.y = visual_scale
 		emit_signal("facing_changed", is_facing_right)
 
 # --- State Management & Transitions ---
@@ -345,6 +370,8 @@ func _set_crouch_collision() -> void:
 # --- Animation Integration ---
 
 func _update_animation() -> void:
+	if external_animation_control:
+		return
 	_ensure_references()
 	if anim_player == null or not anim_player.has_animation_library("loco"):
 		return
@@ -389,6 +416,10 @@ func simulate_crouch(crouched: bool) -> void:
 	use_simulated_input = true
 	sim_crouch_pressed = crouched
 
+func simulate_run(running: bool) -> void:
+	use_simulated_input = true
+	sim_run_requested = running
+
 func set_simulated_on_floor(on_floor: bool) -> void:
 	override_floor_detection = true
 	sim_is_on_floor = on_floor
@@ -401,4 +432,5 @@ func reset_simulated_input() -> void:
 	sim_jump_pressed = false
 	sim_jump_just_pressed = false
 	sim_crouch_pressed = false
+	sim_run_requested = false
 	sim_is_on_floor = true

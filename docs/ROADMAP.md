@@ -42,6 +42,7 @@
 - **Objective:** Implement `CharacterBody2D` physics movement, input handling, state machine, and automatic opponent facing.
 - **Key Deliverables:** `CharacterController2D.gd`, `CharacterStateMachine.gd`, movement states (`IdleState`, `MoveState`, `JumpState`, `CrouchState`), opponent distance tracking.
 - **Exit Criteria:** Responsive 60 FPS controls; smooth transitions; deterministic floor and wall collisions.
+- **Authorized Phase 02 follow-up (2026-11-10):** Kai V2 playable asset integration completed as an implementation replacement within the existing Phase 01/02 scope. It adds no combat or future-phase feature. Existing Phase 03 authorization gate remains unchanged.
 
 ### Phase 03: Core 2D Combat Engine
 - **Objective:** Build the spatial collision pipeline for combat: hitboxes, hurtboxes, health components, and damage formulas.
@@ -92,4 +93,3 @@
 - **Objective:** Complete full audio mixing, polished HUD, options menu, performance profiling, and Windows export packaging.
 - **Key Deliverables:** Audio tracks, dynamic SFX, settings menu (remapping, volume, resolution), 60 FPS profile report, final standalone build.
 - **Exit Criteria:** Clean executable launch; passes all regression tests; verified stable on modest hardware.
-

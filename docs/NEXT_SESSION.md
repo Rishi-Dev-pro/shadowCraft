@@ -1,5 +1,12 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Kai V2 Playable Integration (2026-11-10)
+
+- Kai V2 is now the default `run/main_scene` character through `scenes/arenas/MovementTestArena.tscn`; press F5 in Godot to launch it. The original skeletal character remains available as `scenes/characters/KaiLegacy.tscn`.
+- The independent scene uses the manifest's exact frame ordering for signature idle (8), forward walk (8), backward walk (8), run (8), crouch (4), crouch walk (8), jump (4), and landing (4). Shared SpriteFrames resource: `assets/characters/kai_v2/kai_v2_sprite_frames.tres`.
+- Verified tests: `test_kai_v2.gd` 95/95, `test_player_movement.gd` 63/63, `test_kai_hierarchy.gd` 44/44. Actual Compatibility-renderer movie: `reports/videos/kai_v2_integration.avi`; captured frames in `reports/screenshots/kai_v2_*.png`.
+- Pass 1 and Pass 2 audits completed. No Phase 03 implementation started; wait for the user's visual approval. Preserve unrelated existing working-tree changes during any follow-up.
+
 ## Current Animation Review (2026-11-10)
 
 - Latest task: signature idle stance and reference-driven forward/backward gait rework in `scenes/characters/Kai.tscn`, using the existing rig and artwork.

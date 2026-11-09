@@ -55,11 +55,18 @@
 - [x] **TASK-210**: Capture and verify in-engine screenshots for Visual Quality Gate.
 - [x] **TASK-211**: Execute Pass 1 and Pass 2 audits, update project documentation, and author Phase 02 Completion Report.
 
+### Authorized Phase 02 Integration Follow-up (2026-11-10)
+
+- [x] **TASK-212**: Build independent Kai V2 playable scene from the verified 60-frame import set and preserve Kai V1 as `KaiLegacy.tscn`.
+- [x] **TASK-213**: Connect eight frame animations to the existing movement controller, add opt-in run/crouch-walk behavior and Shift run input, and make Kai V2 the Movement Test Arena character.
+- [x] **TASK-214**: Validate 95 Kai V2 assertions plus Phase 01/02 regression suites (44/44 and 63/63); capture and inspect the actual Godot 4.7.2 Compatibility-renderer game.
+- [x] **TASK-215**: Perform architecture/integration and quality/regression audits; update Roadmap, Changelog, Task Board, and NEXT_SESSION. Phase 03 remains gated.
+
 ---
 
 ## 4. IN PROGRESS
 
-*None. Strictly stopped at Phase 02 completion gate awaiting user sign-off.*
+*None. The explicitly authorized Kai V2 Phase 02 integration follow-up is complete and awaiting visual approval. Phase 03 remains stopped pending separate user authorization.*
 
 ---
 

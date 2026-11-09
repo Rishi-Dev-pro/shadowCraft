@@ -1,0 +1,206 @@
+{
+	"frame_size": [
+		512,
+		512
+	],
+	"godot_version": "4.7.2",
+	"groups": [
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/views_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/views/front_000.png",
+				"res://assets/characters/kai_v2/views/front_three_quarter_045.png",
+				"res://assets/characters/kai_v2/views/side_right_090.png",
+				"res://assets/characters/kai_v2/views/back_three_quarter_135.png",
+				"res://assets/characters/kai_v2/views/back_180.png",
+				"res://assets/characters/kai_v2/views/back_three_quarter_225.png",
+				"res://assets/characters/kai_v2/views/side_left_270.png",
+				"res://assets/characters/kai_v2/views/front_three_quarter_315.png"
+			],
+			"name": "views",
+			"output_directory": "res://assets/characters/kai_v2/views"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/idle_signature_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_02.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_03.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_04.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_05.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_06.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_07.png",
+				"res://assets/characters/kai_v2/animations/idle_signature/idle_08.png"
+			],
+			"name": "idle_signature",
+			"output_directory": "res://assets/characters/kai_v2/animations/idle_signature"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/walk_forward_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_01.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_02.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_03.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_04.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_05.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_06.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_07.png",
+				"res://assets/characters/kai_v2/animations/walk_forward/walk_forward_08.png"
+			],
+			"name": "walk_forward",
+			"output_directory": "res://assets/characters/kai_v2/animations/walk_forward"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/walk_backward_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_01.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_02.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_03.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_04.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_05.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_06.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_07.png",
+				"res://assets/characters/kai_v2/animations/walk_backward/walk_backward_08.png"
+			],
+			"name": "walk_backward",
+			"output_directory": "res://assets/characters/kai_v2/animations/walk_backward"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/run_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/run/run_01.png",
+				"res://assets/characters/kai_v2/animations/run/run_02.png",
+				"res://assets/characters/kai_v2/animations/run/run_03.png",
+				"res://assets/characters/kai_v2/animations/run/run_04.png",
+				"res://assets/characters/kai_v2/animations/run/run_05.png",
+				"res://assets/characters/kai_v2/animations/run/run_06.png",
+				"res://assets/characters/kai_v2/animations/run/run_07.png",
+				"res://assets/characters/kai_v2/animations/run/run_08.png"
+			],
+			"name": "run",
+			"output_directory": "res://assets/characters/kai_v2/animations/run"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/crouch_contact.png",
+			"frame_count": 4,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/crouch/crouch_01.png",
+				"res://assets/characters/kai_v2/animations/crouch/crouch_02.png",
+				"res://assets/characters/kai_v2/animations/crouch/crouch_03.png",
+				"res://assets/characters/kai_v2/animations/crouch/crouch_04.png"
+			],
+			"name": "crouch",
+			"output_directory": "res://assets/characters/kai_v2/animations/crouch"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/crouch_walk_contact.png",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_01.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_02.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_03.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_04.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_05.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_06.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_07.png",
+				"res://assets/characters/kai_v2/animations/crouch_walk/crouch_walk_08.png"
+			],
+			"name": "crouch_walk",
+			"output_directory": "res://assets/characters/kai_v2/animations/crouch_walk"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/jump_contact.png",
+			"frame_count": 4,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/jump/jump_01.png",
+				"res://assets/characters/kai_v2/animations/jump/jump_02.png",
+				"res://assets/characters/kai_v2/animations/jump/jump_03.png",
+				"res://assets/characters/kai_v2/animations/jump/jump_04.png"
+			],
+			"name": "jump",
+			"output_directory": "res://assets/characters/kai_v2/animations/jump"
+		},
+		{
+			"contact_sheet": "res://assets/characters/kai_v2/previews/landing_contact.png",
+			"frame_count": 4,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/landing/landing_01.png",
+				"res://assets/characters/kai_v2/animations/landing/landing_02.png",
+				"res://assets/characters/kai_v2/animations/landing/landing_03.png",
+				"res://assets/characters/kai_v2/animations/landing/landing_04.png"
+			],
+			"name": "landing",
+			"output_directory": "res://assets/characters/kai_v2/animations/landing"
+		}
+	],
+	"sources": [
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/kai_turnaround_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/idle_signature_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/walk_forward_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/walk_backward_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/run_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 2,
+			"height": 1254,
+			"path": "res://assets/characters/kai_v2/source/crouch_grid.png",
+			"rows": 2,
+			"width": 1254
+		},
+		{
+			"columns": 4,
+			"height": 887,
+			"path": "res://assets/characters/kai_v2/source/crouch_walk_grid.png",
+			"rows": 2,
+			"width": 1774
+		},
+		{
+			"columns": 2,
+			"height": 1254,
+			"path": "res://assets/characters/kai_v2/source/jump_grid.png",
+			"rows": 2,
+			"width": 1254
+		},
+		{
+			"columns": 2,
+			"height": 1254,
+			"path": "res://assets/characters/kai_v2/source/landing_grid.png",
+			"rows": 2,
+			"width": 1254
+		}
+	]
+}
