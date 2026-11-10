@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] — Combat 1.1 attack polish
 
+### Razen standalone character package (2026-11-10)
+- Completed the user-approved Razen visual production follow-up in an isolated package. Generated original sheets for 8 idle, 8 forward walk, 8 backward walk, 8 run, 4 crouch, 8 crouch-walk, 4 jump, 4 landing and 4 attack-presentation frames. Normalized 56 frames plus the approved signature pose as a one-frame combat-ready presentation.
+- Added animation provenance/frame manifests, transparent aligned frame PNGs, contact sheets, a Godot `SpriteFrames` builder, Razen `CharacterData`, a dedicated animation controller, `Razen.tscn`, a separate rendered-review arena and a 93-check scene/resource regression test.
+- Reused `CharacterController2D` with independent presentation-only frame animation. Did not alter the F5 scene, Kai V2, combat architecture, or Phase 08 boss gate. `attack_presentation` is not connected to combat.
+- Visual review caught and corrected the initial sprite pivot offset: centered 512px frames need a local Y offset of -232px at 0.7 scale to align the y=488 sole anchor to the physics floor.
+- Godot 4.7.2 built the SpriteFrames resource; the final Razen checks cover all state mappings and pass **93/93**. Regressions pass: Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44**, Combat **78/78** at fixed 60 FPS. A real-time headless Combat run exposes one existing timing-sensitive animation-frame assertion, documented with its deterministic pass in `docs/RAZEN_CHARACTER_PRODUCTION.md`.
+- The configured F5 scene was also rendered with the existing integration showcase; the Godot log confirmed the jab miss, confirmed jab and kick hits, and dummy health change. Actual Compatibility-renderer Razen screenshots for every clip and a 4.7-second review AVI are in `assets/characters/razen/previews/`. Both audits are documented in `docs/RAZEN_CHARACTER_PRODUCTION.md`.
+
 ### Unified playable movement and Combat 1 arena (2026-11-10)
 - Composed the existing TrainingDummy scene into `MovementTestArena.tscn` and wired its existing damage, hurtbox, hit reactions, health UI, hit-stop, hit spark, hitbox debug display, and combat telemetry through the arena controller. Kai keeps the original movement/crouch/jump controller and now collides with the dummy body.
 - `run_shadowcraft.bat` is now the one-click game launcher. It searches standard locations and PATH, accepts `GODOT4_EXE`, validates Godot 4.7.2, runs the configured main scene from the quoted project directory, and writes `reports/logs/shadowcraft_latest.log`; failure prompts are conditional. Removed the launcher's archived-project engine fallback.

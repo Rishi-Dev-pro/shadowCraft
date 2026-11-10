@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/razen/poses/signature_ready.png" id="1_razen"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 24
+font_color = Color(1.0, 0.78, 0.8, 1)
+outline_size = 2
+outline_color = Color(0.22, 0.02, 0.04, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 15
+font_color = Color(0.82, 0.72, 0.74, 1)
+
+[node name="RazenSignaturePreview" type="Node2D"]
+
+[node name="Background" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+color = Color(0.045, 0.035, 0.045, 1)
+
+[node name="StageFloor" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 560, 1280, 560, 1280, 720, 0, 720)
+color = Color(0.095, 0.065, 0.075, 1)
+
+[node name="GroundLine" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 558, 1280, 558, 1280, 560, 0, 560)
+color = Color(0.62, 0.14, 0.2, 0.8)
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(640, 398)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_razen")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Canvas" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Title" type="Label" parent="HUD/Canvas"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 26.0
+offset_right = 900.0
+offset_bottom = 64.0
+text = "SHADOWCRAFT 2D — RAZEN: SIGNATURE READY POSE"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="Subtitle" type="Label" parent="HUD/Canvas"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 66.0
+offset_right = 900.0
+offset_bottom = 92.0
+text = "Single transparent 512 x 512 visual seed  |  preview scale 0.7  |  pending approval"
+label_settings = SubResource("LabelSettings_subtitle")

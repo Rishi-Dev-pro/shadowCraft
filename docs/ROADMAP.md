@@ -24,6 +24,10 @@
 | **Phase 11** | Equipment & Upgrades | Blacksmith upgrade loop, material requirements, economy | *PLANNED* | Blocked by Phase 10 |
 | **Phase 12** | UI, Audio, Optimization & Release | Full HUD, SFX/Music bus, 60 FPS profiling, packaging | *PLANNED* | Blocked by Phase 11 |
 
+### Separately Authorized Character Production (2026-11-10)
+
+Razen's standalone non-boss character asset package and movement presentation were authorized as a scoped visual/runtime deliverable. This does not start or advance Phase 08; boss AI, encounters, combat integration and signature attacks remain gated.
+
 ---
 
 ## 2. DETAILED PHASE SPECIFICATIONS

@@ -1,0 +1,284 @@
+{
+  "frame_size": [
+    512,
+    512
+  ],
+  "ground_anchor_y": 488,
+  "source_tool": "OpenAI ImageGen built-in; generated 2026-11-10 from the approved signature sprite",
+  "provenance": "Each animation source sheet is an original generation guided by the approved Razen identity and the user's reference. The supplied reference sheet was not cropped or sampled as sprite art. Frame cells are isolated, stray disconnected background pixels are masked, and whole cells are uniformly resized; no body parts are warped.",
+  "animations": {
+    "idle_signature": {
+      "source_sheet": "source/animation_sheets/idle_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 6.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/idle_signature/idle_signature_01.png",
+        "animations/idle_signature/idle_signature_02.png",
+        "animations/idle_signature/idle_signature_03.png",
+        "animations/idle_signature/idle_signature_04.png",
+        "animations/idle_signature/idle_signature_05.png",
+        "animations/idle_signature/idle_signature_06.png",
+        "animations/idle_signature/idle_signature_07.png",
+        "animations/idle_signature/idle_signature_08.png"
+      ]
+    },
+    "walk_forward": {
+      "source_sheet": "source/animation_sheets/walk_forward_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 9.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/walk_forward/walk_forward_01.png",
+        "animations/walk_forward/walk_forward_02.png",
+        "animations/walk_forward/walk_forward_03.png",
+        "animations/walk_forward/walk_forward_04.png",
+        "animations/walk_forward/walk_forward_05.png",
+        "animations/walk_forward/walk_forward_06.png",
+        "animations/walk_forward/walk_forward_07.png",
+        "animations/walk_forward/walk_forward_08.png"
+      ]
+    },
+    "walk_backward": {
+      "source_sheet": "source/animation_sheets/walk_backward_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 9.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/walk_backward/walk_backward_01.png",
+        "animations/walk_backward/walk_backward_02.png",
+        "animations/walk_backward/walk_backward_03.png",
+        "animations/walk_backward/walk_backward_04.png",
+        "animations/walk_backward/walk_backward_05.png",
+        "animations/walk_backward/walk_backward_06.png",
+        "animations/walk_backward/walk_backward_07.png",
+        "animations/walk_backward/walk_backward_08.png"
+      ]
+    },
+    "run": {
+      "source_sheet": "source/animation_sheets/run_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "per-frame authored vertical anchor",
+      "fps": 12.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/run/run_01.png",
+        "animations/run/run_02.png",
+        "animations/run/run_03.png",
+        "animations/run/run_04.png",
+        "animations/run/run_05.png",
+        "animations/run/run_06.png",
+        "animations/run/run_07.png",
+        "animations/run/run_08.png"
+      ]
+    },
+    "crouch": {
+      "source_sheet": "source/animation_sheets/crouch_2x2.png",
+      "source_dimensions_px": [
+        1262,
+        1246
+      ],
+      "source_grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 6.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/crouch/crouch_01.png",
+        "animations/crouch/crouch_02.png",
+        "animations/crouch/crouch_03.png",
+        "animations/crouch/crouch_04.png"
+      ]
+    },
+    "crouch_walk": {
+      "source_sheet": "source/animation_sheets/crouch_walk_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 8.0,
+      "loop": true,
+      "frame_paths": [
+        "animations/crouch_walk/crouch_walk_01.png",
+        "animations/crouch_walk/crouch_walk_02.png",
+        "animations/crouch_walk/crouch_walk_03.png",
+        "animations/crouch_walk/crouch_walk_04.png",
+        "animations/crouch_walk/crouch_walk_05.png",
+        "animations/crouch_walk/crouch_walk_06.png",
+        "animations/crouch_walk/crouch_walk_07.png",
+        "animations/crouch_walk/crouch_walk_08.png"
+      ]
+    },
+    "jump": {
+      "source_sheet": "source/animation_sheets/jump_2x2.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "source_grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "per-frame authored vertical anchor",
+      "fps": 10.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/jump/jump_01.png",
+        "animations/jump/jump_02.png",
+        "animations/jump/jump_03.png",
+        "animations/jump/jump_04.png"
+      ]
+    },
+    "landing": {
+      "source_sheet": "source/animation_sheets/landing_2x2.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "source_grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 14.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/landing/landing_01.png",
+        "animations/landing/landing_02.png",
+        "animations/landing/landing_03.png",
+        "animations/landing/landing_04.png"
+      ]
+    },
+    "attack_presentation": {
+      "source_sheet": "source/animation_sheets/attack_presentation_2x2.png",
+      "source_dimensions_px": [
+        1239,
+        1270
+      ],
+      "source_grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 10.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/attack_presentation/attack_presentation_01.png",
+        "animations/attack_presentation/attack_presentation_02.png",
+        "animations/attack_presentation/attack_presentation_03.png",
+        "animations/attack_presentation/attack_presentation_04.png"
+      ],
+      "presentation_only": true
+    },
+    "combat_ready": {
+      "source_sheet": "poses/signature_ready.png",
+      "frame_count": 1,
+      "fps": 1.0,
+      "loop": false,
+      "frame_paths": [
+        "poses/signature_ready.png"
+      ]
+    }
+  }
+}

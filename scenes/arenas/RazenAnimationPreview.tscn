@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/characters/Razen.tscn" id="1_razen"]
+[ext_resource type="Script" path="res://scripts/arenas/razen_animation_preview.gd" id="2_preview"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1280, 28)
+
+[node name="RazenAnimationPreview" type="Node2D"]
+script = ExtResource("2_preview")
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-1000, -1000, 2280, -1000, 2280, 560, -1000, 560)
+color = Color(0.045, 0.035, 0.045, 1)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(640, 574)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="FloorVisual" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 560, 1280, 560, 1280, 720, 0, 720)
+color = Color(0.095, 0.065, 0.075, 1)
+
+[node name="GroundLine" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 558, 1280, 558, 1280, 560, 0, 560)
+color = Color(0.68, 0.12, 0.19, 0.9)
+
+[node name="Razen" parent="." instance=ExtResource("1_razen")]
+position = Vector2(640, 560)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+enabled = true

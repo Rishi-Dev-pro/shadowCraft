@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/CharacterData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+character_id = "razen"
+display_name = "Razen"
+title = "The Crimson Warlord"
+signature_color = Color(0.82, 0.08, 0.16, 1)
+max_health = 120.0
+max_poise = 130.0
+base_walk_speed = 190.0
+base_dash_speed = 400.0
+jump_velocity = -400.0
+weight_class = "powerful"

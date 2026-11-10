@@ -1,0 +1,43 @@
+{
+  "asset_id": "razen_signature_ready_seed",
+  "character": "Razen",
+  "title": "The Crimson Warlord",
+  "status": "signature_pose_approved_animation_package_completed",
+  "engine": "Godot 4.7.2",
+  "source_art": {
+    "path": "source/signature_ready_source.png",
+    "creator": "OpenAI ImageGen (built-in image generation tool)",
+    "generation_date": "2026-11-10",
+    "reference": "User-provided Raezan_ Crimson Warlord Reference Sheet(1).png; used for identity and costume guidance, not cropped or included as sprite pixels.",
+    "prompt_record": "generation_prompt.txt",
+    "notes": "Original generated single-pose artwork. An earlier composition was rejected because hair touched the canvas edge; this is the revised composition with clear margins."
+  },
+  "game_asset": {
+    "path": "poses/signature_ready.png",
+    "type": "transparent RGBA PNG",
+    "frame_size_px": [
+      512,
+      512
+    ],
+    "frame_count": 1,
+    "view": "front three-quarter, facing screen-right",
+    "pose": "signature martial-arts ready stance",
+    "anchor": "bottom center; boot soles aligned to local y=488",
+    "target_node_scale": 0.7,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "normalization": "Removed alpha values <= 1, cropped to visible silhouette, scaled to 464px tall, centered on a 512x512 transparent canvas with 24px top and bottom margins. LANCZOS resampling.",
+    "approval": "User approved the in-Godot signature pose before authorizing Steps 3-6. This approved image is preserved verbatim."
+  },
+  "rights_and_release": "Original AI-generated artwork based on supplied project reference. Signature pose approved by user on 2026-11-10; animation frames are original generations and do not crop the reference sheet.",
+  "scope": {
+    "contains_animation_set": true,
+    "animation_manifest": "animation_manifest.json",
+    "contains_character_scene": true,
+    "character_scene": "scenes/characters/Razen.tscn",
+    "contains_combat_logic": false,
+    "attack_presentation_only": true
+  }
+}

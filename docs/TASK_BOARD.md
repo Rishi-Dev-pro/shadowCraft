@@ -86,6 +86,12 @@
 
 ## 5. IN PROGRESS / NEXT GATE
 
+### Authorized Razen Character Production — Complete (2026-11-10)
+
+- [x] Produce original animation sheets and 56 aligned frames for idle, forward/backward walk, run, crouch, crouch walk, jump, landing and attack presentation; preserve the approved signature artwork.
+- [x] Add Razen CharacterData, independent playable scene, shared-controller animation adapter, SpriteFrames builder, provenance, rendered preview and focused regression coverage.
+- [x] Validate Godot resource loads and inspect Compatibility-rendered clips. This is not Phase 08 boss work; wait for user visual approval before extending Razen.
+
 The Combat 1.1 runtime launch repair is complete and awaits visual verification. `MovementTestArena.tscn` remains the F5 main scene; run `run_combat.bat` to play the damageable dummy arena. Do not begin the Combo Engine or another Combat milestone until explicitly authorized.
 
 ### Remaining Phase 03 work (not authorized yet)
