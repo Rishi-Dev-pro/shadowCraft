@@ -21,6 +21,7 @@ ShadowCraft 2D is architected around a strict separation of concerns:
 - Kai V2's `KaiV2AnimationController` yields while combat owns the `AnimatedSprite2D`, then resumes the existing locomotion state after recovery. The player hitbox targets enemy-hurtbox layer 7; the target hurtbox only accepts player-hitbox layer 4.
 - The implementation currently includes only Light Jab and Front Kick in a separate Combat Test Arena. Defense, buffered combos, poise, aerial/sweep attacks and shadow specials remain design-only.
 - Combat 1.1 aligns the two active windows to the authored contact poses and advances hitbox offsets per active physics frame. Confirmed hits signal only presentation feedback (short hit-stop, code-drawn spark, and dummy recoil); damage resolution and movement/physics ownership remain in their existing components.
+- `project.godot` intentionally keeps `MovementTestArena.tscn` as the F5 scene. That arena has a non-damageable facing marker and no combat feedback owner. `run_combat.bat` launches `combat_test_arena.tscn`, which composes Kai, the damageable dummy, HUD, and confirmed-hit presentation without replacing the movement test scene.
 
 ```mermaid
 flowchart TD

@@ -24,11 +24,47 @@ func _run_tests() -> void:
 	var scene: PackedScene = load("res://scenes/arenas/combat_test_arena.tscn") as PackedScene
 	_check(scene != null, "CombatTestArena scene resources load")
 	_check(load("res://scenes/combat/hit_spark_2d.tscn") is PackedScene, "Confirmed-hit spark scene loads")
+	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 intentionally remains on the movement test arena")
+	var movement_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
+	var movement_arena: Node2D = movement_scene.instantiate() as Node2D if movement_scene != null else null
+	if movement_arena != null:
+		root.add_child(movement_arena)
+		for _i: int in range(3):
+			await physics_frame
+		var movement_combat: CombatController = movement_arena.get_node("Fighters/Kai/CombatController") as CombatController
+		var movement_sprite: AnimatedSprite2D = movement_arena.get_node("Fighters/Kai/Skeleton2D/AnimatedSprite2D") as AnimatedSprite2D
+		var movement_dummy: Node = movement_arena.get_node("Fighters/DummyTarget")
+		_check(movement_dummy.get_node_or_null("Hurtbox") == null, "F5 movement marker is not a damageable combat dummy")
+		_check(movement_combat != null and movement_sprite != null, "F5 Kai V2 includes the combat controller and attack sprite")
+		Input.action_press(&"light_attack")
+		await physics_frame
+		await physics_frame
+		Input.action_release(&"light_attack")
+		_check(movement_combat.current_state == CombatController.State.STARTUP, "Z input starts an attack in the F5 scene")
+		_check(movement_sprite.animation == &"light_jab", "F5 scene selects the authored jab animation")
+		for _i: int in range(jab.startup_frames):
+			await physics_frame
+		_check(movement_combat.current_state == CombatController.State.ACTIVE and movement_sprite.animation == &"light_jab", "F5 scene keeps the jab animation through its contact window")
+		_check(movement_sprite.frame >= 3, "F5 jab advances into its authored fist-extension poses")
+		for _i: int in range(jab.active_frames + jab.recovery_frames + 2):
+			await physics_frame
+		Input.action_press(&"kick_attack")
+		await physics_frame
+		await physics_frame
+		Input.action_release(&"kick_attack")
+		_check(movement_combat.current_state == CombatController.State.STARTUP, "X input starts an attack in the F5 scene")
+		_check(movement_sprite.animation == &"front_kick", "F5 scene selects the authored front-kick animation")
+		movement_arena.queue_free()
+		await process_frame
+	else:
+		_check(false, "F5 movement test scene loads")
 	if scene == null:
 		_finish()
 		return
 	var arena: Node2D = scene.instantiate() as Node2D
 	root.add_child(arena)
+	var arena_script: Script = arena.get_script() as Script
+	_check(arena_script != null and arena_script.resource_path == "res://scripts/arenas/combat_test_arena_controller.gd", "Combat test scene owns hit feedback and arena setup")
 	for _i: int in range(3):
 		await physics_frame
 	var kai: CharacterController2D = arena.get_node("Fighters/Kai") as CharacterController2D

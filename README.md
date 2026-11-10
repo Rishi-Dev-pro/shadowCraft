@@ -110,6 +110,10 @@ ShadowCraft-2D/
 2. Select **Import** and choose `d:\projects 2.0\games\shadowCraft\project.godot`.
 3. Open and edit with the Godot editor.
 
+### Launching the combat test arena
+
+Pressing **F5** runs `scenes/arenas/MovementTestArena.tscn`, which remains the movement test scene. Its `DummyTarget` is a visual facing marker, without a hurtbox or combat feedback handler. To play Kai's Light Jab (`Z`) and Front Kick (`X`) against the damageable dummy with impact effects, run `run_combat.bat` from the project folder. Run `run_combat.bat debug` to show active hitboxes. The equivalent Godot editor command is to open `scenes/arenas/combat_test_arena.tscn` and run the current scene with **F6**.
+
 ### Testing
 Automated testing is configured using **GdUnit4**. Tests can be executed headlessly via CLI:
 ```powershell

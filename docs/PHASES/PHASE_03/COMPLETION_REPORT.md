@@ -56,6 +56,16 @@
 
 Combat 1.1 is complete and waits for visual approval. Combo Engine work remains gated.
 
+## Runtime Launch Repair (2026-11-10)
+
+- **Root cause:** F5 launches `res://scenes/arenas/MovementTestArena.tscn`. It instances Kai V2 with the CombatController and its attack SpriteFrames, but its `DummyTarget` is only a visual `Node2D` marker. It has no health/hurtbox, and the movement arena does not install `CombatTestArenaController`, the scene-level owner that displays combat telemetry, hit-stop, and impact sparks. As a result, hit confirmation effects are impossible in the F5 movement test scene even though the jab and kick clips are connected. The dedicated combat arena already has the correct dummy and feedback owner.
+- **Fix:** Preserved the F5 main scene. Added `run_combat.bat` to launch the existing `combat_test_arena.tscn` explicitly; its `debug` argument enables hitbox outlines. README and NEXT_SESSION now explain the difference, and the Combat 1 runner checks the main-scene choice, missing marker hurtbox, attack clips on F5 Kai, and combat-scene feedback owner.
+- **Verification:** Combat suite **62/62**, Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44**. Godot 4.7.2 editor scan and project reference scan completed. Actual Compatibility-renderer capture from `combat_test_arena.tscn`: `reports/videos/combat_launch_after.avi` (1280×720, 60 FPS, 480 frames; normal speed, debug hitboxes). Inspected contact/impact frames under `reports/screenshots/combat_launch_*.png`; the jab and front kick select their attack clips, hitboxes overlap the dummy at contact, the impact spark is visible, and dummy recoil/health response appear. No performance benchmark was taken.
+- **Pass 1 — Architecture & Integration:** Confirmed F5 configuration is unchanged, `run_combat.bat` targets only the existing combat arena, attack resource/sprite references resolve, the movement marker remains decorative, and the combat arena contains the damageable training dummy and feedback owner. Only 2D nodes are used; no archived project or future milestone was touched.
+- **Pass 2 — Quality & Completeness:** Re-read the launcher, test additions, and docs; ran all four suites and Godot scans; checked the normal-speed rendered footage and selected frames. The combat launcher uses the local Godot installation or PATH fallback and keeps the existing F5 workflow intact.
+
+The runtime launch repair is complete and awaits user verification. Combat 2 remains unstarted.
+
 ## Git
 
 - Branch: `codex/kai-rebuild-checkpoint-20261110`.

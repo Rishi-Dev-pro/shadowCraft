@@ -77,12 +77,14 @@
 - [x] **TASK-309**: Align jab and kick active phases with their contact poses; add per-active-frame limb-matched hitbox offsets and regression coverage.
 - [x] **TASK-310**: Add confirmed-hit-only hit-stop, restrained punch/kick sparks, and a short eased dummy recoil.
 - [x] **TASK-311**: Capture actual normal, slow-motion, and active-hitbox footage; run all 52 Combat and 202 movement/hierarchy regression assertions; complete both audits.
+- [x] **TASK-312**: Trace the F5 scene and verify Kai V2's jab/kick clips remain wired in the movement scene while its opponent marker has no hurtbox or hit-feedback owner.
+- [x] **TASK-313**: Preserve the F5 movement arena, add an explicit combat-arena launcher, verify the combat scene's hit feedback, and capture normal-speed gameplay from that scene.
 
 ---
 
 ## 5. IN PROGRESS / NEXT GATE
 
-Combat 1.1 basic attack polish is complete and awaits the user's visual approval. Do not begin the Combo Engine or another Combat milestone until explicitly authorized. `MovementTestArena.tscn` remains the F5 main scene; launch `scenes/arenas/combat_test_arena.tscn` to inspect the work.
+The Combat 1.1 runtime launch repair is complete and awaits visual verification. `MovementTestArena.tscn` remains the F5 main scene; run `run_combat.bat` to play the damageable dummy arena. Do not begin the Combo Engine or another Combat milestone until explicitly authorized.
 
 ### Remaining Phase 03 work (not authorized yet)
 - [ ] Combo input buffer and chain windows.
