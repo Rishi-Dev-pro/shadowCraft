@@ -66,6 +66,11 @@ Combat 1.1 is complete and waits for visual approval. Combo Engine work remains 
 
 The runtime launch repair is complete and awaits user verification. Combat 2 remains unstarted.
 
+### Launcher pause follow-up
+
+- Reproduced the prompt wait in `run_combat.bat`: when Godot could not be resolved by the launching shell, the error branch ran a literal `pause`. Removed it and added searches for the 4.7.2 executable under standard local/program folders, both Godot executable names on PATH, and a `GODOT4_EXE` override. The game launches as a foreground process so launcher errors remain visible; the F5 scene and combat systems are unchanged.
+- Added launcher regression assertions. Final Combat suite: **65/65**; Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44** remain passing. The prior actual runtime recording still verifies visual combat; this follow-up changes only Windows executable lookup/launcher waiting.
+
 ## Git
 
 - Branch: `codex/kai-rebuild-checkpoint-20261110`.

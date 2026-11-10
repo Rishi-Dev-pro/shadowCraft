@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Preserved the F5 movement scene and added `run_combat.bat` as an explicit launch path for `combat_test_arena.tscn`; the `debug` argument enables active hitbox outlines. README and the phase handoff explain the distinction.
 - Added regression assertions for main-scene identity, Z/X attack events selecting and advancing the attack clips on F5 Kai, the non-damageable movement marker, and the combat arena's presentation owner. Combat suite is now 62/62; no attack, movement, or damage rules changed.
 - Re-recorded the explicitly launched combat arena at normal speed and inspected jab/kick contacts, hit sparks, dummy recoil, recovery and hitbox debug. All existing suites passed; no performance benchmark was measured.
+- Follow-up: reproduced the launcher's prompt wait when its Godot lookup failed. Added standard install-folder and PATH resolution plus a `GODOT4_EXE` override, and removed the blocking `pause`; the failure path now prints an error and exits. Added regression checks for the target scene, executable lookup, and non-blocking failure path.
 
 ### Combat 1.1 basic attack polish (2026-11-10)
 - Aligned Light Jab and Front Kick contact phases to the authored frame-4 pose within their unchanged 12-physics-frame total duration. Attack data now stores a hitbox offset for each active frame; the hitbox follows the fist recoil and toe retraction, and tighter shapes place the active region over the visible striking limbs.

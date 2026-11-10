@@ -79,6 +79,7 @@
 - [x] **TASK-311**: Capture actual normal, slow-motion, and active-hitbox footage; run all 52 Combat and 202 movement/hierarchy regression assertions; complete both audits.
 - [x] **TASK-312**: Trace the F5 scene and verify Kai V2's jab/kick clips remain wired in the movement scene while its opponent marker has no hurtbox or hit-feedback owner.
 - [x] **TASK-313**: Preserve the F5 movement arena, add an explicit combat-arena launcher, verify the combat scene's hit feedback, and capture normal-speed gameplay from that scene.
+- [x] **TASK-314**: Remove the launcher wait-on-error, broaden Godot discovery, and verify its scene target and non-blocking missing-engine behavior.
 
 ---
 

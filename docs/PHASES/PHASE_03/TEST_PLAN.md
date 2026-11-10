@@ -30,7 +30,8 @@
 |---|---|---|---|
 | F5 scene identification | `test_combat_foundation.gd` | Main scene stays `MovementTestArena.tscn`; its opponent marker has no hurtbox | PASS |
 | Attack visual wiring on F5 Kai | Same runner | Kai V2's controller starts the jab/kick clips and retains the jab through active contact | PASS |
-| Combat launch path | `run_combat.bat`; `test_combat_foundation.gd` | Explicit launcher targets combat arena with its own hit-feedback controller and damageable dummy; Combat suite 62/62 | PASS |
+| Combat launch path | `run_combat.bat`; `test_combat_foundation.gd` | Explicit launcher targets combat arena with its own hit-feedback controller and damageable dummy; Combat suite 65/65 | PASS |
+| Launcher missing-engine path | Same runner and `run_combat.bat` | Common Godot paths / PATH / `GODOT4_EXE` are checked; failure exits without a `pause` prompt | PASS |
 | Actual rendered runtime | `reports/videos/combat_launch_after.avi` | Normal-speed scene capture shows contact poses, debug hitboxes, confirmed spark, dummy recoil and recovery | PASS |
 
 ## Recorded Evidence

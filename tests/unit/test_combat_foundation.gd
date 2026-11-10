@@ -24,6 +24,10 @@ func _run_tests() -> void:
 	var scene: PackedScene = load("res://scenes/arenas/combat_test_arena.tscn") as PackedScene
 	_check(scene != null, "CombatTestArena scene resources load")
 	_check(load("res://scenes/combat/hit_spark_2d.tscn") is PackedScene, "Confirmed-hit spark scene loads")
+	var launcher_text: String = FileAccess.get_file_as_string("res://run_combat.bat")
+	_check(launcher_text.contains("res://scenes/arenas/combat_test_arena.tscn"), "Combat launcher targets the damageable combat arena")
+	_check(launcher_text.contains("GODOT4_EXE") and launcher_text.contains("where.exe godot.exe"), "Combat launcher supports an override and PATH lookup")
+	_check(not launcher_text.contains("pause"), "Missing Godot reports an error without pausing the launcher")
 	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 intentionally remains on the movement test arena")
 	var movement_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
 	var movement_arena: Node2D = movement_scene.instantiate() as Node2D if movement_scene != null else null
