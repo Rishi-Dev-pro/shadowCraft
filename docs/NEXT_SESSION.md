@@ -1,19 +1,19 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
-## Current State — Combat Runtime Launch Repair (2026-11-10)
+## Current State — Unified Movement and Combat Runtime (2026-11-10)
 
 - Kai V2 is integrated and remains the playable character in `scenes/arenas/MovementTestArena.tscn`, the F5 main scene. The old Kai scene remains available as `scenes/characters/KaiLegacy.tscn`.
-- Combat 1 and the authorized Combat 1.1 polish pass are implemented in the isolated `scenes/arenas/combat_test_arena.tscn`; movement, crouch, jump and physics remain owned by the existing controller. The F5 movement arena is unchanged.
+- The main/F5 `MovementTestArena.tscn` now composes the existing Combat 1 damageable TrainingDummy and its health/hurtbox without duplicating Kai's controller, combat state machine or health system. Movement, crouch, jump and physics remain owned by the existing controller.
 - Controls in the Combat Test Arena: A/D move backward/forward, Space jump, S crouch, Z Light Jab, X Front Kick. The dummy is a damageable test target, not an AI opponent.
 - Attack logic is data-driven through `resources/attacks/light_jab.tres` and `front_kick.tres`. Contact windows align with the dedicated six-frame animation clips, and each active physics frame has a matching hitbox offset. Confirmed contact triggers short hit-stop, a small impact spark and a tuned dummy recoil. Damage and collision architecture are preserved.
-- F5 intentionally remains on `MovementTestArena.tscn`; use `run_combat.bat` to launch the damageable training dummy arena, or `run_combat.bat debug` for hitboxes. It checks Godot's standard install folders and PATH; set `GODOT4_EXE` for a custom location. Missing Godot exits with an error instead of waiting at a prompt. In the editor, open `scenes/arenas/combat_test_arena.tscn` and press F6.
+- Double-click `run_shadowcraft.bat` (or press F5 in the editor) for movement and combat in the same arena; `run_shadowcraft.bat debug` shows the attack hitbox. Launcher discovery covers supported Godot 4.7.2 locations, PATH and `GODOT4_EXE`, validates the engine, and persists output to `reports/logs/shadowcraft_latest.log`. `run_combat.bat` remains a separate development test scene, not a gameplay requirement.
 - Evidence for the launch repair: normal-speed runtime capture `reports/videos/combat_launch_after.avi`, active hitbox view `reports/screenshots/combat_launch_kick_debug.png`, jab `reports/screenshots/combat_launch_jab.png`, and successful kick/contact `reports/screenshots/combat_launch_impact.png`.
-- Automated results after the repair are recorded in `docs/PHASES/PHASE_03/COMPLETION_REPORT.md` (Combat 65/65, Kai V2 95/95, Phase 02 63/63, Phase 01 44/44). Godot 4.7.2, Compatibility renderer.
+- Final integration regression results are recorded in `docs/PHASES/PHASE_03/COMPLETION_REPORT.md`: Combat **78/78**, Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44**. Godot 4.7.2, Compatibility renderer.
 - Two-pass audits are recorded in `docs/PHASES/PHASE_03/COMPLETION_REPORT.md`. No performance benchmark was taken; the fixed-rate recordings are visual evidence, not FPS measurements.
 
 ## Next Immediate Action
 
-Wait for the user's visual verification of the combat launch repair. Do not begin the Combo Engine, input buffering, defense, additional attacks, shadow specials, weapons, enemies, or later phases until explicitly authorized.
+Wait for the user's visual verification of the unified playable launcher. Do not begin the Combo Engine, input buffering, defense, additional attacks, shadow specials, weapons, enemies, or later phases until explicitly authorized.
 
 ## Project Preservation Notes
 

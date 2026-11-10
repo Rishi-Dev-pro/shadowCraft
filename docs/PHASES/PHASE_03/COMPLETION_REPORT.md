@@ -10,7 +10,7 @@
 - `CombatMath`, `HealthComponent`, `Hitbox2D`, and `Hurtbox2D` scripts. Combat physics uses existing layers 4–7. Attack hits are filtered to one per target per active window.
 - A `CombatController` state machine (`NEUTRAL`, `STARTUP`, `ACTIVE`, `RECOVERY`, `HITSTUN`) that owns attack timing and animation selection. Kai's existing presentation controller pauses its state sync during combat, then resumes locomotion. Attacks lock movement; the existing CharacterController physics remains the owner of gravity and floor collision.
 - Original six-pose Light Jab and Front Kick atlas clips embedded into the existing Kai V2 SpriteFrames resource. Distinct Z and X InputMap actions.
-- A dedicated `combat_test_arena.tscn` with Kai V2, a 120-health training dummy, health bars, state/event labels and `--combat-debug` hitbox outlines. Its enemy body collision mask is local to this arena. The F5 scene remains `MovementTestArena.tscn`.
+- A dedicated `combat_test_arena.tscn` remains available for development tests. The unified main/F5 `MovementTestArena.tscn` now composes Kai V2, the same 120-health TrainingDummy scene and the same combat components, health bars, event telemetry, hit-stop/spark feedback and active-frame hitbox debug outlines.
 
 ## Verification Results
 
@@ -26,7 +26,7 @@
 ### Pass 1 — Architecture and Integration
 
 - Confirmed the new arena and dummy use only 2D nodes and existing physics layers; no new external dependencies or 3D nodes.
-- Confirmed `MovementTestArena.tscn` remains the configured main scene and KaiLegacy remains available. Combat-only spacing is scoped to `combat_test_arena.tscn`.
+- Confirmed `MovementTestArena.tscn` remains the configured main scene and KaiLegacy remains available. Arena collision spacing is scoped to its Kai instance; combat data/controller/health systems are reused from the existing Kai V2 and dummy scenes.
 - Confirmed attack data, hitboxes, health, animation ownership and input actions connect through valid resource and node paths. Crouch/jump/physics behavior remains under the existing movement controller; the new attacks reject crouched and airborne initiation.
 - Confirmed remaining roadmap milestones are listed as unstarted and gated.
 
@@ -42,7 +42,7 @@
 - Only Light Jab and Front Kick are implemented. There is no combo buffer/chain, guard, dodge, parry, poise, knockdown, aerial/sweep attack, shadow special, finisher, weapon, or opponent AI.
 - The dummy supplies health and reactions but does not attack or block.
 - Hit reactions are represented by knockback, hitstun and a brief violet flash; no dedicated authored hit-reaction animation is included yet.
-- Manual input play is supported in `scenes/arenas/combat_test_arena.tscn`; the project F5 scene intentionally remains the movement test arena.
+- Manual input play and all authorized Combat 1 attacks are available in the unified F5 arena; the standalone combat arena remains a development scene.
 
 ## Combat 1.1 — Basic Attack Polish (2026-11-10)
 
@@ -70,6 +70,19 @@ The runtime launch repair is complete and awaits user verification. Combat 2 rem
 
 - Reproduced the prompt wait in `run_combat.bat`: when Godot could not be resolved by the launching shell, the error branch ran a literal `pause`. Removed it and added searches for the 4.7.2 executable under standard local/program folders, both Godot executable names on PATH, and a `GODOT4_EXE` override. The game launches as a foreground process so launcher errors remain visible; the F5 scene and combat systems are unchanged.
 - Added launcher regression assertions. Final Combat suite: **65/65**; Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44** remain passing. The prior actual runtime recording still verifies visual combat; this follow-up changes only Windows executable lookup/launcher waiting.
+
+## Unified Playable Runtime Integration (2026-11-10)
+
+- **Additional launch root cause:** Reproduced `run_combat.bat` and captured Godot's exact error: `Invalid project path specified: "D:\projects 2.0\games\shadowCraft" res://scenes/arenas/combat_test_arena.tscn", aborting.` `%~dp0` retained a terminal backslash; quoted `--path` parsing merged the following scene argument into that path. The development launcher now strips the trailing separator and passes its scene through `--scene`. `run_combat.bat` remains optional.
+- **Main integration:** Added the existing TrainingDummy scene under the existing `DummyTarget` anchor in the configured main scene. The arena controller now wires the dummy target, body spacing, existing Kai CombatController signals, the existing health components, telemetry, confirmed-hit spark, and hit-stop. No duplicate combat/health architecture was introduced. Kai's spawn is on the floor outside the platform footprint; platform, boundaries, and movement physics remain intact.
+- **Launcher:** `run_shadowcraft.bat` now uses verified Godot 4.7.2, checks common locations/PATH/`GODOT4_EXE`, trims the project directory, runs the configured main scene in the foreground, writes `reports/logs/shadowcraft_latest.log`, and retains a failure prompt only on error. Its archived-project executable fallback was removed.
+- **Regression:** Combat **78/78**, Kai V2 **95/95**, Phase 02 **63/63**, Phase 01 **44/44**. Main-scene checks confirm Z jab and X kick animations, successful damage, no damage/spark for a miss, and confirmed-hit spark. The old Kai rollback scene still loads.
+- **Rendered verification:** Launched the game through `run_shadowcraft.bat` and captured the configured main arena using Godot 4.7.2 Compatibility renderer: `reports/videos/unified_gameplay_showcase.avi` (1280×720, 60 FPS, 360 frames). Inspected movement, miss, jab recovery/contact, kick active/contact, airborne and landing frames under `reports/screenshots/unified_runtime_*.png`. Console trace confirms miss/no hit, Jab 8 damage, Kick 15 damage and final dummy health 97/120. Debug outlines are visible only during active attack frames.
+
+### Two-pass audits
+
+- **Pass 1 — Architecture & Integration:** Main scene points to the unified movement arena; existing Kai V2 CombatController, attack resources, Hitbox/Hurtbox, TrainingDummy HealthComponent and spark are reused. Main-arena-only body collision includes environment and dummy layers. UI/signals resolve; no duplicate health or combat controller, 3D node, combat 2 feature, archived-project modification, or removed Kai rollback scene. Godot editor scan and project resource checker reported zero errors/warnings.
+- **Pass 2 — Quality & Completeness:** Re-read all modified source, scene, launcher and docs; all four regression suites passed; reproduced both launcher paths; inspected actual rendered movie frames for movement, confirmed/missed attacks, active debug outlines and recovery. `git diff --check` is clean. No FPS/performance benchmark is claimed.
 
 ## Git
 

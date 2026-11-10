@@ -13,7 +13,7 @@
 | **Phase 00** | Project Foundation & Architecture | Engine setup, documentation, ADRs, repo governance | **COMPLETED** | Approved |
 | **Phase 01** | Kai 2D Character Art & Animation Pipeline | 2D silhouette sprites, Skeleton2D rig, idle/locomotion | **COMPLETED** | Approved |
 | **Phase 02** | Player Movement & Controls | Kinematic 2D movement, jump, crouch, dynamic collision, facing logic | **COMPLETED** | Completed & Audited |
-| **Phase 03** | Core 2D Combat Engine | Hitbox/Hurtbox layers, damage math, health component | **IN PROGRESS — Combat 1 foundation complete** | Next milestone requires approval |
+| **Phase 03** | Core 2D Combat Engine | Hitbox/Hurtbox layers, damage math, health component | **IN PROGRESS — Combat 1 foundation integrated into the main playable arena** | Combat 2 requires approval |
 | **Phase 04** | Wooden Sword & First Moveset | AttackData resources, combo chain, active frames | *PLANNED* | Blocked by Phase 03 |
 | **Phase 05** | Blocking, Parrying, Dodging & Combos | High/low guard, 4-frame parry window, counter-hit stun | *PLANNED* | Blocked by Phase 04 |
 | **Phase 06** | Weapon Framework & Additional Categories | Axe, Spear, Mace movesets & Material tier scaling | *PLANNED* | Blocked by Phase 05 |
@@ -48,7 +48,8 @@
 - **Objective:** Build the spatial collision pipeline for combat: hitboxes, hurtboxes, health components, and damage formulas.
 - **Key Deliverables:** `hitbox_2d.gd`, `hurtbox_2d.gd`, `health_component.gd`, `combat_controller.gd`, physics layers 4-7 configured, unit tests for damage math.
 - **Exit Criteria:** Automated test verifying that active Hitbox overlapping Hurtbox emits hit signal, applies calculated damage, and updates health.
-- **Authorized milestone (2026-11-10): Combat 1 — Foundation.** Implemented reusable hit/hurt boxes, health and damage calculation, timed attack state machine, a training dummy, and two original ground attacks (Light Jab and Front Kick) for Kai V2. The Combat Test Arena is separate from the F5 movement arena. Combat 1 is verified; Phase 03 remains in progress.
+- **Authorized milestone (2026-11-10): Combat 1 — Foundation.** Implemented reusable hit/hurt boxes, health and damage calculation, timed attack state machine, a training dummy, and two original ground attacks (Light Jab and Front Kick) for Kai V2. The authorized foundation is verified and integrated into the F5 movement arena; Phase 03 remains in progress.
+- **Runtime integration follow-up (2026-11-10):** Composed the existing Combat 1 dummy and hit-feedback owner into the main playable arena. This integrates the completed foundation and does not start a new combat milestone.
 - **Remaining Phase 03 milestones (not started):** Combo engine, defense, aerial/sweep/special attacks and their additional test coverage. Await user approval before beginning another milestone.
 
 ### Phase 04: Wooden Sword & First Moveset

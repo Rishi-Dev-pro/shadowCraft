@@ -66,7 +66,7 @@ func _on_area_entered(area: Area2D) -> void:
 		target_hit.emit(hurtbox, damage)
 
 func _draw() -> void:
-	if not debug_draw or attack_data == null:
+	if not debug_draw or not _is_active or attack_data == null:
 		return
 	draw_rect(Rect2(-attack_data.hitbox_size * 0.5, attack_data.hitbox_size), Color(1.0, 0.2, 0.35, 0.65), false, 2.0)
 

@@ -25,6 +25,8 @@ func _run_tests() -> void:
 	root.add_child(arena)
 	await process_frame
 	var kai: CharacterController2D = arena.get_node("Fighters/Kai") as CharacterController2D
+	var dummy_target: Node2D = arena.get_node("Fighters/DummyTarget") as Node2D
+	dummy_target.global_position.x = 1200.0
 	_check(kai != null, "Playable arena character uses CharacterController2D")
 	if kai == null:
 		_finish()
@@ -53,7 +55,7 @@ func _run_tests() -> void:
 					var frame_texture: Texture2D = frame_resource.get_frame_texture(animation_name, frame_index)
 					_check(frame_texture != null and frame_texture.get_size() == Vector2(512, 512), "%s frame %d is an aligned 512x512 texture" % [animation_name, frame_index + 1])
 	_check(InputMap.has_action("run"), "Run input is mapped")
-	_check(kai.collision_layer == 2 and kai.collision_mask == 1, "V2 retains player/environment collision layers")
+	_check(kai.collision_layer == 2 and kai.collision_mask == 5, "Unified arena adds dummy-body collision to Kai's environment mask")
 	_check(kai.scale == Vector2.ONE, "Facing keeps the physics root unscaled")
 	kai.set_facing(false)
 	_check(kai.skeleton.scale.x < 0.0 and is_equal_approx(absf(kai.skeleton.scale.x), kai.visual_scale), "Facing left flips only the visual scale")

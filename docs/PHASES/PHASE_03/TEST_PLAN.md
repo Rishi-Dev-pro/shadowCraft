@@ -28,16 +28,17 @@
 
 | Test area | Verification | Pass criteria | Result |
 |---|---|---|---|
-| F5 scene identification | `test_combat_foundation.gd` | Main scene stays `MovementTestArena.tscn`; its opponent marker has no hurtbox | PASS |
-| Attack visual wiring on F5 Kai | Same runner | Kai V2's controller starts the jab/kick clips and retains the jab through active contact | PASS |
-| Combat launch path | `run_combat.bat`; `test_combat_foundation.gd` | Explicit launcher targets combat arena with its own hit-feedback controller and damageable dummy; Combat suite 65/65 | PASS |
-| Launcher missing-engine path | Same runner and `run_combat.bat` | Common Godot paths / PATH / `GODOT4_EXE` are checked; failure exits without a `pause` prompt | PASS |
-| Actual rendered runtime | `reports/videos/combat_launch_after.avi` | Normal-speed scene capture shows contact poses, debug hitboxes, confirmed spark, dummy recoil and recovery | PASS |
+| Unified F5 runtime | `test_combat_foundation.gd` | Main scene contains Kai V2, existing TrainingDummy health/hurtbox, collision spacing, and health UI | PASS |
+| Main-scene attack integration | Same runner and Compatibility runtime | Z/X animations play; whiff does no damage/no spark; jab/kick both damage dummy and confirmed hit spawns spark | PASS (78/78 suite) |
+| Primary launcher | `run_shadowcraft.bat` | Godot 4.7.2 is found/verified, quoted project path launches configured main scene, debug flag and persistent log work | PASS; launched via batch, log `reports/logs/shadowcraft_latest.log` |
+| Development launcher diagnosis | `run_combat.bat` | Trailing project-path separator is trimmed; explicit `--scene` loads the standalone test scene | PASS; exact invalid-path error reproduced before fix |
+| Actual rendered unified runtime | `reports/videos/unified_gameplay_showcase.avi` | Main-scene recording shows forward/backward movement, crouch, no-effect miss, jab/kick contacts, sparks, dummy recoil and jump/landing | PASS; 1280×720, 60 FPS, 360 frames; visually inspected selected frames |
 
 ## Recorded Evidence
 
 - `reports/videos/combat1_foundation_showcase.avi` — 1280×720, 60 fixed-FPS, 240 frames.
 - `reports/screenshots/combat1_idle.png`, `combat1_run.png`, `combat1_jab.png`, `combat1_kick.png`, `combat1_recovery.png`.
+- Unified main-game evidence: `reports/videos/unified_gameplay_showcase.avi`; rendered frames `reports/screenshots/unified_runtime_forward_backward.png`, `unified_runtime_whiff_no_effect.png`, `unified_runtime_jab_contact.png`, `unified_runtime_kick_contact.png`, `unified_runtime_jump.png`, and `unified_runtime_landing_ready.png`.
 
 The fixed-rate movie is visual evidence, not an FPS or frame-time benchmark. No performance benchmark was run.
 

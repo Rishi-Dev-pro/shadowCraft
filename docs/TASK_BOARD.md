@@ -80,6 +80,7 @@
 - [x] **TASK-312**: Trace the F5 scene and verify Kai V2's jab/kick clips remain wired in the movement scene while its opponent marker has no hurtbox or hit-feedback owner.
 - [x] **TASK-313**: Preserve the F5 movement arena, add an explicit combat-arena launcher, verify the combat scene's hit feedback, and capture normal-speed gameplay from that scene.
 - [x] **TASK-314**: Remove the launcher wait-on-error, broaden Godot discovery, and verify its scene target and non-blocking missing-engine behavior.
+- [x] **TASK-315**: Integrate the existing Combat 1 dummy and feedback into the main playable arena and make `run_shadowcraft.bat` the verified, logged unified launcher.
 
 ---
 

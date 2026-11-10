@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] — Combat 1.1 attack polish
 
+### Unified playable movement and Combat 1 arena (2026-11-10)
+- Composed the existing TrainingDummy scene into `MovementTestArena.tscn` and wired its existing damage, hurtbox, hit reactions, health UI, hit-stop, hit spark, hitbox debug display, and combat telemetry through the arena controller. Kai keeps the original movement/crouch/jump controller and now collides with the dummy body.
+- `run_shadowcraft.bat` is now the one-click game launcher. It searches standard locations and PATH, accepts `GODOT4_EXE`, validates Godot 4.7.2, runs the configured main scene from the quoted project directory, and writes `reports/logs/shadowcraft_latest.log`; failure prompts are conditional. Removed the launcher's archived-project engine fallback.
+- Added an in-engine integration showcase option and main-arena combat regression assertions. The dedicated combat arena remains a development test scene; Combat 2 is not started.
+- Reproduced the old development launch failure exactly: its `%~dp0` path retained a trailing backslash inside a quoted `--path` argument, causing Godot to merge the following scene path into an invalid project path. Trimmed the directory and switched that optional test launcher to explicit `--scene`; ordinary play uses only the main launcher.
+
 ### Combat launch integration repair (2026-11-10)
 - Diagnosed the missing hit response when launching with F5: the configured main scene is `MovementTestArena.tscn`. It contains Kai V2, but its `DummyTarget` is only a visual facing marker and the scene has no dummy hurtbox or CombatTestArenaController to spawn hit-stop and impact sparks. The combat-enabled arena remained separate.
 - Preserved the F5 movement scene and added `run_combat.bat` as an explicit launch path for `combat_test_arena.tscn`; the `debug` argument enables active hitbox outlines. README and the phase handoff explain the distinction.

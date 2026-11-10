@@ -22,14 +22,19 @@ func _run_tests() -> void:
 	_check(is_equal_approx(CombatMath.calculate_damage(20.0, 0.25), 15.0), "Damage calculation applies bounded mitigation")
 	_check(InputMap.has_action("light_attack") and InputMap.has_action("kick_attack"), "Z and X combat InputMap actions are configured")
 	var scene: PackedScene = load("res://scenes/arenas/combat_test_arena.tscn") as PackedScene
-	_check(scene != null, "CombatTestArena scene resources load")
+	var main_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
+	_check(scene != null, "CombatTestArena development scene resources load")
+	_check(main_scene != null, "Unified MovementTestArena main scene resources load")
 	_check(load("res://scenes/combat/hit_spark_2d.tscn") is PackedScene, "Confirmed-hit spark scene loads")
-	var launcher_text: String = FileAccess.get_file_as_string("res://run_combat.bat")
-	_check(launcher_text.contains("res://scenes/arenas/combat_test_arena.tscn"), "Combat launcher targets the damageable combat arena")
-	_check(launcher_text.contains("GODOT4_EXE") and launcher_text.contains("where.exe godot.exe"), "Combat launcher supports an override and PATH lookup")
-	_check(not launcher_text.contains("pause"), "Missing Godot reports an error without pausing the launcher")
-	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 intentionally remains on the movement test arena")
-	var movement_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
+	var launcher_text: String = FileAccess.get_file_as_string("res://run_shadowcraft.bat")
+	var development_launcher_text: String = FileAccess.get_file_as_string("res://run_combat.bat")
+	_check(launcher_text.contains("--path \"%PROJECT_DIR%\""), "Primary launcher runs the configured unified main scene from its project path")
+	_check(launcher_text.contains("GODOT4_EXE") and launcher_text.contains("where.exe godot.exe"), "Primary launcher supports GODOT4_EXE and PATH lookup")
+	_check(launcher_text.contains("--log-file") and launcher_text.contains("4.7.2"), "Primary launcher validates Godot version and keeps runtime logs")
+	_check(development_launcher_text.contains("--scene \"res://scenes/arenas/combat_test_arena.tscn\"") and development_launcher_text.contains("PROJECT_DIR:~-1"), "Development combat launcher safely trims its project path and selects its scene")
+	_check(launcher_text.contains("res://scenes/arenas/MovementTestArena.tscn") or ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "Primary launch uses the unified movement arena")
+	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 launches the unified movement and combat arena")
+	var movement_scene: PackedScene = main_scene
 	var movement_arena: Node2D = movement_scene.instantiate() as Node2D if movement_scene != null else null
 	if movement_arena != null:
 		root.add_child(movement_arena)
@@ -37,9 +42,12 @@ func _run_tests() -> void:
 			await physics_frame
 		var movement_combat: CombatController = movement_arena.get_node("Fighters/Kai/CombatController") as CombatController
 		var movement_sprite: AnimatedSprite2D = movement_arena.get_node("Fighters/Kai/Skeleton2D/AnimatedSprite2D") as AnimatedSprite2D
-		var movement_dummy: Node = movement_arena.get_node("Fighters/DummyTarget")
-		_check(movement_dummy.get_node_or_null("Hurtbox") == null, "F5 movement marker is not a damageable combat dummy")
+		var movement_dummy: TrainingDummy = movement_arena.get_node("Fighters/DummyTarget/TrainingDummy") as TrainingDummy
+		var movement_dummy_health: HealthComponent = movement_dummy.get_node("HealthComponent") as HealthComponent
+		_check(movement_dummy != null and movement_dummy.get_node_or_null("Hurtbox") is Hurtbox2D, "F5 arena target is a real damageable training dummy")
 		_check(movement_combat != null and movement_sprite != null, "F5 Kai V2 includes the combat controller and attack sprite")
+		_check((movement_arena.get_node("Fighters/Kai") as CharacterController2D).collision_mask == 5, "Unified arena collides with environment and dummy while keeping physics orientation")
+		_check(movement_arena.get_node_or_null("UI/KaiHealth") is ProgressBar and movement_arena.get_node_or_null("UI/DummyHealth") is ProgressBar, "Unified arena displays both combat health bars")
 		Input.action_press(&"light_attack")
 		await physics_frame
 		await physics_frame
@@ -58,6 +66,49 @@ func _run_tests() -> void:
 		Input.action_release(&"kick_attack")
 		_check(movement_combat.current_state == CombatController.State.STARTUP, "X input starts an attack in the F5 scene")
 		_check(movement_sprite.animation == &"front_kick", "F5 scene selects the authored front-kick animation")
+		for _i: int in range(kick.get_total_frames() + 2):
+			await physics_frame
+		var kai_main: CharacterController2D = movement_arena.get_node("Fighters/Kai") as CharacterController2D
+		for child: Node in movement_arena.get_children():
+			if child is HitSpark2D:
+				child.queue_free()
+		movement_dummy.global_position = Vector2(960.0, 560.0)
+		movement_dummy.velocity = Vector2.ZERO
+		movement_dummy_health.restore_full()
+		kai_main.global_position = Vector2(850.0, 560.0)
+		kai_main.velocity = Vector2.ZERO
+		kai_main.is_grounded = true
+		kai_main.current_state = CharacterController2D.State.IDLE
+		movement_dummy.global_position.x = 1200.0
+		var health_before_main_whiff: float = movement_dummy_health.current_health
+		_check(movement_combat.start_attack(jab), "Unified main-arena jab can intentionally whiff beyond reach")
+		for _i: int in range(jab.get_total_frames() + 4):
+			await physics_frame
+		_check(is_equal_approx(movement_dummy_health.current_health, health_before_main_whiff), "Unified main-arena miss causes no dummy damage")
+		_check(movement_arena.get_node_or_null("HitSpark2D") == null, "Unified main-arena miss creates no confirmed-hit spark")
+		movement_dummy.global_position.x = 960.0
+		kai_main.global_position = Vector2(850.0, 560.0)
+		kai_main.velocity = Vector2.ZERO
+		kai_main.is_grounded = true
+		kai_main.current_state = CharacterController2D.State.IDLE
+		var health_before_main_jab: float = movement_dummy_health.current_health
+		_check(movement_combat.start_attack(jab), "Unified main-arena Kai can initiate the configured Light Jab")
+		for _i: int in range(jab.get_total_frames() + 4):
+			await physics_frame
+		_check(movement_dummy_health.current_health < health_before_main_jab, "Unified main-arena jab damages its training dummy")
+		movement_dummy.global_position = Vector2(960.0, 560.0)
+		movement_dummy.velocity = Vector2.ZERO
+		movement_dummy_health.restore_full()
+		kai_main.global_position = Vector2(850.0, 560.0)
+		kai_main.velocity = Vector2.ZERO
+		kai_main.is_grounded = true
+		kai_main.current_state = CharacterController2D.State.IDLE
+		var health_before_main_hit: float = movement_dummy_health.current_health
+		_check(movement_combat.start_attack(kick), "Unified main-arena Kai can initiate the configured Front Kick")
+		for _i: int in range(kick.get_total_frames() + 4):
+			await physics_frame
+		_check(movement_dummy_health.current_health < health_before_main_hit, "Unified main-arena kick damages its training dummy")
+		_check(movement_arena.get_node_or_null("HitSpark2D") != null, "Unified main-arena confirmed hit spawns its impact spark")
 		movement_arena.queue_free()
 		await process_frame
 	else:
@@ -68,7 +119,7 @@ func _run_tests() -> void:
 	var arena: Node2D = scene.instantiate() as Node2D
 	root.add_child(arena)
 	var arena_script: Script = arena.get_script() as Script
-	_check(arena_script != null and arena_script.resource_path == "res://scripts/arenas/combat_test_arena_controller.gd", "Combat test scene owns hit feedback and arena setup")
+	_check(arena_script != null and arena_script.resource_path == "res://scripts/arenas/combat_test_arena_controller.gd", "Standalone combat development scene retains its feedback owner")
 	for _i: int in range(3):
 		await physics_frame
 	var kai: CharacterController2D = arena.get_node("Fighters/Kai") as CharacterController2D

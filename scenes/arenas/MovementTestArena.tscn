@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/arenas/MovementTestArenaController.gd" id="1_arena_ctrl"]
 [ext_resource type="PackedScene" path="res://scenes/characters/KaiV2.tscn" id="2_kai"]
+[ext_resource type="PackedScene" path="res://scenes/combat/training_dummy.tscn" id="3_dummy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1280, 160)
@@ -25,6 +26,14 @@ font_color = Color(0.7, 0.65, 0.8, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_telemetry"]
 font_size = 14
 font_color = Color(0.9, 0.85, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health"]
+bg_color = Color(0.43, 0.18, 0.66, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.67, 0.38, 0.93, 0.85)
 
 [node name="MovementTestArena" type="Node2D"]
 script = ExtResource("1_arena_ctrl")
@@ -113,6 +122,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/ElevatedPlatform"]
 shape = SubResource("RectangleShape2D_platform")
+one_way_collision = true
 
 [node name="Visual" type="ColorRect" parent="Environment/ElevatedPlatform"]
 offset_left = -140.0
@@ -140,31 +150,19 @@ horizontal_alignment = 1
 [node name="Fighters" type="Node2D" parent="."]
 
 [node name="Kai" parent="Fighters" instance=ExtResource("2_kai")]
-position = Vector2(320, 560)
+position = Vector2(850, 560)
 
 [node name="DummyTarget" type="Node2D" parent="Fighters"]
 position = Vector2(960, 560)
 
-[node name="Visual" type="ColorRect" parent="Fighters/DummyTarget"]
-offset_left = -15.0
-offset_top = -160.0
-offset_right = 15.0
-color = Color(0.6, 0.15, 0.2, 0.7)
-
-[node name="Marker" type="ReferenceRect" parent="Fighters/DummyTarget"]
-offset_left = -20.0
-offset_top = -165.0
-offset_right = 20.0
-offset_bottom = 5.0
-border_color = Color(0.9, 0.3, 0.4, 0.8)
-editor_only = false
+[node name="TrainingDummy" parent="Fighters/DummyTarget" instance=ExtResource("3_dummy")]
 
 [node name="Label" type="Label" parent="Fighters/DummyTarget"]
-offset_left = -80.0
-offset_top = -195.0
-offset_right = 80.0
-offset_bottom = -170.0
-text = "Opponent Target"
+offset_left = -90.0
+offset_top = -255.0
+offset_right = 90.0
+offset_bottom = -230.0
+text = "TRAINING DUMMY"
 label_settings = SubResource("LabelSettings_sub")
 horizontal_alignment = 1
 
@@ -189,7 +187,7 @@ offset_left = 40.0
 offset_top = 55.0
 offset_right = 800.0
 offset_bottom = 80.0
-text = "Playable character integration: locomotion, run, crouch, jump, landing & collisions"
+text = "Movement + combat: walk, jump, crouch, Light Jab (Z), Front Kick (X)"
 label_settings = SubResource("LabelSettings_sub")
 
 [node name="InstructionsPanel" type="PanelContainer" parent="UI"]
@@ -208,10 +206,8 @@ theme_override_constants/margin_bottom = 8
 
 [node name="Label" type="Label" parent="UI/InstructionsPanel/Margin"]
 layout_mode = 2
-text = "CONTROLS:
-• D / Right: Walk Forward  |  A / Left: Walk Backward
-• Shift + Forward: Run  |  Space: Jump
-• S / Down: Crouch (Jump Locked)"
+text = "D / Right: Forward  |  A / Left: Backward  |  Shift + Forward: Run
+Space: Jump  |  S / Down: Crouch  |  Z: Light Jab  |  X: Front Kick"
 label_settings = SubResource("LabelSettings_sub")
 
 [node name="TelemetryPanel" type="PanelContainer" parent="UI"]
@@ -258,5 +254,51 @@ label_settings = SubResource("LabelSettings_telemetry")
 
 [node name="AnimValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
 layout_mode = 2
-text = "Animation: loco/idle"
+text = "Animation: idle_signature"
 label_settings = SubResource("LabelSettings_telemetry")
+
+[node name="KaiHealthLabel" type="Label" parent="UI"]
+offset_left = 480.0
+offset_top = 92.0
+offset_right = 640.0
+offset_bottom = 118.0
+text = "KAI"
+label_settings = SubResource("LabelSettings_sub")
+
+[node name="KaiHealth" type="ProgressBar" parent="UI"]
+offset_left = 480.0
+offset_top = 120.0
+offset_right = 640.0
+offset_bottom = 138.0
+max_value = 100.0
+value = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+show_percentage = false
+
+[node name="DummyHealthLabel" type="Label" parent="UI"]
+offset_left = 660.0
+offset_top = 92.0
+offset_right = 820.0
+offset_bottom = 118.0
+text = "TRAINING DUMMY"
+horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_sub")
+
+[node name="DummyHealth" type="ProgressBar" parent="UI"]
+offset_left = 660.0
+offset_top = 120.0
+offset_right = 820.0
+offset_bottom = 138.0
+max_value = 120.0
+value = 120.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+show_percentage = false
+
+[node name="CombatEvent" type="Label" parent="UI"]
+offset_left = 470.0
+offset_top = 150.0
+offset_right = 830.0
+offset_bottom = 176.0
+text = "Z  Light Jab     X  Front Kick"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_sub")

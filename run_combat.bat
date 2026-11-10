@@ -3,6 +3,7 @@ setlocal
 title SHADOWCRAFT 2D - Combat Test Arena
 
 set "PROJECT_DIR=%~dp0"
+if "%PROJECT_DIR:~-1%"=="\" set "PROJECT_DIR=%PROJECT_DIR:~0,-1%"
 set "GODOT_EXE=%GODOT4_EXE%"
 
 if not defined GODOT_EXE set "GODOT_EXE=%LOCALAPPDATA%\Programs\Godot\Godot_v4.7.2-stable_win64.exe"
@@ -31,5 +32,5 @@ if not exist "%GODOT_EXE%" (
 set "USER_ARGS="
 if /i "%~1"=="debug" set "USER_ARGS=-- --combat-debug"
 
-"%GODOT_EXE%" --path "%PROJECT_DIR%" "res://scenes/arenas/combat_test_arena.tscn" %USER_ARGS%
+"%GODOT_EXE%" --path "%PROJECT_DIR%" --scene "res://scenes/arenas/combat_test_arena.tscn" %USER_ARGS%
 endlocal & exit /b %ERRORLEVEL%

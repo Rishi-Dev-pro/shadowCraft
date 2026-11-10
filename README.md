@@ -110,9 +110,9 @@ ShadowCraft-2D/
 2. Select **Import** and choose `d:\projects 2.0\games\shadowCraft\project.godot`.
 3. Open and edit with the Godot editor.
 
-### Launching the combat test arena
+### Launching the game
 
-Pressing **F5** runs `scenes/arenas/MovementTestArena.tscn`, which remains the movement test scene. Its `DummyTarget` is a visual facing marker, without a hurtbox or combat feedback handler. To play Kai's Light Jab (`Z`) and Front Kick (`X`) against the damageable dummy with impact effects, run `run_combat.bat` from the project folder. Run `run_combat.bat debug` to show active hitboxes. The launcher checks the standard Godot 4.7.2 install locations, then `PATH`; set `GODOT4_EXE` if Godot is installed elsewhere. A missing executable now reports an error and exits without waiting at a prompt. The equivalent Godot editor command is to open `scenes/arenas/combat_test_arena.tscn` and run the current scene with **F6**.
+Double-click **`run_shadowcraft.bat`** (or press **F5** in the editor) to launch the unified playable `MovementTestArena.tscn`. It includes Kai V2 movement, a damageable Training Dummy, the existing Z Light Jab and X Front Kick attacks, health bars, confirmed-hit sparks, hit-stop, recoil, and optional active hitbox outlines. `run_shadowcraft.bat debug` enables hitbox outlines. The launcher checks common Godot 4.7.2 install folders and `PATH`, accepts `GODOT4_EXE`, verifies the engine version, and writes `reports/logs/shadowcraft_latest.log`. Launch failures keep an error window open with the log location. The separate `run_combat.bat` / `combat_test_arena.tscn` remain for development checks only.
 
 ### Testing
 Automated testing is configured using **GdUnit4**. Tests can be executed headlessly via CLI:
