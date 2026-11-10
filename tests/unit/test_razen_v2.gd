@@ -15,7 +15,7 @@ func _run() -> void:
 	_check(data != null and data.character_id == "razen", "Razen CharacterData loads with stable identity")
 	var frames: SpriteFrames = load("res://assets/characters/razen/razen_sprite_frames.tres") as SpriteFrames
 	_check(frames != null, "Razen SpriteFrames resource loads")
-	var counts: Dictionary = {"idle_signature": 8, "walk_forward": 8, "walk_backward": 8, "run": 8, "crouch": 4, "crouch_walk": 8, "jump": 4, "landing": 4, "attack_presentation": 4, "combat_ready": 1}
+	var counts: Dictionary = {"idle_signature": 8, "walk_forward": 8, "walk_backward": 8, "run": 8, "crouch": 4, "crouch_walk": 8, "jump": 4, "landing": 4, "attack_presentation": 4, "light_jab": 8, "front_kick": 8, "combat_ready": 1}
 	if frames != null:
 		for name_value: Variant in counts:
 			var name: StringName = StringName(name_value)
@@ -43,7 +43,7 @@ func _run() -> void:
 			_pause_physics(razen)
 			var sprite: AnimatedSprite2D = razen.get_node("Skeleton2D/AnimatedSprite2D") as AnimatedSprite2D
 			_check(razen.external_animation_control and razen.enable_run_and_crouch_walk, "movement configuration is externally animated and supports run/crouch walk")
-			_check(razen.get_node_or_null("CombatController") == null, "Razen remains free of combat-system integration")
+			_check(razen.get_node_or_null("CombatController") is CombatController, "Razen uses the existing CombatController")
 			_check(sprite.animation == &"idle_signature", "Razen starts in approved signature idle")
 			await _check_animation_state(razen, sprite, CharacterController2D.State.MOVE_FORWARD, &"walk_forward")
 			await _check_animation_state(razen, sprite, CharacterController2D.State.MOVE_BACKWARD, &"walk_backward")

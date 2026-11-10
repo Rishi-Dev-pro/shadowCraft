@@ -31,6 +31,7 @@ const KICK_HIT_STOP_SECONDS: float = 0.055
 @onready var kai_bar: ProgressBar = $UI/KaiHealth
 @onready var dummy_bar: ProgressBar = $UI/DummyHealth
 @onready var combat_event_label: Label = $UI/CombatEvent
+@onready var player_name_label: Label = $UI/KaiHealthLabel
 
 var _timer: float = 0.0
 var _jump_triggered: bool = false
@@ -49,6 +50,9 @@ func _ready() -> void:
 	if player != null and dummy_target != null:
 		player.target_opponent = dummy_target
 		player.collision_mask |= 1 << 2
+		if player.character_data != null and player_name_label != null:
+			player_name_label.text = player.character_data.display_name.to_upper()
+			player_name_label.add_theme_color_override("font_color", player.character_data.signature_color.lightened(0.2))
 	if kai_health != null:
 		kai_health.health_changed.connect(_update_kai_health)
 		_update_kai_health(kai_health.current_health, kai_health.max_health)

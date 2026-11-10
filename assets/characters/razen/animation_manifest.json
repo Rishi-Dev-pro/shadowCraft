@@ -25,6 +25,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 6.0,
       "loop": true,
       "frame_paths": [
@@ -56,6 +57,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 9.0,
       "loop": true,
       "frame_paths": [
@@ -87,6 +89,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 9.0,
       "loop": true,
       "frame_paths": [
@@ -118,6 +121,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "per-frame authored vertical anchor",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 12.0,
       "loop": true,
       "frame_paths": [
@@ -149,6 +153,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 6.0,
       "loop": true,
       "frame_paths": [
@@ -176,6 +181,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 8.0,
       "loop": true,
       "frame_paths": [
@@ -207,6 +213,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "per-frame authored vertical anchor",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 10.0,
       "loop": false,
       "frame_paths": [
@@ -234,6 +241,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 14.0,
       "loop": false,
       "frame_paths": [
@@ -261,6 +269,7 @@
       "format": "RGBA PNG",
       "transparent_background": true,
       "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "low-alpha isolated-pixel mask",
       "fps": 10.0,
       "loop": false,
       "frame_paths": [
@@ -270,6 +279,70 @@
         "animations/attack_presentation/attack_presentation_04.png"
       ],
       "presentation_only": true
+    },
+    "light_jab": {
+      "source_sheet": "source/animation_sheets/light_jab_combat_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "edge-connected near-white color key plus isolated-pixel mask",
+      "fps": 30.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/light_jab/light_jab_01.png",
+        "animations/light_jab/light_jab_02.png",
+        "animations/light_jab/light_jab_03.png",
+        "animations/light_jab/light_jab_04.png",
+        "animations/light_jab/light_jab_05.png",
+        "animations/light_jab/light_jab_06.png",
+        "animations/light_jab/light_jab_07.png",
+        "animations/light_jab/light_jab_08.png"
+      ]
+    },
+    "front_kick": {
+      "source_sheet": "source/animation_sheets/front_kick_combat_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "background_cleanup": "edge-connected near-white color key plus isolated-pixel mask",
+      "fps": 30.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/front_kick/front_kick_01.png",
+        "animations/front_kick/front_kick_02.png",
+        "animations/front_kick/front_kick_03.png",
+        "animations/front_kick/front_kick_04.png",
+        "animations/front_kick/front_kick_05.png",
+        "animations/front_kick/front_kick_06.png",
+        "animations/front_kick/front_kick_07.png",
+        "animations/front_kick/front_kick_08.png"
+      ]
     },
     "combat_ready": {
       "source_sheet": "poses/signature_ready.png",

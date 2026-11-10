@@ -28,6 +28,10 @@
 
 Razen's standalone non-boss character asset package and movement presentation were authorized as a scoped visual/runtime deliverable. This does not start or advance Phase 08; boss AI, encounters, combat integration and signature attacks remain gated.
 
+### Separately Authorized Playable Roster Selection (2026-11-10)
+
+Kai V2 and Razen are selectable from the F5 startup screen and instantiate through the same existing movement/combat arena. This scoped runtime integration does not advance the combat milestone or authorize new combat mechanics.
+
 ---
 
 ## 2. DETAILED PHASE SPECIFICATIONS

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/arenas/MovementTestArenaController.gd" id="1_arena_ctrl"]
-[ext_resource type="PackedScene" path="res://scenes/characters/KaiV2.tscn" id="2_kai"]
 [ext_resource type="PackedScene" path="res://scenes/combat/training_dummy.tscn" id="3_dummy"]
+[ext_resource type="Script" path="res://scripts/arenas/arena_character_spawner.gd" id="4_spawner"]
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="5_pause_menu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1280, 160)
@@ -149,9 +150,6 @@ horizontal_alignment = 1
 
 [node name="Fighters" type="Node2D" parent="."]
 
-[node name="Kai" parent="Fighters" instance=ExtResource("2_kai")]
-position = Vector2(850, 560)
-
 [node name="DummyTarget" type="Node2D" parent="Fighters"]
 position = Vector2(960, 560)
 
@@ -178,7 +176,7 @@ offset_left = 40.0
 offset_top = 25.0
 offset_right = 800.0
 offset_bottom = 55.0
-text = "SHADOWCRAFT 2D — KAI V2 MOVEMENT ARENA"
+text = "SHADOWCRAFT 2D — TRAINING ARENA"
 label_settings = SubResource("LabelSettings_title")
 
 [node name="SubtitleLabel" type="Label" parent="UI"]
@@ -207,7 +205,7 @@ theme_override_constants/margin_bottom = 8
 [node name="Label" type="Label" parent="UI/InstructionsPanel/Margin"]
 layout_mode = 2
 text = "D / Right: Forward  |  A / Left: Backward  |  Shift + Forward: Run
-Space: Jump  |  S / Down: Crouch  |  Z: Light Jab  |  X: Front Kick"
+Space: Jump  |  S / Down: Crouch  |  Z: Light Jab  |  X: Front Kick  |  ESC: Pause"
 label_settings = SubResource("LabelSettings_sub")
 
 [node name="TelemetryPanel" type="PanelContainer" parent="UI"]
@@ -262,7 +260,7 @@ offset_left = 480.0
 offset_top = 92.0
 offset_right = 640.0
 offset_bottom = 118.0
-text = "KAI"
+text = "PLAYER"
 label_settings = SubResource("LabelSettings_sub")
 
 [node name="KaiHealth" type="ProgressBar" parent="UI"]
@@ -302,3 +300,9 @@ offset_bottom = 176.0
 text = "Z  Light Jab     X  Front Kick"
 horizontal_alignment = 1
 label_settings = SubResource("LabelSettings_sub")
+
+[node name="ArenaCharacterSpawner" type="Node" parent="."]
+script = ExtResource("4_spawner")
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+script = ExtResource("5_pause_menu")

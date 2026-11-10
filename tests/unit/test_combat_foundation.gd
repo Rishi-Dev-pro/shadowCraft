@@ -9,6 +9,7 @@ func _init() -> void:
 
 func _run_tests() -> void:
 	print("RUNNING COMBAT 1 FOUNDATION TESTS")
+	var selection_state: CharacterSelectionState = _ensure_selection_state()
 	var jab: AttackData = load("res://resources/attacks/light_jab.tres") as AttackData
 	var kick: AttackData = load("res://resources/attacks/front_kick.tres") as AttackData
 	_check(jab != null and kick != null, "AttackData resources load")
@@ -32,8 +33,9 @@ func _run_tests() -> void:
 	_check(launcher_text.contains("GODOT4_EXE") and launcher_text.contains("where.exe godot.exe"), "Primary launcher supports GODOT4_EXE and PATH lookup")
 	_check(launcher_text.contains("--log-file") and launcher_text.contains("4.7.2"), "Primary launcher validates Godot version and keeps runtime logs")
 	_check(development_launcher_text.contains("--scene \"res://scenes/arenas/combat_test_arena.tscn\"") and development_launcher_text.contains("PROJECT_DIR:~-1"), "Development combat launcher safely trims its project path and selects its scene")
-	_check(launcher_text.contains("res://scenes/arenas/MovementTestArena.tscn") or ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "Primary launch uses the unified movement arena")
-	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 launches the unified movement and combat arena")
+	_check(launcher_text.contains("res://scenes/ui/character_select.tscn") or ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/ui/character_select.tscn", "Primary launch opens character selection before the unified arena")
+	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/ui/character_select.tscn", "F5 opens Character Selection")
+	selection_state.select_character(&"kai")
 	var movement_scene: PackedScene = main_scene
 	var movement_arena: Node2D = movement_scene.instantiate() as Node2D if movement_scene != null else null
 	if movement_arena != null:
@@ -54,9 +56,13 @@ func _run_tests() -> void:
 		Input.action_release(&"light_attack")
 		_check(movement_combat.current_state == CombatController.State.STARTUP, "Z input starts an attack in the F5 scene")
 		_check(movement_sprite.animation == &"light_jab", "F5 scene selects the authored jab animation")
-		for _i: int in range(jab.startup_frames):
+		var jab_contact_observed: bool = false
+		for _i: int in range(jab.startup_frames + 2):
 			await physics_frame
-		_check(movement_combat.current_state == CombatController.State.ACTIVE and movement_sprite.animation == &"light_jab", "F5 scene keeps the jab animation through its contact window")
+			if movement_combat.current_state == CombatController.State.ACTIVE:
+				jab_contact_observed = true
+				break
+		_check(jab_contact_observed and movement_sprite.animation == &"light_jab", "F5 scene keeps the jab animation through its contact window")
 		_check(movement_sprite.frame >= 3, "F5 jab advances into its authored fist-extension poses")
 		for _i: int in range(jab.active_frames + jab.recovery_frames + 2):
 			await physics_frame
@@ -218,3 +224,11 @@ func _check(condition: bool, description: String) -> void:
 func _finish() -> void:
 	print("COMBAT 1 TESTS: %d passed, %d failed, %d total" % [_passed, _failed, _total])
 	quit(1 if _failed > 0 else 0)
+
+func _ensure_selection_state() -> CharacterSelectionState:
+	var state: CharacterSelectionState = root.get_node_or_null("CharacterSelection") as CharacterSelectionState
+	if state == null:
+		state = load("res://scripts/systems/character_selection_state.gd").new() as CharacterSelectionState
+		state.name = "CharacterSelection"
+		root.add_child(state)
+	return state

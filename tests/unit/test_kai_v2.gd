@@ -9,6 +9,7 @@ func _init() -> void:
 
 func _run_tests() -> void:
 	print("RUNNING KAI V2 SCENE AND ANIMATION TESTS")
+	var selection_state: CharacterSelectionState = _ensure_selection_state()
 	var scene: PackedScene = load("res://scenes/characters/KaiV2.tscn") as PackedScene
 	_check(scene != null, "KaiV2 scene loads")
 	if scene == null:
@@ -16,11 +17,12 @@ func _run_tests() -> void:
 		return
 	var arena_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
 	_check(arena_scene != null, "MovementTestArena loads with Kai V2 integration")
-	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/arenas/MovementTestArena.tscn", "F5 main scene is the Kai V2 playable arena")
+	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/ui/character_select.tscn", "F5 opens Character Selection")
 	_check(load("res://scenes/characters/KaiLegacy.tscn") is PackedScene, "Kai legacy rollback scene remains loadable")
 	if arena_scene == null:
 		quit(1)
 		return
+	selection_state.select_character(&"kai")
 	var arena: Node2D = arena_scene.instantiate() as Node2D
 	root.add_child(arena)
 	await process_frame
@@ -141,3 +143,11 @@ func _check(condition: bool, label: String) -> void:
 func _finish() -> void:
 	print("KAI V2 RESULTS: %d passed, %d failed, %d total" % [_passed, _failed, _total])
 	quit(1 if _failed > 0 else 0)
+
+func _ensure_selection_state() -> CharacterSelectionState:
+	var state: CharacterSelectionState = root.get_node_or_null("CharacterSelection") as CharacterSelectionState
+	if state == null:
+		state = load("res://scripts/systems/character_selection_state.gd").new() as CharacterSelectionState
+		state.name = "CharacterSelection"
+		root.add_child(state)
+	return state

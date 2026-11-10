@@ -4,6 +4,16 @@
 > **Status View:** Active Tasks, Done Column, Backlog  
 > **Rule:** No task outside the authorized phase may be moved to "In Progress" without user sign-off.
 
+## Authorized Playable Character Selection — Complete (2026-11-10)
+
+- [x] Add Kai V2 / Razen selection UI with real idle previews and mouse/keyboard selection.
+- [x] Set selection as F5 startup; spawn the chosen CharacterData scene in the existing movement/combat arena.
+- [x] Preserve shared movement, jab/kick, hitbox, health and dummy systems; add Razen-specific jab/kick animation clips.
+- [x] Add ESC pause, Resume, and Change Character flow; verify repeated swaps create one player.
+- [x] Capture Compatibility-rendered selector and both actual-arena gameplays; run all relevant regression suites and both audits.
+
+This scoped integration does not authorize the next Combat 2 milestone or Phase 08 boss development.
+
 ---
 
 ## 1. COMPLETED TASKS (PHASE 00)

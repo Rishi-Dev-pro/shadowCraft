@@ -1,13 +1,26 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
-## Current State — Razen Character Package Awaiting Visual Approval (2026-11-10)
+## Current State — Playable Character Selection Complete (2026-11-10)
+
+- F5 and `run_shadowcraft.bat` start at `scenes/ui/character_select.tscn`. The selector shows animated Kai V2 and Razen idle previews, mouse cards, A/D or arrow selection, and PLAY.
+- The selected fighter is instantiated into the existing `MovementTestArena` through one spawner. Both use the existing movement controller, arena, Combat 1 attack definitions, hitbox pipeline and damageable TrainingDummy. Razen has separate jab/kick animation clips in its own SpriteFrames asset.
+- ESC pauses. Resume returns to play; Change Character unpauses and returns to the selector. The selection remains available for the next entry.
+- Godot 4.7.2 Compatibility renderer captures: `reports/screenshots/character_selection_runtime.png`, `reports/videos/character_selection_runtime.avi`, `reports/videos/kai_selection_gameplay.avi`, and `reports/videos/razen_selection_gameplay.avi`. Capture logs are in `reports/logs/`.
+- Regression results: Phase 01 44/44; Phase 02 63/63; Kai V2 95/95; Razen V2 113/113; Combat 1 78/78; selection 53/53. The capture showcase log confirms both shared attacks hit the dummy for each character.
+- Both implementation audits and capture details are documented in `docs/CHARACTER_SELECTION.md`.
+
+## Next Immediate Action
+
+Wait for user review of the actual selection screen and both playable characters. Do not start combos, Combat 2, defense, additional combat, boss AI, or another project phase without explicit authorization.
+
+## Prior Handoff — Razen Character Package (2026-11-10)
 
 - Completed the authorized Razen production steps 3–6 in an isolated package. Razen has 56 original animation frames plus the approved signature pose, a CharacterData resource, standalone `Razen.tscn`, and a presentation-only animation controller reusing `CharacterController2D`.
 - Godot resource build and focused test completed: Razen 93/93. Actual Compatibility-renderer captures are in `assets/characters/razen/previews/rendered/`; review recording: `assets/characters/razen/previews/razen_v2_review.avi`.
 - Await visual approval of Razen before further character work. Do not begin Phase 08 boss AI/encounters. The attack-presentation clip is not a combat mechanic.
 - F5 still launches Kai V2 in `MovementTestArena.tscn`; Kai and existing combat were not modified by this Razen task.
 
-## Current State — Unified Movement and Combat Runtime (2026-11-10)
+## Prior Handoff — Unified Movement and Combat Runtime (2026-11-10)
 
 - Kai V2 is integrated and remains the playable character in `scenes/arenas/MovementTestArena.tscn`, the F5 main scene. The old Kai scene remains available as `scenes/characters/KaiLegacy.tscn`.
 - The main/F5 `MovementTestArena.tscn` now composes the existing Combat 1 damageable TrainingDummy and its health/hurtbox without duplicating Kai's controller, combat state machine or health system. Movement, crouch, jump and physics remain owned by the existing controller.

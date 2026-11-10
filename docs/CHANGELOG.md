@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] — Combat 1.1 attack polish
 
+### Playable character selection (2026-11-10)
+- Made the character-select screen the F5/main launch scene with animated idle previews from the real Kai V2 and Razen sprite-frame resources. Mouse selection, A/D or arrows and PLAY are wired to a single selection-state autoload.
+- Added a runtime spawner in the existing movement/combat arena. The selected character keeps its own character data, artwork and animation controller while both reuse the same movement, Combat 1 attacks, hitboxes, health and TrainingDummy.
+- Added Razen-specific jab/kick animation frames, plus ESC pause with Resume and Change Character actions.
+- Added selection/switching regression coverage and a Godot Movie Maker capture runner. The selector and both characters were inspected in Compatibility-rendered gameplay recordings.
+- Verification: Phase 01 44/44; Phase 02 63/63; Kai V2 95/95; Razen V2 113/113; Combat 1 78/78; character selection 53/53. Captures/logs are listed in `docs/CHARACTER_SELECTION.md`.
+
 ### Razen standalone character package (2026-11-10)
 - Completed the user-approved Razen visual production follow-up in an isolated package. Generated original sheets for 8 idle, 8 forward walk, 8 backward walk, 8 run, 4 crouch, 8 crouch-walk, 4 jump, 4 landing and 4 attack-presentation frames. Normalized 56 frames plus the approved signature pose as a one-frame combat-ready presentation.
 - Added animation provenance/frame manifests, transparent aligned frame PNGs, contact sheets, a Godot `SpriteFrames` builder, Razen `CharacterData`, a dedicated animation controller, `Razen.tscn`, a separate rendered-review arena and a 93-check scene/resource regression test.
@@ -158,4 +165,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Security & Integrity
 - Verified complete isolation and preservation of archived 3D prototype in `..\exp-1` without importing or altering any legacy files.
-- Established strict save-data verification protocols and input clamping standards.
+- Established strict save-data verification protocols and input clamping standards.\n

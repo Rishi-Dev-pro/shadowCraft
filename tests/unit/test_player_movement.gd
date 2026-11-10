@@ -22,6 +22,9 @@ var _passed_tests: int = 0
 var _failed_tests: int = 0
 
 func _init() -> void:
+	call_deferred("_run_tests")
+
+func _run_tests() -> void:
 	print("================================================================================")
 	print("RUNNING AUTOMATED UNIT TESTS: PLAYER MOVEMENT & CONTROLS (PHASE 02)")
 	print("================================================================================")
@@ -297,6 +300,7 @@ func test_arena_environment_setup() -> void:
 	
 	var arena: Node2D = arena_scene.instantiate() as Node2D
 	_assert_true(arena != null, "MovementTestArena instantiates as Node2D")
+	root.add_child(arena) # Runtime spawner creates the selected player on tree entry.
 	
 	var floor_body: StaticBody2D = arena.get_node_or_null("Environment/Floor") as StaticBody2D
 	_assert_true(floor_body != null and floor_body.collision_layer == 1, "Arena floor exists on Collision Layer 1 (environment)")

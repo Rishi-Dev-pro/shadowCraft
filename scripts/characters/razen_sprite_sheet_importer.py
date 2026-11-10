@@ -64,6 +64,14 @@ SHEETS: dict[str, dict[str, object]] = {
         "sheet": "attack_presentation_2x2.png", "columns": 2, "rows": 2, "count": 4,
         "fps": 10.0, "loop": False, "anchor": "ground",
     },
+    "light_jab": {
+        "sheet": "light_jab_combat_4x2.png", "columns": 4, "rows": 2, "count": 8,
+        "fps": 30.0, "loop": False, "anchor": "ground", "remove_near_white_background": True,
+    },
+    "front_kick": {
+        "sheet": "front_kick_combat_4x2.png", "columns": 4, "rows": 2, "count": 8,
+        "fps": 30.0, "loop": False, "anchor": "ground", "remove_near_white_background": True,
+    },
 }
 
 
@@ -131,8 +139,46 @@ def _largest_component(alpha: bytes, width: int, height: int) -> tuple[bytearray
     return component, best_bounds
 
 
-def _clean_cell(cell: Image.Image, anchor_y: int | None) -> Image.Image:
+def _remove_edge_connected_white_background(image: Image.Image) -> None:
+    """Remove near-white pixels only where connected to the cell boundary."""
+    width, height = image.size
+    pixels = image.load()
+    visited = bytearray(width * height)
+    stack: list[int] = []
+
+    def is_background(x: int, y: int) -> bool:
+        red, green, blue, _alpha = pixels[x, y]
+        return min(red, green, blue) >= 235 and max(red, green, blue) - min(red, green, blue) <= 20
+
+    for x in range(width):
+        stack.append(x)
+        stack.append((height - 1) * width + x)
+    for y in range(height):
+        stack.append(y * width)
+        stack.append(y * width + width - 1)
+
+    while stack:
+        index = stack.pop()
+        if visited[index]:
+            continue
+        visited[index] = 1
+        x = index % width
+        y = index // width
+        if not is_background(x, y):
+            continue
+        red, green, blue, _alpha = pixels[x, y]
+        pixels[x, y] = (red, green, blue, 0)
+        for neighbor_y in range(max(0, y - 1), min(height, y + 2)):
+            for neighbor_x in range(max(0, x - 1), min(width, x + 2)):
+                neighbor = neighbor_y * width + neighbor_x
+                if not visited[neighbor]:
+                    stack.append(neighbor)
+
+
+def _clean_cell(cell: Image.Image, anchor_y: int | None, remove_white_background: bool = False) -> Image.Image:
     rgba = cell.convert("RGBA")
+    if remove_white_background:
+        _remove_edge_connected_white_background(rgba)
     original_alpha = rgba.getchannel("A")
     component, bounds = _largest_component(original_alpha.tobytes(), *rgba.size)
     component_image = Image.frombytes("L", rgba.size, bytes(255 if value else 0 for value in component))
@@ -214,7 +260,7 @@ def main() -> None:
                 y0 = round((frame_index // columns) * sheet.height / rows)
                 y1 = round(((frame_index // columns) + 1) * sheet.height / rows)
                 cell = sheet.crop((x0, y0, x1, y1))
-                frame = _clean_cell(cell, anchors[frame_index])
+                frame = _clean_cell(cell, anchors[frame_index], bool(spec.get("remove_near_white_background", False)))
 
             frame_filename = f"{animation_name}_{frame_index + 1:02d}.png"
             frame_path = output_directory / frame_filename
@@ -230,6 +276,7 @@ def main() -> None:
             "format": "RGBA PNG",
             "transparent_background": True,
             "anchor_policy": "per-frame authored vertical anchor" if isinstance(spec.get("anchor_y"), list) else "sole baseline y=488",
+            "background_cleanup": "edge-connected near-white color key plus isolated-pixel mask" if spec.get("remove_near_white_background", False) else "low-alpha isolated-pixel mask",
             "fps": float(spec["fps"]),
             "loop": bool(spec["loop"]),
             "frame_paths": frame_paths,

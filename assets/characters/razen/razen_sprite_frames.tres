@@ -1,77 +1,93 @@
 [gd_resource type="SpriteFrames" format=3]
 
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_01.png" id="1_do6g3"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_02.png" id="2_8gafy"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_03.png" id="3_b0v18"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_04.png" id="4_7rdhq"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/poses/signature_ready.png" id="5_o6jsy"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_01.png" id="6_2b56e"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_02.png" id="7_30xga"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_03.png" id="8_d31be"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_04.png" id="9_ax1hs"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_01.png" id="10_sgqyd"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_02.png" id="11_jgr5p"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_03.png" id="12_ls2nk"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_04.png" id="13_mcfo1"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_05.png" id="14_jkm2o"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_06.png" id="15_wqrge"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_07.png" id="16_qvd8p"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_08.png" id="17_tscgp"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_01.png" id="18_wc6g0"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_02.png" id="19_ymwt5"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_03.png" id="20_wtp8l"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_04.png" id="21_b7o7w"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_05.png" id="22_2doy8"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_06.png" id="23_ljjnr"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_07.png" id="24_q5ngg"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_08.png" id="25_glnkg"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_01.png" id="26_n4cdv"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_02.png" id="27_5gxmu"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_03.png" id="28_0ivnu"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_04.png" id="29_len0l"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_01.png" id="30_noirv"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_02.png" id="31_45goi"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_03.png" id="32_byh87"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_04.png" id="33_lc0o8"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_01.png" id="34_fbdoy"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_02.png" id="35_ic734"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_03.png" id="36_idryk"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_04.png" id="37_sgo5r"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_05.png" id="38_j5s5o"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_06.png" id="39_j2fov"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_07.png" id="40_ct6a2"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_08.png" id="41_mrxip"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_01.png" id="42_7k8uj"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_02.png" id="43_3wbj3"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_03.png" id="44_xdn2x"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_04.png" id="45_3ma5v"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_05.png" id="46_nmgu0"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_06.png" id="47_2l1vv"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_07.png" id="48_0pttb"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_08.png" id="49_plwgk"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_01.png" id="50_nds2d"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_02.png" id="51_lkg4i"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_03.png" id="52_4tlh6"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_04.png" id="53_rmy6m"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_05.png" id="54_dxfev"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_06.png" id="55_cink5"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_07.png" id="56_r84y8"]
-[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_08.png" id="57_puxfy"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_01.png" id="1_tscgp"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_02.png" id="2_wc6g0"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_03.png" id="3_ymwt5"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/attack_presentation/attack_presentation_04.png" id="4_wtp8l"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/poses/signature_ready.png" id="5_b7o7w"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_01.png" id="6_2doy8"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_02.png" id="7_ljjnr"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_03.png" id="8_q5ngg"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch/crouch_04.png" id="9_glnkg"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_01.png" id="10_n4cdv"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_02.png" id="11_5gxmu"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_03.png" id="12_0ivnu"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_04.png" id="13_len0l"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_05.png" id="14_noirv"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_06.png" id="15_45goi"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_07.png" id="16_byh87"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/crouch_walk/crouch_walk_08.png" id="17_lc0o8"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_01.png" id="18_fbdoy"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_02.png" id="19_ic734"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_03.png" id="20_idryk"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_04.png" id="21_sgo5r"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_05.png" id="22_j5s5o"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_06.png" id="23_j2fov"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_07.png" id="24_ct6a2"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/front_kick/front_kick_08.png" id="25_mrxip"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_01.png" id="26_7k8uj"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_02.png" id="27_3wbj3"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_03.png" id="28_xdn2x"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_04.png" id="29_3ma5v"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_05.png" id="30_nmgu0"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_06.png" id="31_2l1vv"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_07.png" id="32_0pttb"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_08.png" id="33_plwgk"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_01.png" id="34_nds2d"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_02.png" id="35_lkg4i"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_03.png" id="36_4tlh6"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/jump/jump_04.png" id="37_rmy6m"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_01.png" id="38_dxfev"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_02.png" id="39_cink5"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_03.png" id="40_r84y8"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/landing/landing_04.png" id="41_puxfy"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_01.png" id="42_7r025"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_02.png" id="43_n6blf"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_03.png" id="44_e33lt"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_04.png" id="45_lsw3s"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_05.png" id="46_uxxyl"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_06.png" id="47_sooy8"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_07.png" id="48_764oc"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/light_jab/light_jab_08.png" id="49_psgd6"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_01.png" id="50_a2k3n"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_02.png" id="51_drido"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_03.png" id="52_a2ova"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_04.png" id="53_4bopn"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_05.png" id="54_bgwq7"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_06.png" id="55_bu4da"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_07.png" id="56_rcaty"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/run/run_08.png" id="57_ayxhk"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_01.png" id="58_v3hsp"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_02.png" id="59_i6etl"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_03.png" id="60_8ryrm"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_04.png" id="61_hpi76"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_05.png" id="62_01yaj"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_06.png" id="63_dtdvo"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_07.png" id="64_umeh3"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_backward/walk_backward_08.png" id="65_odje6"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_01.png" id="66_cp3wd"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_02.png" id="67_y0cx3"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_03.png" id="68_gy3s6"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_04.png" id="69_mnym4"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_05.png" id="70_ocrde"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_06.png" id="71_x8e1k"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_07.png" id="72_e3y8i"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/walk_forward/walk_forward_08.png" id="73_ne856"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_do6g3")
+"texture": ExtResource("1_tscgp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_8gafy")
+"texture": ExtResource("2_wc6g0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_b0v18")
+"texture": ExtResource("3_ymwt5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_7rdhq")
+"texture": ExtResource("4_wtp8l")
 }],
 "loop": 0,
 "name": &"attack_presentation",
@@ -79,7 +95,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_o6jsy")
+"texture": ExtResource("5_b7o7w")
 }],
 "loop": 0,
 "name": &"combat_ready",
@@ -87,16 +103,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_2b56e")
+"texture": ExtResource("6_2doy8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_30xga")
+"texture": ExtResource("7_ljjnr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_d31be")
+"texture": ExtResource("8_q5ngg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_ax1hs")
+"texture": ExtResource("9_glnkg")
 }],
 "loop": 1,
 "name": &"crouch",
@@ -104,28 +120,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_sgqyd")
+"texture": ExtResource("10_n4cdv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_jgr5p")
+"texture": ExtResource("11_5gxmu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ls2nk")
+"texture": ExtResource("12_0ivnu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_mcfo1")
+"texture": ExtResource("13_len0l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_jkm2o")
+"texture": ExtResource("14_noirv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_wqrge")
+"texture": ExtResource("15_45goi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_qvd8p")
+"texture": ExtResource("16_byh87")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_tscgp")
+"texture": ExtResource("17_lc0o8")
 }],
 "loop": 1,
 "name": &"crouch_walk",
@@ -133,28 +149,57 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_wc6g0")
+"texture": ExtResource("18_fbdoy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_ymwt5")
+"texture": ExtResource("19_ic734")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_wtp8l")
+"texture": ExtResource("20_idryk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_b7o7w")
+"texture": ExtResource("21_sgo5r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_2doy8")
+"texture": ExtResource("22_j5s5o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_ljjnr")
+"texture": ExtResource("23_j2fov")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_q5ngg")
+"texture": ExtResource("24_ct6a2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_glnkg")
+"texture": ExtResource("25_mrxip")
+}],
+"loop": 0,
+"name": &"front_kick",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_7k8uj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3wbj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xdn2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3ma5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nmgu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_2l1vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0pttb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_plwgk")
 }],
 "loop": 1,
 "name": &"idle_signature",
@@ -162,16 +207,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("26_n4cdv")
+"texture": ExtResource("34_nds2d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_5gxmu")
+"texture": ExtResource("35_lkg4i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_0ivnu")
+"texture": ExtResource("36_4tlh6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_len0l")
+"texture": ExtResource("37_rmy6m")
 }],
 "loop": 0,
 "name": &"jump",
@@ -179,16 +224,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("30_noirv")
+"texture": ExtResource("38_dxfev")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_45goi")
+"texture": ExtResource("39_cink5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_byh87")
+"texture": ExtResource("40_r84y8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_lc0o8")
+"texture": ExtResource("41_puxfy")
 }],
 "loop": 0,
 "name": &"landing",
@@ -196,28 +241,57 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("34_fbdoy")
+"texture": ExtResource("42_7r025")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_ic734")
+"texture": ExtResource("43_n6blf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_idryk")
+"texture": ExtResource("44_e33lt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_sgo5r")
+"texture": ExtResource("45_lsw3s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_j5s5o")
+"texture": ExtResource("46_uxxyl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_j2fov")
+"texture": ExtResource("47_sooy8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_ct6a2")
+"texture": ExtResource("48_764oc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_mrxip")
+"texture": ExtResource("49_psgd6")
+}],
+"loop": 0,
+"name": &"light_jab",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_a2k3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_drido")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_a2ova")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_4bopn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_bgwq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_bu4da")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_rcaty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_ayxhk")
 }],
 "loop": 1,
 "name": &"run",
@@ -225,28 +299,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("42_7k8uj")
+"texture": ExtResource("58_v3hsp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_3wbj3")
+"texture": ExtResource("59_i6etl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_xdn2x")
+"texture": ExtResource("60_8ryrm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("45_3ma5v")
+"texture": ExtResource("61_hpi76")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_nmgu0")
+"texture": ExtResource("62_01yaj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_2l1vv")
+"texture": ExtResource("63_dtdvo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("48_0pttb")
+"texture": ExtResource("64_umeh3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("49_plwgk")
+"texture": ExtResource("65_odje6")
 }],
 "loop": 1,
 "name": &"walk_backward",
@@ -254,28 +328,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("50_nds2d")
+"texture": ExtResource("66_cp3wd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_lkg4i")
+"texture": ExtResource("67_y0cx3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("52_4tlh6")
+"texture": ExtResource("68_gy3s6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("53_rmy6m")
+"texture": ExtResource("69_mnym4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("54_dxfev")
+"texture": ExtResource("70_ocrde")
 }, {
 "duration": 1.0,
-"texture": ExtResource("55_cink5")
+"texture": ExtResource("71_x8e1k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("56_r84y8")
+"texture": ExtResource("72_e3y8i")
 }, {
 "duration": 1.0,
-"texture": ExtResource("57_puxfy")
+"texture": ExtResource("73_ne856")
 }],
 "loop": 1,
 "name": &"walk_forward",

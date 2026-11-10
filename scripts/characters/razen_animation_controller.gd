@@ -2,9 +2,11 @@ extends Node
 
 @export var movement_controller_path: NodePath = NodePath("..")
 @export var animated_sprite_path: NodePath = NodePath("../Skeleton2D/AnimatedSprite2D")
+@export var combat_controller_path: NodePath = NodePath("../CombatController")
 
 @onready var movement_controller: CharacterController2D = get_node(movement_controller_path) as CharacterController2D
 @onready var animated_sprite: AnimatedSprite2D = get_node(animated_sprite_path) as AnimatedSprite2D
+@onready var combat_controller: CombatController = get_node_or_null(combat_controller_path) as CombatController
 
 var _landing_active: bool = false
 
@@ -17,6 +19,8 @@ func _ready() -> void:
 	_sync_animation()
 
 func _process(_delta: float) -> void:
+	if combat_controller != null and combat_controller.is_animation_locked():
+		return
 	if not _landing_active:
 		_sync_animation()
 
