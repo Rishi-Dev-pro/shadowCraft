@@ -1,5 +1,27 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Grind lobby animation and visual identity (2026-11-18)
+
+- Open **Grind** from the World Map to replay the entrance. The Gauntlet, Dojo, and Forge keep their approved silhouettes. The Forge remains sealed pending Sensei's instruction.
+- Architecture audit covered the existing inventory and World Map route, the shared custom button and dialogue, and two 2D petal batches. Ambient updates stop when the lobby is hidden or the game loses focus. The project reference checker reported zero errors and five existing orphan UID warnings.
+- Quality audit included live controls and actual 1280×720 Compatibility renders of each entrance stage, changing petal positions, hover, a held press, the Forge requirement, and the Sensei reveal and dismissal. Regression suites passed for World Map 76/76, movement 63/63, combat 78/78, and character selection 53/53.
+- Three 180-frame samples in the focused 1280×720 window measured 51.0 and 52.4 FPS with ambience active and 47.5 FPS with ambience frozen. The respective 95th-percentile frame times were 33.4, 33.5, and 34.8 ms.
+
+## Grind mission-select redesign (2026-11-18)
+
+- Grind opens from the existing World Map menu. The Gauntlet, Dojo, and Forge now occupy a single asymmetrical mission-select composition. Their original art is framed by custom 2D silhouettes. Click any destination or use Tab and Enter to activate it.
+- Architecture audit covered the original lobby signal, inventory Resource, dialogs, and map fade. Drawing and hit testing are local to `scripts/ui/grind_mission_panel.gd`. Project reference checker reported zero errors and five pre-existing orphan UID warnings.
+- Quality audit covered fullscreen and windowed visuals, all lobby actions, keyboard focus, map return, and live Hunter dossier selection. Automated layout checks catch overlapping anchor ranges and verify silhouette hit areas. World Map 72/72, movement 63/63, combat 78/78, and character selection 53/53 passed.
+- The next gameplay milestone requires separate authorization.
+
+## Grind Arena Milestone 01 (2026-11-18)
+
+- Open **Grind** from the existing World Map command menu. The dedicated `scenes/ui/grind_lobby.tscn` is instantiated once inside the map. The map's visual layers are hidden during the lobby visit and restored after the return fade.
+- Inventory counts originate from `resources/grind/player_inventory.tres` and start at Wood 0, Stick 0, and Stone 0. The resource supplies presentation data for this milestone. Forge prerequisites and Sensei's initial dialogue are shown in their own panels.
+- **Architecture audit:** The lobby uses 2D Controls, one shared navigation panel, a typed inventory Resource, and no frame-based lobby work. It uses the existing map and guardian routing. Reference checker reported zero errors and five existing orphan UID warnings.
+- **Quality audit:** Clicked through the lobby, inventory, trial, practice, Forge, guidance, and return controls in the visible Godot game. Checked fullscreen and windowed layouts and launched The Hunter in Mistfall Crossing after leaving Grind. The World Map regression suite passed 66/66 checks. The Executioner suite passed 19/19 assertions and emitted a resource-in-use warning at shutdown.
+- **Next:** Wait for authorization before implementing trial gameplay, opponents, a Sensei story unlock, or crafting.
+
 ## Current State — Playable Character Selection Complete (2026-11-10)
 
 - F5 and `run_shadowcraft.bat` start at `scenes/ui/character_select.tscn`. The selector shows animated Kai V2 and Razen idle previews, mouse cards, A/D or arrow selection, and PLAY.

@@ -2,6 +2,26 @@
 
 All notable changes to **ShadowCraft 2D** are documented in this file.
 
+### Grind lobby animation and visual identity (2026-11-18)
+
+- Added a shared, clipped ShadowCraft button with blade and seal marks, a traveling border highlight, and a short inset response on press. Shippori Mincho and Barlow provide the lobby typography and include their OFL notices.
+- The existing mission silhouettes use a single staggered AnimationPlayer sequence. The Gauntlet reveals diagonally, the Dojo vertically, and the Forge from its furnace. Two 2D petal batches, drifting mist, localized light changes, and a few embers animate while the lobby is visible and focused.
+- Sensei's dialogue opens in a crest-marked side panel. The mission, inventory, and guidance dialogs share an ink reveal, keyboard focus handling, and animated dismissal.
+- Inspected Godot Compatibility renders at 1280×720 and exercised the lobby controls in the running game. Regression checks passed for the World Map (76), movement (63), combat (78), and character selection (53).
+
+### Grind mission-select redesign (2026-11-18)
+
+- Rebuilt the composition around the angular Gauntlet, the tall Dojo gate, and the low, stepped Forge. Reframed the existing artwork inside custom silhouettes and used each silhouette for mouse hit testing.
+- Moved the shared inventory counters into the header and Sensei's guidance to a crescent-marked control below the Dojo. Both still open the existing dialogs.
+- Inspected the visible Compatibility-renderer game in fullscreen and windowed mode. Verified the mission and utility controls, keyboard activation, return to the map, and guardian dossier selection. Godot regressions passed for the World Map (72), movement (63), combat (78), and character selection (53).
+
+### Grind Arena Milestone 01 (2026-11-18)
+
+- Added the cinematic Grind lobby, with a shared material summary and inventory, three activity entries, the Wooden Sword recipe preview, and Sensei's initial guidance.
+- Connected the existing World Map command menu to the lobby with a two-way fade. The menu highlights Grind while the lobby is open, and returning restores the same map and guardian selection.
+- The lobby reads Wood, Stick, and Stone from `resources/grind/player_inventory.tres`. Combat Trials and Practice Grounds open preparation panels, and Weapon Forge explains the Sensei story requirement.
+- Godot 4.7.2 Compatibility verification covered all lobby panels, the return button, and a Hunter rematch launch. The World Map suite passed 66 checks. Movement, combat foundation, character selection, Kai V2, and Combat Phase 2 Step 2 suites passed. All four guardian suites passed their assertions, with one resource still in use at shutdown in the Executioner suite.
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
