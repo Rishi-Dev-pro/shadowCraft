@@ -32,7 +32,7 @@ Every agent interacting with this repository MUST strictly abide by these 22 rul
 17. **Update `docs/NEXT_SESSION.md` after every completed milestone.** Clearly document the current state, active blockers, and the next immediate tasks.
 18. **Perform two complete codebase audits after each implementation phase.** Execute Pass 1 (Architecture & Consistency) and Pass 2 (Quality & Completeness) before requesting phase closure.
 19. **Run regression tests after meaningful changes.** Verify that new modifications do not break previously established combat, movement, or data pipelines.
-20. **Commit completed phases with descriptive Git messages.** Follow Conventional Commits (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`) with clear scope and rationale.
+20. **Commit and push each completed change.** Stage only the files in scope and use a descriptive Conventional Commit (`feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `chore:`). Push to the current branch's upstream after verification, unless the user gives different instructions for that change.
 21. **Keep the working tree clean after a completed phase.** Remove temporary debug files, orphaned scratch scripts, and unneeded assets before committing.
 22. **Stop and report blockers instead of inventing solutions.** If an architectural conflict, missing asset, or engine incompatibility arises, halt execution and report it clearly to the user.
 
