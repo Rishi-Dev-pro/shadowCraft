@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="GrindDuelistData" format=3]
+
+[ext_resource type="Script" path="res://resources/grind/grind_duelist_data.gd" id="1"]
+[ext_resource type="Script" path="res://resources/grind/grind_strike.gd" id="2"]
+
+[sub_resource type="Resource" id="Light"]
+script = ExtResource("2")
+damage = 13.0
+contact_start = 0.19
+contact_end = 0.29
+center = Vector2(68, -151)
+extent = Vector2(106, 77)
+
+[sub_resource type="Resource" id="Heavy"]
+script = ExtResource("2")
+animation = &"heavy"
+damage = 23.0
+contact_start = 0.43
+contact_end = 0.55
+duration = 0.91
+cooldown = 0.22
+center = Vector2(83, -145)
+extent = Vector2(135, 106)
+push = 222.0
+stun = 0.42
+heavy = true
+
+[resource]
+script = ExtResource("1")
+title = "AGILE NINJA"
+health = 90.0
+walk = 207.0
+run = 389.0
+light = SubResource("Light")
+heavy = SubResource("Heavy")

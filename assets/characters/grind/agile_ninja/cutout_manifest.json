@@ -1,0 +1,287 @@
+{
+  "source": "ShadowCraft Ninja Trio Under Moonlight.png (user-provided, left figure only)",
+  "method": "Manually traced masks with overlapping joint cuffs, source colors and original fabric shading. Drawn weapon.",
+  "baseline": [
+    334,
+    824
+  ],
+  "scale": 0.327,
+  "layers": {
+    "head": {
+      "bone": "Head",
+      "pivot_source": [
+        350,
+        181
+      ],
+      "crop_origin": [
+        305,
+        113
+      ],
+      "draw_order": 4
+    },
+    "hair": {
+      "bone": "Hair",
+      "pivot_source": [
+        347,
+        143
+      ],
+      "crop_origin": [
+        279,
+        68
+      ],
+      "draw_order": 7
+    },
+    "face_mask": {
+      "bone": "Mask",
+      "pivot_source": [
+        342,
+        156
+      ],
+      "crop_origin": [
+        308,
+        127
+      ],
+      "draw_order": 5
+    },
+    "torso": {
+      "bone": "Torso",
+      "pivot_source": [
+        340,
+        331
+      ],
+      "crop_origin": [
+        276,
+        181
+      ],
+      "draw_order": 0
+    },
+    "waist": {
+      "bone": "Pelvis",
+      "pivot_source": [
+        334,
+        385
+      ],
+      "crop_origin": [
+        249,
+        308
+      ],
+      "draw_order": 2
+    },
+    "rear_upper_arm": {
+      "bone": "RearUpperArm",
+      "pivot_source": [
+        293,
+        259
+      ],
+      "crop_origin": [
+        262,
+        223
+      ],
+      "draw_order": -6
+    },
+    "rear_forearm": {
+      "bone": "RearForearm",
+      "pivot_source": [
+        276,
+        342
+      ],
+      "crop_origin": [
+        230,
+        320
+      ],
+      "draw_order": -5
+    },
+    "rear_hand": {
+      "bone": "RearHand",
+      "pivot_source": [
+        251,
+        428
+      ],
+      "crop_origin": [
+        220,
+        410
+      ],
+      "draw_order": -4
+    },
+    "near_upper_arm": {
+      "bone": "NearUpperArm",
+      "pivot_source": [
+        409,
+        242
+      ],
+      "crop_origin": [
+        377,
+        199
+      ],
+      "draw_order": 3
+    },
+    "near_forearm": {
+      "bone": "NearForearm",
+      "pivot_source": [
+        423,
+        326
+      ],
+      "crop_origin": [
+        398,
+        288
+      ],
+      "draw_order": 5
+    },
+    "near_hand": {
+      "bone": "NearHand",
+      "pivot_source": [
+        425,
+        432
+      ],
+      "crop_origin": [
+        399,
+        413
+      ],
+      "draw_order": 6
+    },
+    "rear_upper_leg": {
+      "bone": "RearThigh",
+      "pivot_source": [
+        304,
+        417
+      ],
+      "crop_origin": [
+        216,
+        369
+      ],
+      "draw_order": -3
+    },
+    "rear_lower_leg": {
+      "bone": "RearShin",
+      "pivot_source": [
+        262,
+        654
+      ],
+      "crop_origin": [
+        226,
+        626
+      ],
+      "draw_order": -2
+    },
+    "rear_foot": {
+      "bone": "RearFoot",
+      "pivot_source": [
+        248,
+        770
+      ],
+      "crop_origin": [
+        168,
+        744
+      ],
+      "draw_order": -1
+    },
+    "near_upper_leg": {
+      "bone": "NearThigh",
+      "pivot_source": [
+        357,
+        417
+      ],
+      "crop_origin": [
+        317,
+        373
+      ],
+      "draw_order": -1
+    },
+    "near_lower_leg": {
+      "bone": "NearShin",
+      "pivot_source": [
+        421,
+        648
+      ],
+      "crop_origin": [
+        383,
+        620
+      ],
+      "draw_order": 0
+    },
+    "near_foot": {
+      "bone": "NearFoot",
+      "pivot_source": [
+        445,
+        767
+      ],
+      "crop_origin": [
+        422,
+        742
+      ],
+      "draw_order": 1
+    },
+    "scarf_base": {
+      "bone": "Scarf",
+      "pivot_source": [
+        351,
+        192
+      ],
+      "crop_origin": [
+        311,
+        172
+      ],
+      "draw_order": 6
+    },
+    "scarf_tail_start": {
+      "bone": "Scarf",
+      "pivot_source": [
+        351,
+        192
+      ],
+      "crop_origin": [
+        371,
+        128
+      ],
+      "draw_order": -8
+    },
+    "scarf_tail_end": {
+      "bone": "ScarfEnd",
+      "pivot_source": [
+        429,
+        197
+      ],
+      "crop_origin": [
+        410,
+        131
+      ],
+      "draw_order": -8
+    },
+    "cloak_start": {
+      "bone": "Cloth",
+      "pivot_source": [
+        397,
+        272
+      ],
+      "crop_origin": [
+        406,
+        259
+      ],
+      "draw_order": -9
+    },
+    "cloak_end": {
+      "bone": "ClothEnd",
+      "pivot_source": [
+        479,
+        355
+      ],
+      "crop_origin": [
+        456,
+        332
+      ],
+      "draw_order": -9
+    },
+    "blade": {
+      "bone": "Weapon",
+      "pivot_source": [
+        420,
+        461
+      ],
+      "crop_origin": [
+        394,
+        440
+      ],
+      "draw_order": 5
+    }
+  }
+}

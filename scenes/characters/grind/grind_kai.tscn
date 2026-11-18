@@ -1,0 +1,48 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/grind/grind_duelist.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/grind/kai_duelist.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/characters/grind/grind_kai_visual.gd" id="4"]
+[ext_resource type="SpriteFrames" path="res://resources/grind/kai_trial_frames.tres" id="5"]
+
+[sub_resource type="CapsuleShape2D" id="Body"]
+radius = 29.0
+height = 248.0
+
+[sub_resource type="CapsuleShape2D" id="Hurt"]
+radius = 28.0
+height = 231.0
+
+[node name="GrindKai" type="CharacterBody2D"]
+collision_layer = 131072
+collision_mask = 131073
+floor_snap_length = 5.0
+script = ExtResource("1")
+data = ExtResource("2")
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, -124)
+shape = SubResource("Body")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 0
+monitoring = false
+
+[node name="Shape" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -123.5)
+shape = SubResource("Hurt")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="Visual" type="Node2D" parent="."]
+scale = Vector2(0.55, 0.55)
+script = ExtResource("4")
+
+[node name="Fighter" type="AnimatedSprite2D" parent="Visual"]
+position = Vector2(0, -256)
+sprite_frames = ExtResource("5")
+animation = &"idle_signature"
+autoplay = "idle_signature"

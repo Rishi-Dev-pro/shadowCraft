@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="GrindDuelistData" format=3]
+
+[ext_resource type="Script" path="res://resources/grind/grind_duelist_data.gd" id="1"]
+[ext_resource type="Script" path="res://resources/grind/grind_strike.gd" id="2"]
+
+[sub_resource type="Resource" id="Light"]
+script = ExtResource("2")
+damage = 17.0
+contact_start = 0.14
+contact_end = 0.24
+duration = 0.50
+center = Vector2(62, -157)
+extent = Vector2(81, 71)
+push = 126.0
+
+[sub_resource type="Resource" id="Heavy"]
+script = ExtResource("2")
+animation = &"heavy"
+damage = 29.0
+contact_start = 0.33
+contact_end = 0.45
+duration = 0.78
+cooldown = 0.20
+center = Vector2(74, -151)
+extent = Vector2(101, 99)
+push = 218.0
+stun = 0.42
+heavy = true
+
+[resource]
+script = ExtResource("1")
+title = "KAI"
+health = 100.0
+walk = 202.0
+run = 355.0
+jump = 500.0
+light = SubResource("Light")
+heavy = SubResource("Heavy")

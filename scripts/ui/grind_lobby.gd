@@ -26,9 +26,9 @@ const VIOLET: Color = Color("#cfb1f6")
 const LOCKED: Color = Color("#f5c195")
 const LOCK_MESSAGE: String = "Awaiting Sensei's instruction."
 const WORLD_MAP_PATH: String = "res://scenes/ui/world_map.tscn"
+const BATTLE_PATH: String = "res://scenes/arenas/grind/moonveil_courtyard.tscn"
 const RECIPE: String = "Wooden Sword  ·  2 Wood + 1 Stick"
-const TRIAL_FORMAT: String = "3 opponents  ·  Consecutive battles\nHealth is shared across all rounds."
-const TRIAL_REWARD: String = "Trial reward  ·  2 Wood + 1 Stick"
+const TRIAL_FORMAT: String = "Kai vs Agile Ninja  ·  First playable encounter\nOne bout at Moonveil Courtyard."
 const GUIDANCE: Dictionary[StringName, String] = {
 	&"initial": "Strength is not earned in a single battle, Shadow. Train your body, gather what you need, and prepare for the path ahead.",
 }
@@ -129,11 +129,16 @@ func _build_header() -> void:
 	var nav_space: Control = Control.new()
 	nav_space.custom_minimum_size.x = 220
 	_header.add_child(nav_space)
+	if get_parent() == get_tree().root:
+		var brand: Label = _label("SHADOWCRAFT", 14, MUTED)
+		nav_space.add_child(brand)
+		brand.position = Vector2(6, 11)
 	var title: Label = _label("GRIND", 28, TEXT, true)
 	title.size_flags_horizontal = SIZE_EXPAND_FILL
 	_header.add_child(title)
 	_build_inventory()
-	var back: ShadowButton = _button("BACK TO WORLD MAP", ShadowButton.Finish.STEEL, null, true)
+	var caption: String = "BACK TO WORLD MAP" if ResourceLoader.exists(WORLD_MAP_PATH) else "BACK TO START"
+	var back: ShadowButton = _button(caption, ShadowButton.Finish.STEEL, null, true)
 	back.size_flags_vertical = SIZE_SHRINK_CENTER
 	back.pressed.connect(_request_world_map)
 	_header.add_child(back)
@@ -141,7 +146,8 @@ func _build_header() -> void:
 
 func _request_world_map() -> void:
 	if get_tree().current_scene == self:
-		var error: Error = get_tree().change_scene_to_file(WORLD_MAP_PATH)
+		var destination: String = WORLD_MAP_PATH if ResourceLoader.exists(WORLD_MAP_PATH) else String(ProjectSettings.get_setting("application/run/main_scene"))
+		var error: Error = get_tree().change_scene_to_file(destination)
 		if error != OK:
 			push_error("Could not return to the World Map: %s" % error_string(error))
 		return
@@ -186,7 +192,7 @@ func _build_destinations() -> void:
 	trial.add_child(_category("COMBAT TRIALS  /  AVAILABLE", Color("#e7b0d9")))
 	trial.add_child(_label("THE GAUNTLET", 49, TEXT, true))
 	trial.add_child(_label(TRIAL_FORMAT, 16, MUTED))
-	trial.add_child(_category("TRIAL REWARD   2 WOOD + 1 STICK", VIOLET))
+	trial.add_child(_category("MATERIAL REWARDS  /  FULL TRIAL", VIOLET))
 	trial.add_child(_button("ENTER TRIAL", ShadowButton.Finish.VIOLET, gauntlet))
 	_score_mission(gauntlet, trial, 0.04, 0.62, 0.35)
 
@@ -303,7 +309,17 @@ func _show_inventory() -> void:
 
 
 func _show_trial() -> void:
-	_dialog.present("Combat Trial Preparation", "%s\n%s\n\nComing in the next milestone." % [TRIAL_FORMAT, TRIAL_REWARD])
+	_dialog.present(
+		"Combat Trial Preparation",
+		"%s\n\nA / D Move   ·   Shift Run   ·   W Jump\nSpace Guard   ·   Z Light   ·   C Heavy\n\nRewards are previewed after the fight." % TRIAL_FORMAT,
+		false, _enter_trial
+	)
+
+
+func _enter_trial() -> void:
+	var error: Error = get_tree().change_scene_to_file(BATTLE_PATH)
+	if error != OK:
+		push_error("Unable to start the first Grind encounter: %s" % error_string(error))
 
 
 func _show_practice() -> void:

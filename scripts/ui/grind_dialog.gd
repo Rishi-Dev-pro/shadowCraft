@@ -15,6 +15,8 @@ var _crest: Control
 var _title: Label
 var _body: Label
 var _close: ShadowButton
+var _confirm: ShadowButton
+var _on_confirm: Callable
 var _animation: Tween
 var _previous_focus: Control
 var _opened: bool
@@ -60,18 +62,22 @@ func _ready() -> void:
 	_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_body.size_flags_vertical = SIZE_EXPAND_FILL
 	_content.add_child(_body)
+	var actions: HBoxContainer = HBoxContainer.new()
+	actions.add_theme_constant_override("separation", 9)
+	_content.add_child(actions)
+	_confirm = ShadowButton.new()
+	_confirm.configure("START BATTLE", ShadowButton.Finish.VIOLET)
+	_confirm.hide()
+	_confirm.pressed.connect(_confirm_battle)
+	actions.add_child(_confirm)
 	_close = ShadowButton.new()
 	_close.configure("RETURN TO LOBBY", ShadowButton.Finish.STEEL, null, true)
 	_close.size_flags_horizontal = SIZE_SHRINK_BEGIN
 	_close.pressed.connect(dismiss)
-	# Keep directional and sequential navigation inside the dialogue.
-	for property: StringName in [&"focus_next", &"focus_previous", &"focus_neighbor_left",
-			&"focus_neighbor_right", &"focus_neighbor_top", &"focus_neighbor_bottom"]:
-		_close.set(property, NodePath("."))
-	_content.add_child(_close)
+	actions.add_child(_close)
 
 
-func present(title: String, body: String, mentor: bool = false) -> void:
+func present(title: String, body: String, mentor: bool = false, confirm: Callable = Callable()) -> void:
 	if _opened:
 		return
 	_stop_animation()
@@ -83,8 +89,20 @@ func present(title: String, body: String, mentor: bool = false) -> void:
 	_crest.visible = mentor
 	_title.text = title
 	_body.text = body
+	_on_confirm = confirm
+	_confirm.visible = confirm.is_valid()
+	if _confirm.visible:
+		_panel.custom_minimum_size = Vector2(510, 350)
+	# Keep keyboard navigation within the available actions.
+	for property: StringName in [&"focus_next", &"focus_previous", &"focus_neighbor_left",
+			&"focus_neighbor_right", &"focus_neighbor_top", &"focus_neighbor_bottom"]:
+		_close.set(property, _close.get_path_to(_confirm) if _confirm.visible else NodePath("."))
+		_confirm.set(property, _confirm.get_path_to(_close))
 	show()
-	_close.grab_focus()
+	if _confirm.visible:
+		_confirm.grab_focus()
+	else:
+		_close.grab_focus()
 	_set_reveal(0.0)
 	modulate.a = 0.0
 	_content.modulate.a = 0.0
@@ -114,6 +132,12 @@ func _finish_close() -> void:
 	if is_instance_valid(_previous_focus) and _previous_focus.is_visible_in_tree():
 		_previous_focus.grab_focus()
 	_previous_focus = null
+	_on_confirm = Callable()
+
+
+func _confirm_battle() -> void:
+	if _opened and _on_confirm.is_valid():
+		_on_confirm.call()
 
 
 func _stop_animation() -> void:

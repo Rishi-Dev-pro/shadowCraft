@@ -2,6 +2,13 @@
 
 All notable changes to **ShadowCraft 2D** are documented in this file.
 
+### Grind Milestone 02 — First Gauntlet bout (2026-11-18)
+
+- The Gauntlet preparation panel starts one Kai versus Agile Ninja encounter in Moonveil Courtyard. The battle includes its own HUD, controls, rematch, and result screen. The material reward remains a preview.
+- The Agile Ninja's cutout layers use manually traced masks from the left figure in the supplied concept. Skeleton2D, Bone2D, and AnimationPlayer drive the poses. Distance-driven two-bone foot placement supports locomotion and articulated scarf tails follow motion.
+- Added isolated duel movement, input actions, timed light and heavy strikes, directional guard, knockback, and an opponent rhythm with pauses, retreat, and guarding. Grind Kai shares the existing artwork and health component.
+- Godot 4.7.2 verified 17/17 focused headless checks and 30/30 rendered checks including 13 captures. World Map 76/76, player movement 63/63, and combat foundation 78/78 passed.
+
 ### Grind lobby animation and visual identity (2026-11-18)
 
 - Added a shared, clipped ShadowCraft button with blade and seal marks, a traveling border highlight, and a short inset response on press. Shippori Mincho and Barlow provide the lobby typography and include their OFL notices.

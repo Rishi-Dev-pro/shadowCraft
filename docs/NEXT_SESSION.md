@@ -1,5 +1,13 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Grind Milestone 02 — First Gauntlet bout (2026-11-18)
+
+- Open **World Map → Grind → The Gauntlet → Start Battle**. Moonveil Courtyard hosts one opponent and a local victory or defeat result. The full trial reward remains pending and the prototype leaves the inventory alone.
+- On a fresh checkout of this branch, run `scenes/ui/grind_lobby.tscn` directly. The local World Map integration is a separate change. Grind Kai uses a dedicated SpriteFrames resource that references the shared Kai textures required for the bout.
+- **Architecture audit:** The arena, fighters, cutout rig, duel controller, AI, attack resources, and HUD are separate from the campaign. The prototype references Kai's SpriteFrames and HealthComponent. The cutout manifest records the user-supplied source and pivots. Built-in ImageGen supplied the courtyard from a brief for an empty moonlit, timber-dojo courtyard with purple lanterns, distant mountains, and a flat open stone floor.
+- **Quality audit:** Manually entered the fight through the World Map and inspected the live intro, arena, health bars, and Kai defeat. Rendered checks used controlled inputs and spacing to inspect gait states, both sides' strikes, guard, knockback, the Agile Ninja's grounded collapse, victory, and lobby return. Godot focused checks passed 17/17 headless and 30/30 rendered, including 13 captured frames. World Map 76/76, movement 63/63, and combat foundation 78/78 passed.
+- Kai's Grind guard holds an existing anticipation pose. A sustained manual balance pass is still pending. Future opponents and trial rewards require separate authorization.
+
 ## Grind lobby animation and visual identity (2026-11-18)
 
 - Open **Grind** from the World Map to replay the entrance. The Gauntlet, Dojo, and Forge keep their approved silhouettes. The Forge remains sealed pending Sensei's instruction.
