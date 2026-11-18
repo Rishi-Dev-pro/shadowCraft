@@ -22,6 +22,8 @@ var _leaving: bool = false
 var _brain: OpponentAI = OpponentAI.new()
 var _buffered_strike: int
 var _buffer_time: float
+var _queued_jump: bool
+var _hit_pause: float
 var _clock: float
 var _weather_step: float
 var _spark: Vector2
@@ -69,6 +71,14 @@ func _intro() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if live:
+		if Input.is_action_just_pressed(&"grind_heavy") or Input.is_action_just_pressed(&"grind_light"):
+			_buffered_strike = 2 if Input.is_action_just_pressed(&"grind_heavy") else 1
+			_buffer_time = 0.15
+		_queued_jump = _queued_jump or Input.is_action_just_pressed(&"grind_jump")
+	if _hit_pause > 0.0:
+		_hit_pause -= delta
+		return
 	if not live:
 		kai.step(delta, agile)
 		agile.step(delta, kai)
@@ -76,15 +86,13 @@ func _physics_process(delta: float) -> void:
 
 	var strike: int = 0
 	_buffer_time = maxf(0.0, _buffer_time - delta)
-	if Input.is_action_just_pressed(&"grind_heavy") or Input.is_action_just_pressed(&"grind_light"):
-		_buffered_strike = 2 if Input.is_action_just_pressed(&"grind_heavy") else 1
-		_buffer_time = 0.15
 	var guard: bool = Input.is_action_pressed(&"grind_guard")
 	if _buffer_time > 0.0 and kai.can_strike() and not guard:
 		strike = _buffered_strike
 		_buffer_time = 0.0
 	kai.step(delta, agile, Input.get_axis(&"grind_left", &"grind_right"), Input.is_action_pressed(&"grind_run"),
-		guard, Input.is_action_just_pressed(&"grind_jump"), strike)
+		guard, _queued_jump, strike)
+	_queued_jump = false
 	_brain.update(delta, agile, kai)
 	agile.step(delta, kai, _brain.move, _brain.sprint, _brain.guard, false, _brain.strike)
 	kai.resolve_strike(agile)
@@ -111,6 +119,7 @@ func _sync_weather() -> void:
 
 
 func _on_hit(point: Vector2, guarded: bool, heavy: bool) -> void:
+	_hit_pause = maxf(_hit_pause, 0.025 if guarded else (0.065 if heavy else 0.040))
 	_spark = point
 	_spark_age = 0.0
 	_spark_guarded = guarded
@@ -137,6 +146,8 @@ func _finish(victory: bool) -> void:
 		return
 	complete = true
 	live = false
+	if victory:
+		_brain.update(0.0, agile, kai)
 	_hud.announce("K.O.", 0.48)
 	await get_tree().create_timer(1.24).timeout
 	if not _leaving:

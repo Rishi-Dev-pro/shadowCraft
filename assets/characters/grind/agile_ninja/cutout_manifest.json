@@ -1,6 +1,6 @@
 {
   "source": "ShadowCraft Ninja Trio Under Moonlight.png (user-provided, left figure only)",
-  "method": "Manually traced masks with overlapping joint cuffs, source colors and original fabric shading. Drawn weapon.",
+  "method": "Manually traced masks with overlapping joint cuffs, source colors and original fabric shading. Drawn weapon. The rig masks neighboring sleeve pixels from the cloak in-scene.",
   "baseline": [
     334,
     824
@@ -224,10 +224,10 @@
       "draw_order": 6
     },
     "scarf_tail_start": {
-      "bone": "Scarf",
+      "bone": "Headband",
       "pivot_source": [
-        351,
-        192
+        371,
+        146
       ],
       "crop_origin": [
         371,
@@ -238,8 +238,8 @@
     "scarf_tail_end": {
       "bone": "ScarfEnd",
       "pivot_source": [
-        429,
-        197
+        431,
+        148
       ],
       "crop_origin": [
         410,

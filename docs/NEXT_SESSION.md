@@ -1,5 +1,18 @@
 # NEXT SESSION — SHADOWCRAFT 2D
 
+## Grind combat refinement (2026-11-18)
+
+- The supplied recording and a Godot reproduction showed the old body capsules allowed a 58-world-pixel gap under forward pressure. The refined grounded sprint test stops at 113 world pixels. Attack steps can close to the physical spacing limit.
+- Architecture audit covered the Grind-only capsules, short committed steps, physics-timed active windows, separate decision and recovery states, and local impact pause. The fixed camera and courtyard scene stayed in place.
+- Quality audit covered approach, neutral spacing, retreat, guard, close pressure, wall knockback, contact on both moves, victory, and return navigation. Kai's motion still uses authored frame art. Godot passed 38 rendered checks including captures. The input-driven run defeated the normal opponent AI with both attack types. Campaign movement and combat passed 63 and 78 checks.
+
+## Grind animation repair (2026-11-18)
+
+- Review in **World Map → Grind → The Gauntlet → Start Battle** or open the Grind lobby scene directly. The supplied pose guide drove the repair. The referenced gameplay recording was unavailable, so the pre-repair Godot run served as the baseline.
+- Architecture audit covered the 2D rig, independent paint layers, a single pose writer, and duel-owned attack phase timing. The project reference checker returned zero errors and five pre-existing orphan UID warnings.
+- Quality audit covered alternating foot lift and stance in all three gaits, guard mitigation, timed damage, knockback, collapse, victory, and return navigation in Godot. The campaign movement and combat suites passed 63 and 78 checks respectively.
+- Kai still uses the painted frame set. His gait is adjusted at the support foot, so it retains the frame changes of the source drawings. No new campaign art or character rig was introduced.
+
 ## Grind Milestone 02 — First Gauntlet bout (2026-11-18)
 
 - Open **World Map → Grind → The Gauntlet → Start Battle**. Moonveil Courtyard hosts one opponent and a local victory or defeat result. The full trial reward remains pending and the prototype leaves the inventory alone.

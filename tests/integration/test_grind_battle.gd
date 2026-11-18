@@ -11,6 +11,7 @@ var _kai: GrindDuelist
 var _ninja: GrindDuelist
 var _capture_dir: String = OS.get_environment("SHADOWCRAFT_GRIND_CAPTURE")
 var _confirmations: int
+var _guarded_hits: int
 
 
 func _initialize() -> void:
@@ -43,6 +44,7 @@ func _run() -> void:
 	_kai = _battle.kai
 	_ninja = _battle.agile
 	_kai.strike_landed.connect(_count_hit)
+	_ninja.strike_landed.connect(_count_guard)
 	_check(_battle.get_node("AgileNinja/Visual/Skeleton2D") is Skeleton2D, "Agile Ninja is rigged with Skeleton2D")
 	var clips: AnimationPlayer = _ninja.get_node("Visual/AnimationPlayer") as AnimationPlayer
 	_check(clips.get_animation_list().size() == 11, "Ten skeletal animations plus an aerial pose are available")
@@ -51,15 +53,28 @@ func _run() -> void:
 	await _capture("01_courtyard")
 	var initial_gap: float = _ninja.position.x - _kai.position.x
 	Input.action_press(&"grind_guard")
-	await create_timer(1.82).timeout
-	_check(_battle.live and _ninja.position.x - _kai.position.x < initial_gap, "Enemy closes the gap and starts combat")
-	_check(_kai.guarding and _kai.health.current_health < 100.0 and _kai.health.current_health > 90.0,
+	var approach_gap: float = INF
+	for tick: int in range(210):
+		await physics_frame
+		if _battle.live:
+			approach_gap = minf(approach_gap, _kai.gap_to(_ninja))
+		if _guarded_hits > 0:
+			break
+	_check(_battle.live and approach_gap < initial_gap and approach_gap >= _kai.minimum_spacing(_ninja),
+		"Enemy closes the gap and respects grounded separation")
+	var expected_damage: float = _ninja.data.light.damage * GrindDuelist.GUARD_DAMAGE
+	_check(_guarded_hits == 1 and is_equal_approx(_kai.health.current_health, 100.0 - expected_damage),
 		"Holding Space mitigates an AI attack and updates Kai's health")
+	var frozen_positions: Vector2 = Vector2(_kai.position.x, _ninja.position.x)
+	await physics_frame
+	_check(frozen_positions.is_equal_approx(Vector2(_kai.position.x, _ninja.position.x)),
+		"Hit-stop holds both fighters without advancing their roots")
 	await _capture("02_guard")
 	Input.action_release(&"grind_guard")
 	_battle.live = false
 	_battle.set_physics_process(false)
 
+	await _verify_close_contact()
 	await _position_fighters(390.0, 839.0)
 	await _step(18, 0, 0, -1.0, true)
 	_check(_ninja.position.x < 800.0, "Run advances the skeletal fighter")
@@ -70,6 +85,9 @@ func _run() -> void:
 	await _capture("05_backward")
 	await _step(19, 0, 0, 0.0, false, true)
 	await _capture("06_ninja_guard")
+	await _verify_foot_plant(-1.0, false, "forward walk")
+	await _verify_foot_plant(1.0, false, "backward walk")
+	await _verify_foot_plant(-1.0, true, "run")
 
 	await _position_fighters(390.0, 839.0)
 	await physics_frame
@@ -97,10 +115,11 @@ func _run() -> void:
 	await _position_fighters(575.0, 707.0)
 	var kai_before: float = _kai.health.current_health
 	await _step(22, 0, 2)
+	_check(is_equal_approx(_kai.health.current_health, kai_before), "Heavy preparation cannot deal damage")
 	await _capture("08_heavy_anticipation")
-	await _step(7)
+	await _step(10)
 	await _capture("09_heavy_contact")
-	await _step(35)
+	await _step(32)
 	_check(is_equal_approx(_kai.health.current_health, kai_before - 23.0), "The enemy heavy strike hits once at close range")
 	_check(_kai.position.x < 561.0, "A heavy strike displaces the target")
 
@@ -145,6 +164,67 @@ func _step(frames: int, player_attack: int = 0, enemy_attack: int = 0,
 		_ninja.resolve_strike(_kai)
 
 
+func _verify_close_contact() -> void:
+	await _position_fighters(540.0, 716.0)
+	var smallest: float = INF
+	for tick: int in range(36):
+		await physics_frame
+		_kai.step(1.0 / 60.0, _ninja, 1.0, true)
+		_ninja.step(1.0 / 60.0, _kai, -1.0, true)
+		smallest = minf(smallest, _kai.gap_to(_ninja))
+	_check(smallest >= _kai.minimum_spacing(_ninja) and _kai.position.x < _ninja.position.x,
+		"Opposing sprints respect the body gap (%.1f px)" % smallest)
+	var pressed_gap: float = _kai.gap_to(_ninja)
+	for tick: int in range(20):
+		await physics_frame
+		_kai.step(1.0 / 60.0, _ninja, -1.0)
+		_ninja.step(1.0 / 60.0, _kai)
+	_check(_kai.gap_to(_ninja) > pressed_gap + 30.0 and _kai.facing > 0.0,
+		"Kai can backstep out of compression while facing the opponent")
+
+	await _position_fighters(141.0, 285.0)
+	_kai._push = -_ninja.data.heavy.push
+	var corner_gap: float = INF
+	for tick: int in range(23):
+		await physics_frame
+		_kai.step(1.0 / 60.0, _ninja, -1.0)
+		_ninja.step(1.0 / 60.0, _kai, -1.0, true)
+		corner_gap = minf(corner_gap, _kai.gap_to(_ninja))
+	_check(_kai.position.x >= 138.9 and corner_gap >= _kai.minimum_spacing(_ninja),
+		"Corner knockback stays inside the camera bounds and leaves the fighters separated")
+
+
+
+func _verify_foot_plant(movement: float, sprint: bool, gait: String) -> void:
+	await _position_fighters(300.0, 790.0)
+	var skeleton: Skeleton2D = _ninja.get_node("Visual/Skeleton2D") as Skeleton2D
+	var feet: Array[Bone2D] = [
+		skeleton.find_child("NearFoot") as Bone2D, skeleton.find_child("RearFoot") as Bone2D
+	]
+	var positions: Array[Vector2] = [feet[0].global_position, feet[1].global_position]
+	var planted: int = 0
+	var lifted: int = 0
+	var hovering: bool = false
+	for index: int in range(36):
+		await _step(1, 0, 0, movement, sprint)
+		var grounded: int = 0
+		for foot: int in feet.size():
+			var at: Vector2 = feet[foot].global_position
+			var sprite: Sprite2D = feet[foot].get_child(0) as Sprite2D
+			var bottom: float = sprite.to_global(Vector2(0, sprite.get_rect().end.y - 2.0)).y
+			if absf(bottom - _ninja.global_position.y) < 2.4:
+				grounded += 1
+				if at.distance_to(positions[foot]) < 0.8:
+					planted += 1
+			elif bottom < _ninja.global_position.y - 4.0:
+				lifted += 1
+			positions[foot] = at
+		if index > 5 and grounded == 0:
+			hovering = true
+	_check(planted >= 22 and lifted >= 12 and not hovering,
+		"Agile %s alternates lift and grounded contact (%d planted, %d lifted)" % [gait, planted, lifted])
+
+
 func _capture(name: String) -> void:
 	if _capture_dir.is_empty() or DisplayServer.get_name() == "headless":
 		return
@@ -156,6 +236,11 @@ func _capture(name: String) -> void:
 
 func _count_hit(_point: Vector2, _guarded: bool, _heavy: bool) -> void:
 	_confirmations += 1
+
+
+func _count_guard(_point: Vector2, guarded: bool, _heavy: bool) -> void:
+	if guarded:
+		_guarded_hits += 1
 
 
 func _check(condition: bool, label: String) -> void:

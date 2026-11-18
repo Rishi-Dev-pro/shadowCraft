@@ -7,7 +7,7 @@
 [ext_resource type="SpriteFrames" path="res://resources/grind/kai_trial_frames.tres" id="5"]
 
 [sub_resource type="CapsuleShape2D" id="Body"]
-radius = 29.0
+radius = 55.0
 height = 248.0
 
 [sub_resource type="CapsuleShape2D" id="Hurt"]
@@ -42,7 +42,6 @@ scale = Vector2(0.55, 0.55)
 script = ExtResource("4")
 
 [node name="Fighter" type="AnimatedSprite2D" parent="Visual"]
-position = Vector2(0, -256)
+position = Vector2(0, -247)
 sprite_frames = ExtResource("5")
 animation = &"idle_signature"
-autoplay = "idle_signature"

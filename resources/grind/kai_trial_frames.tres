@@ -54,6 +54,11 @@
 [ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_07.png" id="89_oj26q"]
 [ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/walk_forward/walk_forward_08.png" id="90_nno2k"]
 
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_01.png" id="trial_guard_1"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_02.png" id="trial_guard_2"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_03.png" id="trial_guard_3"]
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/animations/crouch/crouch_04.png" id="trial_guard_4"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_46sh5"]
 atlas = ExtResource("66_ebtdv")
 region = Rect2(0, 0, 512, 512)
@@ -80,6 +85,23 @@ region = Rect2(1024, 512, 512, 512)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("trial_guard_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("trial_guard_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("trial_guard_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("trial_guard_4")
+}],
+"loop": 1,
+"name": &"trial_guard",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("19_kbd4w")

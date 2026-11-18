@@ -6,21 +6,23 @@
 [sub_resource type="Resource" id="Light"]
 script = ExtResource("2")
 damage = 13.0
-contact_start = 0.19
-contact_end = 0.29
-center = Vector2(68, -151)
-extent = Vector2(106, 77)
+contact_start = 0.205
+contact_end = 0.275
+reach = 133.0
+contact_radius = 7.0
+step_distance = 10.0
 
 [sub_resource type="Resource" id="Heavy"]
 script = ExtResource("2")
 animation = &"heavy"
 damage = 23.0
-contact_start = 0.43
-contact_end = 0.55
+contact_start = 0.495
+contact_end = 0.565
 duration = 0.91
 cooldown = 0.22
-center = Vector2(83, -145)
-extent = Vector2(135, 106)
+reach = 142.0
+contact_radius = 9.0
+step_distance = 16.0
 push = 222.0
 stun = 0.42
 heavy = true

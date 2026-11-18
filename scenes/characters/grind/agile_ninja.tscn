@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/characters/grind/agile_rig.tscn" id="4"]
 
 [sub_resource type="CapsuleShape2D" id="Body"]
-radius = 29.0
+radius = 49.0
 height = 224.0
 
 [sub_resource type="CapsuleShape2D" id="Hurt"]

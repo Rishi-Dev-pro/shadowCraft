@@ -9,8 +9,9 @@ damage = 17.0
 contact_start = 0.14
 contact_end = 0.24
 duration = 0.50
-center = Vector2(62, -157)
-extent = Vector2(81, 71)
+reach = 82.0
+step_distance = 24.0
+contact_radius = 9.0
 push = 126.0
 
 [sub_resource type="Resource" id="Heavy"]
@@ -21,8 +22,9 @@ contact_start = 0.33
 contact_end = 0.45
 duration = 0.78
 cooldown = 0.20
-center = Vector2(74, -151)
-extent = Vector2(101, 99)
+reach = 105.0
+step_distance = 19.0
+contact_radius = 10.0
 push = 218.0
 stun = 0.42
 heavy = true

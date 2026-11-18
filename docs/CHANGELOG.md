@@ -1,6 +1,18 @@
 # CHANGELOG
 
 All notable changes to **ShadowCraft 2D** are documented in this file.
+### Grind combat refinement (2026-11-18)
+
+- Widened the duel-only body capsules to fit the fighters' painted silhouettes and added a braking margin before contact. Kai can still backstep or jump, and short attack steps stop at the body gap.
+- The Agile Ninja now approaches with measured steps, positions, attacks, recovers, and makes bounded retreats before re-entering range.
+- Active contact follows the Ninja's blade or Kai's painted striking hand. Impacts pause the duel briefly, and guard retains the existing damage reduction and recovers sooner from blockstun so there is time to counter.
+
+### Grind animation repair (2026-11-18)
+
+- The Agile Ninja now drives joint poses and two-bone foot placement from one physics-timed animation pass. Gait advances from actual travel and the hips lower when a planted step would exceed the leg's reach.
+- Reworked guard, quick slash, spinning slash, recoil, knockback, and defeat from the supplied pose guide. Re-anchored the painted headband tails and masked sleeve pixels from the cloak. The strike resources still determine the hit windows and damage.
+- Grind Kai uses his existing painted frames with grounded support offsets, distance-driven gait, separate reaction timing, and an existing low-stance clip for guard.
+
 
 ### Grind Milestone 02 — First Gauntlet bout (2026-11-18)
 
