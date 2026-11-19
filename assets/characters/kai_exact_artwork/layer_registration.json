@@ -1,0 +1,360 @@
+{
+  "master": "assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+  "canvas_px": [
+    512,
+    512
+  ],
+  "ground_y_px": 503,
+  "facing": "right",
+  "coordinate_space": "Original master canvas, top-left origin",
+  "provenance": "The assembly exactly preserves visible RGBA from the painted idle master. Narrow joint underlaps extend adjacent pixels from the same anatomical layer. Front-layer coverage is adjusted at those joins to preserve the composite.",
+  "approved_for_rigging": false,
+  "layers_in_assembly_order": [
+    {
+      "file": "layers/headband_tails.png",
+      "parent": "head_and_mask",
+      "origin_px": [
+        167,
+        77
+      ],
+      "pivot_px": [
+        226,
+        83
+      ],
+      "local_pivot_px": [
+        59,
+        6
+      ],
+      "visible_pixels": 1776,
+      "hidden_underlap_pixels": 65
+    },
+    {
+      "file": "layers/far_upper_arm.png",
+      "parent": "torso",
+      "origin_px": [
+        269,
+        140
+      ],
+      "pivot_px": [
+        279,
+        152
+      ],
+      "local_pivot_px": [
+        10,
+        12
+      ],
+      "visible_pixels": 1778,
+      "hidden_underlap_pixels": 696
+    },
+    {
+      "file": "layers/far_thigh.png",
+      "parent": "pelvis_and_front_flap",
+      "origin_px": [
+        238,
+        248
+      ],
+      "pivot_px": [
+        265,
+        268
+      ],
+      "local_pivot_px": [
+        27,
+        20
+      ],
+      "visible_pixels": 8423,
+      "hidden_underlap_pixels": 796
+    },
+    {
+      "file": "layers/near_thigh.png",
+      "parent": "pelvis_and_front_flap",
+      "origin_px": [
+        58,
+        258
+      ],
+      "pivot_px": [
+        225,
+        268
+      ],
+      "local_pivot_px": [
+        167,
+        10
+      ],
+      "visible_pixels": 6022,
+      "hidden_underlap_pixels": 1043
+    },
+    {
+      "file": "layers/far_shin.png",
+      "parent": "far_thigh",
+      "origin_px": [
+        292,
+        374
+      ],
+      "pivot_px": [
+        325,
+        376
+      ],
+      "local_pivot_px": [
+        33,
+        2
+      ],
+      "visible_pixels": 3908,
+      "hidden_underlap_pixels": 180
+    },
+    {
+      "file": "layers/near_shin.png",
+      "parent": "near_thigh",
+      "origin_px": [
+        115,
+        366
+      ],
+      "pivot_px": [
+        168,
+        377
+      ],
+      "local_pivot_px": [
+        53,
+        11
+      ],
+      "visible_pixels": 4170,
+      "hidden_underlap_pixels": 122
+    },
+    {
+      "file": "layers/far_boot.png",
+      "parent": "far_shin",
+      "origin_px": [
+        289,
+        462
+      ],
+      "pivot_px": [
+        323,
+        466
+      ],
+      "local_pivot_px": [
+        34,
+        4
+      ],
+      "visible_pixels": 2653,
+      "hidden_underlap_pixels": 0
+    },
+    {
+      "file": "layers/near_boot.png",
+      "parent": "near_shin",
+      "origin_px": [
+        99,
+        462
+      ],
+      "pivot_px": [
+        132,
+        464
+      ],
+      "local_pivot_px": [
+        33,
+        2
+      ],
+      "visible_pixels": 1823,
+      "hidden_underlap_pixels": 0
+    },
+    {
+      "file": "layers/neck.png",
+      "parent": "torso",
+      "origin_px": [
+        214,
+        99
+      ],
+      "pivot_px": [
+        255,
+        124
+      ],
+      "local_pivot_px": [
+        41,
+        25
+      ],
+      "visible_pixels": 854,
+      "hidden_underlap_pixels": 687
+    },
+    {
+      "file": "layers/torso.png",
+      "parent": "pelvis_and_front_flap",
+      "origin_px": [
+        46,
+        74
+      ],
+      "pivot_px": [
+        246,
+        219
+      ],
+      "local_pivot_px": [
+        200,
+        145
+      ],
+      "visible_pixels": 6301,
+      "hidden_underlap_pixels": 1395
+    },
+    {
+      "file": "layers/pelvis_and_front_flap.png",
+      "parent": null,
+      "origin_px": [
+        201,
+        249
+      ],
+      "pivot_px": [
+        241,
+        259
+      ],
+      "local_pivot_px": [
+        40,
+        10
+      ],
+      "visible_pixels": 4908,
+      "hidden_underlap_pixels": 370
+    },
+    {
+      "file": "layers/belt.png",
+      "parent": "pelvis_and_front_flap",
+      "origin_px": [
+        188,
+        226
+      ],
+      "pivot_px": [
+        238,
+        243
+      ],
+      "local_pivot_px": [
+        50,
+        17
+      ],
+      "visible_pixels": 2175,
+      "hidden_underlap_pixels": 160
+    },
+    {
+      "file": "layers/waist_sash.png",
+      "parent": "belt",
+      "origin_px": [
+        73,
+        244
+      ],
+      "pivot_px": [
+        221,
+        245
+      ],
+      "local_pivot_px": [
+        148,
+        1
+      ],
+      "visible_pixels": 5598,
+      "hidden_underlap_pixels": 0
+    },
+    {
+      "file": "layers/head_and_mask.png",
+      "parent": "neck",
+      "origin_px": [
+        216,
+        52
+      ],
+      "pivot_px": [
+        251,
+        112
+      ],
+      "local_pivot_px": [
+        35,
+        60
+      ],
+      "visible_pixels": 3719,
+      "hidden_underlap_pixels": 0
+    },
+    {
+      "file": "layers/near_upper_arm.png",
+      "parent": "torso",
+      "origin_px": [
+        147,
+        130
+      ],
+      "pivot_px": [
+        193,
+        149
+      ],
+      "local_pivot_px": [
+        46,
+        19
+      ],
+      "visible_pixels": 2977,
+      "hidden_underlap_pixels": 244
+    },
+    {
+      "file": "layers/far_forearm.png",
+      "parent": "far_upper_arm",
+      "origin_px": [
+        290,
+        144
+      ],
+      "pivot_px": [
+        325,
+        200
+      ],
+      "local_pivot_px": [
+        35,
+        56
+      ],
+      "visible_pixels": 2743,
+      "hidden_underlap_pixels": 143
+    },
+    {
+      "file": "layers/near_forearm.png",
+      "parent": "near_upper_arm",
+      "origin_px": [
+        145,
+        191
+      ],
+      "pivot_px": [
+        163,
+        208
+      ],
+      "local_pivot_px": [
+        18,
+        17
+      ],
+      "visible_pixels": 2471,
+      "hidden_underlap_pixels": 120
+    },
+    {
+      "file": "layers/far_hand.png",
+      "parent": "far_forearm",
+      "origin_px": [
+        280,
+        112
+      ],
+      "pivot_px": [
+        313,
+        153
+      ],
+      "local_pivot_px": [
+        33,
+        41
+      ],
+      "visible_pixels": 1325,
+      "hidden_underlap_pixels": 0
+    },
+    {
+      "file": "layers/near_hand.png",
+      "parent": "near_forearm",
+      "origin_px": [
+        206,
+        174
+      ],
+      "pivot_px": [
+        216,
+        201
+      ],
+      "local_pivot_px": [
+        10,
+        27
+      ],
+      "visible_pixels": 1490,
+      "hidden_underlap_pixels": 0
+    }
+  ],
+  "verification": {
+    "visible_rgba_pixel_differences": 0,
+    "alpha_pixel_differences": 0
+  }
+}
