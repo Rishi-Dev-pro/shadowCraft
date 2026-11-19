@@ -1,0 +1,176 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://experimental/kai_hybrid/kai_hybrid_lab.gd" id="lab"]
+[ext_resource type="Script" path="res://experimental/kai_hybrid/hybrid_controller.gd" id="controller"]
+[ext_resource type="PackedScene" path="res://experimental/kai_hybrid/hybrid_body.tscn" id="body"]
+[ext_resource type="Script" path="res://experimental/kai_hybrid/correction_renderer.gd" id="correction"]
+
+[sub_resource type="ViewportTexture" id="reference_surface"]
+viewport_path = NodePath("OriginalView/Stage")
+
+[sub_resource type="ViewportTexture" id="hybrid_surface"]
+viewport_path = NodePath("HybridView/Stage")
+
+[sub_resource type="CanvasItemMaterial" id="composite"]
+blend_mode = 4
+
+[sub_resource type="RectangleShape2D" id="dash_hull"]
+size = Vector2(62, 176)
+
+[node name="KaiHybridLab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_filter = 1
+script = ExtResource("lab")
+
+[node name="OriginalView" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Stage" type="SubViewport" parent="OriginalView"]
+transparent_bg = true
+size = Vector2i(512, 512)
+render_target_update_mode = 4
+
+[node name="OriginalSprite" type="Sprite2D" parent="OriginalView/Stage"]
+unique_name_in_owner = true
+texture_filter = 1
+centered = false
+
+[node name="Preview" type="Sprite2D" parent="OriginalView"]
+texture_filter = 2
+material = SubResource("composite")
+texture = SubResource("reference_surface")
+centered = false
+
+[node name="HybridView" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Stage" type="SubViewport" parent="HybridView"]
+transparent_bg = true
+size = Vector2i(512, 512)
+render_target_update_mode = 4
+
+[node name="HybridBody" parent="HybridView/Stage" instance=ExtResource("body")]
+unique_name_in_owner = true
+
+[node name="Correction" type="Sprite2D" parent="HybridView/Stage"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("correction")
+
+[node name="DashCollider" type="CharacterBody2D" parent="HybridView/Stage"]
+unique_name_in_owner = true
+position = Vector2(256, 503)
+collision_layer = 0
+collision_mask = 1
+
+[node name="AttackCorrection" type="Sprite2D" parent="HybridView/Stage"]
+unique_name_in_owner = true
+visible = false
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HybridView/Stage/DashCollider"]
+position = Vector2(0, -88)
+shape = SubResource("dash_hull")
+
+[node name="Preview" type="Sprite2D" parent="HybridView"]
+texture_filter = 2
+material = SubResource("composite")
+texture = SubResource("hybrid_surface")
+centered = false
+
+[node name="Controller" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("controller")
+
+[node name="Controls" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = -24.0
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Kai · Hybrid pose lab"
+horizontal_alignment = 1
+
+[node name="PoseButtons" type="HBoxContainer" parent="Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 9
+
+[node name="Playback" type="HBoxContainer" parent="Controls"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play Transition"
+
+[node name="Pause" type="Button" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Pause"
+
+[node name="Restart" type="Button" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart"
+
+[node name="Reset" type="Button" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset"
+
+[node name="Speed" type="HSlider" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(90, 0)
+min_value = 0.25
+max_value = 1.5
+step = 0.25
+value = 1.0
+tooltip_text = "Playback speed"
+
+[node name="SpeedLabel" type="Label" parent="Controls/Playback"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(55, 0)
+text = "1.00×"
+
+[node name="Selected" type="Label" parent="Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83, 0.76, 0.90, 1)
+horizontal_alignment = 1
+
+[node name="DashDistance" type="Label" parent="Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="OriginalLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.08
+anchor_right = 0.46
+offset_top = 168.0
+text = "ORIGINAL PAINTED REFERENCE"
+horizontal_alignment = 1
+
+[node name="HybridLabel" type="Label" parent="."]
+layout_mode = 1
+anchor_left = 0.54
+anchor_right = 0.92
+offset_top = 168.0
+text = "HYBRID PROTOTYPE"
+horizontal_alignment = 1

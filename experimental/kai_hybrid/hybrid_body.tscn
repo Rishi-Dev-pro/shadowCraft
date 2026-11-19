@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://experimental/kai_hybrid/hybrid_body.gd" id="body"]
+[ext_resource type="PackedScene" path="res://experimental/kai_rig_test/kai_rig.tscn" id="rig"]
+
+[node name="HybridBody" type="Node2D"]
+script = ExtResource("body")
+
+[node name="KaiRig" parent="." instance=ExtResource("rig")]
