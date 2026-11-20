@@ -82,6 +82,8 @@ var _attack_art: AttackArt = AttackArt.new()
 var _attack_time: float = 0.0
 var _attack_queue: int = -1
 var _attack_guard_exit: bool = false
+var _attack_late_guard: bool = false
+var _movement_attack: int = -1
 var impact_active: bool = false
 var impact: ImpactMotion = ImpactMotion.new()
 var _impact_last_phase: int = -1
@@ -104,6 +106,7 @@ func select_pose(pose: Pose) -> void:
 	impact_active = false
 	attack_active = false
 	_attack_queue = -1
+	_movement_attack = -1
 	_attack_sprite.hide()
 	dash_active = false
 	var was_jumping: bool = jump_active
@@ -125,7 +128,7 @@ func select_pose(pose: Pose) -> void:
 
 
 func play_transition() -> void:
-	if jump_active or dash_active or attack_active or impact_active:
+	if jump_active or dash_active or attack_active or impact_active or _movement_attack >= 0:
 		_paused = false
 		set_process(true)
 		return
@@ -226,11 +229,14 @@ func advance_preview(delta: float) -> void:
 
 
 func request_idle() -> void:
+	if _movement_attack >= 0:
+		return
 	if impact_active:
 		if impact.phase() != ImpactMotion.Phase.RECOVERY:
 			impact.returns_to_guard = false
 		return
 	if attack_active:
+		_attack_late_guard = false
 		if attack_phase != AttackMotion.Phase.RECOVERY:
 			_attack_guard_exit = false
 		return
@@ -279,13 +285,18 @@ func restart_preview() -> void:
 
 
 func request_pose(pose: Pose) -> void:
+	if _movement_attack >= 0:
+		return
 	if impact_active:
 		if pose == Pose.GUARD and impact.phase() != ImpactMotion.Phase.RECOVERY:
 			impact.returns_to_guard = true
 		return
 	if attack_active:
-		if pose == Pose.GUARD and attack_phase != AttackMotion.Phase.RECOVERY:
-			_attack_guard_exit = true
+		if pose == Pose.GUARD and _attack_queue < 0:
+			if attack_phase == AttackMotion.Phase.RECOVERY:
+				_attack_late_guard = true
+			else:
+				_attack_guard_exit = true
 		return
 	if dash_active:
 		if pose == Pose.GUARD:
@@ -331,7 +342,7 @@ func _advance_idle(delta: float) -> void:
 
 
 func request_walk(direction: int, guard: bool = false) -> void:
-	if attack_active or impact_active:
+	if attack_active or impact_active or _movement_attack >= 0:
 		return
 	if dash_active:
 		_dash_walk_direction = clampi(direction, -1, 1)
@@ -367,7 +378,9 @@ func advance_walk(delta: float) -> void:
 	_guard_blend = move_toward(_guard_blend, target, delta / 0.24)
 	var settling: bool = walk_cycle.direction == 0 and walk_cycle.requested_direction == 0
 	if settling and _guard_blend == target:
-		if _jump_after_walk:
+		if _movement_attack >= 0:
+			_finish_movement_into_attack()
+		elif _jump_after_walk:
 			_show_neutral()
 			_start_jump()
 		elif _return_to_idle and not _guard_requested:
@@ -384,7 +397,7 @@ func advance_walk(delta: float) -> void:
 
 
 func request_jump() -> void:
-	if dash_active or attack_active or impact_active:
+	if dash_active or attack_active or impact_active or _movement_attack >= 0:
 		return
 	if jump_active:
 		_jump_exit = JumpExit.REPEAT
@@ -399,7 +412,7 @@ func request_jump() -> void:
 
 
 func request_dash(kind: DashMotion.Kind) -> bool:
-	if dash_active or jump_active or attack_active or impact_active or not _body.visible:
+	if dash_active or jump_active or attack_active or impact_active or _movement_attack >= 0 or not _body.visible:
 		return false
 	if not idle_active and not walk_active and not _at_neutral and _pose != Pose.GUARD:
 		return false
@@ -440,20 +453,33 @@ func reset_dash_origin() -> void:
 
 
 func request_attack(kind: AttackMotion.Kind) -> bool:
-	if impact_active or hit_stop.remaining > 0.0:
+	if impact_active or hit_stop.remaining > 0.0 or _movement_attack >= 0:
 		return false
 	if attack_active:
-		if _attack_queue < 0 and not _attack_guard_exit and AttackMotion.allows_buffer(attack_kind, _attack_time, kind):
+		if _attack_queue < 0 and not _attack_guard_exit and not _attack_late_guard and AttackMotion.allows_buffer(attack_kind, _attack_time, kind):
 			_attack_queue = kind
 			_emit_attack_status()
 			return true
 		return false
-	if jump_active or dash_active or walk_active or not _body.visible:
+	if jump_active or not _body.visible:
 		return false
+	if walk_active or dash_active:
+		if walk_active:
+			request_walk(0)
+		_movement_attack = kind
+		play_transition()
+		attack_status_changed.emit("Queued " + AttackMotion.NAMES[kind] + " · Grounded handoff")
+		return true
 	if not idle_active and not _at_neutral and _pose != Pose.GUARD:
 		return false
 	_begin_attack(kind)
 	return true
+
+
+func _finish_movement_into_attack() -> void:
+	var kind: AttackMotion.Kind = _movement_attack as AttackMotion.Kind
+	select_pose(Pose.NEUTRAL)
+	_begin_attack(kind)
 
 
 func request_impact(kind: ImpactMotion.Kind, side: ImpactMotion.SourceSide) -> bool:
@@ -526,6 +552,7 @@ func _begin_attack(kind: AttackMotion.Kind) -> void:
 	attack_phase = AttackMotion.Phase.PREPARATION
 	_attack_queue = -1
 	_attack_guard_exit = false
+	_attack_late_guard = false
 	_attack_time = 0.0
 	idle_active = false
 	_return_to_idle = false
@@ -552,6 +579,10 @@ func _advance_attack(delta: float) -> void:
 	elif _attack_guard_exit:
 		select_pose(Pose.GUARD)
 		attack_status_changed.emit("Guard")
+	elif _attack_late_guard:
+		select_pose(Pose.NEUTRAL)
+		request_walk(0, true)
+		attack_status_changed.emit("Returning to Guard")
 	else:
 		_start_idle()
 
@@ -589,6 +620,9 @@ func _advance_dash(delta: float) -> void:
 	_body.apply_dash(dash)
 	dash_travel_changed.emit()
 	if dash.time < dash.total():
+		return
+	if _movement_attack >= 0:
+		_finish_movement_into_attack()
 		return
 	var next: JumpExit = _dash_exit
 	select_pose(Pose.NEUTRAL)
