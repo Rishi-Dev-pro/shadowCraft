@@ -7,7 +7,11 @@ const IdleMotion = preload("res://experimental/kai_hybrid/idle_motion.gd")
 const JumpMotion = preload("res://experimental/kai_hybrid/jump_motion.gd")
 const DashMotion = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const AttackMotion = preload("res://experimental/kai_hybrid/attack_motion.gd")
+const ImpactMotion = preload("res://experimental/kai_hybrid/impact_motion.gd")
 const JUMP_ENTRY_BONES: Array[StringName] = [&"Spine", &"Chest", &"Neck", &"Head", &"RightShoulder", &"LeftShoulder", &"RightUpperArm", &"LeftUpperArm", &"RightForearm", &"LeftForearm", &"WaistSash", &"HeadbandTails"]
+const IMPACT_REACH: Array[float] = [4.5, 15.0, 12.0, 3.5]
+const IMPACT_DROP: Array[float] = [3.5, 15.0, 9.5, 7.0]
+const IMPACT_LEAN: Array[float] = [6.4, 12.0, 16.0, 4.0]
 
 @onready var rig: KaiRig = $KaiRig
 @onready var _near_foot: Bone2D = rig.find_child("RightFoot") as Bone2D
@@ -31,6 +35,57 @@ func capture_attack_entry() -> void:
 	for index: int in skeleton.get_bone_count():
 		var bone: Bone2D = skeleton.get_bone(index)
 		_attack_entry[bone] = bone.transform
+
+
+func apply_impact(impact: ImpactMotion) -> void:
+	var force: float = impact.force()
+	var direction: float = impact.direction()
+	var catch_weight: float = impact.catch_balance()
+	var start_blend: float = smoothstep(0.0, ImpactMotion.CONTACT[impact.kind], impact.time)
+	var exit_blend: float = 1.0 - impact.settle()
+	var blocked: bool = impact.kind == ImpactMotion.Kind.GUARD
+	var guard: float = lerpf(float(impact.starts_guarded), float(impact.returns_to_guard), exit_blend)
+	guard = lerpf(guard, 1.0, catch_weight * 0.62)
+	apply_pose(1, guard)
+	var rear_target: Vector2 = _near_foot.global_position + impact.foot(true)
+	var front_target: Vector2 = _far_foot.global_position + impact.foot(false)
+	var hip_tilt: float = direction * (3.2 * force - 1.4 * catch_weight)
+	var hip_x: float = direction * (IMPACT_REACH[impact.kind] * force - 6.5 * catch_weight)
+	rig.set_pelvis(0.0, hip_tilt)
+	_pelvis.position.x += hip_x
+	_pelvis.position.y += IMPACT_DROP[impact.kind] * force + 5.0 * catch_weight
+	var lean: float = direction * (IMPACT_LEAN[impact.kind] * force - 4.0 * catch_weight)
+	rig.set_angle(&"Spine", 1.8 * guard + lean)
+	rig.set_angle(&"Chest", direction * 2.0 * force)
+	rig.set_angle(&"Head", 5.0 * guard - lean * 0.64 + direction * 4.5 * impact.force(0.027))
+	rig.set_angle(&"RightShoulder", direction * 2.7 * force)
+	rig.set_angle(&"LeftShoulder", -direction * 1.9 * force)
+	if blocked:
+		# Keep both gloves ahead of the face. The elbows and knees take the load.
+		rig.set_angle(&"RightUpperArm", -19.0 * guard - 3.0 * force)
+		rig.set_angle(&"LeftUpperArm", 5.0 * guard + 2.4 * force)
+		rig.set_angle(&"RightForearm", -15.0 * guard - 4.1 * force)
+		rig.set_angle(&"LeftForearm", -12.0 * guard - 3.2 * force)
+	else:
+		var release: float = (4.5 if impact.kind == ImpactMotion.Kind.STANDARD else 12.0) * force
+		rig.set_angle(&"RightUpperArm", -19.0 * guard + direction * release)
+		rig.set_angle(&"LeftUpperArm", 5.0 * guard + direction * release * 0.62)
+		rig.set_angle(&"RightForearm", -15.0 * guard + 0.72 * release)
+		rig.set_angle(&"LeftForearm", -12.0 * guard + 0.48 * release)
+	var cloth_lag: float = impact.force(0.061) - force * 0.55
+	rig.set_angle(&"WaistSash", -direction * 7.0 * cloth_lag)
+	rig.set_angle(&"HeadbandTails", -direction * 5.0 * (impact.force(0.043) - force * 0.50))
+	if start_blend < 1.0:
+		for bone: Bone2D in _attack_entry:
+			bone.transform = _attack_entry[bone].interpolate_with(bone.transform, start_blend)
+	if impact.time > 0.0 and impact.time < ImpactMotion.TOTAL[impact.kind]:
+		# Solve against the blended hips, especially on the first knockback
+		# frames when the world root has already started to move.
+		var rear_drop: float = _required_drop(_rear_thigh.global_position, rear_target, _rear_reach)
+		var front_drop: float = _required_drop(_front_thigh.global_position, front_target, _front_reach)
+		_pelvis.position.y += maxf(0.0, maxf(rear_drop, front_drop))
+		rig._plant_leg(&"RightThigh", &"RightShin", &"RightFoot", rear_target)
+		rig._plant_leg(&"LeftThigh", &"LeftShin", &"LeftFoot", front_target)
 
 
 func apply_attack_anchor(kind: AttackMotion.Kind, blend: float, from_entry: bool, guard: bool = false) -> void:

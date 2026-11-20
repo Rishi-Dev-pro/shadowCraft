@@ -3,6 +3,7 @@ extends Control
 const Preview = preload("res://experimental/kai_hybrid/hybrid_controller.gd")
 const DashMotion = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const AttackMotion = preload("res://experimental/kai_hybrid/attack_motion.gd")
+const ImpactMotion = preload("res://experimental/kai_hybrid/impact_motion.gd")
 const GAME_SCALE: float = 0.7
 const JUMP_HEADROOM: int = 160
 
@@ -46,6 +47,15 @@ func _ready() -> void:
 		button.text = AttackMotion.NAMES[index]
 		button.pressed.connect(_attack.bind(index))
 		%Play.get_parent().add_child(button)
+	var side: OptionButton = %ImpactSide
+	side.add_item("From Front", ImpactMotion.SourceSide.FRONT)
+	side.add_item("From Back", ImpactMotion.SourceSide.BACK)
+	side.select(0)
+	for index: int in ImpactMotion.NAMES.size():
+		var button: Button = Button.new()
+		button.text = ImpactMotion.NAMES[index]
+		button.pressed.connect(_impact.bind(index))
+		%ImpactControls.add_child(button)
 	controller.walk_preview_changed.connect(queue_redraw)
 	controller.idle_started.connect(_show_idle_label)
 	controller.jump_status_changed.connect(_show_jump_status)
@@ -53,13 +63,14 @@ func _ready() -> void:
 	controller.dash_status_changed.connect(_show_jump_status)
 	controller.dash_travel_changed.connect(_follow_dash_travel)
 	controller.attack_status_changed.connect(_show_jump_status)
+	controller.impact_status_changed.connect(_show_jump_status)
 	resized.connect(_layout_stage)
 	_layout_stage()
 	_reset()
 
 
 func _select(pose: int) -> void:
-	if controller.jump_active or controller.dash_active or controller.attack_active:
+	if controller.jump_active or controller.dash_active or controller.attack_active or controller.impact_active:
 		if pose == Preview.Pose.NEUTRAL:
 			controller.request_idle()
 		elif pose == Preview.Pose.GUARD:
@@ -97,7 +108,7 @@ func _add_walk_button(label: String, direction: int) -> void:
 
 
 func _walk(direction: int, label: String) -> void:
-	if controller.attack_active:
+	if controller.attack_active or controller.impact_active:
 		return
 	if direction == 0 and not controller.walk_active and not controller.jump_active and not controller.dash_active:
 		return
@@ -122,6 +133,14 @@ func _attack(kind: int) -> void:
 	var was_active: bool = controller.attack_active
 	if controller.request_attack(kind as AttackMotion.Kind) and not was_active:
 		_pause.text = "Pause"
+
+
+func _impact(kind: int) -> void:
+	var side: OptionButton = %ImpactSide
+	if controller.request_impact(kind as ImpactMotion.Kind, side.get_selected_id() as ImpactMotion.SourceSide):
+		_pause.text = "Pause"
+	elif kind == ImpactMotion.Kind.GUARD and not controller.impact_active and not controller.jump_active and not controller.dash_active and not controller.attack_active:
+		_selected.text = "Select Guard and From Front to preview a block."
 
 
 func _show_jump_status(status: String) -> void:

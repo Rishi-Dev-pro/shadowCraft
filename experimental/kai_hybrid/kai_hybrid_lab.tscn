@@ -159,6 +159,20 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
+[node name="ImpactControls" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+offset_top = 208.0
+offset_bottom = 239.0
+alignment = 1
+theme_override_constants/separation = 9
+
+[node name="ImpactSide" type="OptionButton" parent="ImpactControls"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Side of the incoming impact relative to Kai"
+
 [node name="OriginalLabel" type="Label" parent="."]
 layout_mode = 1
 anchor_left = 0.08

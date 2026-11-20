@@ -8,6 +8,7 @@ signal dash_status_changed(status: String)
 signal dash_travel_changed
 signal attack_status_changed(status: String)
 signal attack_started(kind: int)
+signal impact_status_changed(status: String)
 
 enum Pose { NEUTRAL, GUARD, PUNCH, CROUCH }
 enum IdleExit { NONE, WALK, POSE }
@@ -21,6 +22,7 @@ const JumpMotion = preload("res://experimental/kai_hybrid/jump_motion.gd")
 const DashMotion = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const AttackMotion = preload("res://experimental/kai_hybrid/attack_motion.gd")
 const AttackArt = preload("res://experimental/kai_hybrid/attack_art.gd")
+const ImpactMotion = preload("res://experimental/kai_hybrid/impact_motion.gd")
 const IDLE_SETTLE_SECONDS: float = 0.18
 const APPROVED_IDLE: String = "res://assets/characters/kai_v2/animations/idle_signature/idle_01.png"
 const NAMES: Array[String] = ["Neutral", "Guard", "Heavy Punch", "Deep Crouch"]
@@ -78,6 +80,10 @@ var _attack_art: AttackArt = AttackArt.new()
 var _attack_time: float = 0.0
 var _attack_queue: int = -1
 var _attack_guard_exit: bool = false
+var impact_active: bool = false
+var impact: ImpactMotion = ImpactMotion.new()
+var _impact_last_phase: int = -1
+var _impact_origin: float = 0.0
 
 
 func _ready() -> void:
@@ -92,6 +98,7 @@ func _ready() -> void:
 
 func select_pose(pose: Pose) -> void:
 	stop_playback()
+	impact_active = false
 	attack_active = false
 	_attack_queue = -1
 	_attack_sprite.hide()
@@ -115,7 +122,7 @@ func select_pose(pose: Pose) -> void:
 
 
 func play_transition() -> void:
-	if jump_active or dash_active or attack_active:
+	if jump_active or dash_active or attack_active or impact_active:
 		_paused = false
 		set_process(true)
 		return
@@ -159,6 +166,9 @@ func _process(delta: float) -> void:
 
 
 func advance_preview(delta: float) -> void:
+	if impact_active:
+		_advance_impact(delta)
+		return
 	if attack_active:
 		_advance_attack(delta)
 		return
@@ -184,6 +194,10 @@ func advance_preview(delta: float) -> void:
 
 
 func request_idle() -> void:
+	if impact_active:
+		if impact.phase() != ImpactMotion.Phase.RECOVERY:
+			impact.returns_to_guard = false
+		return
 	if attack_active:
 		if attack_phase != AttackMotion.Phase.RECOVERY:
 			_attack_guard_exit = false
@@ -215,7 +229,11 @@ func request_idle() -> void:
 
 
 func restart_preview() -> void:
-	if attack_active:
+	if impact_active:
+		var previous: ImpactMotion = impact
+		select_pose(Pose.GUARD if previous.starts_guarded else Pose.NEUTRAL)
+		request_impact(previous.kind, previous.side)
+	elif attack_active:
 		var kind: AttackMotion.Kind = attack_kind
 		select_pose(Pose.NEUTRAL)
 		request_attack(kind)
@@ -229,6 +247,10 @@ func restart_preview() -> void:
 
 
 func request_pose(pose: Pose) -> void:
+	if impact_active:
+		if pose == Pose.GUARD and impact.phase() != ImpactMotion.Phase.RECOVERY:
+			impact.returns_to_guard = true
+		return
 	if attack_active:
 		if pose == Pose.GUARD and attack_phase != AttackMotion.Phase.RECOVERY:
 			_attack_guard_exit = true
@@ -277,7 +299,7 @@ func _advance_idle(delta: float) -> void:
 
 
 func request_walk(direction: int, guard: bool = false) -> void:
-	if attack_active:
+	if attack_active or impact_active:
 		return
 	if dash_active:
 		_dash_walk_direction = clampi(direction, -1, 1)
@@ -330,7 +352,7 @@ func advance_walk(delta: float) -> void:
 
 
 func request_jump() -> void:
-	if dash_active or attack_active:
+	if dash_active or attack_active or impact_active:
 		return
 	if jump_active:
 		_jump_exit = JumpExit.REPEAT
@@ -345,7 +367,7 @@ func request_jump() -> void:
 
 
 func request_dash(kind: DashMotion.Kind) -> bool:
-	if dash_active or jump_active or attack_active or not _body.visible:
+	if dash_active or jump_active or attack_active or impact_active or not _body.visible:
 		return false
 	if not idle_active and not walk_active and not _at_neutral and _pose != Pose.GUARD:
 		return false
@@ -386,6 +408,8 @@ func reset_dash_origin() -> void:
 
 
 func request_attack(kind: AttackMotion.Kind) -> bool:
+	if impact_active:
+		return false
 	if attack_active:
 		if _attack_queue < 0 and not _attack_guard_exit and AttackMotion.allows_buffer(attack_kind, _attack_time, kind):
 			_attack_queue = kind
@@ -398,6 +422,69 @@ func request_attack(kind: AttackMotion.Kind) -> bool:
 		return false
 	_begin_attack(kind)
 	return true
+
+
+func request_impact(kind: ImpactMotion.Kind, side: ImpactMotion.SourceSide) -> bool:
+	if impact_active or jump_active or dash_active or walk_active or not _body.visible:
+		return false
+	var guarding: bool = not attack_active and not idle_active and not _at_neutral and _pose == Pose.GUARD
+	if kind == ImpactMotion.Kind.GUARD and (not guarding or side != ImpactMotion.SourceSide.FRONT):
+		return false
+	if not (guarding or idle_active or _at_neutral or attack_active):
+		return false
+	_body.capture_attack_entry()
+	impact = ImpactMotion.new()
+	impact.kind = kind
+	impact.side = side
+	impact.starts_guarded = guarding
+	impact.returns_to_guard = guarding
+	if kind == ImpactMotion.Kind.KNOCKBACK:
+		# Plan the steps within the available path so an existing wall does
+		# not truncate the animation mid-stride. Each actual step still sweeps.
+		var desired: float = impact.direction() * ImpactMotion.PUSH_DISTANCE
+		var obstacle: bool = _dash_collider.test_move(_dash_collider.global_transform, Vector2(desired, 0.0), _dash_collision)
+		impact.planned_travel = _constrained_ground_travel(desired) if obstacle else desired
+	impact_active = true
+	_impact_origin = dash_world_x
+	_impact_last_phase = -1
+	attack_active = false
+	_attack_queue = -1
+	_attack_sprite.hide()
+	_correction.hide()
+	idle_active = false
+	_idle_exit = IdleExit.NONE
+	_return_to_idle = false
+	_original.texture = _idle
+	_use_overlap_art(true)
+	_advance_impact(0.0)
+	_paused = false
+	set_process(true)
+	return true
+
+
+func _advance_impact(delta: float) -> void:
+	impact.time = minf(ImpactMotion.TOTAL[impact.kind], impact.time + delta)
+	if impact.kind == ImpactMotion.Kind.KNOCKBACK and not impact.blocked:
+		var previous_x: float = dash_world_x
+		impact.blocked = _sweep_ground_motion(_impact_origin + impact.travel())
+		impact.moved = dash_world_x - _impact_origin
+		if impact.time >= ImpactMotion.PUSH_TIME and absf(impact.planned_travel) < ImpactMotion.PUSH_DISTANCE:
+			impact.blocked = true
+		if dash_world_x != previous_x:
+			dash_travel_changed.emit()
+	var phase: ImpactMotion.Phase = impact.phase()
+	if phase != _impact_last_phase:
+		_impact_last_phase = phase
+		var source: String = "Front" if impact.side == ImpactMotion.SourceSide.FRONT else "Back"
+		impact_status_changed.emit("%s · %s · %s" % [ImpactMotion.NAMES[impact.kind], source, ImpactMotion.PHASES[phase]])
+	_body.apply_impact(impact)
+	if impact.time < ImpactMotion.TOTAL[impact.kind]:
+		return
+	if impact.returns_to_guard:
+		select_pose(Pose.GUARD)
+		impact_status_changed.emit("Guard")
+	else:
+		_start_idle()
 
 
 func _begin_attack(kind: AttackMotion.Kind) -> void:
@@ -487,17 +574,28 @@ func _advance_dash(delta: float) -> void:
 
 
 func _sweep_dash(target_x: float) -> void:
-	var motion: Vector2 = Vector2(target_x - dash_world_x, 0.0)
-	if dash_blocked or motion.x == 0.0:
-		return
-	dash_blocked = _dash_collider.test_move(_dash_collider.global_transform, motion, _dash_collision)
 	if dash_blocked:
-		motion.x = signf(motion.x) * clampf(_dash_collision.get_travel().x * signf(motion.x), 0.0, absf(motion.x))
-		dash_world_x += motion.x
+		return
+	dash_blocked = _sweep_ground_motion(target_x)
+	dash_displacement = dash_world_x - _dash_origin
+
+
+func _sweep_ground_motion(target_x: float) -> bool:
+	var motion: Vector2 = Vector2(target_x - dash_world_x, 0.0)
+	if motion.x == 0.0:
+		return false
+	var blocked: bool = _dash_collider.test_move(_dash_collider.global_transform, motion, _dash_collision)
+	if blocked:
+		dash_world_x += _constrained_ground_travel(motion.x)
 	else:
 		dash_world_x = target_x
 	_dash_collider.position.x = _dash_collider_origin + dash_world_x
-	dash_displacement = dash_world_x - _dash_origin
+	return blocked
+
+
+func _constrained_ground_travel(requested: float) -> float:
+	var direction: float = signf(requested)
+	return direction * clampf(_dash_collision.get_travel().x * direction, 0.0, absf(requested))
 
 
 func _start_jump() -> void:
