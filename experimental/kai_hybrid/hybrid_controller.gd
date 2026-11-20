@@ -23,6 +23,7 @@ const DashMotion = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const AttackMotion = preload("res://experimental/kai_hybrid/attack_motion.gd")
 const AttackArt = preload("res://experimental/kai_hybrid/attack_art.gd")
 const ImpactMotion = preload("res://experimental/kai_hybrid/impact_motion.gd")
+const HitStop = preload("res://experimental/kai_hybrid/hit_stop.gd")
 const IDLE_SETTLE_SECONDS: float = 0.18
 const APPROVED_IDLE: String = "res://assets/characters/kai_v2/animations/idle_signature/idle_01.png"
 const NAMES: Array[String] = ["Neutral", "Guard", "Heavy Punch", "Deep Crouch"]
@@ -73,6 +74,7 @@ var _dash_phase: DashMotion.Phase = DashMotion.Phase.PREPARATION
 var _dash_exit: JumpExit = JumpExit.NEUTRAL
 var _dash_walk_direction: int = 0
 var playback_speed: float = 1.0
+var hit_stop: HitStop = HitStop.new()
 var attack_active: bool = false
 var attack_phase: AttackMotion.Phase = AttackMotion.Phase.PREPARATION
 var attack_kind: AttackMotion.Kind = AttackMotion.Kind.LIGHT
@@ -98,6 +100,7 @@ func _ready() -> void:
 
 func select_pose(pose: Pose) -> void:
 	stop_playback()
+	hit_stop.clear()
 	impact_active = false
 	attack_active = false
 	_attack_queue = -1
@@ -162,7 +165,36 @@ func duration() -> float:
 
 
 func _process(delta: float) -> void:
-	advance_preview(delta * playback_speed)
+	advance_playback(delta)
+
+
+func advance_playback(delta: float) -> void:
+	var available: float = hit_stop.consume(maxf(0.0, delta * playback_speed))
+	if available <= 0.0:
+		return
+	if hit_stop.enabled and (attack_active or impact_active):
+		var contact: float = AttackMotion.IMPACT[attack_kind] if attack_active else ImpactMotion.CONTACT[impact.kind]
+		var current: float = _attack_time if attack_active else impact.time
+		var until_contact: float = contact - current
+		var profile: HitStop.Profile = _contact_profile()
+		if until_contact > 0.0 and until_contact <= available and hit_stop.duration(profile) > 0.0:
+			advance_preview(until_contact)
+			hit_stop.request(profile)
+			available = hit_stop.consume(available - until_contact)
+	if available > 0.0:
+		advance_preview(available)
+
+
+func _contact_profile() -> HitStop.Profile:
+	if attack_active:
+		return HitStop.Profile.LIGHT if attack_kind == AttackMotion.Kind.LIGHT else HitStop.Profile.HEAVY
+	match impact.kind:
+		ImpactMotion.Kind.STANDARD:
+			return HitStop.Profile.LIGHT
+		ImpactMotion.Kind.GUARD:
+			return HitStop.Profile.GUARD
+		_:
+			return HitStop.Profile.HEAVY
 
 
 func advance_preview(delta: float) -> void:
@@ -408,7 +440,7 @@ func reset_dash_origin() -> void:
 
 
 func request_attack(kind: AttackMotion.Kind) -> bool:
-	if impact_active:
+	if impact_active or hit_stop.remaining > 0.0:
 		return false
 	if attack_active:
 		if _attack_queue < 0 and not _attack_guard_exit and AttackMotion.allows_buffer(attack_kind, _attack_time, kind):
