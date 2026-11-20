@@ -21,6 +21,17 @@ const KEYS: Array[Array] = [
 	[0.092, 0.143, 0.199, 0.219, 0.279, 0.325, 0.370, 0.421, 0.462, 0.492],
 	[0.068, 0.110, 0.158, 0.228, 0.271, 0.342, 0.402, 0.462],
 ]
+# Easing strength within each painted interval. The times and key poses stay
+# fixed, including the moment that ownership switches between painted keys.
+const SEGMENT_EASE: Array[Array] = [
+	[0.50, 0.0, 0.22, 0.0, 0.0, 0.42, 0.34],
+	[0.42, 0.64, 0.48, 0.28, 0.40, 0.0, 0.48, 0.55, 0.44],
+	[0.26, 0.48, 0.24, 0.0, 0.38, 0.36, 0.48],
+]
+
+
+static func segment_progress(kind: Kind, segment: int, progress: float) -> float:
+	return lerpf(progress, smoothstep(0.0, 1.0, progress), SEGMENT_EASE[kind][segment])
 
 
 static func phase(kind: Kind, time: float) -> Phase:

@@ -43,6 +43,8 @@ func display(sprite: Sprite2D, kind: Motion.Kind, time: float) -> Texture2D:
 	var local: float = clampf(inverse_lerp(keys[from], keys[next], time), 0.0, 1.0)
 	if stepped:
 		local = 0.0 if local < 0.5 else 1.0
+	else:
+		local = Motion.segment_progress(kind, from, local)
 	_material.set_shader_parameter(&"progress", local)
 	sprite.texture = frames[0]
 	sprite.material = _material
