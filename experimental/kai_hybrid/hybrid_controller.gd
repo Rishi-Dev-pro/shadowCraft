@@ -175,17 +175,27 @@ func advance_playback(delta: float) -> void:
 	var available: float = hit_stop.consume(maxf(0.0, delta * playback_speed))
 	if available <= 0.0:
 		return
-	if hit_stop.enabled and (attack_active or impact_active):
+	if attack_active or impact_active:
 		var contact: float = AttackMotion.IMPACT[attack_kind] if attack_active else ImpactMotion.CONTACT[impact.kind]
 		var current: float = _attack_time if attack_active else impact.time
 		var until_contact: float = contact - current
 		var profile: HitStop.Profile = _contact_profile()
-		if until_contact > 0.0 and until_contact <= available and hit_stop.duration(profile) > 0.0:
+		var preview_hold: bool = hit_stop.enabled and hit_stop.duration(profile) > 0.0
+		if until_contact > 0.0 and until_contact <= available and (preview_hold or _uses_contact_events()):
 			advance_preview(until_contact)
-			hit_stop.request(profile)
+			if _accept_contact():
+				hit_stop.request(profile)
 			available = hit_stop.consume(available - until_contact)
 	if available > 0.0:
 		advance_preview(available)
+
+
+func _uses_contact_events() -> bool:
+	return false
+
+
+func _accept_contact() -> bool:
+	return true
 
 
 func _contact_profile() -> HitStop.Profile:
@@ -500,8 +510,7 @@ func request_impact(kind: ImpactMotion.Kind, side: ImpactMotion.SourceSide) -> b
 		# Plan the steps within the available path so an existing wall does
 		# not truncate the animation mid-stride. Each actual step still sweeps.
 		var desired: float = impact.direction() * ImpactMotion.PUSH_DISTANCE
-		var obstacle: bool = _dash_collider.test_move(_dash_collider.global_transform, Vector2(desired, 0.0), _dash_collision)
-		impact.planned_travel = _constrained_ground_travel(desired) if obstacle else desired
+		impact.planned_travel = _plan_ground_travel(desired)
 	impact_active = true
 	_impact_origin = dash_world_x
 	_impact_last_phase = -1
@@ -644,6 +653,11 @@ func _sweep_dash(target_x: float) -> void:
 		return
 	dash_blocked = _sweep_ground_motion(target_x)
 	dash_displacement = dash_world_x - _dash_origin
+
+
+func _plan_ground_travel(desired: float) -> float:
+	var obstacle: bool = _dash_collider.test_move(_dash_collider.global_transform, Vector2(desired, 0.0), _dash_collision)
+	return _constrained_ground_travel(desired) if obstacle else desired
 
 
 func _sweep_ground_motion(target_x: float) -> bool:

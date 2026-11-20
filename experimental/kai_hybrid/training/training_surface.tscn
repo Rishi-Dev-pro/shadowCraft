@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://experimental/kai_hybrid/hybrid_body.tscn" id="body"]
+[ext_resource type="Script" path="res://experimental/kai_hybrid/correction_renderer.gd" id="correction"]
+[ext_resource type="Script" path="res://experimental/kai_hybrid/training/training_motion.gd" id="motion"]
+
+[sub_resource type="ViewportTexture" id="rendered"]
+viewport_path = NodePath("Stage")
+
+[sub_resource type="CanvasItemMaterial" id="composite"]
+blend_mode = 4
+
+[node name="TrainingSurface" type="Node2D"]
+
+[node name="Stage" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(512, 672)
+render_target_update_mode = 4
+
+[node name="HybridBody" parent="Stage" instance=ExtResource("body")]
+unique_name_in_owner = true
+
+[node name="OriginalSprite" type="Sprite2D" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+
+[node name="Correction" type="Sprite2D" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("correction")
+
+[node name="AttackCorrection" type="Sprite2D" parent="Stage"]
+unique_name_in_owner = true
+visible = false
+centered = false
+
+[node name="DashCollider" type="CharacterBody2D" parent="Stage"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+
+[node name="Display" type="Sprite2D" parent="."]
+texture_filter = 2
+material = SubResource("composite")
+texture = SubResource("rendered")
+centered = false
+
+[node name="Motion" type="Node" parent="."]
+script = ExtResource("motion")
