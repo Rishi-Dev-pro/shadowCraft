@@ -173,6 +173,17 @@ unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Side of the incoming impact relative to Kai"
 
+[node name="HitStopControls" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_bottom = -7.0
+alignment = 1
+theme_override_constants/separation = 10
+
 [node name="OriginalLabel" type="Label" parent="."]
 layout_mode = 1
 anchor_left = 0.08

@@ -4,6 +4,7 @@ const Preview = preload("res://experimental/kai_hybrid/hybrid_controller.gd")
 const DashMotion = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const AttackMotion = preload("res://experimental/kai_hybrid/attack_motion.gd")
 const ImpactMotion = preload("res://experimental/kai_hybrid/impact_motion.gd")
+const HitStop = preload("res://experimental/kai_hybrid/hit_stop.gd")
 const GAME_SCALE: float = 0.7
 const JUMP_HEADROOM: int = 160
 
@@ -64,9 +65,42 @@ func _ready() -> void:
 	controller.dash_travel_changed.connect(_follow_dash_travel)
 	controller.attack_status_changed.connect(_show_jump_status)
 	controller.impact_status_changed.connect(_show_jump_status)
+	_add_hit_stop_controls()
 	resized.connect(_layout_stage)
 	_layout_stage()
 	_reset()
+
+
+func _add_hit_stop_controls() -> void:
+	var row: HBoxContainer = %HitStopControls
+	var toggle: CheckButton = CheckButton.new()
+	toggle.text = "Hit-stop"
+	toggle.button_pressed = controller.hit_stop.enabled
+	toggle.toggled.connect(_set_hit_stop_enabled)
+	row.add_child(toggle)
+	var names: Array[String] = ["Light", "Heavy", "Guard"]
+	for index: int in names.size():
+		var profile: HitStop.Profile = index as HitStop.Profile
+		var label: Label = Label.new()
+		label.text = names[index]
+		row.add_child(label)
+		var input: SpinBox = SpinBox.new()
+		input.min_value = 0.0
+		input.max_value = HitStop.MAX_SECONDS * 1000.0
+		input.step = 1.0
+		input.suffix = "ms"
+		input.value = controller.hit_stop.duration(profile) * 1000.0
+		input.tooltip_text = names[index] + " impact hold at 1× playback"
+		input.value_changed.connect(_set_hit_stop_duration.bind(profile))
+		row.add_child(input)
+
+
+func _set_hit_stop_enabled(enabled: bool) -> void:
+	controller.hit_stop.enabled = enabled
+
+
+func _set_hit_stop_duration(milliseconds: float, profile: HitStop.Profile) -> void:
+	controller.hit_stop.configure(profile, milliseconds / 1000.0)
 
 
 func _select(pose: int) -> void:

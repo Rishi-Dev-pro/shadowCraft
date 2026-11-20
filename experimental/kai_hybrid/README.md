@@ -2,6 +2,18 @@
 
 Open `kai_hybrid_lab.tscn` and press F6 in Godot 4.7.2. Select a pose to hold its endpoint. **Play Transition** or **Restart** runs from neutral through the selected pose and back to neutral. **Pause** and the speed slider support frame inspection. The original preview holds the painted reference for guard because the current Kai SpriteFrames resource has no authored guard clip.
 
+## Combat feel
+
+The **Hit-stop** checkbox and duration controls apply to the lab preview only. Defaults at 1× are **32 ms** for Light Attack and Standard Hit, **61 ms** for Heavy Attack, Front Kick, Heavy Hit and Knockback, and **41 ms** for Guard Impact. The preview samples the authored contact pose before holding it. Playback speed applies to the holds as well as the motion. Disabling hit-stop releases an active hold, and **Reset** clears the hold and pending inputs. The original phase clock, artwork, movement and collision data remain in place.
+
+The jab eases out of its short shoulder load and through the pullback. Heavy Attack has a more controlled weight load, a brief contact hold and a longer unwind. The kick eases through its chamber and supported replant, with a clear extension hold. Interpolation changes are confined to the existing painted intervals. The four stepped pose changes remain where interpolating occluded limbs previously tore the silhouette.
+
+One attack can be queued during a walk or dash. It starts after the existing walk cycle plants both feet or the dash finishes recovery. A late **Guard** request raises guard after attack recovery. The 120 ms Light-to-Light and Light-to-Heavy buffer is still measured in animation time. New attacks cannot queue during a contact hold. An accepted skeletal attack interruption still clears its queued follow-up.
+
+Run `godot --path . --script res://experimental/kai_hybrid/verify_combat_feel.gd` for the logic checks. Set `KAI_FEEL_CAPTURE_DIR` to a writable directory to also capture the 15 routes at 60 Hz in a visible Godot instance. Pass `-- controls-only` after the engine arguments separator for a controls screenshot and the same logic checks. Existing verification scripts still sample the raw pose clock for baseline comparisons.
+
+The Godot 4.7.2 regression matched 4,258 frozen pose, locomotion, dash and impact renders. Of 403 raw attack samples, 291 matched, and 112 changed as the new easing sampled the painted intervals. The existing attack routes and Grind's 25 checks passed.
+
 ## Defensive reactions
 
 Use **From Front** or **From Back**, then **Standard Hit**, **Heavy Hit**, or **Knockback**. Select **Guard** and **From Front** before pressing **Guard Impact**. The lab uses Kai's unarmed guard silhouette. His forearms retain their cover as the knees compress. Heavy Hit and Knockback automatically enter **Stagger Recovery**, shown in the status line.
