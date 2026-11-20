@@ -1,0 +1,606 @@
+{
+  "master": "res://assets/characters/raezan_boss/frames/idle/idle_01.png",
+  "canvas": 512,
+  "ground_y": 491,
+  "world_scale": 0.72,
+  "footline_offset": -6,
+  "joints": {
+    "Root": [
+      "",
+      [
+        256,
+        491
+      ]
+    ],
+    "Pelvis": [
+      "Root",
+      [
+        251,
+        231
+      ]
+    ],
+    "Spine": [
+      "Pelvis",
+      [
+        250,
+        201
+      ]
+    ],
+    "Chest": [
+      "Spine",
+      [
+        248,
+        161
+      ]
+    ],
+    "Neck": [
+      "Chest",
+      [
+        248,
+        126
+      ]
+    ],
+    "Head": [
+      "Neck",
+      [
+        251,
+        112
+      ]
+    ],
+    "Hair": [
+      "Head",
+      [
+        223,
+        102
+      ]
+    ],
+    "HairTip": [
+      "Hair",
+      [
+        147,
+        128
+      ]
+    ],
+    "Scarf": [
+      "Neck",
+      [
+        216,
+        120
+      ]
+    ],
+    "ScarfTip": [
+      "Scarf",
+      [
+        126,
+        174
+      ]
+    ],
+    "ShoulderFar": [
+      "Chest",
+      [
+        297,
+        153
+      ]
+    ],
+    "ArmFar": [
+      "ShoulderFar",
+      [
+        298,
+        169
+      ]
+    ],
+    "ElbowFar": [
+      "ArmFar",
+      [
+        312,
+        221
+      ]
+    ],
+    "WristFar": [
+      "ElbowFar",
+      [
+        335,
+        261
+      ]
+    ],
+    "HandFar": [
+      "WristFar",
+      [
+        342,
+        275
+      ]
+    ],
+    "ShoulderNear": [
+      "Chest",
+      [
+        209,
+        150
+      ]
+    ],
+    "ArmNear": [
+      "ShoulderNear",
+      [
+        205,
+        168
+      ]
+    ],
+    "ElbowNear": [
+      "ArmNear",
+      [
+        188,
+        204
+      ]
+    ],
+    "WristNear": [
+      "ElbowNear",
+      [
+        184,
+        249
+      ]
+    ],
+    "HandNear": [
+      "WristNear",
+      [
+        184,
+        263
+      ]
+    ],
+    "HipFar": [
+      "Pelvis",
+      [
+        273,
+        253
+      ]
+    ],
+    "KneeFar": [
+      "HipFar",
+      [
+        306,
+        365
+      ]
+    ],
+    "FootFar": [
+      "KneeFar",
+      [
+        312,
+        451
+      ]
+    ],
+    "HipNear": [
+      "Pelvis",
+      [
+        234,
+        253
+      ]
+    ],
+    "KneeNear": [
+      "HipNear",
+      [
+        199,
+        365
+      ]
+    ],
+    "FootNear": [
+      "KneeNear",
+      [
+        181,
+        449
+      ]
+    ],
+    "Coat": [
+      "Pelvis",
+      [
+        229,
+        244
+      ]
+    ],
+    "CoatTip": [
+      "Coat",
+      [
+        141,
+        328
+      ]
+    ],
+    "Belt": [
+      "Pelvis",
+      [
+        265,
+        234
+      ]
+    ]
+  },
+  "layers": [
+    {
+      "name": "coat_tip",
+      "joint": "CoatTip",
+      "depth": 0,
+      "origin": [
+        48,
+        268
+      ],
+      "underlay": false
+    },
+    {
+      "name": "base_cloth",
+      "joint": "Pelvis",
+      "depth": 0,
+      "origin": [
+        95,
+        90
+      ],
+      "underlay": false
+    },
+    {
+      "name": "coat",
+      "joint": "Coat",
+      "depth": 1,
+      "origin": [
+        106,
+        236
+      ],
+      "underlay": false
+    },
+    {
+      "name": "scarf",
+      "joint": "Scarf",
+      "depth": 2,
+      "origin": [
+        54,
+        61
+      ],
+      "underlay": false
+    },
+    {
+      "name": "hair",
+      "joint": "Hair",
+      "depth": 4,
+      "origin": [
+        57,
+        81
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_near_hip",
+      "joint": "Pelvis",
+      "depth": 7,
+      "origin": [
+        190,
+        248
+      ],
+      "underlay": true
+    },
+    {
+      "name": "under_far_hip",
+      "joint": "Pelvis",
+      "depth": 7,
+      "origin": [
+        266,
+        253
+      ],
+      "underlay": true
+    },
+    {
+      "name": "behind_blade_far",
+      "joint": "HipFar",
+      "depth": 9,
+      "origin": [
+        285,
+        310
+      ],
+      "underlay": true
+    },
+    {
+      "name": "under_pauldron",
+      "joint": "Chest",
+      "depth": 9,
+      "origin": [
+        195,
+        136
+      ],
+      "underlay": true
+    },
+    {
+      "name": "torso",
+      "joint": "Chest",
+      "depth": 10,
+      "origin": [
+        206,
+        110
+      ],
+      "underlay": false
+    },
+    {
+      "name": "behind_blade_near",
+      "joint": "HipNear",
+      "depth": 10,
+      "origin": [
+        192,
+        281
+      ],
+      "underlay": true
+    },
+    {
+      "name": "far_arm",
+      "joint": "ArmFar",
+      "depth": 11,
+      "origin": [
+        288,
+        183
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_far_knee",
+      "joint": "HipFar",
+      "depth": 11,
+      "origin": [
+        290,
+        346
+      ],
+      "underlay": true
+    },
+    {
+      "name": "far_pauldron",
+      "joint": "ShoulderFar",
+      "depth": 12,
+      "origin": [
+        287,
+        140
+      ],
+      "underlay": false
+    },
+    {
+      "name": "far_bracer",
+      "joint": "ElbowFar",
+      "depth": 12,
+      "origin": [
+        305,
+        213
+      ],
+      "underlay": false
+    },
+    {
+      "name": "far_tassets",
+      "joint": "HipFar",
+      "depth": 12,
+      "origin": [
+        287,
+        246
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_far_ankle",
+      "joint": "KneeFar",
+      "depth": 12,
+      "origin": [
+        299,
+        437
+      ],
+      "underlay": true
+    },
+    {
+      "name": "far_greave",
+      "joint": "KneeFar",
+      "depth": 13,
+      "origin": [
+        283,
+        346
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_greave_lap",
+      "joint": "KneeNear",
+      "depth": 13,
+      "origin": [
+        183,
+        335
+      ],
+      "underlay": true
+    },
+    {
+      "name": "far_glove",
+      "joint": "HandFar",
+      "depth": 14,
+      "origin": [
+        324,
+        257
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_near_knee",
+      "joint": "HipNear",
+      "depth": 14,
+      "origin": [
+        190,
+        353
+      ],
+      "underlay": true
+    },
+    {
+      "name": "near_tassets",
+      "joint": "HipNear",
+      "depth": 15,
+      "origin": [
+        167,
+        244
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_near_ankle",
+      "joint": "KneeNear",
+      "depth": 15,
+      "origin": [
+        169,
+        438
+      ],
+      "underlay": true
+    },
+    {
+      "name": "far_boot",
+      "joint": "FootFar",
+      "depth": 16,
+      "origin": [
+        292,
+        436
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_greave",
+      "joint": "KneeNear",
+      "depth": 16,
+      "origin": [
+        165,
+        353
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_boot",
+      "joint": "FootNear",
+      "depth": 17,
+      "origin": [
+        159,
+        437
+      ],
+      "underlay": false
+    },
+    {
+      "name": "behind_blade_sash",
+      "joint": "Belt",
+      "depth": 20,
+      "origin": [
+        241,
+        296
+      ],
+      "underlay": true
+    },
+    {
+      "name": "collar",
+      "joint": "Neck",
+      "depth": 22,
+      "origin": [
+        221,
+        118
+      ],
+      "underlay": false
+    },
+    {
+      "name": "under_near_elbow",
+      "joint": "ArmNear",
+      "depth": 22,
+      "origin": [
+        188,
+        205
+      ],
+      "underlay": true
+    },
+    {
+      "name": "near_arm",
+      "joint": "ArmNear",
+      "depth": 23,
+      "origin": [
+        171,
+        173
+      ],
+      "underlay": false
+    },
+    {
+      "name": "face",
+      "joint": "Head",
+      "depth": 24,
+      "origin": [
+        214,
+        57
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_pauldron",
+      "joint": "ShoulderNear",
+      "depth": 25,
+      "origin": [
+        170,
+        117
+      ],
+      "underlay": false
+    },
+    {
+      "name": "front_sash",
+      "joint": "Belt",
+      "depth": 26,
+      "origin": [
+        238,
+        249
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_bracer",
+      "joint": "ElbowNear",
+      "depth": 27,
+      "origin": [
+        170,
+        199
+      ],
+      "underlay": false
+    },
+    {
+      "name": "belt",
+      "joint": "Belt",
+      "depth": 27,
+      "origin": [
+        220,
+        211
+      ],
+      "underlay": false
+    },
+    {
+      "name": "grip_wrap",
+      "joint": "BladePivot",
+      "depth": 30,
+      "origin": [
+        172,
+        258
+      ],
+      "underlay": true
+    },
+    {
+      "name": "blade",
+      "joint": "BladePivot",
+      "depth": 31,
+      "origin": [
+        130,
+        243
+      ],
+      "underlay": false
+    },
+    {
+      "name": "near_glove",
+      "joint": "HandNear",
+      "depth": 33,
+      "origin": [
+        166,
+        247
+      ],
+      "underlay": false
+    }
+  ],
+  "primary_grip": [
+    184,
+    263
+  ],
+  "offhand_grip": [
+    173,
+    258
+  ],
+  "blade_tip": [
+    460,
+    350
+  ]
+}
