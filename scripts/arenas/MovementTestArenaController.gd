@@ -45,6 +45,7 @@ var _showcase_kick_done: bool = false
 var _showcase_summary_logged: bool = false
 
 func _ready() -> void:
+	call_deferred("_attach_hybrid_training")
 	if OS.get_cmdline_user_args().has("--showcase"):
 		is_showcase_mode = true
 	if player != null and dummy_target != null:
@@ -276,3 +277,12 @@ func _combat_state_name(state: CombatController.State) -> String:
 		CombatController.State.RECOVERY: return "RECOVERY"
 		CombatController.State.HITSTUN: return "HITSTUN"
 	return "UNKNOWN"
+
+func _attach_hybrid_training() -> void:
+	if scene_file_path != "res://scenes/arenas/MovementTestArena.tscn":
+		return
+	var progression: Node = get_node_or_null("/root/StoryProgression")
+	if progression != null and progression.get("active_guardian_encounter") != &"":
+		return
+	var integration: GDScript = load("res://experimental/kai_hybrid/training/hybrid_training.gd")
+	integration.attach(self)
