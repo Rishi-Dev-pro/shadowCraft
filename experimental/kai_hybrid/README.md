@@ -2,6 +2,25 @@
 
 Open `kai_hybrid_lab.tscn` and press F6 in Godot 4.7.2. Select a pose to hold its endpoint. **Play Transition** or **Restart** runs from neutral through the selected pose and back to neutral. **Pause** and the speed slider support frame inspection. The original preview holds the painted reference for guard because the current Kai SpriteFrames resource has no authored guard clip.
 
+## Defensive reactions
+
+Use **From Front** or **From Back**, then **Standard Hit**, **Heavy Hit**, or **Knockback**. Select **Guard** and **From Front** before pressing **Guard Impact**. The lab uses Kai's unarmed guard silhouette. His forearms retain their cover as the knees compress. Heavy Hit and Knockback automatically enter **Stagger Recovery**, shown in the status line.
+
+| Preview | Motion | Total at 1× |
+|---|---|---:|
+| Standard Hit | Short directional chest recoil with delayed head and cloth response | 360 ms |
+| Heavy Hit | Deeper compression and a counter-shift into a defensive stance | 740 ms |
+| Knockback | Up to 66 px away from impact, with two bracing steps and a stagger | 780 ms |
+| Guard Impact | Compact forearm and knee compression over planted boots | 330 ms |
+
+Press **Idle** or **Guard** before recovery to select an exit. A reaction begun in guard returns there by default. Repeated impacts and movement inputs during a reaction are rejected. Impacts are available from the grounded stance, animated idle, held guard, and a skeletal attack phase. Walking, dashing, flight, and painted attack contact are excluded. A successful attack interruption clears the queued follow-up.
+
+Knockback shares the lab's horizontal collision sweep. A wall already in its path shortens the planned steps, and each update still sweeps to prevent crossing an obstacle. The flat floor and the two boot targets retain their existing height. No campaign combat is connected to these controls.
+
+Set `KAI_IMPACT_CAPTURE_DIR` to a writable directory and run `godot --path . --script res://experimental/kai_hybrid/verify_impacts.gd` for the 60 Hz captures and reaction, contact, and collision checks.
+
+The Godot 4.7.2 review rendered eleven reaction routes at the existing gameplay scale. Open-floor knockback measured 66 px in both directions. The 2 px test wall stopped both directions at 26.81 px. Frozen poses, idle, walk, jump, dashes and attacks matched the baseline across 3,926 character-and-floor samples. The Grind suite passed 25 checks.
+
 ## Attack animation previews
 
 Use **Light Attack**, **Heavy Attack**, or **Front Kick** from neutral, idle, or held guard. **Heavy Punch** still opens the approved pose preview. The status shows the current attack phase and any queued punch. The last 120 ms of Light Attack accepts one Light Attack or Heavy Attack. The next attack starts after recovery. Press **Guard** before recovery to return to guard, or let the attack settle into idle. **Reset** clears the active attack and buffer.
