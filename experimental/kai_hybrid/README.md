@@ -2,6 +2,18 @@
 
 Open `kai_hybrid_lab.tscn` and press F6 in Godot 4.7.2. Select a pose to hold its endpoint. **Play Transition** or **Restart** runs from neutral through the selected pose and back to neutral. **Pause** and the speed slider support frame inspection. The original preview holds the painted reference for guard because the current Kai SpriteFrames resource has no authored guard clip.
 
+## Training Dojo
+
+Select Kai, then choose **Training** from the World Map. The experiment runs in the existing `MovementTestArena.tscn` with its animated Robotic Minion, floor, walls, camera, HUD and pause menu. The frame-based player slot still supplies the collision body. The Training adapter advances the approved Hybrid controller in physics and projects its native artwork at the existing 0.7 scale. It activates only for the directly opened base dojo with Kai selected, the animated target present, and no active guardian. Use `--legacy-training` to opt out when launching the project.
+
+Use **A/D** or the arrows to move, **Space** to jump, **E/Q** to dash forward/backward, **Shift** for low evasion, **F** to hold Guard, and **Z/C/X** for Light/Heavy/Kick. Press **R** or **Reset** to restore both actors, target durability, and the temporary combat state. **Esc** opens the existing pause and return menu.
+
+Each approved attack contact samples one forward-facing physics shape against the original dummy hurtbox. A confirmed strike triggers the existing hit effect, plays the dummy's original hit animation at an attack-specific rate, and pushes its existing body against the arena walls. The local hit-stop holds Kai and the dummy while the interface remains available. The durability meter and hit count are training-only. At zero durability the target remains available for practice.
+
+Run `godot --path . --script res://experimental/kai_hybrid/training/verify_training.gd` in Godot 4.7.2 to exercise the real World Map route and dojo. Set `KAI_TRAINING_CAPTURE_DIR` to a writable directory to capture gameplay-scale frames. Use `--fixed-fps 60 --write-movie <path.avi>` for continuous recordings. The verifier uses the existing World Map and animated dummy resources from the current game workspace.
+
+The live Godot run passed the 17 Training scenarios and four additional checks for the player dash hitting the dummy body, the pause menu returning to the map, Razen's player selection and the Initiate encounter. Grind passed 25 checks. The seven Hybrid suites retained 4,661 pixel-identical character-and-floor samples against Milestone 08.
+
 ## Combat feel
 
 The **Hit-stop** checkbox and duration controls apply to the lab preview only. Defaults at 1× are **32 ms** for Light Attack and Standard Hit, **61 ms** for Heavy Attack, Front Kick, Heavy Hit and Knockback, and **41 ms** for Guard Impact. The preview samples the authored contact pose before holding it. Playback speed applies to the holds as well as the motion. Disabling hit-stop releases an active hold, and **Reset** clears the hold and pending inputs. The original phase clock, artwork, movement and collision data remain in place.
