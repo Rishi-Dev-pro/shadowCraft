@@ -14,6 +14,7 @@ var _enemy: Vector2 = Vector2(90, 90)
 var _cue: String = ""
 var _opacity: float
 var _cue_tween: Tween
+var _experimental: bool
 
 
 func _ready() -> void:
@@ -26,6 +27,11 @@ func _ready() -> void:
 	back.offset_top = -53
 	back.offset_right = -23
 	back.offset_bottom = -19
+
+
+func show_experimental_controls() -> void:
+	_experimental = true
+	queue_redraw()
 
 
 func set_kai_health(value: float, maximum: float) -> void:
@@ -98,7 +104,7 @@ func _draw() -> void:
 	_meter(Vector2(right, 56), width, _enemy, Color("#c2567d"), true)
 	draw_string(DISPLAY, Vector2(33, 42), "KAI", HORIZONTAL_ALIGNMENT_LEFT, -1, 29, SILVER)
 	draw_string(DISPLAY, Vector2(right, 42), "AGILE NINJA", HORIZONTAL_ALIGNMENT_RIGHT, width, 29, SILVER)
-	draw_string(ButtonStyle.FACE, Vector2(33, 101), "SHADOW DISCIPLE", HORIZONTAL_ALIGNMENT_LEFT, -1, 14, VIOLET)
+	draw_string(ButtonStyle.FACE, Vector2(33, 101), ("SKELETAL PROTOTYPE" if _experimental else "SHADOW DISCIPLE"), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, VIOLET)
 	draw_string(ButtonStyle.FACE, Vector2(right, 101), "QUICK-BLADE DUELIST", HORIZONTAL_ALIGNMENT_RIGHT, width, 14, Color("#ed9fb9"))
 	var middle: float = size.x * 0.5
 	var badge: PackedVector2Array = [
@@ -115,6 +121,12 @@ func _draw() -> void:
 	draw_rect(strip, Color(0.07, 0.046, 0.097, 0.89))
 	draw_line(strip.position, strip.position + Vector2(strip.size.x, 0), Color("#80679a"), 1, true)
 	draw_string(ButtonStyle.FACE, strip.position + Vector2(0, 22), hints, HORIZONTAL_ALIGNMENT_CENTER, hints_width, 14, SILVER)
+	if _experimental:
+		var extra: Rect2 = Rect2(middle - 223.0, size.y - 81.0, 446.0, 29.0)
+		draw_rect(extra, Color(0.07, 0.046, 0.097, 0.89))
+		draw_string(ButtonStyle.FACE, extra.position + Vector2(0, 19),
+			"S  CROUCH     X  FRONT KICK     Q  BACK DASH     E  FORWARD DASH",
+			HORIZONTAL_ALIGNMENT_CENTER, extra.size.x, 13, SILVER)
 	if _opacity > 0.0:
 		var y: float = size.y * 0.34
 		draw_rect(Rect2(0, y - 56, size.x, 84), Color(0.05, 0.033, 0.07, 0.66 * _opacity))

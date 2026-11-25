@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/arenas/grind/moonveil_courtyard.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/characters/grind/kai_skeletal_prototype.tscn" id="2"]
+
+[node name="KaiSkeletalTrial" instance=ExtResource("1")]
+experimental_fighter = ExtResource("2")

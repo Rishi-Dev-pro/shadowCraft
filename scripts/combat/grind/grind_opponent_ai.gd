@@ -14,6 +14,17 @@ var _retreat_limit: float
 var _guard_remaining: float
 var _retreat_cooldown: float
 var _committed_heavy: bool
+var _heavy_pattern: int
+var _pattern_time: float
+var _answered_windup: bool
+var _answered_whiff: bool
+
+
+func observe_player_attack(attack: GrindStrike) -> void:
+	_heavy_pattern = mini(_heavy_pattern + 1, 4) if attack.heavy else maxi(_heavy_pattern - 1, 0)
+	_pattern_time = 4.0
+	_answered_windup = false
+	_answered_whiff = false
 
 
 func update(delta: float, fighter: GrindDuelist, kai: GrindDuelist) -> void:
@@ -24,6 +35,9 @@ func update(delta: float, fighter: GrindDuelist, kai: GrindDuelist) -> void:
 	_remaining = maxf(0.0, _remaining - delta)
 	_guard_remaining = maxf(0.0, _guard_remaining - delta)
 	_retreat_cooldown = maxf(0.0, _retreat_cooldown - delta)
+	_pattern_time = maxf(0.0, _pattern_time - delta)
+	if _pattern_time <= 0.0:
+		_heavy_pattern = 0
 
 	if fighter.health.is_defeated:
 		_enter(State.DEFEAT)
@@ -57,6 +71,30 @@ func update(delta: float, fighter: GrindDuelist, kai: GrindDuelist) -> void:
 			_start_retreat(pocket + 35.0, 0.30)
 		else:
 			_enter(State.POSITION, 0.12)
+
+	if _heavy_pattern >= 2 and absf(kai.global_position.y - fighter.global_position.y) <= 70.0:
+		# Read the visible wind-up after a reaction delay. Each commitment gets one read.
+		if not _answered_windup and kai.committed_heavy() and distance < kai.attack_distance(kai.data.heavy, fighter):
+			if can_retreat and _retreat_cooldown <= 0.0:
+				_answered_windup = true
+				_start_retreat(slash_reach + 10.0, 0.32)
+				move = -toward
+				return
+			if not can_retreat:
+				_answered_windup = true
+				_guard_remaining = 0.29
+				guard = true
+				return
+		if not _answered_whiff and kai.heavy_whiff_open() and distance <= slash_reach + 18.0:
+			if distance <= slash_reach - 15.0 and fighter.can_strike():
+				_answered_whiff = true
+				strike = 1
+				_committed_heavy = false
+				_exchanges += 1
+				_enter(State.ATTACK)
+			else:
+				move = toward * 0.88
+			return
 
 	if state == State.RETREAT:
 		if can_retreat and _remaining > 0.0 and distance < _retreat_limit:

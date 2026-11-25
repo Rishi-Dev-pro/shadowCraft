@@ -1,0 +1,1265 @@
+{
+  "baseline": "res://assets/characters/kai_exact_artwork/layer_registration.json",
+  "canvas_px": [
+    512,
+    512
+  ],
+  "layers": {
+    "headband_tails": {
+      "file": "res://assets/characters/kai_exact_artwork/layers/headband_tails.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        167,
+        77
+      ],
+      "pivot_px": [
+        226,
+        83
+      ],
+      "donor_pixels": 0
+    },
+    "far_upper_arm": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_upper_arm.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        269,
+        140
+      ],
+      "pivot_px": [
+        279,
+        152
+      ],
+      "donor_pixels": 845
+    },
+    "far_thigh": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_thigh.png",
+      "origin_delta": [
+        -19,
+        0
+      ],
+      "origin_px": [
+        219,
+        248
+      ],
+      "pivot_px": [
+        265,
+        268
+      ],
+      "donor_pixels": 3174
+    },
+    "near_thigh": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_thigh.png",
+      "origin_delta": [
+        0,
+        -2
+      ],
+      "origin_px": [
+        58,
+        256
+      ],
+      "pivot_px": [
+        225,
+        268
+      ],
+      "donor_pixels": 2525
+    },
+    "far_shin": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_shin.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        292,
+        374
+      ],
+      "pivot_px": [
+        325,
+        376
+      ],
+      "donor_pixels": 519
+    },
+    "near_shin": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_shin.png",
+      "origin_delta": [
+        -1,
+        0
+      ],
+      "origin_px": [
+        114,
+        366
+      ],
+      "pivot_px": [
+        168,
+        377
+      ],
+      "donor_pixels": 342
+    },
+    "far_boot": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_boot.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        289,
+        462
+      ],
+      "pivot_px": [
+        323,
+        466
+      ],
+      "donor_pixels": 0
+    },
+    "near_boot": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_boot.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        99,
+        462
+      ],
+      "pivot_px": [
+        132,
+        464
+      ],
+      "donor_pixels": 0
+    },
+    "neck": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/neck.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        214,
+        99
+      ],
+      "pivot_px": [
+        255,
+        124
+      ],
+      "donor_pixels": 1427
+    },
+    "torso": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/torso.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        46,
+        74
+      ],
+      "pivot_px": [
+        246,
+        219
+      ],
+      "donor_pixels": 5582
+    },
+    "pelvis_and_front_flap": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/pelvis_and_front_flap.png",
+      "origin_delta": [
+        3,
+        3
+      ],
+      "origin_px": [
+        204,
+        252
+      ],
+      "pivot_px": [
+        241,
+        259
+      ],
+      "donor_pixels": 0
+    },
+    "belt": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/belt.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        188,
+        226
+      ],
+      "pivot_px": [
+        238,
+        243
+      ],
+      "donor_pixels": 0
+    },
+    "waist_sash": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/waist_sash.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        73,
+        244
+      ],
+      "pivot_px": [
+        221,
+        245
+      ],
+      "donor_pixels": 0
+    },
+    "head_and_mask": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/head_and_mask.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        216,
+        52
+      ],
+      "pivot_px": [
+        251,
+        112
+      ],
+      "donor_pixels": 0
+    },
+    "near_upper_arm": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_upper_arm.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        147,
+        130
+      ],
+      "pivot_px": [
+        193,
+        149
+      ],
+      "donor_pixels": 914
+    },
+    "far_forearm": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_forearm.png",
+      "origin_delta": [
+        0,
+        -4
+      ],
+      "origin_px": [
+        290,
+        140
+      ],
+      "pivot_px": [
+        325,
+        200
+      ],
+      "donor_pixels": 338
+    },
+    "near_forearm": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_forearm.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        145,
+        191
+      ],
+      "pivot_px": [
+        163,
+        208
+      ],
+      "donor_pixels": 0
+    },
+    "far_hand": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/far_hand.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        280,
+        112
+      ],
+      "pivot_px": [
+        313,
+        153
+      ],
+      "donor_pixels": 0
+    },
+    "near_hand": {
+      "file": "res://assets/characters/kai_hidden_artwork_repair/layers/near_hand.png",
+      "origin_delta": [
+        0,
+        0
+      ],
+      "origin_px": [
+        206,
+        174
+      ],
+      "pivot_px": [
+        216,
+        201
+      ],
+      "donor_pixels": 0
+    }
+  },
+  "regions": [
+    {
+      "region": "chest_under_near_arm",
+      "layer": "torso",
+      "source": "assets/characters/kai_v2/animations/landing/landing_01.png",
+      "source_quad": [
+        [
+          239,
+          155
+        ],
+        [
+          303,
+          158
+        ],
+        [
+          281,
+          232
+        ],
+        [
+          214,
+          223
+        ]
+      ],
+      "canvas_quad": [
+        [
+          198,
+          137
+        ],
+        [
+          282,
+          146
+        ],
+        [
+          271,
+          232
+        ],
+        [
+          185,
+          224
+        ]
+      ],
+      "mask_canvas": [
+        [
+          181,
+          146
+        ],
+        [
+          207,
+          132
+        ],
+        [
+          261,
+          134
+        ],
+        [
+          288,
+          153
+        ],
+        [
+          290,
+          180
+        ],
+        [
+          280,
+          213
+        ],
+        [
+          270,
+          235
+        ],
+        [
+          200,
+          237
+        ],
+        [
+          188,
+          220
+        ],
+        [
+          181,
+          205
+        ],
+        [
+          180,
+          182
+        ]
+      ],
+      "exposure_gain": 0.97,
+      "retained_pixels": 3564
+    },
+    {
+      "region": "lower_torso_under_belt",
+      "layer": "torso",
+      "source": "assets/characters/kai_v2/animations/landing/landing_01.png",
+      "source_quad": [
+        [
+          212,
+          209
+        ],
+        [
+          284,
+          210
+        ],
+        [
+          273,
+          229
+        ],
+        [
+          215,
+          229
+        ]
+      ],
+      "canvas_quad": [
+        [
+          197,
+          222
+        ],
+        [
+          276,
+          221
+        ],
+        [
+          269,
+          255
+        ],
+        [
+          197,
+          255
+        ]
+      ],
+      "mask_canvas": [
+        [
+          191,
+          223
+        ],
+        [
+          273,
+          221
+        ],
+        [
+          279,
+          252
+        ],
+        [
+          264,
+          255
+        ],
+        [
+          194,
+          255
+        ]
+      ],
+      "exposure_gain": 1.0,
+      "retained_pixels": 2018
+    },
+    {
+      "region": "right_inner_elbow",
+      "layer": "near_upper_arm",
+      "source": "assets/characters/kai_v2/animations/landing/landing_01.png",
+      "source_quad": [
+        [
+          194,
+          155
+        ],
+        [
+          225,
+          158
+        ],
+        [
+          207,
+          194
+        ],
+        [
+          175,
+          199
+        ]
+      ],
+      "canvas_quad": [
+        [
+          162,
+          171
+        ],
+        [
+          199,
+          173
+        ],
+        [
+          188,
+          213
+        ],
+        [
+          151,
+          221
+        ]
+      ],
+      "mask_canvas": [
+        [
+          154,
+          181
+        ],
+        [
+          180,
+          171
+        ],
+        [
+          199,
+          177
+        ],
+        [
+          203,
+          196
+        ],
+        [
+          187,
+          212
+        ],
+        [
+          156,
+          222
+        ],
+        [
+          148,
+          217
+        ]
+      ],
+      "exposure_gain": 0.94,
+      "retained_pixels": 914
+    },
+    {
+      "region": "left_inner_sleeve",
+      "layer": "far_upper_arm",
+      "source": "assets/characters/kai_v2/animations/landing/landing_01.png",
+      "source_quad": [
+        [
+          296,
+          172
+        ],
+        [
+          321,
+          188
+        ],
+        [
+          331,
+          221
+        ],
+        [
+          300,
+          216
+        ]
+      ],
+      "canvas_quad": [
+        [
+          276,
+          150
+        ],
+        [
+          311,
+          161
+        ],
+        [
+          329,
+          214
+        ],
+        [
+          287,
+          217
+        ]
+      ],
+      "mask_canvas": [
+        [
+          275,
+          151
+        ],
+        [
+          303,
+          148
+        ],
+        [
+          314,
+          168
+        ],
+        [
+          326,
+          186
+        ],
+        [
+          330,
+          213
+        ],
+        [
+          315,
+          222
+        ],
+        [
+          279,
+          214
+        ],
+        [
+          272,
+          185
+        ]
+      ],
+      "exposure_gain": 0.97,
+      "retained_pixels": 845
+    },
+    {
+      "region": "neck_below_collar",
+      "layer": "neck",
+      "source": "assets/characters/kai_v2/animations/landing/landing_01.png",
+      "source_quad": [
+        [
+          265,
+          121
+        ],
+        [
+          295,
+          124
+        ],
+        [
+          293,
+          151
+        ],
+        [
+          257,
+          153
+        ]
+      ],
+      "canvas_quad": [
+        [
+          227,
+          111
+        ],
+        [
+          266,
+          110
+        ],
+        [
+          275,
+          151
+        ],
+        [
+          237,
+          153
+        ]
+      ],
+      "mask_canvas": [
+        [
+          226,
+          103
+        ],
+        [
+          271,
+          107
+        ],
+        [
+          278,
+          130
+        ],
+        [
+          272,
+          155
+        ],
+        [
+          237,
+          154
+        ],
+        [
+          225,
+          136
+        ]
+      ],
+      "exposure_gain": 0.92,
+      "retained_pixels": 1427
+    },
+    {
+      "region": "near_hip_below_sash",
+      "layer": "near_thigh",
+      "source": "assets/characters/kai_v2/animations/landing/landing_02.png",
+      "source_quad": [
+        [
+          211,
+          294
+        ],
+        [
+          267,
+          297
+        ],
+        [
+          274,
+          350
+        ],
+        [
+          209,
+          345
+        ]
+      ],
+      "canvas_quad": [
+        [
+          175,
+          260
+        ],
+        [
+          224,
+          255
+        ],
+        [
+          213,
+          340
+        ],
+        [
+          150,
+          365
+        ]
+      ],
+      "mask_canvas": [
+        [
+          190,
+          248
+        ],
+        [
+          223,
+          249
+        ],
+        [
+          237,
+          268
+        ],
+        [
+          229,
+          295
+        ],
+        [
+          209,
+          332
+        ],
+        [
+          151,
+          373
+        ],
+        [
+          146,
+          364
+        ],
+        [
+          153,
+          337
+        ],
+        [
+          162,
+          312
+        ],
+        [
+          174,
+          282
+        ]
+      ],
+      "exposure_gain": 0.91,
+      "retained_pixels": 1776
+    },
+    {
+      "region": "far_hip_below_front_flap",
+      "layer": "far_thigh",
+      "source": "assets/characters/kai_v2/animations/landing/landing_02.png",
+      "source_quad": [
+        [
+          290,
+          296
+        ],
+        [
+          341,
+          302
+        ],
+        [
+          348,
+          348
+        ],
+        [
+          285,
+          346
+        ]
+      ],
+      "canvas_quad": [
+        [
+          236,
+          251
+        ],
+        [
+          292,
+          257
+        ],
+        [
+          308,
+          323
+        ],
+        [
+          227,
+          337
+        ]
+      ],
+      "mask_canvas": [
+        [
+          229,
+          249
+        ],
+        [
+          285,
+          250
+        ],
+        [
+          308,
+          273
+        ],
+        [
+          307,
+          295
+        ],
+        [
+          291,
+          315
+        ],
+        [
+          233,
+          321
+        ],
+        [
+          219,
+          308
+        ],
+        [
+          223,
+          277
+        ]
+      ],
+      "exposure_gain": 0.94,
+      "retained_pixels": 2517
+    },
+    {
+      "region": "near_knee_trouser_return",
+      "layer": "near_thigh",
+      "source": "assets/characters/kai_v2/animations/landing/landing_02.png",
+      "source_quad": [
+        [
+          207,
+          336
+        ],
+        [
+          264,
+          331
+        ],
+        [
+          253,
+          362
+        ],
+        [
+          209,
+          366
+        ]
+      ],
+      "canvas_quad": [
+        [
+          148,
+          358
+        ],
+        [
+          202,
+          361
+        ],
+        [
+          183,
+          391
+        ],
+        [
+          140,
+          391
+        ]
+      ],
+      "mask_canvas": [
+        [
+          139,
+          356
+        ],
+        [
+          201,
+          358
+        ],
+        [
+          201,
+          373
+        ],
+        [
+          183,
+          390
+        ],
+        [
+          140,
+          396
+        ],
+        [
+          134,
+          384
+        ]
+      ],
+      "exposure_gain": 0.94,
+      "retained_pixels": 749
+    },
+    {
+      "region": "far_knee_trouser_return",
+      "layer": "far_thigh",
+      "source": "assets/characters/kai_v2/animations/landing/landing_02.png",
+      "source_quad": [
+        [
+          293,
+          327
+        ],
+        [
+          369,
+          325
+        ],
+        [
+          356,
+          355
+        ],
+        [
+          301,
+          354
+        ]
+      ],
+      "canvas_quad": [
+        [
+          294,
+          359
+        ],
+        [
+          357,
+          358
+        ],
+        [
+          346,
+          393
+        ],
+        [
+          298,
+          391
+        ]
+      ],
+      "mask_canvas": [
+        [
+          292,
+          358
+        ],
+        [
+          356,
+          356
+        ],
+        [
+          354,
+          377
+        ],
+        [
+          347,
+          392
+        ],
+        [
+          296,
+          393
+        ],
+        [
+          290,
+          380
+        ]
+      ],
+      "exposure_gain": 0.9,
+      "retained_pixels": 657
+    },
+    {
+      "region": "near_ankle_armour_return",
+      "layer": "near_shin",
+      "source": "assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+      "source_quad": [
+        [
+          119,
+          437
+        ],
+        [
+          145,
+          433
+        ],
+        [
+          147,
+          455
+        ],
+        [
+          119,
+          455
+        ]
+      ],
+      "canvas_quad": [
+        [
+          116,
+          452
+        ],
+        [
+          146,
+          448
+        ],
+        [
+          147,
+          478
+        ],
+        [
+          114,
+          476
+        ]
+      ],
+      "mask_canvas": [
+        [
+          115,
+          451
+        ],
+        [
+          147,
+          448
+        ],
+        [
+          148,
+          468
+        ],
+        [
+          144,
+          479
+        ],
+        [
+          114,
+          477
+        ],
+        [
+          113,
+          466
+        ]
+      ],
+      "exposure_gain": 1.0,
+      "retained_pixels": 342
+    },
+    {
+      "region": "far_ankle_armour_return",
+      "layer": "far_shin",
+      "source": "assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+      "source_quad": [
+        [
+          307,
+          437
+        ],
+        [
+          337,
+          434
+        ],
+        [
+          335,
+          456
+        ],
+        [
+          306,
+          454
+        ]
+      ],
+      "canvas_quad": [
+        [
+          303,
+          449
+        ],
+        [
+          339,
+          449
+        ],
+        [
+          338,
+          480
+        ],
+        [
+          301,
+          479
+        ]
+      ],
+      "mask_canvas": [
+        [
+          302,
+          447
+        ],
+        [
+          339,
+          447
+        ],
+        [
+          339,
+          467
+        ],
+        [
+          334,
+          479
+        ],
+        [
+          301,
+          479
+        ],
+        [
+          299,
+          470
+        ]
+      ],
+      "exposure_gain": 1.0,
+      "retained_pixels": 519
+    },
+    {
+      "region": "near_wrist_cuff_return",
+      "layer": "near_forearm",
+      "source": "assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+      "source_quad": [
+        [
+          191,
+          193
+        ],
+        [
+          207,
+          191
+        ],
+        [
+          213,
+          214
+        ],
+        [
+          195,
+          218
+        ]
+      ],
+      "canvas_quad": [
+        [
+          202,
+          187
+        ],
+        [
+          223,
+          185
+        ],
+        [
+          230,
+          209
+        ],
+        [
+          211,
+          220
+        ]
+      ],
+      "mask_canvas": [
+        [
+          205,
+          183
+        ],
+        [
+          226,
+          183
+        ],
+        [
+          233,
+          200
+        ],
+        [
+          227,
+          217
+        ],
+        [
+          206,
+          222
+        ],
+        [
+          200,
+          206
+        ]
+      ],
+      "exposure_gain": 1.0,
+      "retained_pixels": 0
+    },
+    {
+      "region": "far_wrist_cuff_return",
+      "layer": "far_forearm",
+      "source": "assets/characters/kai_v2/animations/walk_forward/walk_forward_01.png",
+      "source_quad": [
+        [
+          296,
+          267
+        ],
+        [
+          308,
+          266
+        ],
+        [
+          305,
+          279
+        ],
+        [
+          294,
+          278
+        ]
+      ],
+      "canvas_quad": [
+        [
+          302,
+          144
+        ],
+        [
+          323,
+          141
+        ],
+        [
+          330,
+          162
+        ],
+        [
+          306,
+          167
+        ]
+      ],
+      "mask_canvas": [
+        [
+          299,
+          142
+        ],
+        [
+          323,
+          139
+        ],
+        [
+          328,
+          150
+        ],
+        [
+          332,
+          163
+        ],
+        [
+          309,
+          169
+        ],
+        [
+          300,
+          163
+        ]
+      ],
+      "exposure_gain": 0.96,
+      "retained_pixels": 338
+    }
+  ],
+  "notes": "Local donor paint transfers. Coverage and colour are corrected within hidden overlaps so reassembly matches the approved neutral composite. Original layers remain the control."
+}

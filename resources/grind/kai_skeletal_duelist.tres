@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="GrindDuelistData" format=3]
+
+[ext_resource type="Script" path="res://resources/grind/grind_duelist_data.gd" id="1"]
+[ext_resource type="Script" path="res://resources/grind/grind_strike.gd" id="2"]
+
+[sub_resource type="Resource" id="Jab"]
+script = ExtResource("2")
+damage = 10.0
+contact_start = 0.135
+contact_end = 0.20
+duration = 0.39
+cooldown = 0.07
+push = 82.0
+stun = 0.19
+reach = 111.0
+step_distance = 22.0
+contact_radius = 10.0
+
+[sub_resource type="Resource" id="Cross"]
+script = ExtResource("2")
+animation = &"cross"
+damage = 12.0
+contact_start = 0.16
+contact_end = 0.22
+duration = 0.45
+cooldown = 0.075
+push = 102.0
+stun = 0.22
+reach = 92.0
+step_distance = 23.0
+contact_radius = 10.0
+
+[sub_resource type="Resource" id="Heavy"]
+script = ExtResource("2")
+animation = &"heavy"
+damage = 24.0
+contact_start = 0.39
+contact_end = 0.49
+duration = 0.89
+cooldown = 0.16
+whiff_cooldown = 0.25
+push = 222.0
+stun = 0.38
+reach = 108.0
+step_distance = 24.0
+contact_radius = 12.0
+heavy = true
+
+[sub_resource type="Resource" id="Kick"]
+script = ExtResource("2")
+animation = &"kick"
+damage = 15.0
+contact_start = 0.25
+contact_end = 0.34
+duration = 0.69
+cooldown = 0.13
+whiff_cooldown = 0.08
+push = 174.0
+stun = 0.23
+reach = 125.0
+step_distance = 12.0
+contact_radius = 12.0
+
+[resource]
+script = ExtResource("1")
+title = "KAI"
+health = 100.0
+walk = 202.0
+run = 355.0
+jump = 500.0
+light = SubResource("Jab")
+heavy = SubResource("Heavy")
+cross = SubResource("Cross")
+kick = SubResource("Kick")
+crouch_enabled = true
+landing_recovery = 0.13
+combo_window = 0.45
+dash_speed = 705.0
+dash_duration = 0.22
+dash_recovery = 0.12
+dash_cooldown = 0.62

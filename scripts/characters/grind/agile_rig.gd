@@ -25,8 +25,10 @@ var _swing_from: Array[Vector2] = [Vector2.ZERO, Vector2.ZERO]
 var _swing_goal: Array[Vector2] = [Vector2.ZERO, Vector2.ZERO]
 var _swinging: Array[bool] = [false, false]
 var _from_angles: PackedFloat32Array
-var _landmarks: Array[Sprite2D] = []
+var _landmarks: Array[Node2D] = []
 var _soles: Array[float] = []
+@export var art_scale: float = ART_SCALE
+@export var stance_width: float = 0.72
 var _mode: StringName
 var _phase: float = STANCE
 var _age: float
@@ -59,17 +61,17 @@ func _ready() -> void:
 		var sole: Sprite2D = foot.get_child(0) as Sprite2D
 		_soles.append(sole.position.y + sole.get_rect().end.y - 2.0)
 		var anchor: Vector2 = _skeleton.to_local(foot.global_position)
-		_rest_feet.append(Vector2(anchor.x * 0.72, -_soles.back()))
+		_rest_feet.append(Vector2(anchor.x * stance_width, -_soles.back()))
 		_landmarks.append(sole)
 	_feet.assign(_rest_feet)
-	_landmarks.append(_bones[&"Head"].get_node("head") as Sprite2D)
-	_landmarks.append(_bones[&"Pelvis"].get_node("waist") as Sprite2D)
-	_landmarks.append(_bones[&"NearHand"].get_node("near_hand") as Sprite2D)
+	_landmarks.append(_bones[&"Head"].get_node("head") as Node2D)
+	_landmarks.append(_bones[&"Pelvis"].get_node("waist") as Node2D)
+	_landmarks.append(_bones[&"NearHand"].get_node("near_hand") as Node2D)
 	_pelvis_rest = _bones[&"Pelvis"].position
 	_near_shoulder_rest = _bones[&"NearShoulder"].position
 	_rear_shoulder_rest = _bones[&"RearShoulder"].position
 	_chest_art = _bones[&"Chest"].get_node(^"torso") as Sprite2D
-	_blade = _bones[&"Weapon"].get_node(^"blade") as Sprite2D
+	_blade = _bones[&"Weapon"].get_node_or_null(^"blade") as Sprite2D
 	_from_angles.resize(ROTATED.size())
 	_build_clips()
 	_player.add_animation_library(&"", _library)
@@ -83,8 +85,8 @@ func drive(mode: StringName, facing: float, travel: float, delta: float, strike:
 		_feet[1] = Vector2(-old_near.x, old_near.y + _soles[0] - _soles[1])
 		_swinging.fill(false)
 		_facing = facing
-	_skeleton.transform = Transform2D(Vector2(-facing * ART_SCALE, 0.0), Vector2(0.0, ART_SCALE), Vector2.ZERO)
-	var travel_art: float = -facing * travel / ART_SCALE
+	_skeleton.transform = Transform2D(Vector2(-facing * art_scale, 0.0), Vector2(0.0, art_scale), Vector2.ZERO)
+	var travel_art: float = -facing * travel / art_scale
 	_update_steps(mode, travel_art, delta)
 	if mode != _mode:
 		for index: int in ROTATED.size():
@@ -98,14 +100,14 @@ func drive(mode: StringName, facing: float, travel: float, delta: float, strike:
 
 	var clip: Animation = _library.get_animation(mode)
 	var cursor: float = _age
-	if _moving:
+	if mode in MOVEMENT:
 		cursor = _phase * clip.length
 	elif strike != null:
 		cursor = strike_age * clip.length / strike.duration
 	elif clip.loop_mode != Animation.LOOP_NONE:
 		cursor = fposmod(_age, clip.length)
 	cursor = minf(cursor, clip.length)
-	var blend: float = smoothstep(0.0, 0.09 if mode in [&"light", &"heavy", &"hit", &"knockback", &"defeat"] else 0.15, _age)
+	var blend: float = smoothstep(0.0, 0.075 if strike != null or mode in [&"hit", &"knockback", &"defeat", &"dash_forward", &"dash_backward", &"landing", &"air"] else 0.15, _age)
 	for index: int in ROTATED.size():
 		var goal: float = float(clip.value_track_interpolate(index, cursor))
 		_bones[ROTATED[index]].rotation = lerp_angle(_from_angles[index], goal, blend)
@@ -115,19 +117,21 @@ func drive(mode: StringName, facing: float, travel: float, delta: float, strike:
 	_scarf_drag = lerpf(_scarf_drag, travel_art * 1.4, 1.0 - exp(-delta * 6.0))
 	_bones[&"Headband"].rotation += deg_to_rad(_scarf_drag) * blend
 	_bones[&"ScarfEnd"].rotation += deg_to_rad(_scarf_drag * 0.8) * blend
-	_pose_spin(cursor if mode == &"heavy" else 0.0, blend)
+	_pose_spin(cursor, blend)
 	if mode == &"defeat":
 		_ground_collapse(smoothstep(0.27, 0.88, cursor))
 	elif mode != &"air":
 		_support_pelvis()
 		for index: int in LEG_CHAINS.size():
-			_place_leg(index, blend if _mode == &"knockback" else 1.0)
+			var planting: float = _plant_weight(index, cursor, blend)
+			if planting > 0.0:
+				_place_leg(index, planting)
 	_update_slash(strike, strike_age)
 
 
 func _pose_spin(age: float, blend: float) -> void:
 	# Project the shoulder turn through the side profile as the support foot pivots.
-	var turn: float = smoothstep(0.28, 0.57, age)
+	var turn: float = smoothstep(0.28, 0.57, age) if _mode == &"heavy" else 0.0
 	_shoulder_profile = lerpf(_from_profile, cos(turn * TAU), blend)
 	var across: float = _shoulder_profile
 	_bones[&"NearShoulder"].position.x = _near_shoulder_rest.x * across
@@ -140,8 +144,9 @@ func _pose_spin(age: float, blend: float) -> void:
 
 
 func _update_steps(mode: StringName, travel: float, delta: float) -> void:
-	var walking: bool = mode in MOVEMENT
-	var direction: float = 1.0 if mode == &"backward" else -1.0
+	var dashing: bool = mode in [&"dash_forward", &"dash_backward"]
+	var walking: bool = mode in MOVEMENT or (dashing and absf(travel) > 0.1)
+	var direction: float = 1.0 if mode in [&"backward", &"dash_backward"] else -1.0
 	if walking and (not _moving or _direction != direction):
 		# Begin with the trailing foot so a reversal can keep the other boot down.
 		var trailing: int = 0 if (_feet[0].x - _feet[1].x) * direction <= 0.0 else 1
@@ -154,11 +159,11 @@ func _update_steps(mode: StringName, travel: float, delta: float) -> void:
 		_direction = direction
 	var previous_phase: float = _phase
 	if walking:
-		var target_stride: float = 155.0 if mode == &"run" else (93.0 if mode == &"backward" else 111.0)
-		var target_lift: float = 61.0 if mode == &"run" else (31.0 if mode == &"backward" else 46.0)
+		var target_stride: float = 146.0 if dashing else (155.0 if mode == &"run" else (93.0 if mode == &"backward" else 111.0))
+		var target_lift: float = 38.0 if dashing else (61.0 if mode == &"run" else (31.0 if mode == &"backward" else 46.0))
 		_stride = lerpf(_stride, target_stride, 1.0 - exp(-delta * 9.0))
 		_lift = lerpf(_lift, target_lift, 1.0 - exp(-delta * 9.0))
-		_phase = fposmod(_phase + absf(travel) * ART_SCALE / _stride, 1.0)
+		_phase = fposmod(_phase + absf(travel) * art_scale / _stride, 1.0)
 	_moving = walking
 	if mode != &"idle":
 		_settling_foot = -1
@@ -169,7 +174,7 @@ func _update_steps(mode: StringName, travel: float, delta: float) -> void:
 		if walking and phase >= STANCE:
 			if not _swinging[index] or phase < previous:
 				_swing_from[index] = _feet[index] + Vector2(travel, 0.0)
-				_swing_goal[index] = _rest_feet[index] + Vector2(direction * _stride * STANCE / (2.0 * ART_SCALE), 0.0)
+				_swing_goal[index] = _rest_feet[index] + Vector2(direction * _stride * STANCE / (2.0 * art_scale), 0.0)
 			_swinging[index] = true
 			_swing_from[index].x -= travel
 			var swing: float = (phase - STANCE) / (1.0 - STANCE)
@@ -220,6 +225,10 @@ func _settle_stance(travel: float, delta: float) -> void:
 		_settling_foot = -1
 
 
+func _plant_weight(_index: int, _cursor: float, blend: float) -> float:
+	return blend if _mode == &"knockback" else 1.0
+
+
 func _support_pelvis() -> void:
 	# Lower the hips when a long step would otherwise pull a planted ankle off the floor.
 	var pelvis: Bone2D = _bones[&"Pelvis"]
@@ -258,11 +267,16 @@ func _place_leg(index: int, weight: float) -> void:
 
 func _ground_collapse(settle: float) -> void:
 	var lowest: float = -INF
-	for sprite: Sprite2D in _landmarks:
-		var bounds: Rect2 = sprite.get_rect().grow(-5.0)
-		var to_rig: Transform2D = _skeleton.global_transform.affine_inverse() * sprite.global_transform
-		for corner: Vector2 in [bounds.position, Vector2(bounds.end.x, bounds.position.y), bounds.end, Vector2(bounds.position.x, bounds.end.y)]:
-			lowest = maxf(lowest, (to_rig * corner).y)
+	for piece: Node2D in _landmarks:
+		var to_rig: Transform2D = _skeleton.global_transform.affine_inverse() * piece.global_transform
+		if piece is Polygon2D:
+			for point: Vector2 in (piece as Polygon2D).polygon:
+				lowest = maxf(lowest, (to_rig * point).y)
+		elif piece is Sprite2D:
+			var bounds: Rect2 = (piece as Sprite2D).get_rect().grow(-5.0)
+			for corner: Vector2 in [bounds.position, Vector2(bounds.end.x, bounds.position.y), bounds.end, Vector2(bounds.position.x, bounds.end.y)]:
+				lowest = maxf(lowest, (to_rig * corner).y)
+
 	_bones[&"Pelvis"].position.y -= lowest * (1.0 if lowest > 0.0 else settle)
 
 

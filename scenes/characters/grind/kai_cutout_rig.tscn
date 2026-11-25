@@ -1,0 +1,311 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/grind/kai_cutout_rig.gd" id="1"]
+
+[ext_resource type="Texture2D" path="res://assets/characters/kai_v2/source/kai_turnaround_grid.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="NearBoot"]
+atlas = ExtResource("2")
+region = Rect2(1584, 829, 38, 45)
+
+[sub_resource type="AtlasTexture" id="RearBoot"]
+atlas = ExtResource("2")
+region = Rect2(1473, 837, 59, 37)
+
+[node name="KaiCutout" type="Node2D"]
+script = ExtResource("1")
+art_scale = 0.58
+stance_width = 1.43
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
+
+[node name="Root" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(0, 0)
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Pelvis" type="Bone2D" parent="Skeleton2D/Root"]
+position = Vector2(-1, -250)
+rest = Transform2D(1, 0, 0, 1, -1, -250)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Spine" type="Bone2D" parent="Skeleton2D/Root/Pelvis"]
+position = Vector2(3, -27)
+rest = Transform2D(1, 0, 0, 1, 3, -27)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Chest" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine"]
+position = Vector2(0, -40)
+rest = Transform2D(1, 0, 0, 1, 0, -40)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Neck" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest"]
+position = Vector2(-5, -41)
+rest = Transform2D(1, 0, 0, 1, -5, -41)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck"]
+position = Vector2(-1, -14)
+rest = Transform2D(1, 0, 0, 1, -1, -14)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Hair" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head"]
+position = Vector2(-3, -26)
+rest = Transform2D(1, 0, 0, 1, -3, -26)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Headband" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head"]
+position = Vector2(22, -13)
+rest = Transform2D(1, 0, 0, 1, 22, -13)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="ScarfEnd" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head/Headband"]
+position = Vector2(16, 9)
+rest = Transform2D(1, 0, 0, 1, 16, 9)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearShoulder" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest"]
+position = Vector2(39, -21)
+rest = Transform2D(1, 0, 0, 1, 39, -21)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearUpperArm" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder"]
+position = Vector2(1, 10)
+rest = Transform2D(1, 0, 0, 1, 1, 10)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearForearm" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm"]
+position = Vector2(20, 50)
+rest = Transform2D(1, 0, 0, 1, 20, 50)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearHand" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm/NearForearm"]
+position = Vector2(1, 53)
+rest = Transform2D(1, 0, 0, 1, 1, 53)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Weapon" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm/NearForearm/NearHand"]
+position = Vector2(-1, 16)
+rest = Transform2D(1, 0, 0, 1, -1, 16)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearShoulder" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest"]
+position = Vector2(-33, -22)
+rest = Transform2D(1, 0, 0, 1, -33, -22)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearUpperArm" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder"]
+position = Vector2(-2, 10)
+rest = Transform2D(1, 0, 0, 1, -2, 10)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearForearm" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder/RearUpperArm"]
+position = Vector2(-13, 50)
+rest = Transform2D(1, 0, 0, 1, -13, 50)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearHand" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder/RearUpperArm/RearForearm"]
+position = Vector2(-14, 52)
+rest = Transform2D(1, 0, 0, 1, -14, 52)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearThigh" type="Bone2D" parent="Skeleton2D/Root/Pelvis"]
+position = Vector2(21, 9)
+rest = Transform2D(1, 0, 0, 1, 21, 9)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearShin" type="Bone2D" parent="Skeleton2D/Root/Pelvis/NearThigh"]
+position = Vector2(15, 127)
+rest = Transform2D(1, 0, 0, 1, 15, 127)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="NearFoot" type="Bone2D" parent="Skeleton2D/Root/Pelvis/NearThigh/NearShin"]
+position = Vector2(17, 86)
+rest = Transform2D(1, 0, 0, 1, 17, 86)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearThigh" type="Bone2D" parent="Skeleton2D/Root/Pelvis"]
+position = Vector2(-20, 12)
+rest = Transform2D(1, 0, 0, 1, -20, 12)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearShin" type="Bone2D" parent="Skeleton2D/Root/Pelvis/RearThigh"]
+position = Vector2(-8, 125)
+rest = Transform2D(1, 0, 0, 1, -8, 125)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="RearFoot" type="Bone2D" parent="Skeleton2D/Root/Pelvis/RearThigh/RearShin"]
+position = Vector2(-6, 88)
+rest = Transform2D(1, 0, 0, 1, -6, 88)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="Cloth" type="Bone2D" parent="Skeleton2D/Root/Pelvis"]
+position = Vector2(15, -7)
+rest = Transform2D(1, 0, 0, 1, 15, -7)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="ClothEnd" type="Bone2D" parent="Skeleton2D/Root/Pelvis/Cloth"]
+position = Vector2(27, 31)
+rest = Transform2D(1, 0, 0, 1, 27, 31)
+auto_calculate_length_and_angle = false
+length = 24.0
+
+[node name="head" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head"]
+z_index = 4
+texture = ExtResource("2")
+polygon = PackedVector2Array(-28, -24, -19, -44, 5, -48, 26, -37, 28, -9, 15, 10, -3, 17, -21, 6, -26, -9)
+uv = PackedVector2Array(1515, 476, 1524, 456, 1548, 452, 1569, 463, 1571, 491, 1558, 510, 1540, 517, 1522, 506, 1517, 491)
+
+[node name="hair" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head/Hair"]
+z_index = 5
+texture = ExtResource("2")
+polygon = PackedVector2Array(-19, -8, -3, -22, 18, -19, 30, -9, 29, 6, 18, 9, 7, 3, -9, 5, -18, 0)
+uv = PackedVector2Array(1521, 466, 1537, 452, 1558, 455, 1570, 465, 1569, 480, 1558, 483, 1547, 477, 1531, 479, 1522, 474)
+
+[node name="mask" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head"]
+z_index = 6
+texture = ExtResource("2")
+polygon = PackedVector2Array(-23, -16, -2, -15, 19, -14, 25, -5, 11, 11, -2, 16, -20, 6, -24, -3)
+uv = PackedVector2Array(1520, 484, 1541, 485, 1562, 486, 1568, 495, 1554, 511, 1541, 516, 1523, 506, 1519, 497)
+
+[node name="neck" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck"]
+z_index = 1
+texture = ExtResource("2")
+polygon = PackedVector2Array(-16, -18, 8, -16, 21, -2, 19, 15, -6, 20, -26, 12, -20, 1)
+uv = PackedVector2Array(1528, 496, 1552, 498, 1565, 512, 1563, 529, 1538, 534, 1518, 526, 1524, 515)
+
+[node name="torso" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest"]
+z_index = 0
+texture = ExtResource("2")
+polygon = PackedVector2Array(-47, -21, -24, -40, -10, -31, 14, -42, 38, -30, 48, -16, 30, 9, 31, 37, 20, 57, -32, 54, -31, 29, -42, 12)
+uv = PackedVector2Array(1502, 534, 1525, 515, 1539, 524, 1563, 513, 1587, 525, 1597, 539, 1579, 564, 1580, 592, 1569, 612, 1517, 609, 1518, 584, 1507, 567)
+
+[node name="waist" type="Polygon2D" parent="Skeleton2D/Root/Pelvis"]
+z_index = 2
+texture = ExtResource("2")
+polygon = PackedVector2Array(-28, -31, 33, -31, 38, 8, 32, 20, 20, 44, 2, 47, -16, 36, -38, 29, -32, 1)
+uv = PackedVector2Array(1518, 591, 1579, 591, 1584, 630, 1578, 642, 1566, 666, 1548, 669, 1530, 658, 1508, 651, 1514, 623)
+
+[node name="near_upper" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm"]
+z_index = 3
+texture = ExtResource("2")
+polygon = PackedVector2Array(-13, -13, 7, -18, 21, 0, 23, 28, 27, 50, 20, 66, 7, 64, 3, 49, -8, 26, -16, 8)
+uv = PackedVector2Array(1576, 531, 1596, 526, 1610, 544, 1612, 572, 1616, 594, 1609, 610, 1596, 608, 1592, 593, 1581, 570, 1573, 552)
+
+[node name="near_forearm" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm/NearForearm"]
+z_index = 4
+texture = ExtResource("2")
+polygon = PackedVector2Array(-18, -9, -5, -9, 10, -6, 20, 16, 15, 39, 11, 61, -9, 62, -11, 42, -15, 22)
+uv = PackedVector2Array(1591, 585, 1604, 585, 1619, 588, 1629, 610, 1624, 633, 1620, 655, 1600, 656, 1598, 636, 1594, 616)
+
+[node name="near_hand" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/NearShoulder/NearUpperArm/NearForearm/NearHand"]
+z_index = 5
+texture = ExtResource("2")
+polygon = PackedVector2Array(-8, -7, 11, -7, 11, 16, 5, 33, -11, 38, -18, 26, -14, 8)
+uv = PackedVector2Array(1602, 640, 1621, 640, 1621, 663, 1615, 680, 1599, 685, 1592, 673, 1596, 655)
+
+[node name="rear_upper" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder/RearUpperArm"]
+z_index = -2
+texture = ExtResource("2")
+polygon = PackedVector2Array(-8, -16, 7, -11, 15, 7, 9, 27, 0, 47, -10, 63, -24, 56, -19, 34, -16, 6)
+uv = PackedVector2Array(1506, 527, 1521, 532, 1529, 550, 1523, 570, 1514, 590, 1504, 606, 1490, 599, 1495, 577, 1498, 549)
+
+[node name="rear_forearm" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder/RearUpperArm/RearForearm"]
+z_index = -2
+texture = ExtResource("2")
+polygon = PackedVector2Array(-10, -8, 7, -5, 15, 8, 5, 32, -3, 55, -19, 62, -26, 54, -22, 34, -18, 15)
+uv = PackedVector2Array(1491, 585, 1508, 588, 1516, 601, 1506, 625, 1498, 648, 1482, 655, 1475, 647, 1479, 627, 1483, 608)
+
+[node name="rear_hand" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/RearShoulder/RearUpperArm/RearForearm/RearHand"]
+z_index = -2
+texture = ExtResource("2")
+polygon = PackedVector2Array(-6, -9, 12, -4, 12, 15, 5, 32, -8, 38, -15, 31, -13, 12)
+uv = PackedVector2Array(1481, 636, 1499, 641, 1499, 660, 1492, 677, 1479, 683, 1472, 676, 1474, 657)
+
+[node name="near_thigh" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/NearThigh"]
+z_index = 1
+texture = ExtResource("2")
+polygon = PackedVector2Array(-17, -10, 13, -10, 20, 19, 24, 39, 31, 70, 43, 91, 44, 118, 32, 137, 12, 143, -5, 132, -11, 99, -12, 66, -21, 35)
+uv = PackedVector2Array(1550, 621, 1580, 621, 1587, 650, 1591, 670, 1598, 701, 1610, 722, 1611, 749, 1599, 768, 1579, 774, 1562, 763, 1556, 730, 1555, 697, 1546, 666)
+
+[node name="near_shin" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/NearThigh/NearShin"]
+z_index = 1
+texture = ExtResource("2")
+polygon = PackedVector2Array(-15, -9, 5, -11, 22, -5, 27, 17, 29, 48, 31, 90, 15, 99, 3, 85, 0, 58, -8, 33, -13, 19)
+uv = PackedVector2Array(1567, 749, 1587, 747, 1604, 753, 1609, 775, 1611, 806, 1613, 848, 1597, 857, 1585, 843, 1582, 816, 1574, 791, 1569, 777)
+
+[node name="rear_thigh" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/RearThigh"]
+z_index = -1
+texture = ExtResource("2")
+polygon = PackedVector2Array(-15, -13, 18, -10, 30, 28, 22, 55, 18, 83, 23, 114, 16, 139, -2, 149, -24, 137, -32, 120, -30, 85, -29, 52, -18, 19)
+uv = PackedVector2Array(1511, 621, 1544, 624, 1556, 662, 1548, 689, 1544, 717, 1549, 748, 1542, 773, 1524, 783, 1502, 771, 1494, 754, 1496, 719, 1497, 686, 1508, 653)
+
+[node name="rear_shin" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/RearThigh/RearShin"]
+z_index = -1
+texture = ExtResource("2")
+polygon = PackedVector2Array(-16, -6, 5, -7, 27, 0, 25, 21, 14, 48, 14, 75, 9, 96, -15, 97, -18, 80, -16, 51, -17, 31)
+uv = PackedVector2Array(1502, 753, 1523, 752, 1545, 759, 1543, 780, 1532, 807, 1532, 834, 1527, 855, 1503, 856, 1500, 839, 1502, 810, 1501, 790)
+
+[node name="headband_tip" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head/Headband/ScarfEnd"]
+z_index = -4
+texture = ExtResource("2")
+polygon = PackedVector2Array(-9, -7, 2, -9, 15, -5, 21, 4, 13, 13, 3, 10, -5, 2)
+uv = PackedVector2Array(1572, 489, 1583, 487, 1596, 491, 1602, 500, 1594, 509, 1584, 506, 1576, 498)
+
+[node name="headband" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Spine/Chest/Neck/Head/Headband"]
+z_index = -3
+texture = ExtResource("2")
+polygon = PackedVector2Array(-9, -2, 3, -5, 18, 0, 23, 6, 18, 13, 6, 7, -4, 4)
+uv = PackedVector2Array(1556, 485, 1568, 482, 1583, 487, 1588, 493, 1583, 500, 1571, 494, 1561, 491)
+
+[node name="sash_tip" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Cloth/ClothEnd"]
+z_index = -3
+texture = ExtResource("2")
+polygon = PackedVector2Array(-8, -10, 5, -11, 12, 4, 12, 22, 20, 36, 35, 70, 36, 99, 27, 103, 19, 77, 12, 62, 1, 36, -11, 14)
+uv = PackedVector2Array(1580, 636, 1593, 635, 1600, 650, 1600, 668, 1608, 682, 1623, 716, 1624, 745, 1615, 749, 1607, 723, 1600, 708, 1589, 682, 1577, 660)
+
+[node name="sash" type="Polygon2D" parent="Skeleton2D/Root/Pelvis/Cloth"]
+z_index = 3
+texture = ExtResource("2")
+polygon = PackedVector2Array(-7, -8, 8, -8, 22, 6, 32, 26, 29, 42, 20, 42, 12, 22, 1, 13, -9, 6)
+uv = PackedVector2Array(1554, 607, 1569, 607, 1583, 621, 1593, 641, 1590, 657, 1581, 657, 1573, 637, 1562, 628, 1552, 621)
+
+[node name="NearBoot" type="Sprite2D" parent="Skeleton2D/Root/Pelvis/NearThigh/NearShin/NearFoot"]
+position = Vector2(-15, -15)
+z_index = 2
+texture = SubResource("NearBoot")
+centered = false
+
+[node name="RearBoot" type="Sprite2D" parent="Skeleton2D/Root/Pelvis/RearThigh/RearShin/RearFoot"]
+position = Vector2(-39, -10)
+z_index = -1
+texture = SubResource("RearBoot")
+centered = false

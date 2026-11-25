@@ -9,6 +9,11 @@ const CONTROLS: Dictionary[StringName, int] = {
 	&"grind_guard": KEY_SPACE, &"grind_light": KEY_Z, &"grind_heavy": KEY_C,
 }
 
+const PROTOTYPE_CONTROLS: Dictionary[StringName, int] = {
+	&"grind_crouch": KEY_S, &"grind_kick": KEY_X, &"grind_dash_back": KEY_Q, &"grind_dash_forward": KEY_E,
+}
+
+@export var experimental_fighter: PackedScene
 @onready var kai: GrindDuelist = $Kai
 @onready var agile: GrindDuelist = $AgileNinja
 @onready var _hud: BattleHud = $Overlay/Hud
@@ -23,6 +28,7 @@ var _brain: OpponentAI = OpponentAI.new()
 var _buffered_strike: int
 var _buffer_time: float
 var _queued_jump: bool
+var _queued_dash: int
 var _hit_pause: float
 var _clock: float
 var _weather_step: float
@@ -33,12 +39,18 @@ var _spark_heavy: bool
 
 
 func _ready() -> void:
-	for action: StringName in CONTROLS:
-		if not InputMap.has_action(action):
-			InputMap.add_action(action)
-			var event: InputEventKey = InputEventKey.new()
-			event.physical_keycode = CONTROLS[action] as Key
-			InputMap.action_add_event(action, event)
+	_register_controls(CONTROLS)
+	if experimental_fighter != null:
+		var spawn: Vector2 = kai.position
+		remove_child(kai)
+		kai.queue_free()
+		kai = experimental_fighter.instantiate() as GrindDuelist
+		kai.name = "Kai"
+		kai.position = spawn
+		add_child(kai)
+		_register_controls(PROTOTYPE_CONTROLS)
+		kai.attack_committed.connect(_brain.observe_player_attack)
+		_hud.show_experimental_controls()
 	kai.health.health_changed.connect(_hud.set_kai_health)
 	agile.health.health_changed.connect(_hud.set_enemy_health)
 	_hud.set_kai_health(kai.health.current_health, kai.health.max_health)
@@ -54,6 +66,15 @@ func _ready() -> void:
 	get_window().focus_exited.connect(_sync_weather)
 	_sync_weather()
 	_intro()
+
+
+func _register_controls(bindings: Dictionary[StringName, int]) -> void:
+	for action: StringName in bindings:
+		if not InputMap.has_action(action):
+			InputMap.add_action(action)
+			var event: InputEventKey = InputEventKey.new()
+			event.physical_keycode = bindings[action] as Key
+			InputMap.action_add_event(action, event)
 
 
 func _intro() -> void:
@@ -75,6 +96,14 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed(&"grind_heavy") or Input.is_action_just_pressed(&"grind_light"):
 			_buffered_strike = 2 if Input.is_action_just_pressed(&"grind_heavy") else 1
 			_buffer_time = 0.15
+		if experimental_fighter != null:
+			if Input.is_action_just_pressed(&"grind_kick"):
+				_buffered_strike = 3
+				_buffer_time = 0.15
+			if Input.is_action_just_pressed(&"grind_dash_back"):
+				_queued_dash = -1
+			elif Input.is_action_just_pressed(&"grind_dash_forward"):
+				_queued_dash = 1
 		_queued_jump = _queued_jump or Input.is_action_just_pressed(&"grind_jump")
 	if _hit_pause > 0.0:
 		_hit_pause -= delta
@@ -87,12 +116,14 @@ func _physics_process(delta: float) -> void:
 	var strike: int = 0
 	_buffer_time = maxf(0.0, _buffer_time - delta)
 	var guard: bool = Input.is_action_pressed(&"grind_guard")
-	if _buffer_time > 0.0 and kai.can_strike() and not guard:
+	var crouch: bool = experimental_fighter != null and Input.is_action_pressed(&"grind_crouch")
+	if _buffer_time > 0.0 and kai.can_strike() and not guard and not crouch and not (_queued_dash != 0 and kai.can_dash()):
 		strike = _buffered_strike
 		_buffer_time = 0.0
 	kai.step(delta, agile, Input.get_axis(&"grind_left", &"grind_right"), Input.is_action_pressed(&"grind_run"),
-		guard, _queued_jump, strike)
+		guard, _queued_jump, strike, crouch, _queued_dash)
 	_queued_jump = false
+	_queued_dash = 0
 	_brain.update(delta, agile, kai)
 	agile.step(delta, kai, _brain.move, _brain.sprint, _brain.guard, false, _brain.strike)
 	kai.resolve_strike(agile)

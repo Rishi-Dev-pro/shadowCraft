@@ -14,6 +14,7 @@ extends Resource
 @export_range(0.0, 500.0) var push: float = 108.0
 @export_range(0.0, 1.0) var stun: float = 0.27
 @export var heavy: bool = false
+@export_range(0.0, 1.0) var whiff_cooldown: float = 0.0
 
 
 func is_valid() -> bool:

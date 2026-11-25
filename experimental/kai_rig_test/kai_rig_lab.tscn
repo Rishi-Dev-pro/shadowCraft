@@ -1,0 +1,174 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://experimental/kai_rig_test/kai_rig_lab.gd" id="lab"]
+[ext_resource type="PackedScene" path="res://experimental/kai_rig_test/kai_rig.tscn" id="rig"]
+
+[node name="KaiRigLab" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("lab")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.095, 0.092, 0.11, 1)
+
+[node name="Layout" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="Columns" type="HBoxContainer" parent="Layout"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Controls" type="VBoxContainer" parent="Layout/Columns"]
+custom_minimum_size = Vector2(278, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Layout/Columns/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "Kai rig lab"
+
+[node name="Orientation" type="Label" parent="Layout/Columns/Controls"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70, 0.68, 0.75, 1)
+text = "Left is the far side in this pose.\nRight is the near side."
+
+[node name="ResetButtons" type="HBoxContainer" parent="Layout/Columns/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Neutral" type="Button" parent="Layout/Columns/Controls/ResetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Neutral Pose"
+
+[node name="Reset" type="Button" parent="Layout/Columns/Controls/ResetButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reset Pose"
+
+[node name="Divider" type="HSeparator" parent="Layout/Columns/Controls"]
+layout_mode = 2
+
+[node name="PresetTitle" type="Label" parent="Layout/Columns/Controls"]
+layout_mode = 2
+text = "Static pose"
+
+[node name="PoseMenu" type="OptionButton" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="ReferenceToggle" type="CheckButton" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Show approved reference"
+
+[node name="RepairToggle" type="CheckButton" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Use repaired layers"
+
+[node name="Divider2" type="HSeparator" parent="Layout/Columns/Controls"]
+layout_mode = 2
+
+[node name="JointTitle" type="Label" parent="Layout/Columns/Controls"]
+layout_mode = 2
+text = "Isolated joint"
+
+[node name="JointMenu" type="OptionButton" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+fit_to_longest_item = false
+
+[node name="PrimaryLabel" type="Label" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Primary" type="HSlider" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+
+[node name="SecondaryLabel" type="Label" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Secondary" type="HSlider" parent="Layout/Columns/Controls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+
+[node name="View" type="VBoxContainer" parent="Layout/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Active" type="Label" parent="Layout/Columns/View"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Layout/Columns/View"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StageBackground" type="ColorRect" parent="Layout/Columns/View/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.25, 0.238, 0.273, 1)
+
+[node name="Center" type="CenterContainer" parent="Layout/Columns/View/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Preview" type="SubViewportContainer" parent="Layout/Columns/View/Panel/Center"]
+layout_mode = 2
+
+[node name="Stage" type="SubViewport" parent="Layout/Columns/View/Panel/Center/Preview"]
+unique_name_in_owner = true
+transparent_bg = true
+size = Vector2i(576, 588)
+render_target_update_mode = 4
+
+[node name="Floor" type="Line2D" parent="Layout/Columns/View/Panel/Center/Preview/Stage"]
+unique_name_in_owner = true
+z_index = -2
+points = PackedVector2Array(40, 538, 536, 538)
+width = 1.0
+default_color = Color(0.56, 0.52, 0.61, 1)
+
+[node name="KaiRig" parent="Layout/Columns/View/Panel/Center/Preview/Stage" instance=ExtResource("rig")]
+unique_name_in_owner = true
+position = Vector2(32, 35)
+
+[node name="Reference" type="Sprite2D" parent="Layout/Columns/View/Panel/Center/Preview/Stage"]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+position = Vector2(32, 35)
+centered = false
