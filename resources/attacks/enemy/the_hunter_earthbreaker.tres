@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"the_hunter_earthbreaker"
+display_name = "Earthbreaker"
+startup_frames = 48
+active_frames = 3
+recovery_frames = 59
+base_damage = 23.0
+knockback = Vector2(255, 80)
+hitstun_seconds = 0.54
+hitbox_size = Vector2(186, 48)
+hit_reaction = 1
+hit_stop_seconds = 0.055
