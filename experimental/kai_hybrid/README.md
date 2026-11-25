@@ -14,6 +14,8 @@ Run `godot --path . --script res://experimental/kai_hybrid/training/verify_train
 
 The live Godot run passed the 17 Training scenarios and four additional checks for the player dash hitting the dummy body, the pause menu returning to the map, Razen's player selection and the Initiate encounter. Grind passed 25 checks. The seven Hybrid suites retained 4,661 pixel-identical character-and-floor samples against Milestone 08.
 
+Milestone 14 adds **Switch Character** to this Training Dojo. Kai is the initial fighter, and his controls above still apply. Raezen uses the same player collision slot, dummy, durability and practice settings. The footer updates to show his moves and the opt-in impact drills. [Raezen's Training controls and verification](../raezen_hybrid/README.md#training-dojo) cover his full move list.
+
 ## Combat feel
 
 The **Hit-stop** checkbox and duration controls apply to the lab preview only. Defaults at 1× are **32 ms** for Light Attack and Standard Hit, **61 ms** for Heavy Attack, Front Kick, Heavy Hit and Knockback, and **41 ms** for Guard Impact. The preview samples the authored contact pose before holding it. Playback speed applies to the holds as well as the motion. Disabling hit-stop releases an active hold, and **Reset** clears the hold and pending inputs. The original phase clock, artwork, movement and collision data remain in place.

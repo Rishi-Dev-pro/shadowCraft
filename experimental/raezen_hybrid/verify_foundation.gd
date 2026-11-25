@@ -28,7 +28,7 @@ func _run() -> void:
 	await process_frame
 	var player: Motion = _lab.player
 	var rig: Rig = player.rig
-	_check(player.profiles.size() == 17, "All 17 requested motion profiles are present")
+	_check(player.profiles.size() == 23, "All 18 baseline and five new motion profiles are present")
 	_check(rig.bones.size() == 29 and rig.skeleton.get_bone_count() == 29, "All 29 articulated bones are registered")
 	_check(rig.weapon.get_parent() == rig.bones["HandNear"] and rig.weapon.pivot.get_parent() == rig.weapon,
 		"Blade pivot is a child of the mounted palm socket")
@@ -52,6 +52,7 @@ func _run() -> void:
 		_check(not identifiers.has(profile["id"]), "Unique profile " + profile["id"])
 		identifiers[profile["id"]] = index
 		_validate_profile(profile, player)
+		_verify_paint_repairs(index, profile, player)
 		if not _directory.is_empty():
 			player.inspect_pose(index, profile["sample"])
 			_lab.selected.select(index)
@@ -101,6 +102,9 @@ func _run() -> void:
 	_check(rig.offhand_reach_error < 0.05 and rig.layers["blade"].z_index == 23,
 		"Reachable offhand locks to the grip and explicit weapon depth takes effect")
 	_verify_lab_controls(identifiers)
+	await _verify_temporal_profiles(identifiers)
+	_verify_combat_handoffs(identifiers)
+	await _verify_void_bursts(identifiers)
 	if not _directory.is_empty():
 		await RenderingServer.frame_post_draw
 		_verify_rendered_neutral()
@@ -184,8 +188,58 @@ func _verify_transitions(player: Motion, identifiers: Dictionary) -> void:
 	_check(player.play_profile(identifiers["landing"]), "Landing transition is available late in flight")
 
 
+func _verify_paint_repairs(index: int, profile: Dictionary, player: Motion) -> void:
+	var paint: Dictionary = profile.get("paint", {})
+	var restored: Array = paint.get("restored_frames", [])
+	if restored.is_empty():
+		return
+	var clip: StringName = StringName(paint["clip"])
+	var keys: Array = paint.get("frames", [])
+	var count: int = keys.size() if not keys.is_empty() else player.source.get_frame_count(clip)
+	for number: int in restored:
+		var slot: int = number - 1
+		if not keys.is_empty():
+			slot = -1
+			for candidate: int in keys.size():
+				if int(keys[candidate]) == number - 1:
+					slot = candidate
+					break
+		var path: String = Motion.PAINT_REPAIRS + "%s_%02d.png" % [clip, number]
+		var valid: bool = slot >= 0 and slot < count and FileAccess.file_exists(path)
+		if valid:
+			var sample: float = lerpf(paint["start"], paint["end"], (slot + 0.5) / count)
+			player.inspect_pose(index, sample)
+			_lab._update_status()
+			var image: Image = player.correction.texture.get_image()
+			valid = player.correction.visible and not player.rig.visible and image.get_height() == 512
+			valid = valid and player.correction.texture != player.source.get_frame_texture(clip, number - 1)
+			valid = valid and image.get_width() <= _lab.hybrid_stage.size.x
+			if clip == &"knockback":
+				for y: int in range(int(Lab.GROUND), image.get_height()):
+					for x: int in image.get_width():
+						valid = valid and image.get_pixel(x, y).a < 48.0 / 255.0
+			elif image.get_width() == 512:
+				var original: Image = player.source.get_frame_texture(clip, number - 1).get_image()
+				var repaired_left: int = _solid_left_edge(image)
+				valid = valid and repaired_left > 0 and repaired_left < _solid_left_edge(original)
+			else:
+				var bounds: Rect2i = image.get_used_rect()
+				valid = valid and bounds.has_area() and bounds.position.x > 0 and bounds.end.x < image.get_width()
+		_check(valid, "%s frame %02d uses bounded, registered repair artwork" % [clip, number])
+
+
+func _solid_left_edge(image: Image) -> int:
+	var bounds: Rect2i = image.get_used_rect()
+	for x: int in range(bounds.position.x, bounds.end.x):
+		for y: int in range(bounds.position.y, bounds.end.y):
+			if image.get_pixel(x, y).a >= 48.0 / 255.0:
+				return x
+	return image.get_width()
+
+
 func _verify_lab_controls(identifiers: Dictionary) -> void:
 	var player: Motion = _lab.player
+	player.source_mode = true
 	var guard_index: int = identifiers["guard"]
 	_lab.selected.select(guard_index)
 	_lab.selected.item_selected.emit(guard_index)
@@ -202,6 +256,236 @@ func _verify_lab_controls(identifiers: Dictionary) -> void:
 	_lab._reset()
 	_check(_lab.selected.selected == 0 and player.rig.visible and not player.correction.visible
 		and is_zero_approx(player.progress()) and not player.blade_window_open, "Reset restores exclusive neutral art")
+	player.source_mode = false
+	player.speed = 1.0
+
+
+func _verify_void_bursts(identifiers: Dictionary) -> void:
+	var player: Motion = _lab.player
+	player.source_mode = true
+	var reference: Sprite2D = _lab.original_stage.get_child(0) as Sprite2D
+	var capture: bool = not _directory.is_empty() and OS.get_cmdline_user_args().has("burst_comparison")
+	var expected_clips: Dictionary[String, StringName] = {
+		"void_burst": &"void_burst",
+		"void_burst_main": &"phase2_void_burst",
+	}
+	var expected_titles: Dictionary[String, String] = {
+		"void_burst": "Void Burst — Preparation / Charge",
+		"void_burst_main": "Void Burst — Main Signature Attack",
+	}
+	for id: String in expected_clips:
+		var index: int = identifiers[id]
+		var clip: StringName = expected_clips[id]
+		var count: int = player.source.get_frame_count(clip)
+		var fps: float = player.source.get_animation_speed(clip)
+		_lab.selected.select(index)
+		_lab.selected.item_selected.emit(index)
+		var paint: Dictionary = player.active.get("paint", {})
+		if paint.is_empty():
+			_check(false, "%s selection must display its painted sequence in source mode" % id)
+			continue
+		var duration: float = 0.0
+		for frame: int in count:
+			duration += player.source.get_frame_duration(clip, frame) / fps
+		_check(StringName(paint["clip"]) == clip and not paint.has("frames")
+			and _lab.selected.get_item_text(index) == expected_titles[id]
+			and is_equal_approx(float(player.active["seconds"]), duration),
+			"%s selects its full original clip at the authored duration" % id)
+		_lab._speed(0.5)
+		_lab._play()
+		player.advance(0.2)
+		_lab._pause()
+		_check(is_equal_approx(player.clock, 0.1) and not player.playing, id + " supports speed and pause")
+		var frames_match: bool = count == 20
+		for frame: int in count:
+			_lab.scrub.value = (frame + 0.5) / count
+			var original: Texture2D = player.source.get_frame_texture(clip, frame)
+			var expected: Texture2D = original
+			if float(frame + 1) in paint.get("restored_frames", []):
+				var path: String = Motion.PAINT_REPAIRS + "%s_%02d.png" % [clip, frame + 1]
+				expected = player._repaired_paint.get(path)
+			frames_match = frames_match and expected != null and expected == player.correction.texture
+			frames_match = frames_match and player.correction.visible and not player.rig.visible
+			if capture:
+				reference.texture = original
+				await RenderingServer.frame_post_draw
+				var source_path: String = _directory.path_join("%s_source_%02d.png" % [id, frame + 1])
+				var lab_path: String = _directory.path_join("%s_lab_%02d.png" % [id, frame + 1])
+				var source_error: Error = _lab.original_stage.get_texture().get_image().save_png(source_path)
+				var lab_error: Error = _lab.hybrid_stage.get_texture().get_image().save_png(lab_path)
+				frames_match = frames_match and source_error == OK and lab_error == OK
+		_check(frames_match, "%s scrubs all 20 distinct source slots without rig or texture substitution" % id)
+	reference.texture = player.source.get_frame_texture(&"idle", 0)
+	player.source_mode = false
+	_lab._speed(1.0)
+	_lab._reset()
+	_check(_lab.hybrid_stage.size.x == 512 and _lab._hybrid_display.offset == Vector2.ZERO
+		and player.rig.visible, "Void Burst reset restores the original neutral viewport")
+
+
+func _verify_temporal_profiles(ids: Dictionary) -> void:
+	var player: Motion = _lab.player
+	var representatives: Dictionary = {}
+	for index: int in player.profiles.size():
+		var state: String = player.profiles[index]["state"]
+		if not representatives.has(state):
+			representatives[state] = index
+	representatives["recovery"] = ids["ready"]
+	var valid_routes: int = 0
+	var route_count: int = 0
+	for rule: Dictionary in player.transitions:
+		for origin: String in rule["from"]:
+			for destination: String in rule["to"]:
+				if origin == "recovery":
+					continue
+				route_count += 1
+				player.inspect_pose(representatives[origin], 0.8 if origin == "jump" else 1.0)
+				var source_x: float = player._last_pose["root"].x if player.rig.visible else 0.0
+				var accepted: bool = player.play_profile(representatives[destination])
+				var valid: bool = accepted and is_equal_approx(player.world_x, source_x)
+				for sample: int in 12:
+					player.advance(1.0 / 120.0)
+					valid = valid and player.rig.visible != player.correction.visible
+					if player.rig.visible:
+						valid = valid and player.rig.weapon.position.distance_to(Vector2.ZERO) < 0.01
+				valid_routes += int(valid)
+	_check(valid_routes == route_count, "%d/%d configured preview routes preserve root and exclusive art" % [valid_routes, route_count])
+	player.inspect_pose(ids["forward"], 1.0)
+	var distance: float = player._last_pose["root"].x
+	player.play_profile(ids["neutral"])
+	player.advance(0.18)
+	_check(is_equal_approx(player.world_x + player._last_pose["root"].x, distance),
+		"Advance-to-idle preserves the full accumulated travel after blending")
+	player.inspect_pose(ids["knockback"], 1.0)
+	_check(not player.play_profile(ids["ready"]) and player.correction.visible, "Prone knockback holds its source ending")
+	player.inspect_pose(ids["neutral"], 0.0)
+	player.play_profile(ids["void_burst_main"])
+	player.advance(0.04)
+	_check(player.rig.visible and is_zero_approx(player.clock), "Signature pre-roll keeps time separate from the authored charge")
+	_check(player.play_profile(ids["hit"]) and player.rig.visible and not player.blade_window_open,
+		"An interrupted pre-roll releases its previous visual and event state")
+	_check(absf(Motion._angle(179.0, -179.0, 0.5) - 180.0) < 0.001, "Rotations take the short path across 180°")
+	var deterministic: bool = true
+	for id: String in ["forward", "jump", "void_burst", "void_burst_main"]:
+		var samples: Array[Vector4] = []
+		for hz: int in [30, 60, 120]:
+			player.play_profile(ids[id], true)
+			for tick: int in hz / 2:
+				player.advance(1.0 / hz)
+			var position: Vector2 = player._last_pose["root"] if player.rig.visible else Vector2(player.source_frame, player.paint_shift_x)
+			samples.append(Vector4(player.clock, position.x, position.y, float(player.blade_window_open)))
+		deterministic = deterministic and samples[0].is_equal_approx(samples[1]) and samples[1].is_equal_approx(samples[2])
+	_check(deterministic, "30, 60, and 120 Hz deltas agree on time, pose, and source key")
+	var source_continuous: bool = true
+	for id: String in ["void_burst", "void_burst_main"]:
+		player.inspect_pose(ids[id], 0.0)
+		player.step_source(ids[id], 1)
+		source_continuous = source_continuous and player.source_frame == 1 and not player.playing
+		player.step_source(ids[id], -1)
+		source_continuous = source_continuous and player.source_frame == 0
+	_check(source_continuous, "Source stepping visits adjacent original keys in both directions")
+	if not _directory.is_empty() and OS.get_cmdline_user_args().has("transitions"):
+		await _capture_transitions(ids)
+	_lab._reset()
+
+
+func _verify_combat_handoffs(ids: Dictionary) -> void:
+	var player: Motion = _lab.player
+	player.inspect_pose(ids["guard"], 0.8)
+	var guard: Texture2D = player.correction.texture
+	var accepted: bool = player.play_profile(ids["forward"])
+	_check(accepted and player.correction.texture == guard and is_zero_approx(player.clock),
+		"Guard release starts from the exact displayed guard")
+	player.advance(0.04)
+	_check(player.correction.texture == player.source.get_frame_texture(&"guard", 6)
+		and not player.rig.visible, "Guard release lowers through the authored middle pose")
+	player.advance(0.04)
+	_check(player.correction.texture == player.source.get_frame_texture(&"guard_release", 0)
+		and not player.rig.visible, "Guard release plays the authored final painted key")
+	_check(player.play_profile(ids["hit"]) and player.rig.visible and not player.correction.visible,
+		"Impact can interrupt the guard bridge with one visual owner")
+	player.play_profile(ids["hit"], true)
+	_check(not player.play_profile(ids["knockback"]), "Knockback cannot cancel the initial hit contact")
+	player.advance(0.10)
+	_check(player.play_profile(ids["knockback"]) and player.rig.visible and is_zero_approx(player.clock),
+		"Hit enters the knockback pre-roll without replacing the displayed rig")
+	player.advance(0.07)
+	_check(player.correction.visible and player.source_frame == 0,
+		"Knockback starts at its first floor-corrected source key")
+	for move: String in ["forward", "backward"]:
+		player.inspect_pose(ids[move], 0.32)
+		var travel: float = player._last_pose["root"].x
+		accepted = player.play_profile(ids["heavy"])
+		var side: String = "Near" if player._stance_foot == "near" else "Far"
+		var boot: Bone2D = player.rig.bones["Foot" + side]
+		var contact: Vector2 = boot.global_position
+		player.advance(0.05)
+		_check(accepted and is_equal_approx(player.world_x, travel)
+			and boot.global_position.distance_to(contact) < 0.01 and player.rig.visible,
+			move + " holds the planted boot into the attack")
+		player.advance(0.05)
+		_check(player.source_frame == 0 and player.correction.visible, move + " keeps the attack anticipation")
+	for attack: String in ["diagonal", "heavy", "void_burst", "void_burst_main"]:
+		player.play_profile(ids[attack], true)
+		var length: float = float(player.active["seconds"])
+		player.advance(length * 0.45)
+		_check(not player.play_profile(ids["guard"]), attack + " maintains the committed attack")
+		player.advance(length * 0.38)
+		accepted = player.play_profile(ids["guard"])
+		_check(accepted and player.active["id"] == attack and player.queued_profile == ids["guard"],
+			attack + " buffers guard without shortening authored recovery")
+		player.advance(length * 0.17)
+		_check(player.active["id"] == "guard" and player.queued_profile == -1
+			and player.correction.visible and is_zero_approx(player.clock),
+			attack + " holds its final painted surface at recovery handoff")
+		player.advance(0.12)
+		_check(player.active["id"] == "guard" and player.source_frame == 0,
+			attack + " enters guard on its original first key")
+	player.play_profile(ids["heavy"], true)
+	player.advance(0.4)
+	player.playing = false
+	_check(not player.play_profile(ids["guard"]), "Pausing cannot bypass attack commitment")
+	player.playing = true
+	player.advance(0.35)
+	player.play_profile(ids["guard"])
+	_check(player.queued_profile == ids["guard"] and player.play_profile(ids["hit"])
+		and player.queued_profile == -1, "An interrupting hit clears a buffered guard")
+	player.inspect_pose(ids["forward"], 0.65)
+	var origin: float = player._last_pose["root"].x
+	player.play_profile(ids["diagonal"])
+	player.advance(0.95)
+	player.play_profile(ids["ready"])
+	player.advance(0.8)
+	player.play_profile(ids["backward"])
+	player.advance(0.9)
+	var next_origin: float = player.world_x + player._last_pose["root"].x
+	_check(is_equal_approx(next_origin, origin - 22.0), "Repeated movement, attack and recovery preserve net travel")
+	_lab._reset()
+
+
+func _capture_transitions(ids: Dictionary) -> void:
+	var cases: Array = [
+		["neutral","ready"], ["neutral","forward"], ["forward","neutral"], ["forward","guard"],
+		["guard","horizontal"], ["horizontal","ready"], ["ready","guard"], ["jump","landing"],
+		["dash","ready"], ["hit","knockback"], ["void_step","forward"], ["void_step","diagonal"],
+		["neutral","void_burst"], ["neutral","void_burst_main"],
+	]
+	for pair: Array in cases:
+		var phase: float = 1.0
+		if pair[0] == "jump":
+			phase = 0.8
+		elif pair[0] == "hit":
+			phase = 0.35
+		_lab.player.inspect_pose(ids[pair[0]], phase)
+		_lab.selected.select(ids[pair[1]])
+		_lab._update_status()
+		await _capture("%s_to_%s_outgoing" % [pair[0], pair[1]])
+		_lab.player.play_profile(ids[pair[1]])
+		for index: int in 19:
+			_lab._update_status()
+			await _capture("%s_to_%s_%02d" % [pair[0], pair[1], index])
+			_lab.player.playing = true
+			_lab.player.advance(1.0 / 60.0)
 
 
 func _record_event(event: String, _at: float) -> void:

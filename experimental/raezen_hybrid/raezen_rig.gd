@@ -102,8 +102,8 @@ func apply_pose(pose: Dictionary) -> void:
 	weapon.set_pose(pose["blade"])
 	_set_weapon_depth(roundi(pose["depth"]))
 	if pose["solve_feet"]:
-		_plant("Near", pose["near"])
-		_plant("Far", pose["far"])
+		_plant("Near", pose["near"], float(angles.get("FootNear", 0.0)))
+		_plant("Far", pose["far"], float(angles.get("FootFar", 0.0)))
 	if pose["offhand"] > 0.0:
 		var goal: Vector2 = bones["HandFar"].global_position.lerp(weapon.offhand.global_position, pose["offhand"])
 		var align: float = weapon.pivot.global_rotation
@@ -127,11 +127,11 @@ func _soft_tip(id: String, pixels: float) -> void:
 	sprite.material = shader
 
 
-func _plant(side: String, offset: Vector2) -> void:
+func _plant(side: String, offset: Vector2, pitch_degrees: float = 0.0) -> void:
 	var foot: String = "Foot" + side
 	var goal: Vector2 = to_global(_points[foot] + offset + bones["Root"].position - _rest["Root"].origin)
 	_solve("Hip" + side, "Knee" + side, foot, goal, _rest[foot].origin)
-	bones[foot].global_rotation = 0.0
+	bones[foot].global_rotation = deg_to_rad(pitch_degrees)
 
 
 func _solve(first_name: String, second_name: String, end_name: String, goal: Vector2, lower: Vector2) -> float:
@@ -154,3 +154,19 @@ func _solve(first_name: String, second_name: String, end_name: String, goal: Vec
 func foot_error(side: String, expected: Vector2) -> float:
 	var foot: String = "Foot" + side
 	return to_local(bones[foot].global_position).distance_to(_points[foot] + expected)
+
+
+func fit_ground_contacts(pose: Dictionary) -> void:
+	var pelvis: Vector2 = pose["pelvis"]
+	var hip_angle: float = deg_to_rad(float(pose["angles"].get("Pelvis", 0.0)))
+	for side: String in ["Near", "Far"]:
+		var hip: String = "Hip" + side
+		var knee: String = "Knee" + side
+		var foot: String = "Foot" + side
+		var hip_position: Vector2 = _points["Pelvis"] + (_points[hip] - _points["Pelvis"]).rotated(hip_angle)
+		var target: Vector2 = _points[foot] + pose[side.to_lower()] - hip_position
+		var reach: float = _rest[knee].origin.length() + _rest[foot].origin.length() - 3.0
+		var horizontal: float = minf(reach, absf(target.x - pelvis.x))
+		var vertical: float = sqrt(maxf(0.0, reach * reach - horizontal * horizontal))
+		pelvis.y = maxf(pelvis.y, target.y - vertical)
+	pose["pelvis"] = pelvis

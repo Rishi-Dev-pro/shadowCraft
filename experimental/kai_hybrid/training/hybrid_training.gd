@@ -8,6 +8,7 @@ const Target = preload("res://experimental/kai_hybrid/training/training_target.g
 const Attack = preload("res://experimental/kai_hybrid/attack_motion.gd")
 const Dash = preload("res://experimental/kai_hybrid/dash_motion.gd")
 const SPARK = preload("res://scenes/combat/hit_spark_2d.tscn")
+const Switcher = preload("res://experimental/raezen_hybrid/training/character_switcher.gd")
 
 # Fist / sole volumes registered to the approved 0.7-scale contact drawings.
 const CONTACT_CENTER: Array[Vector2] = [Vector2(111, -256), Vector2(112, -255), Vector2(87, -237)]
@@ -28,6 +29,7 @@ var _dummy_bar: ProgressBar
 var _dummy_ghost: ProgressBar
 var _dummy_value: Label
 var _effect: HitSpark2D
+var switcher: Switcher
 
 
 static func attach(arena: Node2D) -> void:
@@ -76,9 +78,15 @@ func _ready() -> void:
 	motion.request_idle()
 	_connect_hud()
 	_update_feedback()
+	switcher = Switcher.new()
+	switcher.name = "TrainingSwitcher"
+	add_child(switcher)
+	switcher.setup(self, get_parent().get_node("UI"), _hint)
 
 
 func _physics_process(delta: float) -> void:
+	if switcher != null and (switcher.is_open or switcher.use_raezen):
+		return
 	_face_target()
 	_drive_input()
 	motion.advance_playback(delta)
@@ -92,6 +100,13 @@ func _physics_process(delta: float) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	var key: InputEventKey = event as InputEventKey
 	if key == null or not key.pressed or key.echo:
+		return
+	if switcher != null and switcher.is_open:
+		return
+	if switcher != null and switcher.use_raezen:
+		if key.physical_keycode == KEY_R:
+			reset_training()
+			get_viewport().set_input_as_handled()
 		return
 	match key.physical_keycode:
 		KEY_E:
@@ -185,12 +200,46 @@ func reset_training() -> void:
 	fighter.velocity = Vector2.ZERO
 	_guard_input = false
 	target.reset()
+	if switcher != null and switcher.use_raezen:
+		var health: HealthComponent = fighter.get_node_or_null("HealthComponent") as HealthComponent
+		if health != null:
+			health.restore_full()
+		switcher.raezen.reset_pose()
+		_update_feedback()
+		return
 	if is_instance_valid(_effect):
 		_effect.queue_free()
 	_face_target()
 	_project_pose()
 	motion.request_idle()
 	_update_feedback()
+
+
+func park_training_actor() -> void:
+	motion.select_pose(Motion.Pose.NEUTRAL)
+	motion.dash_world_x = 0.0
+	_guard_input = false
+	fighter.global_position.y = _floor_y
+	fighter.velocity = Vector2.ZERO
+	target.synchronize_hold(false)
+
+
+func show_kai_training(active: bool) -> void:
+	display.visible = active
+	if active:
+		_face_target()
+		_project_pose()
+		motion.request_idle()
+
+
+func training_floor_y() -> float:
+	return _floor_y
+
+
+func report_raezen(prefix: String) -> void:
+	_update_feedback(prefix)
+	if switcher.use_raezen and prefix.begins_with("RAEZEN"):
+		_notice.text = prefix
 
 
 func _connect_hud() -> void:
@@ -255,4 +304,5 @@ func _update_feedback(prefix: String = "") -> void:
 		_dummy_ghost.value = target.durability
 	if _dummy_value != null:
 		_dummy_value.text = "%d / %d" % [roundi(target.durability), roundi(target.maximum)]
-	_notice.text = "%s%d %s" % [prefix, target.hits, "HIT" if target.hits == 1 else "HITS"] if target.hits > 0 else "HYBRID KAI  ·  PRACTICE"
+	var name_label: String = "RAEZEN" if switcher != null and switcher.use_raezen else "HYBRID KAI"
+	_notice.text = "%s%d %s" % [prefix, target.hits, "HIT" if target.hits == 1 else "HITS"] if target.hits > 0 else name_label + "  ·  PRACTICE"

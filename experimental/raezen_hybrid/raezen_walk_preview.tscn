@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://experimental/raezen_hybrid/raezen_walk_preview.gd" id="1_preview"]
+[ext_resource type="Script" path="res://experimental/raezen_hybrid/raezen_rig.gd" id="2_rig"]
+[ext_resource type="Script" path="res://experimental/raezen_hybrid/motion_player.gd" id="3_motion"]
+
+[node name="RaezenWalkPreview" type="Node2D"]
+script = ExtResource("1_preview")
+
+[node name="Rig" type="Node2D" parent="."]
+script = ExtResource("2_rig")
+
+[node name="Paint" type="Sprite2D" parent="."]
+visible = false
+
+[node name="Motion" type="Node" parent="."]
+script = ExtResource("3_motion")

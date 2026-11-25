@@ -14,6 +14,8 @@ var player: Player
 var selected: OptionButton
 var status: Label
 var scrub: HSlider
+var source_toggle: CheckButton
+var blend_gauge: ProgressBar
 var _original_display: Sprite2D
 var _hybrid_display: Sprite2D
 
@@ -73,7 +75,7 @@ func _controls() -> void:
 	column.add_theme_constant_override("separation", 10)
 	add_child(column)
 	var title: Label = Label.new()
-	title.text = "RAEZEN  /  HYBRID FOUNDATION REVIEW"
+	title.text = "RAEZEN  /  MOTION REVIEW"
 	title.add_theme_font_size_override("font_size", 25)
 	column.add_child(title)
 	var row: HBoxContainer = HBoxContainer.new()
@@ -85,6 +87,7 @@ func _controls() -> void:
 	selected.item_selected.connect(_select)
 	row.add_child(selected)
 	_add_button(row, "Play", _play)
+	_add_button(row, "Transition", _play_transition)
 	_add_button(row, "Pause / Resume", _pause)
 	_add_button(row, "Reset", _reset)
 	var rate: SpinBox = SpinBox.new()
@@ -95,12 +98,31 @@ func _controls() -> void:
 	rate.suffix = "×"
 	rate.value_changed.connect(_speed)
 	row.add_child(rate)
+	var options: HBoxContainer = HBoxContainer.new()
+	options.add_theme_constant_override("separation", 10)
+	column.add_child(options)
+	source_toggle = CheckButton.new()
+	source_toggle.text = "Source steps"
+	source_toggle.toggled.connect(_toggle_source)
+	options.add_child(source_toggle)
+	_add_button(options, "‹ Frame", _step.bind(-1))
+	_add_button(options, "Frame ›", _step.bind(1))
+	var fps: OptionButton = OptionButton.new()
+	for cap: int in [0, 30, 60, 120]:
+		fps.add_item("Uncapped" if cap == 0 else "%d FPS cap" % cap, cap)
+	fps.item_selected.connect(func(index: int) -> void: Engine.max_fps = fps.get_item_id(index))
+	options.add_child(fps)
+	blend_gauge = ProgressBar.new()
+	blend_gauge.custom_minimum_size.x = 92.0
+	blend_gauge.max_value = 1.0
+	blend_gauge.tooltip_text = "Transition progress"
+	options.add_child(blend_gauge)
 	scrub = HSlider.new()
 	scrub.step = 0.005
 	scrub.max_value = 1.0
 	scrub.custom_minimum_size.x = 200.0
 	scrub.value_changed.connect(_seek)
-	row.add_child(scrub)
+	options.add_child(scrub)
 	status = Label.new()
 	column.add_child(status)
 
@@ -113,12 +135,36 @@ func _add_button(row: HBoxContainer, label: String, action: Callable) -> void:
 
 
 func _select(index: int) -> void:
-	player.inspect_pose(index, float(player.profiles[index]["sample"]))
+	if player.source_mode:
+		player.inspect_pose(index, float(player.profiles[index]["sample"]))
 	_update_status()
 
 
 func _play() -> void:
 	player.play_profile(selected.selected, true)
+	_update_status()
+
+
+func _play_transition() -> void:
+	if player.source_mode:
+		status.text = "Switch to smooth playback to transition between motions."
+		return
+	if not player.play_profile(selected.selected):
+		status.text = "Transition unavailable from %s. Finish the current action or use Play to preview separately." % player.active["title"]
+		return
+	_update_status()
+
+
+func _toggle_source(enabled: bool) -> void:
+	player.source_mode = enabled
+	player.inspect_pose(selected.selected, float(scrub.value))
+	_update_status()
+
+
+func _step(direction: int) -> void:
+	player.source_mode = true
+	source_toggle.set_pressed_no_signal(true)
+	player.step_source(selected.selected, direction)
 	_update_status()
 
 
@@ -133,7 +179,8 @@ func _seek(value: float) -> void:
 
 func _reset() -> void:
 	selected.select(0)
-	_select(0)
+	player.inspect_pose(0, 0.0)
+	_update_status()
 
 
 func _speed(value: float) -> void:
@@ -147,12 +194,23 @@ func _process(delta: float) -> void:
 
 
 func _update_status() -> void:
+	var width: int = 512
+	if player.correction.visible:
+		width = maxi(width, player.correction.texture.get_width())
+	if hybrid_stage.size.x != width:
+		# Padded painted frames keep their source pixels beyond the old crop.
+		hybrid_stage.size = Vector2i(width, hybrid_stage.size.y)
+	_hybrid_display.offset.x = player.world_x + player.paint_shift_x - player.paint_origin_x
 	scrub.set_value_no_signal(player.progress())
-	status.text = "%s · %s · %.2f / %.2f s%s" % [
+	blend_gauge.value = player.transition_fraction()
+	var frame: String = " · source %02d" % (player.source_frame + 1) if player.source_frame >= 0 else ""
+	status.text = "%s · %s · %.2f / %.2f s%s%s" % [
 		player.active["title"], "Layered rig" if player.rig.visible else "Painted correction",
-		player.clock, float(player.active["seconds"]),
+		player.clock, float(player.active["seconds"]), frame,
 		" · " + player.last_event if not player.last_event.is_empty() else "",
 	]
+	if player.queued_profile >= 0:
+		status.text += " · queued " + String(player.profiles[player.queued_profile]["title"])
 
 
 func _layout() -> void:
@@ -168,7 +226,7 @@ func _draw() -> void:
 	var floor_y: float = size.y - 68.0
 	draw_rect(Rect2(Vector2.ZERO, size), Color("#22212a"))
 	draw_line(Vector2(36.0, floor_y + 6.0), Vector2(size.x - 36.0, floor_y + 6.0), Color("#6d586f"))
-	draw_line(Vector2(size.x * 0.5, 145), Vector2(size.x * 0.5, floor_y + 6), Color("#443848"))
+	draw_line(Vector2(size.x * 0.5, 174), Vector2(size.x * 0.5, floor_y + 6), Color("#443848"))
 	var font: Font = ThemeDB.fallback_font
-	draw_string(font, Vector2(size.x * 0.26 - 99, 163), "CAMPAIGN NEUTRAL")
-	draw_string(font, Vector2(size.x * 0.74 - 98, 163), "HYBRID MOTION TEST")
+	draw_string(font, Vector2(size.x * 0.26 - 99, 192), "CAMPAIGN NEUTRAL")
+	draw_string(font, Vector2(size.x * 0.74 - 98, 192), "HYBRID MOTION TEST")
