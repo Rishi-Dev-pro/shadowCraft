@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://experimental/hunter_walk/hunter_proxy.gd" id="1"]
+
+[node name="HunterWalkStudy" type="Node2D"]
+position = Vector2(85, 165)
+scale = Vector2(0.66, 0.66)
+script = ExtResource("1")
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+z_as_relative = false
+z_index = -20
+top_level = true
+polygon = PackedVector2Array(-1000,-1000,3000,-1000,3000,2000,-1000,2000)
+color = Color(0.14,0.15,0.16,1)
+
+[node name="Ground" type="Polygon2D" parent="."]
+z_as_relative = false
+z_index = -19
+top_level = true
+polygon = PackedVector2Array(-1000,492.36,3000,492.36,3000,2000,-1000,2000)
+color = Color(0.20,0.21,0.22,1)

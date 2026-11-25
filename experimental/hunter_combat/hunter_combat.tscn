@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://experimental/hunter_walk/hunter_walk.tscn" id="1"]
+[ext_resource type="Script" path="res://experimental/hunter_combat/hunter_combat.gd" id="2"]
+
+[node name="HunterCombatStudy" instance=ExtResource("1")]
+position = Vector2(480, 165)
+script = ExtResource("2")
