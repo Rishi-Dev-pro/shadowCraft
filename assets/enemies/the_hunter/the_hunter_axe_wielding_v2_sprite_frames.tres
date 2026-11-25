@@ -1,0 +1,479 @@
+[gd_resource type="SpriteFrames" load_steps=104 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_01.png" id="tex_1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_02.png" id="tex_2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_03.png" id="tex_3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_04.png" id="tex_4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_05.png" id="tex_5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_06.png" id="tex_6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_07.png" id="tex_7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/idle/idle_08.png" id="tex_8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_01.png" id="tex_9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_02.png" id="tex_10"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_03.png" id="tex_11"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_04.png" id="tex_12"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_05.png" id="tex_13"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_06.png" id="tex_14"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_07.png" id="tex_15"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk/walk_08.png" id="tex_16"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_01.png" id="tex_17"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_02.png" id="tex_18"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_03.png" id="tex_19"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_04.png" id="tex_20"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_05.png" id="tex_21"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_06.png" id="tex_22"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_07.png" id="tex_23"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/walk_backward/walk_backward_08.png" id="tex_24"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_01.png" id="tex_25"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_02.png" id="tex_26"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_03.png" id="tex_27"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_04.png" id="tex_28"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_05.png" id="tex_29"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/light_axe/light_axe_06.png" id="tex_30"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_01.png" id="tex_31"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_02.png" id="tex_32"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_03.png" id="tex_33"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_04.png" id="tex_34"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_05.png" id="tex_35"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_06.png" id="tex_36"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_07.png" id="tex_37"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/heavy_axe/heavy_axe_08.png" id="tex_38"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_01.png" id="tex_39"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_02.png" id="tex_40"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_03.png" id="tex_41"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_04.png" id="tex_42"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_05.png" id="tex_43"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_06.png" id="tex_44"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_07.png" id="tex_45"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/axe_sweep/axe_sweep_08.png" id="tex_46"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_01.png" id="tex_47"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_02.png" id="tex_48"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_03.png" id="tex_49"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_04.png" id="tex_50"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_05.png" id="tex_51"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_06.png" id="tex_52"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_07.png" id="tex_53"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_08.png" id="tex_54"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_09.png" id="tex_55"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/spin_axe/spin_axe_10.png" id="tex_56"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/guard/guard_01.png" id="tex_57"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/guard/guard_02.png" id="tex_58"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/guard/guard_03.png" id="tex_59"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/guard/guard_04.png" id="tex_60"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_01.png" id="tex_61"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_02.png" id="tex_62"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_03.png" id="tex_63"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_04.png" id="tex_64"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_05.png" id="tex_65"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/frames_axe_wielding_v2/hit/hit_06.png" id="tex_66"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_00.png" id="tex_67"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_01.png" id="tex_68"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_02.png" id="tex_69"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_03.png" id="tex_70"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_04.png" id="tex_71"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_05.png" id="tex_72"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_06.png" id="tex_73"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_07.png" id="tex_74"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_08.png" id="tex_75"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_09.png" id="tex_76"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_10.png" id="tex_77"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_11.png" id="tex_78"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_12.png" id="tex_79"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_13.png" id="tex_80"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_14.png" id="tex_81"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_15.png" id="tex_82"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_16.png" id="tex_83"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_17.png" id="tex_84"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_18.png" id="tex_85"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_19.png" id="tex_86"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_20.png" id="tex_87"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_21.png" id="tex_88"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_22.png" id="tex_89"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_23.png" id="tex_90"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_24.png" id="tex_91"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_25.png" id="tex_92"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_26.png" id="tex_93"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_27.png" id="tex_94"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_28.png" id="tex_95"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_29.png" id="tex_96"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_30.png" id="tex_97"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_31.png" id="tex_98"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_32.png" id="tex_99"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_33.png" id="tex_100"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_34.png" id="tex_101"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_35.png" id="tex_102"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_hunter/kneeling_defeat/kneel_36.png" id="tex_103"]
+
+[resource]
+animations = [
+{
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_8")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_16")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 9.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_24")
+}],
+"loop": 1,
+"name": &"walk_backward",
+"speed": 9.0
+}, {
+"frames": [
+{
+"duration": 5.0,
+"texture": ExtResource("tex_25")
+}, {
+"duration": 7.0,
+"texture": ExtResource("tex_26")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_27")
+}, {
+"duration": 3.0,
+"texture": ExtResource("tex_28")
+}, {
+"duration": 10.0,
+"texture": ExtResource("tex_29")
+}, {
+"duration": 25.0,
+"texture": ExtResource("tex_30")
+}],
+"loop": 0,
+"name": &"light_axe",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 5.0,
+"texture": ExtResource("tex_31")
+}, {
+"duration": 7.0,
+"texture": ExtResource("tex_32")
+}, {
+"duration": 9.0,
+"texture": ExtResource("tex_33")
+}, {
+"duration": 7.0,
+"texture": ExtResource("tex_34")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_35")
+}, {
+"duration": 4.0,
+"texture": ExtResource("tex_36")
+}, {
+"duration": 12.0,
+"texture": ExtResource("tex_37")
+}, {
+"duration": 26.0,
+"texture": ExtResource("tex_38")
+}],
+"loop": 0,
+"name": &"heavy_axe",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 7.0,
+"texture": ExtResource("tex_39")
+}, {
+"duration": 9.0,
+"texture": ExtResource("tex_40")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_41")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_42")
+}, {
+"duration": 4.0,
+"texture": ExtResource("tex_43")
+}, {
+"duration": 10.0,
+"texture": ExtResource("tex_44")
+}, {
+"duration": 10.0,
+"texture": ExtResource("tex_45")
+}, {
+"duration": 17.0,
+"texture": ExtResource("tex_46")
+}],
+"loop": 0,
+"name": &"axe_sweep",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 5.0,
+"texture": ExtResource("tex_47")
+}, {
+"duration": 7.0,
+"texture": ExtResource("tex_48")
+}, {
+"duration": 9.0,
+"texture": ExtResource("tex_49")
+}, {
+"duration": 10.0,
+"texture": ExtResource("tex_50")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_51")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_52")
+}, {
+"duration": 9.0,
+"texture": ExtResource("tex_53")
+}, {
+"duration": 9.0,
+"texture": ExtResource("tex_54")
+}, {
+"duration": 8.0,
+"texture": ExtResource("tex_55")
+}, {
+"duration": 13.0,
+"texture": ExtResource("tex_56")
+}],
+"loop": 0,
+"name": &"spin_axe",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_59")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_60")
+}],
+"loop": 1,
+"name": &"guard",
+"speed": 8.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_66")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 18.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("tex_67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_69")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_79")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_82")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_88")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_89")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_90")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_91")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_92")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_93")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_94")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_95")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_96")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_97")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_98")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_99")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_100")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_101")
+}, {
+"duration": 1.0,
+"texture": ExtResource("tex_102")
+}, {
+"duration": 12.0,
+"texture": ExtResource("tex_103")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 30.0
+}
+]

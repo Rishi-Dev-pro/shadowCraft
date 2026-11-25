@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "character": "The Hunter",
+  "guardian": 2,
+  "location": "Mist Waterfalls",
+  "origin": "Original ShadowCraft character/pose/weapon illustrations generated with the built-in OpenAI ImageGen tool using the user-provided Hunter sheet as a style and design reference; no reference-sheet cells or pixels were imported as runtime animation frames.",
+  "source_tool": "OpenAI ImageGen built-in; normalized by scripts/enemies/import_the_hunter_art.py",
+  "reference_sheet": "assets/enemies/the_hunter/source/concept_reference_user.png",
+  "license": "Original proprietary ShadowCraft artwork; user-provided image retained only as a reference",
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_anchor_y": 496,
+  "transparent_background": true,
+  "weapon_asset": "assets/weapons/stone_axe/stone_axe.png",
+  "portrait_asset": "assets/enemies/the_hunter/portraits/the_hunter_portrait.png",
+  "weapon_reuse": "WeaponData and Stone Axe scene keep one shared texture/scene for The Hunter and future Forge use; the axe is never baked into character frame textures.",
+  "animations": [
+    {
+      "name": "idle",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/idle/idle_01.png",
+        "assets/enemies/the_hunter/frames/idle/idle_02.png",
+        "assets/enemies/the_hunter/frames/idle/idle_03.png",
+        "assets/enemies/the_hunter/frames/idle/idle_04.png",
+        "assets/enemies/the_hunter/frames/idle/idle_05.png",
+        "assets/enemies/the_hunter/frames/idle/idle_06.png",
+        "assets/enemies/the_hunter/frames/idle/idle_07.png",
+        "assets/enemies/the_hunter/frames/idle/idle_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/idle_contact.png",
+      "durations_at_60_fps": []
+    },
+    {
+      "name": "walk",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/walk/walk_01.png",
+        "assets/enemies/the_hunter/frames/walk/walk_02.png",
+        "assets/enemies/the_hunter/frames/walk/walk_03.png",
+        "assets/enemies/the_hunter/frames/walk/walk_04.png",
+        "assets/enemies/the_hunter/frames/walk/walk_05.png",
+        "assets/enemies/the_hunter/frames/walk/walk_06.png",
+        "assets/enemies/the_hunter/frames/walk/walk_07.png",
+        "assets/enemies/the_hunter/frames/walk/walk_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/walk_contact.png",
+      "durations_at_60_fps": []
+    },
+    {
+      "name": "walk_backward",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_01.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_02.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_03.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_04.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_05.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_06.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_07.png",
+        "assets/enemies/the_hunter/frames/walk_backward/walk_backward_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/walk_backward_contact.png",
+      "durations_at_60_fps": []
+    },
+    {
+      "name": "light_axe",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_01.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_02.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_03.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_04.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_05.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_06.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_07.png",
+        "assets/enemies/the_hunter/frames/light_axe/light_axe_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/light_axe_contact.png",
+      "durations_at_60_fps": [
+        4,
+        6,
+        8,
+        5,
+        4,
+        6,
+        8,
+        17
+      ]
+    },
+    {
+      "name": "heavy_axe",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_01.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_02.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_03.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_04.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_05.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_06.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_07.png",
+        "assets/enemies/the_hunter/frames/heavy_axe/heavy_axe_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/heavy_axe_contact.png",
+      "durations_at_60_fps": [
+        5,
+        9,
+        12,
+        10,
+        4,
+        8,
+        12,
+        18
+      ]
+    },
+    {
+      "name": "axe_sweep",
+      "frame_count": 8,
+      "frames": [
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_01.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_02.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_03.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_04.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_05.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_06.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_07.png",
+        "assets/enemies/the_hunter/frames/axe_sweep/axe_sweep_08.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/axe_sweep_contact.png",
+      "durations_at_60_fps": [
+        5,
+        8,
+        10,
+        9,
+        5,
+        8,
+        12,
+        16
+      ]
+    },
+    {
+      "name": "guard",
+      "frame_count": 4,
+      "frames": [
+        "assets/enemies/the_hunter/frames/guard/guard_01.png",
+        "assets/enemies/the_hunter/frames/guard/guard_02.png",
+        "assets/enemies/the_hunter/frames/guard/guard_03.png",
+        "assets/enemies/the_hunter/frames/guard/guard_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/guard_contact.png",
+      "durations_at_60_fps": []
+    },
+    {
+      "name": "hit",
+      "frame_count": 4,
+      "frames": [
+        "assets/enemies/the_hunter/frames/hit/hit_01.png",
+        "assets/enemies/the_hunter/frames/hit/hit_02.png",
+        "assets/enemies/the_hunter/frames/hit/hit_03.png",
+        "assets/enemies/the_hunter/frames/hit/hit_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/hit_contact.png",
+      "durations_at_60_fps": []
+    },
+    {
+      "name": "death",
+      "frame_count": 4,
+      "frames": [
+        "assets/enemies/the_hunter/frames/death/death_01.png",
+        "assets/enemies/the_hunter/frames/death/death_02.png",
+        "assets/enemies/the_hunter/frames/death/death_03.png",
+        "assets/enemies/the_hunter/frames/death/death_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_hunter/previews/death_contact.png",
+      "durations_at_60_fps": []
+    }
+  ]
+}
