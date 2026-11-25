@@ -4,6 +4,24 @@
 > **Status View:** Active Tasks, Done Column, Backlog  
 > **Rule:** No task outside the authorized phase may be moved to "In Progress" without user sign-off.
 
+## Battlefield Floor Alignment Correction (2026-11-17)
+
+- [x] Regenerate only the three non-dojo backgrounds against the dojo's open-floor/horizon reference.
+- [x] Remove the obsolete elevated jump-test platform without changing the real floor collision.
+- [x] Update movement-suite expectations for the removed legacy platform.
+- [x] Reimport textures, run the focused movement checks, and visually inspect all four actual arena renders side by side (63/63 movement assertions passed).
+
+## Separately Authorized Location-Specific Guardian Battlefields (2026-11-17)
+
+- [x] Preserve the approved Moonlit Dojo for The Initiate.
+- [x] Create Mistfall Crossing, Crimson Sanctum, and Raezen's Citadel as separate backgrounds and inherited arena scenes.
+- [x] Route Hunter, Executioner, and Raezen story encounters to their matching scene while retaining shared arena gameplay systems.
+- [x] Validate the four guardian-to-arena mappings and load each scene in Godot 4.7.2.
+- [x] Inspect the three new stages with their guardians and HUD in Godot's Compatibility renderer.
+- [ ] Manually click through the World Map into each arena and exercise movement/combat controls.
+
+This scoped environment deliverable does not complete Phase 09 or authorize additional combat/content work.
+
 ## Authorized Playable Character Selection — Complete (2026-11-10)
 
 - [x] Add Kai V2 / Razen selection UI with real idle previews and mouse/keyboard selection.
@@ -13,6 +31,16 @@
 - [x] Capture Compatibility-rendered selector and both actual-arena gameplays; run all relevant regression suites and both audits.
 
 This scoped integration does not authorize the next Combat 2 milestone or Phase 08 boss development.
+
+## Separately Authorized Raezan Combat Refinement (2026-11-17)
+
+- [x] Fix Raezan approach gait selection and preserve distinct authored forward/backward cycles.
+- [x] Correct Void Burst reach and verify one damage event per activation through existing hitbox/health components.
+- [x] Tune controlled hit/knockback timing and configurable 50% guard reduction with intermittent guard decisions.
+- [x] Add character-specific guard entry, hold, impact and release poses and verify their clip transitions in the focused test.
+- [ ] Complete sustained-input live acceptance for player hits, Burst impact, live guard mitigation, parry/counter and phase-two transition.
+
+This refinement remains within the separately authorized Raezan encounter; it does not start unrelated boss or combat work.
 
 ---
 
@@ -95,6 +123,15 @@ This scoped integration does not authorize the next Combat 2 milestone or Phase 
 ---
 
 ## 5. IN PROGRESS / NEXT GATE
+
+### Separately Authorized Guardian III — The Executioner (2026-11-14)
+
+- [x] Add the existing independent sword resource and Executioner animation package to the story encounter using the established enemy/combat components.
+- [x] Map the three authored combo portions to distinct per-strike hitbox/damage profiles; add focused regression assertions for each active window.
+- [x] Launch the normal game, unlock Guardian III temporarily, enter its story arena, inspect the rendered combatants and restore the prior saved progression state (Initiate defeated; later guardians locked).
+- [ ] Complete sustained manual input acceptance for player movement, sword attacks, parry and counter in an interactive session with held-key controls.
+
+No EvoLink was used. No changes were staged or committed.
 
 ### Authorized Razen Character Production — Complete (2026-11-10)
 

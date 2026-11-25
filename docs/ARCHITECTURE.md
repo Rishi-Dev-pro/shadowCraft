@@ -19,9 +19,9 @@ ShadowCraft 2D is architected around a strict separation of concerns:
 - `AttackData` (`Resource`) supplies per-move frame counts, hitbox geometry, damage, knockback, hitstun and animation name. `CombatMath` performs bounded damage-reduction math; `HealthComponent` owns current health and defeat signals.
 - `CombatController` owns the state enum and timed attack phases. It activates `Hitbox2D` only for active frames; `Hurtbox2D` applies a valid hit to the target's health and dispatches hit reaction. The movement controller is given an optional horizontal/input lock while the combat controller owns a move.
 - Kai V2's `KaiV2AnimationController` yields while combat owns the `AnimatedSprite2D`, then resumes the existing locomotion state after recovery. The player hitbox targets enemy-hurtbox layer 7; the target hurtbox only accepts player-hitbox layer 4.
-- The implementation currently includes only Light Jab and Front Kick in a separate Combat Test Arena. Defense, buffered combos, poise, aerial/sweep attacks and shadow specials remain design-only.
+- The initial Combat 1 slice provided Light Jab and Front Kick. Combat Phase 2 Step 2 adds Cross Punch and Heavy Punch for Kai V2 and Razen, wired through the existing buffered chain engine; roundhouse/sweep, defense, poise, aerial attacks and shadow specials remain out of scope.
 - Combat 1.1 aligns the two active windows to the authored contact poses and advances hitbox offsets per active physics frame. Confirmed hits signal only presentation feedback (short hit-stop, code-drawn spark, and dummy recoil); damage resolution and movement/physics ownership remain in their existing components.
-- `project.godot` intentionally keeps `MovementTestArena.tscn` as the F5 scene. That arena has a non-damageable facing marker and no combat feedback owner. `run_combat.bat` launches `combat_test_arena.tscn`, which composes Kai, the damageable dummy, HUD, and confirmed-hit presentation without replacing the movement test scene.
+- F5 starts at Character Selection; the selected fighter is instantiated in `MovementTestArena.tscn`, which composes the shared damageable dummy and confirmed-hit presentation. `run_combat.bat` remains a separate development test launcher.
 
 ```mermaid
 flowchart TD

@@ -1,6 +1,71 @@
 # CHANGELOG
 
 All notable changes to **ShadowCraft 2D** are documented in this file.
+
+- Integrated Earthbreaker V2 into Guardian II with a telegraphed ground hit, directional knockback, guard reduction and a dedicated cooldown. The battle and preview share the same motion and effects.
+
+- Refined the two-handed lift and extraction in the Earthbreaker study. Blade contact now triggers a low radial shockwave, dust, six stone fragments, a fading crack and a short camera impulse.
+
+- Added the standalone Hunter Earthbreaker motion study with blade-edge ground contact, local hit-stop, dust and stone fragments.
+
+- Transferred Hunter's approved white-rig walk and combat poses to twenty registered painted layers in Guardian II. Attack presentation follows existing active frames and the approach cycle advances with ground travel.
+
+- Replaced Hunter’s rolling defeat with a stagger and one-knee drop. The campaign’s non-looping defeat clip holds the kneel before the K.O. overlay and retains that frame behind it.
+
+- Added a standalone Hunter white-rig combat study with two axe attacks, guard, hit recoil, knockback and defeat. The study inherits the approved walk rig.
+
+- Added an isolated white-silhouette Hunter walk study based on the axe-wielding idle artwork, with alternating foot support and a two-handed axe grip.
+
+### Raezen reference-sheet pose review
+
+- Integrated the approved traveling walk into Raezen's Training A/D controls. Walking uses the review rig, and returns to the action rig for idle, backsteps, running and combat.
+
+- Added asymmetric step timing, load-driven shoulder and cloth motion, and a traveling review with sole roll against the fixed floor. The preceding free-arm walk is available as the baseline in the comparison scene.
+
+- Coordinated the free shoulder, elbow and glove with the opposite step in the isolated walk. The sword-side elbow follows the stride with a smaller arc.
+
+- Polished heel loading, high-knee passing and cloth follow-through in the isolated walk. The Void Blade now follows the grip at a fixed local angle.
+
+- Refit all eight isolated walk drawings using hip, knee, ankle and neck landmarks. The review rig uses uninterrupted thigh plates, skirt panels and a profile boot sampled from original Raezen artwork. Right weight acceptance still needs a foreshortened rear-leg correction for a closer silhouette match.
+- Re-authored the isolated walk keys against the newly supplied eight-frame sheet and aligned heel and toe contact to the original boot textures.
+
+### Raezen in-place walk review
+
+- Rebuilt the isolated preview around a time-driven skeletal cycle with fixed left and right floor anchors and zero root travel.
+
+### Raezen grounded walk study
+
+- Added distance-driven sole locking and heel-to-toe transfer to the isolated eight-pose study. Captured a matched-speed dojo comparison for visual review.
+
+### Raezen isolated eight-pose study
+
+- Added a fixed-root comparison between the current Training walk and a separately keyed walk using Raezen's original artwork. The study uses a forward knee bend on both legs, separated heel contacts and lifted passing boots.
+
+### Raezen forward walk rebuild
+
+- Replaced the forward walk with longer alternating steps, registered heel and toe pivots, a lower weight-acceptance pose and a higher passing leg. The standalone preview and Training share the new skeletal tracks.
+
+### Raezen eight-pose walk reference
+
+- Added a standalone preview of the forward walk used in Training. Each step shows contact, weight acceptance, passing and rise with the original rig artwork and socketed Void Blade.
+
+### Raezen Training locomotion correction
+
+- Replaced the translating stance with alternating skeletal steps driven by actual collision-body displacement. The supporting boot stays planted while the opposite leg swings.
+- Added direction-facing walking and running with a separate combat backstep input. Braking settles the feet and sword attacks take over from the current gait pose.
+
+### Raezen Hybrid and Training selection (Milestone 14)
+
+- Added heavy recoil, front and rear impacts, a physical front kick, and a get-up through Sword Ready to the Raezen Hybrid Lab.
+- Added a Kai/Raezen switcher to the existing Training Dojo. Both fighters share the same arena, collision slot and dummy.
+- Preserved the two original Void Bursts and all 969 rendered baseline samples from the 18 previously approved profiles.
+
+### Kai skeletal trial and combat experiment (2026-11-18)
+
+- Added a separate Moonveil Courtyard trial for the cutout Kai, with the original frame-based fighter available in the standard Grind battle and campaign.
+- Kai uses layered turnaround artwork, a 2D bone rig, grounded gait, crouching and landing, and skeletal versions of his jab, cross, heavy punch, and front kick.
+- Added configurable two-way dashes, a hit-confirmed jab-to-cross follow-up, a missed-heavy recovery penalty, and adaptive responses to repeated heavies.
+
 ### Grind combat refinement (2026-11-18)
 
 - Widened the duel-only body capsules to fit the fighters' painted silhouettes and added a braking margin before contact. Kai can still backstep or jump, and short attack steps stop at the body gap.
@@ -41,10 +106,109 @@ All notable changes to **ShadowCraft 2D** are documented in this file.
 - The lobby reads Wood, Stick, and Stone from `resources/grind/player_inventory.tres`. Combat Trials and Practice Grounds open preparation panels, and Weapon Forge explains the Sensei story requirement.
 - Godot 4.7.2 Compatibility verification covered all lobby panels, the return button, and a Hunter rematch launch. The World Map suite passed 66 checks. Movement, combat foundation, character selection, Kai V2, and Combat Phase 2 Step 2 suites passed. All four guardian suites passed their assertions, with one resource still in use at shutdown in the Executioner suite.
 
+### Battlefield floor alignment correction (2026-11-17)
+- Regenerated only the Mistfall Crossing, Crimson Sanctum, and Raezen's Citadel background images, using the approved Moonlit Dojo's higher horizon/open-floor boundary as the visual alignment reference. All four source backgrounds are 1672×941; no character assets, transforms, pivots, or animations changed.
+- Removed the obsolete hidden one-way `ElevatedPlatform` and its collision shape from the shared arena. The actual `Environment/Floor` collision and arena boundaries remain unchanged.
+- Updated movement tests to assert the legacy platform is absent while retaining checks for the real floor and walls. Godot 4.7.2 Compatibility-renderer captures of all four arenas were visually compared side by side; the fighters remain on the common ground line. Phase 02 movement checks passed 63/63.
+- Two-pass review: (1) all three variants still inherit the same 2D floor, walls, camera, fighter setup, and HUD, with only their background textures varying; no elevated-platform node or collision remains. (2) imported scenes rendered successfully, the 63 movement assertions passed, and the four-stage comparison capture is saved at `reports/screenshots/arena_floor_alignment_comparison.png`.
+
+### Location-specific guardian battlefields (2026-11-17)
+- Added original 16:9 stage backgrounds for Mistfall Crossing, Crimson Sanctum, and Raezen's Citadel. The Initiate remains in the existing Moonlit Dojo.
+- Added inherited arena scenes for the three new stages. They reuse the same 2D gameplay template, camera, floor and walls, fighter spawner, combat, health, and HUD; only the background texture varies.
+- World Map battle requests now route each guardian to the matching stage. World Map tests passed **58/58**, covering all four mappings, scene resources, and the three variant textures. Actual Compatibility-renderer captures show each new guardian/background/HUD combination. No changes to guardian unlock rules or character/combat assets.
+- Two-pass audit: architecture review confirmed all scenes remain 2D and inherit the existing combat/floor/camera/HUD setup; quality review confirmed the route and resource tests pass and the new renders preserve fighter visibility. The project reference checker reports 0 errors and 4 pre-existing orphan-UID warnings; manual World Map mouse navigation remains untested.
+
+### Raezen dossier rematch button (2026-11-17)
+- The defeated Raezen dossier now shows an enabled `REMATCH` button in the existing bottom action slot. It reuses the current battle request, unlock check and encounter transition; story completion and guardian progress are unchanged.
+- World Map SceneTree checks passed: 40 checks, 0 failures, including the Raezen button label, enabled state, encounter start and battle-request signal. No files staged or committed.
+
+### Raezan selected Phase 2 sheets and walk-cycle repair (2026-11-17)
+- Located the two user-selected generated sheets in the local image archive and preserved copies under `assets/characters/raezan_boss/source/batches/batch_08_selected/`: the 16-pose Phase 2 finisher and 20-pose Phase 2 Void Burst. Extracted them as transparent 512×512 frames, generated contact sheets, and connected them to the existing `phase2_finisher` and `phase2_void_burst` SpriteFrames clips. Earlier source artwork remains intact.
+- Fixed the frozen-looking walk: the inherited AI requested `walk` every physics tick while Raezan's override immediately changed it to `walk_forward` (or the Phase 2 gait), restarting the animation each tick. Raezan now resolves generic walk requests to a stable, phase-aware clip before playback.
+- Reimported the changed textures in Godot 4.7.2. Focused Raezan runtime checks passed with zero failures, including Phase 1 and Phase 2 gait frame advancement and validation that both selected source clips are the textures assigned to the runtime SpriteFrames resource.
+- Visually inspected the two extracted contact sheets. This pass did not capture a live gameplay recording; in-game appearance during a manually played fight remains for user review. No files were staged or committed.
+
+### Separately Authorized Final Boss — Raezan (2026-11-17)
+- Assembled the existing Raezan art library into a `SpriteFrames` resource using the same frame-based AnimatedSprite2D architecture as The Executioner; added an inherited Raezan boss scene, attack profiles, reusable Void Blade resource/scene, and story-arena routing for Raezen Citadel.
+- Added five distinct combo hit profiles, four sword strikes, dash, Void Step, Void Burst, inherited guard/parry/counter behavior, and a 50% health phase transition using existing health, hurtbox, hitbox and progression systems. Tuned the boss's attack cadence and recovery for readable openings.
+- Preserved the four user-approved sheets under `assets/characters/raezan_boss/source/prior_user_selected_sheets/` as visual references; they were not imported as production frames because they have opaque dark-gray backgrounds and small, inconsistent cells (about 98–165px wide), making background removal/upscaling likely to damage edges and detail. The production library remains individually extracted under `assets/characters/raezan_boss/frames/`.
+- Automated suites passed: Phase 01 hierarchy 44/44; Phase 02 movement 63/63; Kai V2 95/95; Razen V2 113/113; combat foundation 78/78; character selection 53/53; Phase 2 Step 2 66/66; unarmed combat 124/124; window manager 4/4; world map 36/36; Initiate 60/60; Hunter 24/24; Executioner 19/19; Raezan 0 failures.
+- In the live arena, the Raezan boss scene and HUD loaded; Kai and Raezan had aligned gameplay scale/floor positioning, and Raezan's sword pose and movement/attack presentation were inspected. Desktop key-tap automation could not sustain movement/attack holds, and the sampled live fight ended in defeat before a player hit was visually confirmed; runtime attack acceptance remains unverified.
+- Limitation: source character frames depict the Void Blade in-hand. The separate reusable Void Blade asset/resource is preserved, but it is not overlaid on the sprite to avoid duplicate swords; independently animating/detaching it requires weapon-free character layers or artwork.
+- Two-pass audit: architecture review confirmed the 2D-only scene inherits the established Executioner/TrainingDummy combat and SpriteFrames path, and keeps the story boss gate/callbacks in the shared arena; quality review re-read the Raezan controller, inherited scene, attack/resource mappings, frame builder, manifest and focused tests. No files were staged or committed. Live visual verification is limited to rendering, scale/ground alignment, sword pose and observed boss hit/defeat animation; player-hit registration, a full victory, parry/counter timing and phase-two gameplay were not visually confirmed.
+
+### Raezan combat refinement (2026-11-17)
+- Corrected the approach animation selection so Raezan uses the forward gait while advancing, independent of which direction he faces; both phase-one and phase-two routes are covered. The separate authored forward and backward cycles remain intact.
+- Fixed Void Burst reach for its intended close-combat spacing by updating its hitbox width to 480px while preserving its authored startup, active timing and damage. One activation still registers only one hit.
+- Reduced the common hit reaction to eight existing authored flinch/recovery poses and allowed the knockback animation time to finish. Guard mitigation is now 50%; Raezan receives intermittent, phase-aware guard opportunities with cooldowns, preserving inherited parry/counter behavior.
+- Validation: focused Raezan test passed with 0 failures, including gait-state selection, one Burst hit, damage application and 50% guard mitigation. Executioner 19/19, combat foundation 78/78, Phase 02 movement 63/63 and Razen V2 113/113 passed. Live arena inspection showed Raezan advancing with a stepping pose, aligned with Kai, and the blade held in-frame; the short interactive run did not visually confirm a player hit, a Void Burst hit or phase two. No files staged or committed.
+- Guard visual follow-up: added four transparent 512×512, floor-aligned guard poses from the approved in-project Raezan art reference (anticipation, blade protecting upper body, braced contact, release). Mapped them to entry/hold/impact/release SpriteFrames clips and fixed the state-to-animation sync so the generic AI cannot restart the entry pose every physics tick. Focused Raezan test now confirms the pose sequence and 50% blocked damage. The actual arena was launched, but the rapid boss defeat overlay prevented a live visual check of the guard pose or its runtime damage reduction.
+
+### Executioner visual integration repair (2026-11-14)
+- Fixed the Executioner's white fringe at import time: the idle sheet was white-matted with partial alpha, so its edge RGB is now decontaminated from the white composite while opaque silver hair, armor and sword pixels remain intact.
+- Removed disconnected neighboring-pose fragments from KO cells before cropping. The duplicate upper-body image in later fall frames came from those sheet spill fragments; the inherited Executioner scene already has one animated body node.
+- Matched the Executioner's uniform in-game visual height to Kai and recalculated the sprite's vertical offset to keep both characters' feet on the same arena baseline. Collision, combat, progression, Kai and the other characters were left unchanged.
+- Focused Executioner checks cover a single animated body layer, the shared foot line/scale, and clean late KO frames. Fresh Godot 4.7.2 arena captures showed idle/approach, heavy slash, hit reaction and the final KO overlay; the KO view contains exactly one fallen Executioner. Kai's own KO was also inspected in the live arena.
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] — Combat 1.1 attack polish
+## [Unreleased] — Combat Phase 2 Step 2 integration
+
+### Separately Authorized Guardian III — The Executioner (2026-11-14)
+- Added distinct `AttackData` profiles for each hit of The Executioner's three-hit sword combo. Its three active windows now switch hitbox size, per-frame offsets, damage, knockback, hitstun and impact timing to match the authored opening, second and finishing slash, rather than reusing one generic hit profile.
+- Retained the independent reusable Iron Sword `WeaponData` and scene, the 238 transparent 512×512 animation frames, and the existing shared health/hitbox/hurtbox/progression architecture. No EvoLink requests were made.
+- Focused Guardian III scene test passed **16/16**, including per-slash profile mapping, frame resource checks, sword-resource separation, parry timing and progression gating. The live launcher reached the actual Executioner arena; its idle stance, sword grip, scene scale, opposing placement and defeat overlay were visually inspected. UI automation on Windows only sent key taps, so sustained movement and successful player-triggered hit/parry sequences remain unverified by this session.
+- No files were staged or committed. Two-pass review: architecture pass confirmed the new per-hit data stays within `AttackData`/`Hitbox2D` and leaves other fighters and story gates untouched; quality pass re-read the changed script, scene, resources and focused test, and recorded the live-input limitation rather than claiming complete gameplay acceptance.
+
+### Story Mode — Guardian II: The Hunter (2026-11-14)
+- World Map dossiers now keep the DEFEATED status visible while exposing an enabled REMATCH action for the already-playable Initiate and Hunter encounters. Rematches reuse the existing guardian encounter flow and do not reset story progression.
+- Visual correction: restored the pre-Hunter map dossier portrait (`guardian_hunter_portrait.png`) and adjusted only the Hunter's separate Stone Axe socket/grip pivot and per-animation pose data. The axe artwork and Hunter sprite frames remain unchanged. Current desktop capture showed the preview label but not the character, so this correction still needs a successful in-game visual check.
+- Added an original Guardian II art package with transparent 512×512 frames and an independent portrait, normalized from generated source sheets; the supplied reference remains provenance only and was not cropped into gameplay sprites.
+- Added a canonical reusable Stone Axe texture/scene and `WeaponData` resource. The Hunter instances that same weapon as a separate visual layer, with frame-matched grip/rotation poses during attacks, guard and movement.
+- Added a dedicated Hunter scene inheriting the shared enemy health, hitbox, hurtbox and AI architecture, with data-driven light/heavy/sweep axe attacks and distance-aware move selection.
+- Connected Guardian II to the existing story unlock and arena flow. Story encounters force Kai, replace only the arena's training-target slot, and on Hunter victory unlock Guardian III while Raezen remains gated.
+- Focused Godot 4.7.2 regression passed **27/27**; Guardian I **60/60**, Phase 02 movement **63/63**, Kai V2 **95/95**, combat foundation **78/78**, World Map progression **30/30**, and Phase 01 hierarchy **44/44** also passed. The actual startup/map/battle flow was visually inspected in the running game; Hunter was visible approaching Kai with the axe equipped, and the round-end defeat presentation appeared. The final headless editor scan exited 0 without reported script/resource errors. No files were staged or committed.
+
+### Story Mode — Guardian I: The Initiate (in progress, 2026-11-13)
+- Fixed lost player attack inputs during startup and hitstun recovery, and corrected tests to respect authored attack reach; added a 40% grounded backstep guard for Kai and lengthened The Initiate's attack recovery cadence. Actual rendered arena capture and focused combat regressions confirm jab, heavy punch, kick and the supported jab chain damage the guardian once per hit.
+- Connected the available Initiate map marker to the existing Movement Test Arena, forces Kai as the story fighter, and uses dedicated jab/kick attack resources while retaining the shared health, hitbox, hurtbox, KO and defeat flows.
+- Enabled the existing minion AI only for the Initiate encounter, added a brief defensive retreat, guardian HUD labels, confirmed-hit spark/hit-stop feedback, and persistent Initiate victory recording after the death animation completes.
+- Added a focused guardian regression test scene for AI damage, training-dojo isolation, Kai selection, death timing and Hunter unlock. Focused Initiate test passed **19/19**; existing World Map, selection, combat foundation, Phase 02 movement, Phase 01 hierarchy and Kai V2 suites passed **30/30, 53/53, 78/78, 63/63, 44/44 and 95/95** respectively (382 assertions combined).
+- Replaced the old loose accessory overlay on the shared dummy with a separate original female Initiate design and transparent frame package. The normal training dummy scene is restored to its unadorned approved minion sprite and remains the Training Dojo target.
+- Added a dedicated Initiate scene/subclass inheriting the established health, hurtbox, hitbox and AI architecture; added data-defined heavy punch and roundhouse attacks, frame-synced attack recovery, rearward defensive movement, and animation selection by AttackData. The story arena swaps only its encounter target to The Initiate; Kai and the default training arena remain unchanged.
+- Original art source sheets, 512×512 frame exports, shared ground anchor, contact sheets and asset provenance are stored under `assets/enemies/the_initiate/`. Automated/regression checks were updated; the 2026-11-14 arena capture verifies the live fight and attack health changes.
+
+### Phase 5 — Moonlit Dojo and fight HUD (2026-11-11)
+- Added an original, full-bleed moonlit dojo background and Kai V2 HUD portrait. The arena renders the environment as a background texture while fighters, collisions, health UI, and controls remain separate live Godot nodes.
+- Replaced the training HUD layout with opposing hero/minion portraits, live health bars and values, centered ShadowCraft/round labels, accurate controls, and lower-right branding. Razen uses a crop from his existing approved gameplay idle art; the minion uses its existing idle frame.
+- Kept the movement/collision layout and gameplay art unchanged. Godot import completed and the arena loaded headlessly without reported resource/script errors. In-engine visual inspection could not be completed because the desktop capture surface returned the Codex window instead of the running Godot window.
+
+### Round-end presentation and defeated-player AI stop (2026-11-11)
+- The arena now waits for the defeated fighter/minion to finish its fall and reach the grounded pose before showing the result. The K.O./Defeat overlay uses a high CanvasLayer so the downed character remains behind a readable panel.
+- When Kai or Razen reaches zero health, the minion cancels any active attack, disables its hitbox, and stops making AI decisions. The arena pauses after the fall and offers Rematch or Character Select.
+- Godot 4.7.2 headless launch of `MovementTestArena.tscn` completed without load errors; visual presentation still needs an in-game check.
+
+### Combat Phase 2 — Step 2: Cross and Heavy Punch Integration (2026-11-11)
+- Imported the user-approved original Kai V2 Cross Punch (6 frames), Kai Heavy Punch (10), Razen Cross Punch (8) and Razen Heavy Punch (12) into their isolated character animation packages and SpriteFrames resources. All clips are 512×512 transparent frames, 30 FPS, one-shot, aligned to Kai's y=496 and Razen's y=488 ground baselines.
+- Added independent per-character `AttackData` for both new punches, tuned startup to the authored contact pose, supplied two active-frame hitbox offsets per move, and connected Light Jab → Cross Punch on Z → Heavy Punch on C using the existing buffer and chain-window engine. Direct C heavy remains available; roundhouse/sweep remain empty for Step 3.
+- Extended the existing Kai SpriteFrames builder and Razen animation manifest/builder path. Added focused Step 2 checks for frame resources, move data and both playable chain sequences; updated the Step 1 suite's expected moveset inventory.
+- Engine verification is pending because Godot 4.7.2 is not present on PATH or in the launcher's standard install paths in this session; no runtime pass or gameplay capture is claimed.
+
+### Combat Phase 2 follow-ups: suite repair, crouch lock, Razen reach (2026-11-10)
+- Repaired the malformed ending of `tests/unit/test_player_movement.gd` (a literal `\n` where `kai.free()` belonged). The file is byte-identical to its committed version again and the working-tree Phase 02 suite runs **63/63**.
+- Added an explicit combat-owned crouch posture: `CharacterController2D.combat_crouch_lock` is set by `CombatController` while a crouched-stance attack owns the character, so the crouched state and collision capsule survive the suppression of crouch input. The lock clears on neutral, hitstun or knockdown, standing attacks never set it, and normal crouch input outside combat is unchanged. Sixteen new assertions cover the crouched start, posture and capsule through startup/active/recovery, a crouched→crouched chain link, lock release on recovery, and absence of the lock on standing attacks.
+- Reviewed Razen's reach against his authored silhouettes by measuring the striking limb of each contact frame and mapping it through the sprite transform. His Front Kick hitbox was sitting ~21 local px too high, over the thigh rather than the boot, and now tracks the boot (`front_kick` offset y −236 → −216, active offsets updated). His Light Jab was left as authored: the existing box already encloses his fist, and nudging it upward moved it off the training dummy's hurtbox. Kai's hitbox geometry and trajectories are untouched and asserted equal to the approved legacy resources.
+- Verification: Phase 2 suite **122/122**, Combat **78/78**, Phase 02 movement **63/63**, Kai hierarchy **44/44**, Kai V2 **95/95**, Razen V2 **113/113**, selection **53/53**. Rendered capture with `--combat-debug` confirms the active kick rectangle now covers the extended boot and still lands 18 damage on the dummy.
+
+### Combat Phase 2 — Step 1: Combat Data & Chain Engine (2026-11-10)
+- Extended `AttackData` additively with `stance`, `hit_reaction`, `hit_stop_seconds`, `impact_scale`, `lunge_velocity`, `chain_next` and `chain_input`, plus `can_start_from()`, `get_hit_stop_seconds()` and `get_chain_action()`. Existing fields and the approved `light_jab.tres` / `front_kick.tres` numbers are unchanged.
+- Added `MovesetData` (`resources/attacks/moveset_data.gd`) as the per-fighter attack table (chain roots, direct heavy/roundhouse/sweep slots, buffer and chain-window timing) and `CombatInputBuffer`, a dependency-free tick-stamped single-slot buffer.
+- Refactored `CombatController` to resolve attacks from the moveset, buffer presses during active/recovery windows, consume the buffer only inside the chain window, chain into `chain_next` while keeping movement locked, and gate crouch-only attacks by stance. Z/X behaviour and all Combat 1 timings are preserved.
+- Added per-character attack resources: Kai (`resources/attacks/kai/`) keeps his approved numbers exactly; Razen (`resources/attacks/razen/`) gains independent data retimed to his approved 8-pose clips (16 ticks, 6/2/8) with heavier damage, knockback, hitstun, recovery and hit-stop. Both character scenes now assign a moveset instead of two shared attack slots.
+- Consolidated incoming-hit handling to the single `Hurtbox2D` → `on_combat_hit` path; the redundant `damage_received` listener that overwrote hitstun with a fixed 12 frames was removed. Hit-stop duration and spark scale now come from attack data instead of per-arena constants, and attack table accessors replace the old `punch_attack`/`kick_attack` reads in both arena controllers.
+- Added `heavy_attack` (C) and `roundhouse_attack` (V) input actions. The direct heavy, roundhouse and sweep slots remain unassigned until their approved art lands; crouched attacks keep their existing rejection until Step 3.
+- Verification: new Step 1 suite **97/97** (fixed-rate and wall-clock). Regressions: Combat foundation **78/78**, Kai V2 **95/95**, Razen V2 **113/113**, Character selection **53/53**, Phase 01 **44/44**, Phase 02 **63/63** (run from the committed file; the working-tree copy has a pre-existing literal `\n` parse corruption). Rendered Godot 4.7.2 Compatibility captures confirm Kai still deals 8/15 and Razen now deals 11/18 with his full clips playing through recovery. Step 2 remains gated on explicit approval; nothing was staged or committed.
 
 ### Playable character selection (2026-11-10)
 - Made the character-select screen the F5/main launch scene with animated idle previews from the real Kai V2 and Razen sprite-frame resources. Mouse selection, A/D or arrows and PLAY are wired to a single selection-state autoload.

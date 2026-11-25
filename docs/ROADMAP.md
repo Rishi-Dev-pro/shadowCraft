@@ -18,7 +18,7 @@
 | **Phase 05** | Blocking, Parrying, Dodging & Combos | High/low guard, 4-frame parry window, counter-hit stun | *PLANNED* | Blocked by Phase 04 |
 | **Phase 06** | Weapon Framework & Additional Categories | Axe, Spear, Mace movesets & Material tier scaling | *PLANNED* | Blocked by Phase 05 |
 | **Phase 07** | Enemy Combat AI | Sense-evaluate-act loop, spacing AI, reaction tables | *PLANNED* | Blocked by Phase 06 |
-| **Phase 08** | Boss Encounters | Razen boss archetype, custom phases, phase transitions | *PLANNED* | Blocked by Phase 07 |
+| **Phase 08** | Boss Encounters | Razen boss archetype, custom phases, phase transitions | **IN PROGRESS — separately authorized Raezan implementation** | Remaining phase work gated |
 | **Phase 09** | Dojos & Arenas | Parallax 2D backgrounds, dynamic lighting, boundary walls | *PLANNED* | Blocked by Phase 08 |
 | **Phase 10** | Campaign Map & Progression | Dojo selection, bodyguard ladder, save/load system | *PLANNED* | Blocked by Phase 09 |
 | **Phase 11** | Equipment & Upgrades | Blacksmith upgrade loop, material requirements, economy | *PLANNED* | Blocked by Phase 10 |
@@ -26,11 +26,25 @@
 
 ### Separately Authorized Character Production (2026-11-10)
 
-Razen's standalone non-boss character asset package and movement presentation were authorized as a scoped visual/runtime deliverable. This does not start or advance Phase 08; boss AI, encounters, combat integration and signature attacks remain gated.
+Razen's standalone non-boss character asset package and movement presentation were authorized as a scoped visual/runtime deliverable. At that point Phase 08 boss AI and encounter work remained gated. The user's 2026-11-17 authorization now permits a focused Raezan final-boss implementation; Phase 08 remains in progress until its remaining exit criteria and visual approval are met.
+
+**Raezan combat refinement (2026-11-17):** Corrected approach gait selection, Void Burst close-range hitbox coverage, controlled hit/knockback timing and 50% intermittent phase-aware guard behavior. Focused and adjacent regression suites passed; remaining live interaction checks are recorded in `docs/NEXT_SESSION.md`. This does not change Phase 08 status or authorize unrelated boss work.
 
 ### Separately Authorized Playable Roster Selection (2026-11-10)
 
 Kai V2 and Razen are selectable from the F5 startup screen and instantiate through the same existing movement/combat arena. This scoped runtime integration does not advance the combat milestone or authorize new combat mechanics.
+
+### Separately Authorized Combat Phase 2 Steps 1–2 (2026-11-11)
+
+Step 1 established the data-driven attack chain engine. Step 2 adds the approved Cross and Heavy Punch clips for Kai V2 and Razen, per-character AttackData, contact-aligned hitboxes, and the jab → cross → heavy chain using the existing Z/C inputs. This does not begin Step 3 roundhouse/sweep work or another combat milestone. Godot runtime verification is pending in this workspace session.
+
+### Separately Authorized Guardian III Character Package (2026-11-14)
+
+The Executioner's dedicated character package, independent Iron Sword, authored animations, existing-arena story integration and timed parry-counter implementation are a separately authorized guardian deliverable. This work does not change the phase table or authorize unrelated future systems. Per-hit combo hitbox profiles are now mapped to the three authored combo strikes. Player-driven combat sequences still need manual sustained-input acceptance in a normal interactive session.
+
+### Separately Authorized Location-Specific Guardian Battlefields (2026-11-17)
+
+Added location-specific arena backgrounds and shared-template scene variants for Mistfall Crossing, Crimson Sanctum, and Raezen's Citadel. The Initiate remains in the approved Moonlit Dojo. This scoped environment/routing deliverable does not mark Phase 09 complete or change its remaining lighting/parallax exit criteria.
 
 ---
 
@@ -58,7 +72,7 @@ Kai V2 and Razen are selectable from the F5 startup screen and instantiate throu
 - **Exit Criteria:** Automated test verifying that active Hitbox overlapping Hurtbox emits hit signal, applies calculated damage, and updates health.
 - **Authorized milestone (2026-11-10): Combat 1 — Foundation.** Implemented reusable hit/hurt boxes, health and damage calculation, timed attack state machine, a training dummy, and two original ground attacks (Light Jab and Front Kick) for Kai V2. The authorized foundation is verified and integrated into the F5 movement arena; Phase 03 remains in progress.
 - **Runtime integration follow-up (2026-11-10):** Composed the existing Combat 1 dummy and hit-feedback owner into the main playable arena. This integrates the completed foundation and does not start a new combat milestone.
-- **Remaining Phase 03 milestones (not started):** Combo engine, defense, aerial/sweep/special attacks and their additional test coverage. Await user approval before beginning another milestone.
+- **Remaining Phase 03 milestones (not started):** Expanded combo content beyond the authorized jab/cross/heavy chain, defense, aerial/sweep/special attacks and their additional test coverage. Await user approval before beginning another milestone.
 
 ### Phase 04: Wooden Sword & First Moveset
 - **Objective:** Create the initial playable weapon and moveset: Wooden Sword.

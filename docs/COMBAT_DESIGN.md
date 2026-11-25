@@ -4,7 +4,7 @@
 > **Target Rhythm:** Tactical, Spacing-Driven, Martial Arts Precision  
 > **Source of Truth:** `docs/PROJECT_CONSTITUTION.md`
 
-> **Implementation status (2026-11-10):** Combat 1 foundation only is implemented. See `docs/PHASES/PHASE_03/COMPLETION_REPORT.md`. The rest of this document remains the approved design baseline and is not a statement that defense, combos, poise, weapons, or shadow specials are already playable.
+> **Implementation status (2026-11-11):** Combat 1 foundation plus the approved Combat Phase 2 Step 1 data/chain engine and Step 2 Cross/Heavy Punch slice are integrated. Defense, broader combo sequences, poise, weapons and shadow specials remain outside the completed slice.
 
 ---
 
@@ -114,3 +114,10 @@ When an unblocked attack lands, the defender enters one of four deterministic hi
 - Light Jab and Front Kick preserve their six-frame source clips and 12-physics-frame total duration. Their six-tick startup places the two-tick active window on the authored contact pose; recovery remains four ticks.
 - `AttackData.active_hitbox_offsets` provides one limb-aligned hitbox center per active frame. The Hitbox2D follows the current offset and disables at recovery.
 - Confirmed damage triggers a 40ms jab or 55ms kick hit-stop, a small distinct code-drawn impact spark, and a brief eased training-dummy recoil. No camera shake or particle system is used.
+
+### Combat Phase 2 Step 2 — Cross and Heavy Punches
+
+- Kai V2 and Razen each use independent 30 FPS one-shot Cross Punch and Heavy Punch clips from their approved transparent 512×512 frames.
+- Startup windows begin active frames at the authored contact pose (Kai Cross 6/2/4, Kai Heavy 10/2/8; Razen Cross 10/2/4, Razen Heavy 12/2/10 at 60 physics ticks/s). Each move provides two limb-aligned active-frame hitbox offsets.
+- The existing input buffer supports jab (Z) → cross (Z) → heavy (C); C can also start Heavy Punch directly from neutral. This is the scoped Step 2 chain only. Step 3 Roundhouse/Sweep and wider combo content are not included.
+- Static asset/resource checks pass. Godot 4.7.2 runtime and visual verification are pending because the engine executable is unavailable in this session.

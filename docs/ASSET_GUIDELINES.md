@@ -6,6 +6,10 @@
 
 ---
 
+## Experimental Kai cutout
+
+The Kai cutout rig in `scenes/characters/grind/kai_cutout_rig.tscn` references the existing ShadowCraft art at `assets/characters/kai_v2/source/kai_turnaround_grid.png`. The texture is read directly with UV-mapped geometry from the lower-right turnaround view. Polygon outlines follow the fabric and include overlapping shoulder, elbow, wrist, knee, and ankle regions. The boot layers use atlas regions. The existing source-art provenance and usage terms apply. No new full-frame sprites were generated.
+
 ## 1. SPRITE & TEXTURE REQUIREMENTS
 
 ### Format & Color Profile
@@ -122,4 +126,7 @@ When facing is inverted (`scale.x = -1.0`), Godot automatically flips the 2D loc
 | `assets/characters/razen/` | Bespoke Original Art | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 08 | Yes |
 | `assets/weapons/` | Bespoke 2D Sprites | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 04 | Yes |
 | `assets/arenas/` | Bespoke Parallax Art | ShadowCraft Art Team | Proprietary (Original) | Pending Phase 09 | Yes |
+| `assets/enemies/the_initiate/source/guardian_ready_reference.png` | Original image generation; user-provided Initiate reference and approved robotic minion used as design references | OpenAI ImageGen built-in | Proprietary (Original ShadowCraft asset) | 2026-11-14 | Yes |
+| `assets/enemies/the_initiate/source/*_sheet.png` | Original pose-sheet generation; reference used for identity/pose guidance only, no reference pixels reused | OpenAI ImageGen built-in | Proprietary (Original ShadowCraft assets) | 2026-11-14 | Yes |
+| `assets/enemies/the_initiate/frames/*/*.png` | 512×512 transparent normalized pose frames imported by `scripts/enemies/import_the_initiate_art.py` | ShadowCraft frame pipeline | Proprietary (Original ShadowCraft assets) | 2026-11-14 | Yes |
 
