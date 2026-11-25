@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"executioner_parry_counter"
+display_name = "Executioner Parry Counter"
+kind = 0
+startup_frames = 17
+active_frames = 4
+recovery_frames = 46
+base_damage = 19.0
+knockback = Vector2(295, 82)
+hitstun_seconds = 0.52
+hitbox_size = Vector2(174, 102)
+hitbox_offset = Vector2(178, -196)
+active_hitbox_offsets = PackedVector2Array(165, -202, 184, -191, 170, -182, 156, -190)
+animation_name = &"counterattack"
+hit_reaction = 1
+hit_stop_seconds = 0.08
+impact_scale = 1.35
+

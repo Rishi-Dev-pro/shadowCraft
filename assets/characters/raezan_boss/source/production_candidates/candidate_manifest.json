@@ -1,0 +1,68 @@
+{
+  "character": "Raezan — The Betrayer King",
+  "date": "2026-11-16",
+  "tool": "OpenAI built-in image_gen; renderer model not exposed",
+  "direction_model": "GPT-6 Astra",
+  "reference": "C:\\Users\\USER\\Downloads\\Raezen_ The Betrayer King Concept Sheet.png",
+  "status": "SOURCE CANDIDATES ONLY — not integrated, no animation production accepted",
+  "preservation": "Existing playable Razen and all guardians untouched",
+  "generation_brief": "Full-body right-facing side-view body, reference identity retained, empty sword-ready hands, separate reusable Void Blade. Transparent RGBA, no white matte, no external bloom. Two weapon edit attempts requested removal of all external haze while retaining physical sword design. These attempts did not satisfy QC.",
+  "files": [
+    {
+      "file": "raezan_body_master_candidate.png",
+      "generated_original": "exec-a31a3c45-fecc-46c1-b012-cb4c23720e44.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "status": "Needs gameplay-scale and grip validation"
+    },
+    {
+      "file": "void_blade_candidate_01.png",
+      "generated_original": "exec-006b210f-d6f5-4446-ad41-eaa6ca4bce32.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "Rejected: broad external haze"
+    },
+    {
+      "file": "void_blade_candidate_02.png",
+      "generated_original": "exec-bcca1c85-9cf1-4e12-a2e7-00310597f32b.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "Rejected: external haze remains after edit"
+    },
+    {
+      "file": "void_blade_candidate_03.png",
+      "generated_original": "exec-42238d37-2bbe-4723-8cf8-088a052c725a.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "status": "Rejected: external haze remains; blade detail drift"
+    }
+  ]
+}

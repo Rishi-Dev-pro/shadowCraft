@@ -47,7 +47,7 @@ func _set_offset(offset: Vector2, facing_right: bool) -> void:
 
 func set_active(active: bool) -> void:
 	_is_active = active
-	monitoring = active
+	set_deferred("monitoring", active)
 	collision_shape.set_deferred("disabled", not active)
 	if active:
 		_hit_targets.clear()
@@ -57,6 +57,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if not _is_active or attack_data == null or not area is Hurtbox2D:
 		return
 	var hurtbox: Hurtbox2D = area as Hurtbox2D
+	if hurtbox.get_parent() == attacker:
+		return
 	var target_id: int = hurtbox.get_instance_id()
 	if _hit_targets.has(target_id):
 		return

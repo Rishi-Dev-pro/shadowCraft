@@ -1,0 +1,1054 @@
+{
+  "character": "Raezan, The Betrayer King",
+  "batch": 7,
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_line_y": 491,
+  "target_character_pixel_height": 438,
+  "runtime_visual_scale_reference": 0.72,
+  "architecture_reference": "Executioner AnimatedSprite2D/SpriteFrames organization; art is still isolated, not integrated.",
+  "weapon_orientation": "Same curved violet Void Blade, cutting belly down in ready frames.",
+  "provenance": "Built-in imagegen using supplied Raezan and animation references; no EvoLink.",
+  "cleanup": "Executioner splitter/normalizer; RGBA preserved, detached components removed.",
+  "animations": {
+    "turn": {
+      "source_sheet": "source/batches/batch_07/turn_source_sheet.png",
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 12.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/turn/turn_01.png",
+          "sha256": "c270174a57047391d740b92e65cefca3a6da9ee9954701cd8888a4f81def78eb",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            52,
+            57,
+            459,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_02.png",
+          "sha256": "ddfd1caa145f9dbc70ed91d93890ebaaf0755f490dd07f9169e85e109a9cadd7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            62,
+            57,
+            450,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_03.png",
+          "sha256": "87dc330e8ede70658cb02e00c2dd58c6f3c07a5fa96bdf45453d38ebb906360a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            87,
+            57,
+            424,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_04.png",
+          "sha256": "779eb50b840810ce5d2c7c4427162d4ee5d82b3238f24a173383b4296647e3b1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            84,
+            56,
+            428,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_05.png",
+          "sha256": "f8bb119d0451e393559ee3a84c1e9b8c0f2158f06c635c9322ca50fe95e8cb76",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            85,
+            57,
+            426,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_06.png",
+          "sha256": "41b121e7d4a6f13e56ce420e9f1621c9453ffaff6a508ae033015650e118976f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            79,
+            57,
+            432,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_07.png",
+          "sha256": "379eb142c15dd01f003a3126f7633043f8cebd0ff4950fe344d9a6b9e3b3888b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            55,
+            57,
+            454,
+            491
+          ]
+        },
+        {
+          "path": "frames/turn/turn_08.png",
+          "sha256": "8d22d2f4932dfe79b21829662de078560a42a6fec53f2dcbd5185352652d0e4c",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            52,
+            57,
+            460,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_turn_contact.png"
+    },
+    "phase2_idle": {
+      "source_sheet": "source/batches/batch_07/phase2_idle_source_sheet.png",
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 8.0,
+      "loop": true,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/phase2_idle/phase2_idle_01.png",
+          "sha256": "bd6594f78ed99daa4bd41410e8f2c9f40a41677c99feef6027b6a5f75ebcd62b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            62,
+            57,
+            451,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_02.png",
+          "sha256": "ab394adccd95ee37083ad9afdd2f6d62efe7190f63be54ddeaa84f82e5dcddab",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            63,
+            57,
+            448,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_03.png",
+          "sha256": "9a321f219afe971f9045db90a48ee85970ee6498af8b69989aa667331b343027",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            65,
+            54,
+            447,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_04.png",
+          "sha256": "f413674c63172608455545ba4a76948733c0d28e0919a8d4f838853706a86d02",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            59,
+            57,
+            452,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_05.png",
+          "sha256": "707e50ba2be702047a18aafa84e6a950e556e7481dced09f1fc3129851b60910",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            58,
+            58,
+            455,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_06.png",
+          "sha256": "a94e2cf41716a3d2ce1dd500ae0893d4ed916feaf7305e46592e40ca654c6570",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            52,
+            57,
+            459,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_07.png",
+          "sha256": "e3a67381c81421c58cf3710431970612385d62bc35e171065ddd3a233aa8d8e7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            60,
+            57,
+            452,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_idle/phase2_idle_08.png",
+          "sha256": "575bfade5a2cf3126bd6a93a6b4d6e3a70d0f92f9efcedc073b35c56b60443f7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            57,
+            57,
+            455,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_phase2_idle_contact.png"
+    },
+    "phase2_walk_forward": {
+      "source_sheet": "source/batches/batch_07/phase2_walk_forward_source_sheet.png",
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 12.0,
+      "loop": true,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_01.png",
+          "sha256": "8b5875666baea25b73c5a33f7b8005a0207dd10a2cdff7e1908ea083dc6e6c5f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            52,
+            57,
+            460,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_02.png",
+          "sha256": "0970fab676964cd4d629613b47bc2b3d3a409c7e3bb6b2f02f143a4540f304d1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            46,
+            57,
+            466,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_03.png",
+          "sha256": "f94252dcf88681020852ac496bc227bdd9ef9fe4aa4f19373efae2bf5bc72f54",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            45,
+            57,
+            466,
+            490
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_04.png",
+          "sha256": "164a8d522660dab596c74be23b9cf0d7dece444193e87b1c3ace2f137e11653d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            46,
+            58,
+            466,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_05.png",
+          "sha256": "eaacd34d4dacd0ead2e4412ee1f5e537aa79993dd617ad4200d04dc92ae7d304",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            40,
+            58,
+            471,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_06.png",
+          "sha256": "4126e7e6d747e0ea433be17014a533cd6c13f2170bb73c09a69901e953eb5211",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            64,
+            476,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_07.png",
+          "sha256": "5c4dbe414308acfcee855b0cddd5817b7bd14b9fa3fa00e35bae2ca17d2810cd",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            79,
+            476,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_forward/phase2_walk_forward_08.png",
+          "sha256": "e1a019fe675dcb15a1827c1efc011e1c7b76585e34278008c8f02dd9f13bcda0",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            37,
+            66,
+            476,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_phase2_walk_forward_contact.png"
+    },
+    "phase2_walk_backward": {
+      "source_sheet": "source/batches/batch_07/phase2_walk_backward_source_sheet.png",
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 12.0,
+      "loop": true,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_01.png",
+          "sha256": "f8ae9d93282c298808b099d1c32268d472a514f994a733e50a09626a1cc5dfa1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            48,
+            57,
+            464,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_02.png",
+          "sha256": "ae5a5a985a1ef66f0bdae2abe1a8d9093b014915ac035dd07108085f078e7abe",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            47,
+            58,
+            464,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_03.png",
+          "sha256": "b4893c9120fa14c74f6201ebfd5c3837bb37181f0fb22f6fa1df898a84871883",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            57,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_04.png",
+          "sha256": "f404d069c3a5f2165dd834ee4accc93a25accac8d80ed7b6c82820ec7e31cf3b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            37,
+            60,
+            476,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_05.png",
+          "sha256": "ef8a475af653ccb180500d88a3ef543413f40fbaa56616885c17ac6814cf6f4f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            61,
+            476,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_06.png",
+          "sha256": "682eea3e147cd998fa6573ef0717663378bda309a061146d4d3ab20bd39a761e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            69,
+            476,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_07.png",
+          "sha256": "492c3f4a689c6638fd26b9da9821b043455be61c77ee10765ec6731eaf0fcb67",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            59,
+            475,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_walk_backward/phase2_walk_backward_08.png",
+          "sha256": "4b797e94cc6ae2fc137cc3beccca85e8154c758f823b3e95c5a5335507da4079",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            42,
+            58,
+            470,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_phase2_walk_backward_contact.png"
+    },
+    "phase2_finisher": {
+      "source_sheet": "source/batches/batch_07/phase2_finisher_source_sheet.png",
+      "source_grid": [
+        4,
+        4
+      ],
+      "frame_count": 16,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_01.png",
+          "sha256": "260f17d5ac93ff86d924da170e23972aff0fc17c42ff3ba9c84db634fb535802",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            49,
+            60,
+            463,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_02.png",
+          "sha256": "90adf4b43426972336b049e63d0571c5ba6a984ba7b5e7ed1536b6542146aaad",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            53,
+            59,
+            458,
+            490
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_03.png",
+          "sha256": "2ecd30593545f6ed4c5e8a2a1ff0eaed8969c3a7c5cbcd88b38deca62ec1db0e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            79,
+            59,
+            432,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_04.png",
+          "sha256": "0eeaa00688c2e702ebfcb51b7b637b56e40e4655fa5d3af132cba317fb54668f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            76,
+            59,
+            434,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_05.png",
+          "sha256": "50343c70583b80d17697f952fa40737a5d2d8bb6439852144ca60444adbd2eed",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            57,
+            60,
+            454,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_06.png",
+          "sha256": "3e3c3be7e45e4ed9b3d832ec84a50fb48b569c6cb921d6bfe261bde05f06c01a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            53,
+            60,
+            458,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_07.png",
+          "sha256": "702d2405bac9d5ade124fdc6848e4f8ab0004883e291126b68553c545847c037",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            91,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_08.png",
+          "sha256": "25e07f6d6057a944636a68a2436b5ff20fa78c4a2d5fcca62bd7654be27f4497",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            37,
+            64,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_09.png",
+          "sha256": "96557d5ad31c0f50b21dd104f18be0ad4adac95c3506e0655501bc1e19e142aa",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            82,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_10.png",
+          "sha256": "09a3892eb41c84339f829d5d2b1cbc1c63b4340c70dc2dee22994af026bec39d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            99,
+            475,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_11.png",
+          "sha256": "c52562a3bed4e7ad7815c269bf53e8ea9aa4732b6d6a8627bde0b847372e67a5",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            34,
+            59,
+            472,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_12.png",
+          "sha256": "ce4a309eea34bbfd692868ce100103fdcab65264d23eac530ffed2df5b3de205",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            67,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_13.png",
+          "sha256": "d21786a5c86a893f3fe2024eb3e860a49df820a10d011571ec2794aa63020cd9",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            72,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_14.png",
+          "sha256": "b00dab4a187523eb6b27a0d57513075308908533755252adb1319d8381f5149a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            90,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_15.png",
+          "sha256": "0603a7b4aa2dc51e67bf28ecb06c4f88ffc8687d15f1df57f4e61255b969122b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            33,
+            59,
+            472,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_finisher/phase2_finisher_16.png",
+          "sha256": "63e16b00d295454ca2e8cfe95d5a6753e990744dcf4538aeb1ab6e287f88ad8a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            80,
+            473,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_phase2_finisher_contact.png"
+    },
+    "phase2_void_burst": {
+      "source_sheet": "source/batches/batch_07/phase2_void_burst_source_sheet.png",
+      "source_grid": [
+        5,
+        4
+      ],
+      "frame_count": 20,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_01.png",
+          "sha256": "2040b109af1777fc8aebca18c38c0f12742c89f174cc8a5732a95c001094176b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            93,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_02.png",
+          "sha256": "d71989d119a02929244a47fa36ffa40d1eb929f1f78a429852e874c88b3f6036",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            78,
+            473,
+            490
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_03.png",
+          "sha256": "0f5dfac73f19df71cb4b2bfb4445d1438bb6b13880a32ea27ff7713fe679c45f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            68,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_04.png",
+          "sha256": "404efa33657fbadeedeab848179ca2a302c7e6a6ed1f476f86ceda7393deb5e3",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            44,
+            60,
+            460,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_05.png",
+          "sha256": "7cb0cc80f554ca8156c9bc1279069702cfc535e4753d3b0f0067bc7cc6c142e5",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            66,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_06.png",
+          "sha256": "b3bb8fc93f4a901faeb33a7d213eccca6d7042fed7b3d0782dff43a449dcc506",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            62,
+            480,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_07.png",
+          "sha256": "d2596f0121cc91e0b575c28b4709a1bd5240450062363dd354c7c0efaf061940",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            40,
+            60,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_08.png",
+          "sha256": "19f688ff769e4b3980ed982f888806e5334e9e2896aa35837e8eb048624e628f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            50,
+            56,
+            454,
+            490
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_09.png",
+          "sha256": "0ba6c349781d56160608672f9b1ea421c5e9bb53a9614f092c09c6b947cc4ed4",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            45,
+            53,
+            461,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_10.png",
+          "sha256": "dcdba9e9347837b0f2573f2268dfcf6955f0bfdfd93db370d11ee109fb64b989",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            42,
+            53,
+            463,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_11.png",
+          "sha256": "56e8f1937a82e8dd63f043686950fb5904022289c1b5a3b16a53390db101c5e9",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            75,
+            474,
+            490
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_12.png",
+          "sha256": "40bf92887c77615d3a39577967514a1aeadc6eb7a03c006d9e3ec258e850d0fb",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            68,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_13.png",
+          "sha256": "b3ff393c7e3fef7fb6546f2ca6f62f68b74b0cc5f8d469f8e6368f989c703f6d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            33,
+            54,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_14.png",
+          "sha256": "f4d73fcaf1e6e48454a6de781a8a54414c9e3b1dfe9a505edf9af22f8430540f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            61,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_15.png",
+          "sha256": "e7fbc22eb8c001cca73a278ac741c9914d86aba254bc6e4904afbb06e7a651ce",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            77,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_16.png",
+          "sha256": "dc1fe07ea285986954ba9abf1f3a3bf9378acd75909ec8fe4e80c9ef0b3e3459",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            63,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_17.png",
+          "sha256": "3066f5aac090ecdca5ed181f0fd213410f64818f05c33ef60e37364887b55a46",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            95,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_18.png",
+          "sha256": "5c73c27ac54fd74d45cace1db210b08c02acc37c8e19d44b0a0361e3c9bceb16",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            35,
+            67,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_19.png",
+          "sha256": "67f08d74b4f6926979cf62bd7f05a7438d78e74bf5c790067bd0aa29459b198c",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            41,
+            60,
+            463,
+            491
+          ]
+        },
+        {
+          "path": "frames/phase2_void_burst/phase2_void_burst_20.png",
+          "sha256": "c6e8ccaf98567bad9f2d5d98afad7be818972e66a05fc22c4ba50fcdd4fdfdbb",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            63,
+            474,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_07_phase2_void_burst_contact.png"
+    }
+  },
+  "not_integrated": true
+}

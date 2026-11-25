@@ -3,8 +3,6 @@ extends Node2D
 
 const HIT_SPARK_SCENE: PackedScene = preload("res://scenes/combat/hit_spark_2d.tscn")
 const HIT_STOP_SCALE: float = 0.08
-const JAB_HIT_STOP_SECONDS: float = 0.04
-const KICK_HIT_STOP_SECONDS: float = 0.055
 
 @onready var kai: CharacterController2D = $Fighters/Kai
 @onready var dummy: TrainingDummy = $Fighters/TrainingDummy
@@ -76,11 +74,11 @@ func _process_polish_showcase(delta: float) -> void:
 	if _showcase_time < 0.25:
 		event_label.text = "JAB WHIFF CHECK"
 	elif _showcase_time < 0.5:
-		_try_showcase_attack(&"jab_whiff", $Fighters/Kai/CombatController.punch_attack, false)
+		_try_showcase_attack(&"jab_whiff", $Fighters/Kai/CombatController.get_light_attack(), false)
 	elif _showcase_time < 0.72:
 		event_label.text = "KICK WHIFF CHECK"
 	elif _showcase_time < 0.95:
-		_try_showcase_attack(&"kick_whiff", $Fighters/Kai/CombatController.kick_attack, false)
+		_try_showcase_attack(&"kick_whiff", $Fighters/Kai/CombatController.get_kick_attack(), false)
 	elif _showcase_time < 1.2:
 		kai.simulate_horizontal_input(0.0)
 	elif _showcase_time < 1.82:
@@ -90,21 +88,21 @@ func _process_polish_showcase(delta: float) -> void:
 		kai.simulate_horizontal_input(0.0)
 		kai.simulate_run(false)
 	elif _showcase_time < 2.3:
-		_try_showcase_attack(&"jab_contact", $Fighters/Kai/CombatController.punch_attack, false)
+		_try_showcase_attack(&"jab_contact", $Fighters/Kai/CombatController.get_light_attack(), false)
 	elif _showcase_time < 2.56:
 		pass
 	elif _showcase_time < 2.86:
-		_try_showcase_attack(&"kick_contact", $Fighters/Kai/CombatController.kick_attack, false)
+		_try_showcase_attack(&"kick_contact", $Fighters/Kai/CombatController.get_kick_attack(), false)
 	elif _showcase_time < 3.12:
 		pass
 	elif _showcase_time < 3.4:
-		_try_showcase_attack(&"jab_repeat_1", $Fighters/Kai/CombatController.punch_attack, true)
+		_try_showcase_attack(&"jab_repeat_1", $Fighters/Kai/CombatController.get_light_attack(), true)
 	elif _showcase_time < 3.68:
-		_try_showcase_attack(&"kick_repeat_1", $Fighters/Kai/CombatController.kick_attack, true)
+		_try_showcase_attack(&"kick_repeat_1", $Fighters/Kai/CombatController.get_kick_attack(), true)
 	elif _showcase_time < 3.96:
-		_try_showcase_attack(&"jab_repeat_2", $Fighters/Kai/CombatController.punch_attack, true)
+		_try_showcase_attack(&"jab_repeat_2", $Fighters/Kai/CombatController.get_light_attack(), true)
 	elif _showcase_time < 4.24:
-		_try_showcase_attack(&"kick_repeat_2", $Fighters/Kai/CombatController.kick_attack, true)
+		_try_showcase_attack(&"kick_repeat_2", $Fighters/Kai/CombatController.get_kick_attack(), true)
 	else:
 		kai.simulate_horizontal_input(0.0)
 		kai.simulate_run(false)
@@ -121,11 +119,11 @@ func _try_showcase_attack(key: StringName, attack: AttackData, reset_dummy: bool
 	if combat.start_attack(attack):
 		_polish_showcase_attacks[key] = true
 	elif _showcase_time < 1.22 and not _showcase_jab_started:
-		_showcase_jab_started = $Fighters/Kai/CombatController.start_attack($Fighters/Kai/CombatController.punch_attack)
+		_showcase_jab_started = $Fighters/Kai/CombatController.start_attack($Fighters/Kai/CombatController.get_light_attack())
 	elif _showcase_time < 1.55:
 		kai.simulate_horizontal_input(0.0)
 	elif _showcase_time < 1.9 and not _showcase_kick_started:
-		_showcase_kick_started = $Fighters/Kai/CombatController.start_attack($Fighters/Kai/CombatController.kick_attack)
+		_showcase_kick_started = $Fighters/Kai/CombatController.start_attack($Fighters/Kai/CombatController.get_kick_attack())
 	else:
 		kai.simulate_horizontal_input(0.0)
 		kai.simulate_run(false)
@@ -156,7 +154,7 @@ func _spawn_hit_spark(attack: AttackData) -> void:
 		return
 	add_child(spark)
 	spark.global_position = hitbox.global_position
-	spark.play(attack.kind)
+	spark.play(attack.kind, attack.get_impact_scale())
 
 func _apply_hit_stop(attack: AttackData) -> void:
 	if _hit_stop_active:
@@ -164,7 +162,7 @@ func _apply_hit_stop(attack: AttackData) -> void:
 	_hit_stop_active = true
 	_previous_hit_stop_scale = Engine.time_scale
 	Engine.time_scale = minf(_previous_hit_stop_scale, HIT_STOP_SCALE)
-	var stop_duration: float = KICK_HIT_STOP_SECONDS if attack.kind == AttackData.AttackKind.KICK else JAB_HIT_STOP_SECONDS
+	var stop_duration: float = attack.get_hit_stop_seconds()
 	await get_tree().create_timer(stop_duration, true, false, true).timeout
 	Engine.time_scale = _previous_hit_stop_scale
 	_hit_stop_active = false

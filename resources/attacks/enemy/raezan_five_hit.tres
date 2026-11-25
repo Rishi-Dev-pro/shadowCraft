@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"raezan_five_hit"
+display_name = "Raezan Five-Hit Sequence"
+kind = 0
+startup_frames = 7
+active_frames = 55
+recovery_frames = 8
+base_damage = 5.5
+knockback = Vector2(175, 28)
+hitstun_seconds = 0.38
+hitbox_size = Vector2(148, 86)
+hitbox_offset = Vector2(164, -186)
+animation_name = &"five_hit_combo"
+hit_reaction = 1
+hit_stop_seconds = 0.045
+impact_scale = 1.08

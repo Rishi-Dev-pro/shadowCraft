@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MovesetData" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/moveset_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/attacks/kai/light_jab.tres" id="2_light"]
+[ext_resource type="Resource" path="res://resources/attacks/kai/front_kick.tres" id="3_kick"]
+[ext_resource type="Resource" path="res://resources/attacks/kai/heavy_punch.tres" id="4_heavy"]
+
+[resource]
+script = ExtResource("1")
+moveset_id = &"kai_unarmed"
+light_chain_start = ExtResource("2_light")
+kick_chain_start = ExtResource("3_kick")
+heavy_attack = ExtResource("4_heavy")
+buffer_ticks = 8
+chain_window_ticks = 4

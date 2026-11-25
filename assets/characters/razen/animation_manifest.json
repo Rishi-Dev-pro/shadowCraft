@@ -344,6 +344,72 @@
         "animations/front_kick/front_kick_08.png"
       ]
     },
+    "cross_punch": {
+      "source_sheet": "source/animation_sheets/cross_punch_combat_4x2.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 30.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/cross_punch/cross_punch_01.png",
+        "animations/cross_punch/cross_punch_02.png",
+        "animations/cross_punch/cross_punch_03.png",
+        "animations/cross_punch/cross_punch_04.png",
+        "animations/cross_punch/cross_punch_05.png",
+        "animations/cross_punch/cross_punch_06.png",
+        "animations/cross_punch/cross_punch_07.png",
+        "animations/cross_punch/cross_punch_08.png"
+      ]
+    },
+    "heavy_punch": {
+      "source_sheet": "source/animation_sheets/heavy_punch_combat_6x2.png",
+      "source_dimensions_px": [
+        2172,
+        724
+      ],
+      "source_grid": [
+        6,
+        2
+      ],
+      "frame_count": 12,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 30.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/heavy_punch/heavy_punch_01.png",
+        "animations/heavy_punch/heavy_punch_02.png",
+        "animations/heavy_punch/heavy_punch_03.png",
+        "animations/heavy_punch/heavy_punch_04.png",
+        "animations/heavy_punch/heavy_punch_05.png",
+        "animations/heavy_punch/heavy_punch_06.png",
+        "animations/heavy_punch/heavy_punch_07.png",
+        "animations/heavy_punch/heavy_punch_08.png",
+        "animations/heavy_punch/heavy_punch_09.png",
+        "animations/heavy_punch/heavy_punch_10.png",
+        "animations/heavy_punch/heavy_punch_11.png",
+        "animations/heavy_punch/heavy_punch_12.png"
+      ]
+    },
     "combat_ready": {
       "source_sheet": "poses/signature_ready.png",
       "frame_count": 1,
@@ -351,6 +417,118 @@
       "loop": false,
       "frame_paths": [
         "poses/signature_ready.png"
+      ]
+    },
+    "heavy_hit": {
+      "source_sheet": "source/knockdown_recovery/razen_heavy_hit.png",
+      "source_dimensions_px": [
+        1261,
+        1247
+      ],
+      "source_grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 8.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/heavy_hit/heavy_hit_01.png",
+        "animations/heavy_hit/heavy_hit_02.png",
+        "animations/heavy_hit/heavy_hit_03.png",
+        "animations/heavy_hit/heavy_hit_04.png"
+      ]
+    },
+    "knockdown": {
+      "source_sheet": "source/knockdown_recovery/razen_knockdown.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 10.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/knockdown/knockdown_01.png",
+        "animations/knockdown/knockdown_02.png",
+        "animations/knockdown/knockdown_03.png",
+        "animations/knockdown/knockdown_04.png",
+        "animations/knockdown/knockdown_05.png",
+        "animations/knockdown/knockdown_06.png",
+        "animations/knockdown/knockdown_07.png",
+        "animations/knockdown/knockdown_08.png"
+      ]
+    },
+    "defeated": {
+      "source_sheet": "source/knockdown_recovery/razen_defeated.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        2,
+        1
+      ],
+      "frame_count": 2,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 6.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/defeated/defeated_01.png",
+        "animations/defeated/defeated_02.png"
+      ]
+    },
+    "getup": {
+      "source_sheet": "source/knockdown_recovery/razen_getup.png",
+      "source_dimensions_px": [
+        1536,
+        1024
+      ],
+      "source_grid": [
+        3,
+        2
+      ],
+      "frame_count": 6,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "anchor_policy": "sole baseline y=488",
+      "fps": 10.0,
+      "loop": false,
+      "frame_paths": [
+        "animations/getup/getup_01.png",
+        "animations/getup/getup_02.png",
+        "animations/getup/getup_03.png",
+        "animations/getup/getup_04.png",
+        "animations/getup/getup_05.png",
+        "animations/getup/getup_06.png"
       ]
     }
   }

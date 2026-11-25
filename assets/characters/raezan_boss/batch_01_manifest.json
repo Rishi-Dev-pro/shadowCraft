@@ -1,0 +1,482 @@
+{
+  "character": "Raezan, The Betrayer King",
+  "batch": 1,
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_line_y": 491,
+  "target_character_pixel_height": 438,
+  "runtime_visual_scale_reference": 0.72,
+  "reference_inputs": [
+    "Raezan, Voidblade Warrior(1).png",
+    "Raezan_ Void Blade Animation Reference(1).png"
+  ],
+  "architecture_reference": "The Executioner: AnimatedSprite2D + SpriteFrames with ordered frame PNGs; normalization follows scripts/enemies/import_executioner_art.py constants and frame cleanup pattern.",
+  "weapon_orientation": "Void Blade held forward; curved cutting belly below the blade spine, facing floor.",
+  "provenance": "Original generated animation source sheets guided by the user supplied character/grip and animation references. The concept sheet was not sliced for character frames. Source sheets retained alongside normalized frames.",
+  "cleanup": "Executioner-style cell crop/normalization, white-matte handling where detected, and largest connected silhouette cleanup.",
+  "animations": {
+    "idle": {
+      "source_sheet": "source/batches/batch_01/idle_source_sheet.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 8.0,
+      "loop": true,
+      "frames": [
+        {
+          "path": "frames/idle/idle_01.png",
+          "sha256": "59a61692c3f5af434d47f2067040c4121633d61e70ba67e9c47eefcc86541b5c",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.5,
+          "alpha_partial_pct": 30.27,
+          "bounds": [
+            49,
+            58,
+            463,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_02.png",
+          "sha256": "b33ed912364ccb734af4687857b0c6d3676beb90afb141f9eb316ec5193ffffe",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.64,
+          "alpha_partial_pct": 30.15,
+          "bounds": [
+            46,
+            58,
+            464,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_03.png",
+          "sha256": "995257fe9b22c5ecf13f287d21b216df0edef0cbd1bcdb46ee1d60fa0eac98d5",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.16,
+          "alpha_partial_pct": 30.63,
+          "bounds": [
+            44,
+            57,
+            467,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_04.png",
+          "sha256": "280d99a666fb616ec23c87f5866149c91fd8db37963d15a8e9d11f4834253e1b",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 70.0,
+          "alpha_partial_pct": 29.85,
+          "bounds": [
+            46,
+            57,
+            466,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_05.png",
+          "sha256": "278784944126a1c5fd6f7434ec5b675c870767ae9fdb6bb7f79dbb68bcd55a82",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.97,
+          "alpha_partial_pct": 29.88,
+          "bounds": [
+            45,
+            57,
+            466,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_06.png",
+          "sha256": "0e0a7b7f8e277bf4a25dbdba35a1296609101e6e1f2e864805304c58484d26d2",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 68.7,
+          "alpha_partial_pct": 31.1,
+          "bounds": [
+            41,
+            57,
+            471,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_07.png",
+          "sha256": "9517937dde275f17e962a138030c7ee234b775d64bc58bf7c0ebeb22d53cb639",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 68.97,
+          "alpha_partial_pct": 30.86,
+          "bounds": [
+            44,
+            57,
+            467,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/idle/idle_08.png",
+          "sha256": "07210361f5d378cfa17284869cf01cfd4e658eba874ffeaf0e7c053c71364e30",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.03,
+          "alpha_partial_pct": 30.78,
+          "bounds": [
+            48,
+            57,
+            462,
+            491
+          ],
+          "bottom_y": 491
+        }
+      ],
+      "exact_duplicate_frames": 0
+    },
+    "walk_forward": {
+      "source_sheet": "source/batches/batch_01/walk_forward_source_sheet.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 12.0,
+      "loop": true,
+      "frames": [
+        {
+          "path": "frames/walk_forward/walk_forward_01.png",
+          "sha256": "e5b89ed5e857221a7032dfd824f0935ca967cb1d0dbe4eb1b609c4c12773cd85",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 70.58,
+          "alpha_partial_pct": 29.36,
+          "bounds": [
+            49,
+            57,
+            462,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_02.png",
+          "sha256": "8d139ec3e3ab860dbdb97392739067fa4fa6b1590c851459e5b29cd6673119e5",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 72.77,
+          "alpha_partial_pct": 27.17,
+          "bounds": [
+            53,
+            57,
+            458,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_03.png",
+          "sha256": "9a70493db71e26b69da7bccb78fa51b19bee0878a855e261399bd617955a8e82",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 74.26,
+          "alpha_partial_pct": 25.7,
+          "bounds": [
+            54,
+            57,
+            458,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_04.png",
+          "sha256": "c4ffbedb23458f4cd1f8e85214343fda48c67320f3bbffba95f0416cd30483b1",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 74.19,
+          "alpha_partial_pct": 25.76,
+          "bounds": [
+            48,
+            57,
+            464,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_05.png",
+          "sha256": "0ca1068d225c1c0f148ae34f683b85d1b1daf1990892b194f1eb1ca7b44c6d97",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 73.75,
+          "alpha_partial_pct": 26.21,
+          "bounds": [
+            49,
+            57,
+            462,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_06.png",
+          "sha256": "34ade8a9737b5ae3c3e76e741908b56e7deb8739cb1fbc8e7195290564448a89",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 74.81,
+          "alpha_partial_pct": 25.15,
+          "bounds": [
+            51,
+            58,
+            462,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_07.png",
+          "sha256": "c4cf2c04f21b3dd0848445794990b017bf39908bf236044bcbda3056b884dcf9",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 73.37,
+          "alpha_partial_pct": 26.56,
+          "bounds": [
+            50,
+            57,
+            461,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_forward/walk_forward_08.png",
+          "sha256": "10ba0323ed91cc0b968be198f9e5f8facc74c6b407af277c89e5690cb6b74b5c",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 70.71,
+          "alpha_partial_pct": 29.23,
+          "bounds": [
+            47,
+            57,
+            465,
+            491
+          ],
+          "bottom_y": 491
+        }
+      ],
+      "exact_duplicate_frames": 0
+    },
+    "walk_backward": {
+      "source_sheet": "source/batches/batch_01/walk_backward_source_sheet.png",
+      "source_dimensions_px": [
+        1774,
+        887
+      ],
+      "source_grid": [
+        4,
+        2
+      ],
+      "frame_count": 8,
+      "fps": 12.0,
+      "loop": true,
+      "frames": [
+        {
+          "path": "frames/walk_backward/walk_backward_01.png",
+          "sha256": "aaf417a22f640aa00a9602baec106809138aadc073920899e642d703ae744ab2",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.14,
+          "alpha_partial_pct": 30.76,
+          "bounds": [
+            45,
+            57,
+            467,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_02.png",
+          "sha256": "83797cca9fdf22272b2de238f5611025733cb2911b9a8fc4015a44fc8d0bc3ff",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 69.26,
+          "alpha_partial_pct": 30.64,
+          "bounds": [
+            51,
+            57,
+            460,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_03.png",
+          "sha256": "d0514b913b072b88a3404895bad92efff9af61e08fcf861da1ee9148dc7b2a6e",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 71.43,
+          "alpha_partial_pct": 28.48,
+          "bounds": [
+            53,
+            57,
+            459,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_04.png",
+          "sha256": "5f8f9982fe0bffe32bb86c04936688db8742582a6766e62eeabaaa8fe13b0bd7",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 72.11,
+          "alpha_partial_pct": 27.81,
+          "bounds": [
+            46,
+            57,
+            466,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_05.png",
+          "sha256": "f5d2c59ad6748f442fcb69796fae52021622c1eead75474d2754b60aaf88c5d7",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 71.59,
+          "alpha_partial_pct": 28.3,
+          "bounds": [
+            47,
+            57,
+            465,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_06.png",
+          "sha256": "3529f7499d7b884ba4b69395ab3980a62ee0e62bd099d6c7275fb85e9ef19e99",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 71.93,
+          "alpha_partial_pct": 27.99,
+          "bounds": [
+            46,
+            57,
+            465,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_07.png",
+          "sha256": "bb0450a585ba88ae43728433a4f1cb590abc0a6ae63c22b01330f5f5e011c0d8",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 72.24,
+          "alpha_partial_pct": 27.68,
+          "bounds": [
+            48,
+            57,
+            464,
+            491
+          ],
+          "bottom_y": 491
+        },
+        {
+          "path": "frames/walk_backward/walk_backward_08.png",
+          "sha256": "c0e868314325a0cfbb94becc94f4545a6b6b89140aa0f28ef533979f3a218477",
+          "size_px": [
+            512,
+            512
+          ],
+          "alpha_zero_pct": 70.52,
+          "alpha_partial_pct": 29.4,
+          "bounds": [
+            50,
+            57,
+            461,
+            491
+          ],
+          "bottom_y": 491
+        }
+      ],
+      "exact_duplicate_frames": 0
+    }
+  },
+  "not_integrated": true,
+  "contact_sheet": "previews/batch_01_idle_movement_contact.png"
+}

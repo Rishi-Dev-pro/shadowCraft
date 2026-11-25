@@ -1,64 +1,63 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://scripts/combat/training_dummy.gd" id="1_dummy"]
 [ext_resource type="Script" path="res://scripts/combat/health_component.gd" id="2_health"]
 [ext_resource type="Script" path="res://scripts/combat/hurtbox_2d.gd" id="3_hurtbox"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/robotic_minion/robotic_minion_sprite_frames.tres" id="4_minion_frames"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox_2d.gd" id="5_hitbox"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/robotic_minion_punch.tres" id="6_punch"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/robotic_minion_kick.tres" id="7_kick"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_body"]
-radius = 28.0
-height = 230.0
+radius = 30.0
+height = 300.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hurtbox"]
-radius = 32.0
-height = 230.0
+radius = 34.0
+height = 300.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy_hitbox"]
+size = Vector2(78, 48)
 
 [node name="TrainingDummy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 1
 script = ExtResource("1_dummy")
+ai_enabled = false
+punch_attack = ExtResource("6_punch")
+kick_attack = ExtResource("7_kick")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -115)
+position = Vector2(0, -150)
 shape = SubResource("CapsuleShape2D_body")
 
 [node name="Silhouette" type="Node2D" parent="."]
 
-[node name="Body" type="Polygon2D" parent="Silhouette"]
-position = Vector2(0, -135)
-color = Color(0.24, 0.16, 0.29, 1)
-polygon = PackedVector2Array(-34, -44, -26, -68, 0, -77, 26, -68, 34, -44, 29, 42, 16, 60, -16, 60, -29, 42)
+[node name="MinionSprite" type="AnimatedSprite2D" parent="Silhouette"]
+position = Vector2(0, -156)
+scale = Vector2(0.66, 0.66)
+z_index = 2
+sprite_frames = ExtResource("4_minion_frames")
+animation = &"idle"
+autoplay = "idle"
 
-[node name="Chest" type="Polygon2D" parent="Silhouette"]
-position = Vector2(0, -145)
-color = Color(0.37, 0.25, 0.43, 1)
-polygon = PackedVector2Array(-27, -42, 0, -55, 27, -42, 21, 5, 0, 16, -21, 5)
+[node name="EnemyHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 64
+monitoring = false
+monitorable = false
+script = ExtResource("5_hitbox")
+attack_data = ExtResource("6_punch")
 
-[node name="Head" type="Polygon2D" parent="Silhouette"]
-position = Vector2(0, -226)
-color = Color(0.35, 0.27, 0.38, 1)
-polygon = PackedVector2Array(-23, -20, -13, -34, 13, -34, 23, -20, 20, 9, 8, 24, -8, 24, -20, 9)
-
-[node name="LeftArm" type="Polygon2D" parent="Silhouette"]
-position = Vector2(-34, -151)
-color = Color(0.3, 0.21, 0.35, 1)
-polygon = PackedVector2Array(-12, -25, 2, -31, 11, -22, 23, 19, 17, 35, 4, 31, -5, 5)
-
-[node name="RightArm" type="Polygon2D" parent="Silhouette"]
-position = Vector2(34, -151)
-color = Color(0.3, 0.21, 0.35, 1)
-polygon = PackedVector2Array(-2, -31, 12, -25, 5, 5, -4, 31, -17, 35, -23, 19, -11, -22)
-
-[node name="Legs" type="Polygon2D" parent="Silhouette"]
-position = Vector2(0, -62)
-color = Color(0.19, 0.14, 0.23, 1)
-polygon = PackedVector2Array(-28, -31, -4, -31, -7, 24, -16, 58, -34, 58, -32, 20, -41, 9, 0, -31, 28, -31, 41, 9, 32, 20, 34, 58, 16, 58, 7, 24, 4, -31)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("RectangleShape2D_enemy_hitbox")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_health")
 max_health = 120.0
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -115)
+position = Vector2(0, -150)
 collision_layer = 64
 collision_mask = 8
 monitoring = false

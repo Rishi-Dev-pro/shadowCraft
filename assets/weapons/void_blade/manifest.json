@@ -1,0 +1,23 @@
+{
+  "name": "Void Blade",
+  "reusable": true,
+  "artwork": "void_blade.png",
+  "original_dimensions_px": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_bounds": [
+    48,
+    37,
+    2141,
+    708
+  ],
+  "sha256": "93ec01667fd0ff8125efab742d3d8e8dc0341ad439b5d880e2446976b3e7799d",
+  "provenance": "Generated with built-in image generation using approved Raezan character/weapon references; no EvoLink. Independent asset; not merged into any character frame.",
+  "status": "candidate for user visual approval; not wired into gameplay"
+}

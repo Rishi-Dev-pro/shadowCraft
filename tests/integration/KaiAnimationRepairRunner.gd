@@ -5,6 +5,8 @@ extends Node2D
 
 @export var capture_prefix: String = "repair_before"
 
+const GROUND_FOOT_RECT_BOTTOM_Y: float = 573.0
+
 @onready var player: CharacterController2D = $MovementTestArena/Fighters/Kai
 @onready var front_foot: Sprite2D = $MovementTestArena/Fighters/Kai/Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Front/Bone_Leg_Lower_Front/Bone_Foot_Front/Sprite_Foot_Front
 @onready var back_foot: Sprite2D = $MovementTestArena/Fighters/Kai/Skeleton2D/Bone_Root/Bone_Hips/Bone_Leg_Upper_Back/Bone_Leg_Lower_Back/Bone_Foot_Back/Sprite_Foot_Back
@@ -29,8 +31,8 @@ func _run_sequences() -> void:
 	Input.action_press("crouch")
 	await _wait_physics_frames(24)
 	_assert_check(player.is_on_floor(), "idle to crouch stays grounded")
-	_assert_check(absf(_foot_bottom_y(front_foot) - 560.0) < 3.0, "front foot stays on floor during crouch")
-	_assert_check(absf(_foot_bottom_y(back_foot) - 560.0) < 3.0, "back foot stays on floor during crouch")
+	_assert_check(absf(_foot_bottom_y(front_foot) - GROUND_FOOT_RECT_BOTTOM_Y) < 3.0, "front foot stays on floor during crouch")
+	_assert_check(absf(_foot_bottom_y(back_foot) - GROUND_FOOT_RECT_BOTTOM_Y) < 3.0, "back foot stays on floor during crouch")
 	_results.append("CROUCH FOOT BOTTOMS: %.2f / %.2f" % [_foot_bottom_y(front_foot), _foot_bottom_y(back_foot)])
 	await _capture("crouch")
 	Input.action_release("crouch")

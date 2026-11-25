@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/weapons/iron_sword/iron_sword.png" id="1_texture"]
+
+[node name="IronSword" type="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_texture")
+scale = Vector2(0.3, 0.3)
+offset = Vector2(0, -270)
+rotation = 0.959931

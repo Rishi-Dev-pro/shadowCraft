@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://resources/weapons/weapon_data.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/stone_axe.tscn" id="2_scene"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/the_hunter_light_axe.tres" id="3_light"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/the_hunter_heavy_axe.tres" id="4_heavy"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/the_hunter_axe_sweep.tres" id="5_sweep"]
+
+[resource]
+script = ExtResource("1_script")
+weapon_id = &"stone_axe"
+display_name = "Stone Axe"
+category = 1
+material_tier = 1
+weapon_scene = ExtResource("2_scene")
+light_attack = ExtResource("3_light")
+heavy_attack = ExtResource("4_heavy")
+sweep_attack = ExtResource("5_sweep")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dn2m67q89x4l1"]
+
+[ext_resource type="Script" path="res://scripts/ui/world_map/left_nav_panel.gd" id="1_left_nav"]
+
+[node name="LeftNavPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(260, 680)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 292.0
+offset_bottom = -32.0
+grow_vertical = 2
+script = ExtResource("1_left_nav")

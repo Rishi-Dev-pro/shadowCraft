@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"kai_heavy_punch"
+display_name = "Heavy Punch"
+kind = 0
+startup_frames = 10
+active_frames = 2
+recovery_frames = 8
+base_damage = 21.0
+knockback = Vector2(245, 95)
+hitstun_seconds = 0.46
+hitbox_size = Vector2(82, 50)
+hitbox_offset = Vector2(136, -270)
+active_hitbox_offsets = PackedVector2Array(136, -270, 134, -267)
+animation_name = &"heavy_punch"
+stance = 0
+hit_reaction = 1
+hit_stop_seconds = 0.085
+impact_scale = 1.45

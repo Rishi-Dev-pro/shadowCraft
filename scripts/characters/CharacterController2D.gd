@@ -73,6 +73,10 @@ var is_grounded: bool = true
 var is_running: bool = false
 var target_opponent: Node2D = null
 var combat_motion_locked: bool = false
+## Set by CombatController while a crouched-stance attack owns the character.
+## Combat suppresses normal crouch input, so without this flag the posture would
+## be dropped on the first attack frame and the character would stand up mid-move.
+var combat_crouch_lock: bool = false
 
 # --- Simulated Input (for automated unit tests) ---
 var use_simulated_input: bool = false
@@ -148,6 +152,9 @@ func _physics_process(delta: float) -> void:
 	var move_input: float = 0.0 if combat_motion_locked else _get_horizontal_input()
 	var jump_requested: bool = false if combat_motion_locked else _is_jump_just_pressed()
 	var crouch_requested: bool = false if combat_motion_locked else _is_crouch_pressed()
+	# A crouched attack holds the crouch posture for its whole duration.
+	if combat_motion_locked and combat_crouch_lock:
+		crouch_requested = true
 	var run_requested: bool = false if combat_motion_locked else _is_run_pressed()
 	var on_floor: bool = _check_is_on_floor()
 	

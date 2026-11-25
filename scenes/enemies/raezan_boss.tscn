@@ -1,0 +1,49 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_executioner.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/enemies/raezan_boss.gd" id="2_script"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/raezan_boss/raezan_sprite_frames.tres" id="3_frames"]
+[ext_resource type="Resource" path="res://resources/weapons/void_blade.tres" id="4_weapon"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_light_slash.tres" id="5_light"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_heavy_slash.tres" id="6_heavy"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_horizontal_slash.tres" id="7_horizontal"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_vertical_slash.tres" id="8_vertical"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_dash_attack.tres" id="9_dash"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_five_hit.tres" id="10_combo"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_parry_counter.tres" id="11_counter"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_void_burst.tres" id="12_burst"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_void_step.tres" id="13_step"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_combo_1.tres" id="14_combo_1"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_combo_2.tres" id="15_combo_2"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_combo_3.tres" id="16_combo_3"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_combo_4.tres" id="17_combo_4"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/raezan_combo_5.tres" id="18_combo_5"]
+
+[node name="TrainingDummy" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+ai_enabled = true
+approach_speed = 105.0
+attack_range = 258.0
+guard_damage_reduction = 0.5
+light_slash_attack = ExtResource("5_light")
+heavy_slash_attack = ExtResource("6_heavy")
+horizontal_slash_attack = ExtResource("7_horizontal")
+dash_attack = ExtResource("9_dash")
+combo_attack = ExtResource("10_combo")
+combo_step_attacks = Array[Resource]([ExtResource("14_combo_1"), ExtResource("15_combo_2"), ExtResource("16_combo_3")])
+counterattack = ExtResource("11_counter")
+weapon_data = ExtResource("4_weapon")
+vertical_slash_attack = ExtResource("8_vertical")
+void_burst_attack = ExtResource("12_burst")
+void_step_attack = ExtResource("13_step")
+five_hit_attack = ExtResource("10_combo")
+five_hit_steps = Array[Resource]([ExtResource("14_combo_1"), ExtResource("15_combo_2"), ExtResource("16_combo_3"), ExtResource("17_combo_4"), ExtResource("18_combo_5")])
+phase_two_health_ratio = 0.5
+
+[node name="MinionSprite" parent="Silhouette" index="0"]
+sprite_frames = ExtResource("3_frames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HealthComponent" parent="." index="4"]
+max_health = 360.0

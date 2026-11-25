@@ -14,7 +14,7 @@ extends SceneTree
 # 8. State machine transitions and seamless animation mapping.
 # 9. Facing logic with independent visual flipping preserving physics root.
 # 10. Collision layer and mask configuration (Layer 2 vs Layer 1).
-# 11. Boundary clamping and arena setup verification.
+# 11. Boundary clamping and arena setup verification, including no legacy elevated platform.
 # ==============================================================================
 
 var _total_tests: int = 0
@@ -35,7 +35,7 @@ func _run_tests() -> void:
 	test_ground_friction_and_stopping()
 	test_crouch_state_and_collision_resizing()
 	test_jump_initiation_and_gravity()
-	test_jump_height_repeat_lockout_and_platform_reachability()
+	test_jump_height_repeat_lockout_and_legacy_platform_removal()
 	test_crouch_jump_lockout()
 	test_landing_reset()
 	test_facing_logic()
@@ -193,8 +193,8 @@ func test_jump_initiation_and_gravity() -> void:
 	
 	kai.free()
 
-func test_jump_height_repeat_lockout_and_platform_reachability() -> void:
-	print("\n--- Test Suite 7: Jump Height, Repeat Lockout & Platform Reachability ---")
+func test_jump_height_repeat_lockout_and_legacy_platform_removal() -> void:
+	print("\n--- Test Suite 7: Jump Height, Repeat Lockout & Legacy Platform Removal ---")
 	var kai_scene: PackedScene = load("res://scenes/characters/Kai.tscn")
 	var kai: CharacterController2D = kai_scene.instantiate() as CharacterController2D
 	kai._ready()
@@ -214,12 +214,7 @@ func test_jump_height_repeat_lockout_and_platform_reachability() -> void:
 	_assert_true(kai.velocity.y > 0.0, "Gravity transitions the jump into a falling descent")
 	var arena: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn")
 	var arena_node: Node2D = arena.instantiate() as Node2D
-	var platform: StaticBody2D = arena_node.get_node("Environment/ElevatedPlatform") as StaticBody2D
-	var floor_body: StaticBody2D = arena_node.get_node("Environment/Floor") as StaticBody2D
-	var platform_shape: RectangleShape2D = platform.get_node("CollisionShape2D").shape as RectangleShape2D
-	var floor_shape: RectangleShape2D = floor_body.get_node("CollisionShape2D").shape as RectangleShape2D
-	var platform_rise: float = (floor_body.position.y - floor_shape.size.y * 0.5) - (platform.position.y - platform_shape.size.y * 0.5)
-	_assert_true(platform_rise < apex_height, "Jump-test platform is reachable (rise %.1fpx < jump %.1fpx)" % [platform_rise, apex_height])
+	_assert_true(arena_node.get_node_or_null("Environment/ElevatedPlatform") == null, "Obsolete jump-test platform is absent")
 	arena_node.free()
 	kai.free()
 
@@ -311,8 +306,8 @@ func test_arena_environment_setup() -> void:
 	var right_wall: StaticBody2D = arena.get_node_or_null("Environment/RightWall") as StaticBody2D
 	_assert_true(right_wall != null and right_wall.collision_layer == 1, "Arena RightWall exists on Collision Layer 1 (environment)")
 	
-	var platform: StaticBody2D = arena.get_node_or_null("Environment/ElevatedPlatform") as StaticBody2D
-	_assert_true(platform != null and platform.collision_layer == 1, "Arena ElevatedPlatform exists on Collision Layer 1 (environment)")
+	var obsolete_platform: Node = arena.get_node_or_null("Environment/ElevatedPlatform")
+	_assert_true(obsolete_platform == null, "Obsolete elevated jump-test platform is removed")
 	
 	var kai: CharacterController2D = arena.get_node_or_null("Fighters/Kai") as CharacterController2D
 	_assert_true(kai != null, "Kai character instance present in arena Fighters node")

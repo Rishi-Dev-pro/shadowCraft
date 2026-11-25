@@ -18,5 +18,8 @@ func select_character(character_id: StringName) -> bool:
 func get_character_scene_path() -> String:
 	return String(CHARACTER_SCENE_PATHS.get(selected_character_id, CHARACTER_SCENE_PATHS[&"kai"]))
 
+func get_selected_character() -> StringName:
+	return selected_character_id
+
 func get_character_ids() -> Array[StringName]:
 	return [&"kai", &"razen"]

@@ -136,6 +136,54 @@
 			],
 			"name": "landing",
 			"output_directory": "res://assets/characters/kai_v2/animations/landing"
+		},
+		{
+			"name": "heavy_hit",
+			"frame_count": 4,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/heavy_hit/heavy_hit_01.png",
+				"res://assets/characters/kai_v2/animations/heavy_hit/heavy_hit_02.png",
+				"res://assets/characters/kai_v2/animations/heavy_hit/heavy_hit_03.png",
+				"res://assets/characters/kai_v2/animations/heavy_hit/heavy_hit_04.png"
+			],
+			"output_directory": "res://assets/characters/kai_v2/animations/heavy_hit"
+		},
+		{
+			"name": "knockdown",
+			"frame_count": 8,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_01.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_02.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_03.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_04.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_05.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_06.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_07.png",
+				"res://assets/characters/kai_v2/animations/knockdown/knockdown_08.png"
+			],
+			"output_directory": "res://assets/characters/kai_v2/animations/knockdown"
+		},
+		{
+			"name": "defeated",
+			"frame_count": 2,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/defeated/defeated_01.png",
+				"res://assets/characters/kai_v2/animations/defeated/defeated_02.png"
+			],
+			"output_directory": "res://assets/characters/kai_v2/animations/defeated"
+		},
+		{
+			"name": "getup",
+			"frame_count": 6,
+			"frame_paths": [
+				"res://assets/characters/kai_v2/animations/getup/getup_01.png",
+				"res://assets/characters/kai_v2/animations/getup/getup_02.png",
+				"res://assets/characters/kai_v2/animations/getup/getup_03.png",
+				"res://assets/characters/kai_v2/animations/getup/getup_04.png",
+				"res://assets/characters/kai_v2/animations/getup/getup_05.png",
+				"res://assets/characters/kai_v2/animations/getup/getup_06.png"
+			],
+			"output_directory": "res://assets/characters/kai_v2/animations/getup"
 		}
 	],
 	"sources": [

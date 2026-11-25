@@ -1,0 +1,547 @@
+{
+  "character": "Raezan, The Betrayer King",
+  "batch": 5,
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_line_y": 491,
+  "runtime_visual_scale_reference": 0.72,
+  "provenance": "Generated with built-in image generation using supplied references; no EvoLink.",
+  "cleanup": "Executioner frame-slicing and normalization; largest silhouette extraction.",
+  "animations": {
+    "void_step": {
+      "source_sheet": "source/batches/batch_05/void_step_source_sheet.png",
+      "source_grid": [
+        4,
+        4
+      ],
+      "frame_count": 16,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/void_step/void_step_01.png",
+          "sha256": "a45dbde7d7db1301dbe6e358b623cccbafe8161db089c8c90117bcde776b131d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            65,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_02.png",
+          "sha256": "db3db6525c9301c2ee78ac9dcbaca669edb0b529e6b37bd545d32beeff147e62",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            87,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_03.png",
+          "sha256": "655e0b905bf817449e7161a3230535e75fd08130a446a9578368ba03089013b7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            126,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_04.png",
+          "sha256": "3de6c584c85ce189bfc9c8bdd66746530e8f00c42324853b479bd0c91c5194fd",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            142,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_05.png",
+          "sha256": "6076376756f8453c7692255d3f1d0bcb01ac177aa22fe2cab796733ac7e56b9e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            163,
+            474,
+            490
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_06.png",
+          "sha256": "28aa869ffffcab7ce95e13e9143996ad7929a6d04e5ea7e4d143e4b12fe74322",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            167,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_07.png",
+          "sha256": "d324848b813e9c3a129eaf0f4b3abc2d5bbc4ddb024ec5b054f1f732ea4ef520",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            205,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_08.png",
+          "sha256": "70e107019ea671e450e1053668e95d39476ff3a396bcc26e085d67fad9a8c910",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            37,
+            241,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_09.png",
+          "sha256": "cbec7f50c84c8a0c9602254fab43b0ffd0dc93229f3588321f44038e07d60cd8",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            232,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_10.png",
+          "sha256": "fc6e4c0b4747f4e9e1100f74da64465673b1231a990897678f7b1121f6d38863",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            203,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_11.png",
+          "sha256": "d06a08b54573970394e7f5fc3c83025025fcf46c550cfa6781c5148cf1d8b45c",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            176,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_12.png",
+          "sha256": "f0d595f35e4e22f09628529e1def4595504622fc08fe4ca12af33c33662e5816",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            141,
+            472,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_13.png",
+          "sha256": "03765595b51664737e404956b7d0a10fca18caa9e230c4cf1e49ee1e4e32f941",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            129,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_14.png",
+          "sha256": "d57ffd33b545341d68daed8f592dde32d4f89b54573f17743224439d269bd354",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            40,
+            102,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_15.png",
+          "sha256": "5c5fe137386df4bf3a274b15169c094462a6b2d2650c079c5041bab12165ab61",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            94,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_step/void_step_16.png",
+          "sha256": "66e3d1c3a5a086d0024c7ae6f1efddbe7c7b4905ebd63b9e606130d3e1e1c59f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            61,
+            473,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_05_void_step_contact.png"
+    },
+    "void_burst": {
+      "source_sheet": "source/batches/batch_05/void_burst_source_sheet.png",
+      "source_grid": [
+        5,
+        4
+      ],
+      "frame_count": 20,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/void_burst/void_burst_01.png",
+          "sha256": "4359cd647febd19dd3ba755a442f19042e92ec78a90211ea6b2a4baa6b257f40",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            59,
+            60,
+            453,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_02.png",
+          "sha256": "72b843885f3d07f2a06d3456ee5669079985ae1c9dee9faac3ddb11d69a5ecbc",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            64,
+            60,
+            447,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_03.png",
+          "sha256": "ad6251b35ab8d6cd06b815720c16f61bfa1c08ab74458cf8fc2ee17da31fbc21",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            56,
+            59,
+            450,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_04.png",
+          "sha256": "1bf782d6e19f2cbc4b9e8781a2b3041c2bfe193c94e47b1962303a5f290e9746",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            65,
+            59,
+            440,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_05.png",
+          "sha256": "5a0fee779439eb13a52081ee4bde5dcf86ebf46e01cff8718ac845fc2e92b500",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            69,
+            59,
+            436,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_06.png",
+          "sha256": "d1315536da649bdee28114e51c88898f24e0ef4cf43063f9fbbbdce0d1eb3c6a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            59,
+            60,
+            452,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_07.png",
+          "sha256": "b4d968a0df92415ded85f0fe158765b3d17063d15a0be8b95b204d4f3c0fecd3",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            55,
+            59,
+            451,
+            490
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_08.png",
+          "sha256": "71e8d1937049dd595b197bbe34f7b19c6840aa76dea3e4809d2aac98d916a2ea",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            71,
+            57,
+            434,
+            490
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_09.png",
+          "sha256": "45dc3cd137afef6e41b9a7d68c60fd7790696f4a060e21b579ce5c77b6fd520b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            54,
+            59,
+            452,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_10.png",
+          "sha256": "179c4c9e48d41f086d0254ca13d13345b3313805ae1cccad106955a7dc95ef52",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            35,
+            60,
+            470,
+            490
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_11.png",
+          "sha256": "a66ed64a90f219492da738ed4a1a85e0b08f061d1ec93304f7b91d68bd986280",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            81,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_12.png",
+          "sha256": "af5534b24e14be1a33aa1b7ffc5eee25c84940d23c815c58a5a2aa39bd3cea58",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            73,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_13.png",
+          "sha256": "01fe38d821adc24bd6c6d932bb7c252cd757cce8aba6871ae1047735334038a5",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            33,
+            57,
+            472,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_14.png",
+          "sha256": "d7b57aa39f84ff5f2cdf5cab50169e0ae70ca42db46fa26feecc95009f462a4a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            55,
+            471,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_15.png",
+          "sha256": "3b1275e1d2ce02bc997f0993f39cacf4b6a7b2ef86087d104e7e80deb9dc1c4f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            74,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_16.png",
+          "sha256": "2cb78570f4ba4f3fc7cc3147461af3bf391c823d4b17aa0a5edfe5afcdfb3877",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            74,
+            480,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_17.png",
+          "sha256": "7481e440cf58eb9704991a64e9068222a2fa70418e9a7fd607dd804189699605",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            71,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_18.png",
+          "sha256": "5503352071683e7917bca50ec2ab06077b9a9b77e3d6cafc4ef300423e8010a1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            53,
+            464,
+            491
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_19.png",
+          "sha256": "70075a4f43241beb7a9ba5e07869f7165827c4fff464cf8b3870259ed77fa32d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            63,
+            53,
+            443,
+            490
+          ]
+        },
+        {
+          "path": "frames/void_burst/void_burst_20.png",
+          "sha256": "e6dfa9ad4e8df642fa03b5ccb292f40ed5344fd33b0e8240b48df6de61e6b1be",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            58,
+            53,
+            447,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_05_void_burst_contact.png"
+    }
+  },
+  "not_integrated": true
+}

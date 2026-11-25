@@ -1,0 +1,43 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/combat/training_dummy.tscn" id="1_base"]
+[ext_resource type="Script" path="res://scripts/enemies/the_executioner.gd" id="2_script"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/the_executioner/executioner_sprite_frames.tres" id="3_frames"]
+[ext_resource type="Script" path="res://scripts/enemies/executioner_hurtbox.gd" id="4_hurtbox"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_light_slash.tres" id="5_light"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_heavy_overhead_slash.tres" id="6_heavy"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_horizontal_slash.tres" id="7_horizontal"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_dash_attack.tres" id="8_dash"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_three_hit_combo.tres" id="9_combo"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_parry_counter.tres" id="10_counter"]
+[ext_resource type="Resource" path="res://resources/weapons/iron_sword.tres" id="11_weapon"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_combo_hit_one.tres" id="12_combo_one"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_combo_hit_two.tres" id="13_combo_two"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/executioner_combo_hit_three.tres" id="14_combo_three"]
+
+[node name="TrainingDummy" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+ai_enabled = true
+approach_speed = 92.0
+attack_range = 246.0
+guard_damage_reduction = 0.5
+light_slash_attack = ExtResource("5_light")
+heavy_slash_attack = ExtResource("6_heavy")
+horizontal_slash_attack = ExtResource("7_horizontal")
+dash_attack = ExtResource("8_dash")
+combo_attack = ExtResource("9_combo")
+combo_step_attacks = Array[Resource]([ExtResource("12_combo_one"), ExtResource("13_combo_two"), ExtResource("14_combo_three")])
+counterattack = ExtResource("10_counter")
+weapon_data = ExtResource("11_weapon")
+
+[node name="MinionSprite" parent="Silhouette" index="0"]
+sprite_frames = ExtResource("3_frames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Hurtbox" parent="." index="5"]
+script = ExtResource("4_hurtbox")
+
+[node name="HealthComponent" parent="." index="4"]
+max_health = 240.0
+

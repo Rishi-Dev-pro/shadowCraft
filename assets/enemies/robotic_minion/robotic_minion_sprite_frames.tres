@@ -1,0 +1,204 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_01.png" id="1_n6uhi"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_02.png" id="2_ay3gx"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_03.png" id="3_tnhw1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_04.png" id="4_yu6mh"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_05.png" id="5_snx64"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_06.png" id="6_ovdri"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_07.png" id="7_7s55e"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/death/frame_08.png" id="8_lnprq"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/sprites/robotic_minion_guard.png" id="9_kdycp"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/hit/frame_01.png" id="10_snn2f"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/hit/frame_02.png" id="11_2nt7d"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/hit/frame_03.png" id="12_ttl8t"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/hit/frame_04.png" id="13_dw463"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_01.png" id="14_arpbm"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_02.png" id="15_vfe6l"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_03.png" id="16_enqp7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_04.png" id="17_6m3e4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_05.png" id="18_y2daj"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_06.png" id="19_n1sah"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_01.png" id="20_ud3wn"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_02.png" id="21_wshvk"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_03.png" id="22_r08ym"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_04.png" id="23_eldqk"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_05.png" id="24_kqjbe"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_06.png" id="25_afimd"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_07.png" id="26_pemdg"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/kick/frame_08.png" id="27_qb34h"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_01.png" id="28_v2kqq"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_02.png" id="29_wsj35"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_03.png" id="30_kw6cg"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_04.png" id="31_rfnrl"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_05.png" id="32_26vd8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/punch/frame_06.png" id="33_5omgi"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_01.png" id="34_7mmhd"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_02.png" id="35_35ooc"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_03.png" id="36_vioxr"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_04.png" id="37_1qh1m"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_05.png" id="38_kt4fm"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_06.png" id="39_gxfgj"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_07.png" id="40_5pgjt"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/walk/frame_08.png" id="41_l6cua"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_n6uhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ay3gx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tnhw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yu6mh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_snx64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ovdri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7s55e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lnprq")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_kdycp")
+}],
+"loop": 0,
+"name": &"guard",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_snn2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2nt7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ttl8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dw463")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_arpbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vfe6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_enqp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_6m3e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_y2daj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_n1sah")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ud3wn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wshvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_r08ym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_eldqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kqjbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_afimd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_pemdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_qb34h")
+}],
+"loop": 0,
+"name": &"kick",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_v2kqq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_wsj35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_kw6cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_rfnrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_26vd8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_5omgi")
+}],
+"loop": 0,
+"name": &"punch",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_7mmhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_35ooc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_vioxr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_1qh1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_kt4fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_gxfgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_5pgjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_l6cua")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bwhd84qmrk2a1"]
+
+[ext_resource type="Script" path="res://scripts/ui/world_map/guardian_marker.gd" id="1_marker"]
+
+[node name="GuardianMarker" type="Control"]
+custom_minimum_size = Vector2(220, 58)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 60.0
+script = ExtResource("1_marker")

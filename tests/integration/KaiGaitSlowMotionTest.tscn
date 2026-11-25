@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://tests/integration/KaiWalkingPolishRunner.gd" id="1_runner"]
+[ext_resource type="PackedScene" path="res://scenes/arenas/MovementTestArena.tscn" id="2_arena"]
+
+[node name="KaiGaitSlowMotionTest" type="Node2D"]
+script = ExtResource("1_runner")
+capture_prefix = "gait_slow_motion"
+slow_motion_capture = true
+
+[node name="MovementTestArena" parent="." instance=ExtResource("2_arena")]

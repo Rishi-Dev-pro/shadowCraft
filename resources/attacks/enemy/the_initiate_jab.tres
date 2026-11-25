@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"the_initiate_jab"
+display_name = "Initiate Jab"
+kind = 0
+startup_frames = 10
+active_frames = 3
+recovery_frames = 21
+base_damage = 5.5
+knockback = Vector2(95, 24)
+hitstun_seconds = 0.22
+hitbox_size = Vector2(84, 48)
+hitbox_offset = Vector2(116, -187)
+active_hitbox_offsets = PackedVector2Array(116, -187, 122, -187, 118, -187)
+animation_name = &"punch"
+stance = 0
+hit_reaction = 0

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"executioner_heavy_overhead_slash"
+display_name = "Executioner Overhead Slash"
+kind = 0
+startup_frames = 28
+active_frames = 5
+recovery_frames = 40
+base_damage = 20.0
+knockback = Vector2(270, 95)
+hitstun_seconds = 0.48
+hitbox_size = Vector2(166, 112)
+hitbox_offset = Vector2(170, -208)
+active_hitbox_offsets = PackedVector2Array(160, -205, 175, -197, 170, -188, 156, -182, 146, -192)
+animation_name = &"heavy_overhead_slash"
+hit_reaction = 1
+hit_stop_seconds = 0.075
+impact_scale = 1.3

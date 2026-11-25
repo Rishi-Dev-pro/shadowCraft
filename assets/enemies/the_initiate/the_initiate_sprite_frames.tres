@@ -1,0 +1,201 @@
+[gd_resource type="SpriteFrames" load_steps=31 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/idle/idle_01.png" id="texture_1"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/idle/idle_02.png" id="texture_2"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/idle/idle_03.png" id="texture_3"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/idle/idle_04.png" id="texture_4"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/walk/walk_01.png" id="texture_5"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/walk/walk_02.png" id="texture_6"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/walk/walk_03.png" id="texture_7"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/walk/walk_04.png" id="texture_8"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/punch/punch_01.png" id="texture_9"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/punch/punch_02.png" id="texture_10"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/punch/punch_03.png" id="texture_11"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/punch/punch_04.png" id="texture_12"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_01.png" id="texture_13"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_02.png" id="texture_14"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_03.png" id="texture_15"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_04.png" id="texture_16"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/kick/kick_01.png" id="texture_17"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/kick/kick_02.png" id="texture_18"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/kick/kick_03.png" id="texture_19"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/kick/kick_04.png" id="texture_20"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/roundhouse/roundhouse_01.png" id="texture_21"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/roundhouse/roundhouse_02.png" id="texture_22"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/roundhouse/roundhouse_03.png" id="texture_23"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/roundhouse/roundhouse_04.png" id="texture_24"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/hit/hit_01.png" id="texture_25"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/hit/hit_02.png" id="texture_26"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/death/death_01.png" id="texture_27"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/death/death_02.png" id="texture_28"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/death/death_03.png" id="texture_29"]
+[ext_resource type="Texture2D" path="res://assets/enemies/the_initiate/frames/death/death_04.png" id="texture_30"]
+
+[resource]
+animations = [
+{
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_4")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_8")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 9.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_5")
+}],
+"loop": 1,
+"name": &"walk_backward",
+"speed": 9.0
+}, {
+"frames": [
+{
+"duration": 3.0,
+"texture": ExtResource("texture_9")
+}, {
+"duration": 7.0,
+"texture": ExtResource("texture_10")
+}, {
+"duration": 3.0,
+"texture": ExtResource("texture_11")
+}, {
+"duration": 21.0,
+"texture": ExtResource("texture_12")
+}],
+"loop": 0,
+"name": &"punch",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 7.0,
+"texture": ExtResource("texture_13")
+}, {
+"duration": 11.0,
+"texture": ExtResource("texture_14")
+}, {
+"duration": 3.0,
+"texture": ExtResource("texture_15")
+}, {
+"duration": 26.0,
+"texture": ExtResource("texture_16")
+}],
+"loop": 0,
+"name": &"heavy_punch",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 6.0,
+"texture": ExtResource("texture_17")
+}, {
+"duration": 11.0,
+"texture": ExtResource("texture_18")
+}, {
+"duration": 3.0,
+"texture": ExtResource("texture_19")
+}, {
+"duration": 24.0,
+"texture": ExtResource("texture_20")
+}],
+"loop": 0,
+"name": &"kick",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 7.0,
+"texture": ExtResource("texture_21")
+}, {
+"duration": 13.0,
+"texture": ExtResource("texture_22")
+}, {
+"duration": 3.0,
+"texture": ExtResource("texture_23")
+}, {
+"duration": 30.0,
+"texture": ExtResource("texture_24")
+}],
+"loop": 0,
+"name": &"roundhouse",
+"speed": 60.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_1")
+}],
+"loop": 1,
+"name": &"guard",
+"speed": 8.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_26")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 12.0
+}, {
+"frames": [
+{
+"duration": 1.0,
+"texture": ExtResource("texture_27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_29")
+}, {
+"duration": 1.0,
+"texture": ExtResource("texture_30")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 8.0
+}]

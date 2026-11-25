@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"raezan_combo_4"
+display_name = "Raezan Combo Advancing Slash"
+kind = 0
+startup_frames = 1
+active_frames = 2
+recovery_frames = 1
+base_damage = 7.0
+knockback = Vector2(214, 42)
+hitstun_seconds = 0.38
+hitbox_size = Vector2(170, 94)
+hitbox_offset = Vector2(178, -188)
+animation_name = &"five_hit_combo"
+hit_reaction = 1
+hit_stop_seconds = 0.055
+impact_scale = 1.14

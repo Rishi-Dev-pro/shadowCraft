@@ -10,7 +10,7 @@ func _run() -> void:
 	var selection_state: CharacterSelectionState = _ensure_selection_state()
 	var selection_scene: PackedScene = load("res://scenes/ui/character_select.tscn") as PackedScene
 	_check(selection_scene != null, "Character Selection scene loads")
-	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/ui/character_select.tscn", "F5 main scene is Character Selection")
+	_check(ProjectSettings.get_setting("application/run/main_scene") in ["res://scenes/ui/intro_cinematic.tscn", "res://scenes/ui/character_select.tscn"], "F5 main scene is Character Selection or Intro Cinematic")
 	_check(InputMap.has_action("pause_menu"), "Escape pause action exists")
 	_check(selection_state.get_character_ids().size() == 2, "Selection offers exactly the two approved fighters")
 	var menu: Control = selection_scene.instantiate() as Control
@@ -56,6 +56,9 @@ func _run() -> void:
 			passed_kai += 1
 		else:
 			passed_razen += 1
+		dummy_container.position.x = 960.0
+		player.position = Vector2(850.0, 560.0)
+		player.velocity = Vector2.ZERO
 		var jab: AttackData = load("res://resources/attacks/light_jab.tres") as AttackData
 		var before_jab: float = dummy_health.current_health
 		_check(combat.start_attack(jab), "%s can start the existing Light Jab" % character_id)

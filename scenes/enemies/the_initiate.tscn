@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/combat/training_dummy.tscn" id="1_dummy_base"]
+[ext_resource type="Script" path="res://scripts/enemies/the_initiate.gd" id="2_initiate"]
+[ext_resource type="SpriteFrames" path="res://assets/enemies/the_initiate/the_initiate_sprite_frames.tres" id="3_frames"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/the_initiate_heavy_punch.tres" id="4_heavy"]
+[ext_resource type="Resource" path="res://resources/attacks/enemy/the_initiate_roundhouse.tres" id="5_roundhouse"]
+
+[node name="TrainingDummy" instance=ExtResource("1_dummy_base")]
+script = ExtResource("2_initiate")
+heavy_punch_attack = ExtResource("4_heavy")
+roundhouse_attack = ExtResource("5_roundhouse")
+
+[node name="MinionSprite" parent="Silhouette" index="0"]
+sprite_frames = ExtResource("3_frames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="HealthComponent" parent="." index="3"]
+max_health = 140.0

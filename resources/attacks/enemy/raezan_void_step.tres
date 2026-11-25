@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"raezan_void_step"
+display_name = "Raezan Void Step"
+kind = 0
+startup_frames = 1
+active_frames = 1
+recovery_frames = 1
+base_damage = 1.0
+knockback = Vector2(90, 0)
+hitstun_seconds = 0.38
+hitbox_size = Vector2(72, 64)
+hitbox_offset = Vector2(0, -170)
+animation_name = &"void_step"
+hit_reaction = 1
+hit_stop_seconds = 0.000
+impact_scale = 1.00

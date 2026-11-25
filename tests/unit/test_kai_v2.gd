@@ -17,7 +17,7 @@ func _run_tests() -> void:
 		return
 	var arena_scene: PackedScene = load("res://scenes/arenas/MovementTestArena.tscn") as PackedScene
 	_check(arena_scene != null, "MovementTestArena loads with Kai V2 integration")
-	_check(ProjectSettings.get_setting("application/run/main_scene") == "res://scenes/ui/character_select.tscn", "F5 opens Character Selection")
+	_check(ProjectSettings.get_setting("application/run/main_scene") in ["res://scenes/ui/intro_cinematic.tscn", "res://scenes/ui/character_select.tscn"], "F5 opens Character Selection or Intro Cinematic")
 	_check(load("res://scenes/characters/KaiLegacy.tscn") is PackedScene, "Kai legacy rollback scene remains loadable")
 	if arena_scene == null:
 		quit(1)

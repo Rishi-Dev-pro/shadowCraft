@@ -1,0 +1,731 @@
+{
+  "character": "Raezan, The Betrayer King",
+  "batch": 4,
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_line_y": 491,
+  "target_character_pixel_height": 438,
+  "runtime_visual_scale_reference": 0.72,
+  "architecture_reference": "The Executioner frame-based AnimatedSprite2D + SpriteFrames pipeline; isolated artwork only.",
+  "provenance": "Built-in image generation using user-provided Raezan grip and choreography references; no EvoLink.",
+  "cleanup": "Executioner importer slicing/normalization and largest silhouette cleanup.",
+  "animations": {
+    "guard": {
+      "source_sheet": "source/batches/batch_04/guard_source_sheet.png",
+      "source_grid": [
+        4,
+        3
+      ],
+      "frame_count": 12,
+      "fps": 8.0,
+      "loop": true,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/guard/guard_01.png",
+          "sha256": "fba510f828ec5b2abd8db3abbe0e5103064800f70e677ec5eaf966ecb11b62b1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            43,
+            59,
+            468,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_02.png",
+          "sha256": "c55b54a958b6845efebd9e01c4a2e0ecb68f8af4e6c1f4aafe860f5fe707088d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            42,
+            58,
+            470,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_03.png",
+          "sha256": "d1ad2d3ac498c87f89d0952a76379e06e4b80744ba24e0641fde6550141e5815",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            82,
+            58,
+            430,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_04.png",
+          "sha256": "3fabaff31ee591604775dc7ed48b95a7eb46c479e6bed05390a3cc81187a8313",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            65,
+            475,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_05.png",
+          "sha256": "92c32feb3ad363ec2abfb1ab71ee2f5a76ff03de27c2a9e9472440a348878fa9",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            53,
+            59,
+            459,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_06.png",
+          "sha256": "ce2aee138a2d9e4182e17ce6b6cc0184bf5ec4186946aa8ac24af2036e73e7ae",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            42,
+            59,
+            470,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_07.png",
+          "sha256": "3901b86d9b985a3281def1c68f4d0a98dc7e4e542dab162a5f7f273d76d89ba6",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            48,
+            58,
+            464,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_08.png",
+          "sha256": "3893463621c6942a247907758e7eba0c16913df1dd8ef6f639176af490385c4d",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            43,
+            58,
+            463,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_09.png",
+          "sha256": "5c1e0f2a636d36bc213c8e2967cffca341ac3040ebf9876875805648388841d3",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            57,
+            58,
+            455,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_10.png",
+          "sha256": "8ef8e8f594c2ddee09f22db547389795401270be87b2a34f8f8235c2ed5620a0",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            54,
+            58,
+            457,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_11.png",
+          "sha256": "a5d35f6baddba29673ef41ebf1bf438e4a5f59219e2a00302222b1631e378ed2",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            48,
+            58,
+            463,
+            491
+          ]
+        },
+        {
+          "path": "frames/guard/guard_12.png",
+          "sha256": "f0fab7a94f9c79091c5097d7f15813eaa4a31d8dbe691563345f63db5ddeece7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            51,
+            58,
+            460,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_04_guard_contact.png"
+    },
+    "parry": {
+      "source_sheet": "source/batches/batch_04/parry_source_sheet.png",
+      "source_grid": [
+        4,
+        4
+      ],
+      "frame_count": 16,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/parry/parry_01.png",
+          "sha256": "fd81e017ec66350478c11c23e828776a639cd30e2e42bd7f7228e6e19fa4d1a9",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            53,
+            59,
+            458,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_02.png",
+          "sha256": "9998f6f3c18f3473dc22aa155fac02b15f345c889f085b49935e0570b987576f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            73,
+            59,
+            439,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_03.png",
+          "sha256": "3119793f73dd71e0ac514276dce792c595f2141ecf538d3628a81379029f590f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            60,
+            59,
+            450,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_04.png",
+          "sha256": "e562c55a700a24374d33c7d347c68ac4381711cce5de2d058e994d9e9d7941b8",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            53,
+            59,
+            452,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_05.png",
+          "sha256": "8fc676159bb5bd0b268d8edfc0c4b50b79ef071008dfc6d317c5d949f5a92108",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            57,
+            59,
+            454,
+            490
+          ]
+        },
+        {
+          "path": "frames/parry/parry_06.png",
+          "sha256": "a4e2637932967036cb6b4b3815610d3162439a2c702c8c4bc5893edaa3e6eabf",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            55,
+            59,
+            457,
+            490
+          ]
+        },
+        {
+          "path": "frames/parry/parry_07.png",
+          "sha256": "96642aa559f101ee84cc28d5250f606b6d8f7c3b6bb5b217ef87986afad51865",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            50,
+            60,
+            461,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_08.png",
+          "sha256": "8ee1b212aed54df0c6ce292bea87a5adea323bed3123aae35f979c5e4f1d97e1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            41,
+            59,
+            466,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_09.png",
+          "sha256": "60fd2f9c19b4cf3187264a987cc1685b63d0500fee842a153447ed5637511da5",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            61,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_10.png",
+          "sha256": "2f6fb60d3ec749aa30b86aa0a9c8e13e1f17a689e756b14f2006c01b927c8883",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            40,
+            59,
+            471,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_11.png",
+          "sha256": "4dc1483e7340f657e596cd041947d2d363eedef149719506992b5bafc09896d7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            35,
+            85,
+            475,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_12.png",
+          "sha256": "deb5daed59e8364e66de3a830e94b599e5122838f815a448de3931e4b1420367",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            36,
+            83,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_13.png",
+          "sha256": "bae1f6e874b31d19bed704dad3a4a5722babb1a53bc34d9e0399e105a640fab0",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            54,
+            480,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_14.png",
+          "sha256": "02a56c077772df15a570679ebda2b790a64ad93a5d612ff58a72775862c89225",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            47,
+            53,
+            464,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_15.png",
+          "sha256": "9ae1ff7be1bef86d71655a9ba7d9a6c157c72e9f86618dbbb27df71571c92e3f",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            46,
+            53,
+            466,
+            491
+          ]
+        },
+        {
+          "path": "frames/parry/parry_16.png",
+          "sha256": "6d7c302d6635ec7447c6f8978f1a64c80f73e44b0f69e70cf6df4741e5a76bac",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            49,
+            53,
+            462,
+            491
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_04_parry_contact.png"
+    },
+    "counterattack": {
+      "source_sheet": "source/batches/batch_04/counterattack_source_sheet.png",
+      "source_grid": [
+        5,
+        4
+      ],
+      "frame_count": 20,
+      "fps": 18.0,
+      "loop": false,
+      "exact_duplicate_frames": 0,
+      "frames": [
+        {
+          "path": "frames/counterattack/counterattack_01.png",
+          "sha256": "52c987c7a92d0a7f094e4477ade1cd7bbc3cf59022842c35b9d584adf1c43cdf",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            46,
+            59,
+            466,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_02.png",
+          "sha256": "886d58ef7f36bc115311345509aad96d4edfe47c550317aa993706ea558941a1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            56,
+            60,
+            455,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_03.png",
+          "sha256": "f3306f28f45d0e7db83f3cff14be145c633c0dd1bd831476b6677b1f72f58ec0",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            62,
+            60,
+            443,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_04.png",
+          "sha256": "8d00a3a22c5687f87f2651a23b487e4382392b50aba1bdb86479ad50105dd24e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            47,
+            59,
+            457,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_05.png",
+          "sha256": "5c7f0a92485544d524b5cf38af7ecfad2a4f1dcc8be5d36bdfd821b52ad527c1",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            72,
+            59,
+            439,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_06.png",
+          "sha256": "abfb729e4c55bb0792825e2b1291730cc146a923cbc836b59d9cf2ae999beaa8",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            68,
+            60,
+            444,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_07.png",
+          "sha256": "485f5ca3fa207c8103ffe552605075fca194266b5a111b33677e60ebe17db2c9",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            58,
+            59,
+            450,
+            490
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_08.png",
+          "sha256": "3156cf1ae14232ea791cd76c5c353d9d2bd4800d6d4e935963d9571241adc9e0",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            62,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_09.png",
+          "sha256": "5113342e5868fae5f18a92ace44a56fb7f7b0aa274899f5c768f65402514a331",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            83,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_10.png",
+          "sha256": "ade5433fd5075e03e4837d51433a145a0c38ad2d35b4c247411747c821c6487e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            97,
+            477,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_11.png",
+          "sha256": "60397d66d2518f32075c3c8062faf9d28b77c1e0a2138ecefab447bc8048ab8e",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            39,
+            88,
+            480,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_12.png",
+          "sha256": "192245a48685650a09b665409aaf92451627da1fad94e2dabaf8e2f9db0173d7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            38,
+            102,
+            474,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_13.png",
+          "sha256": "bd8419ce7436423a29c6422dce2788751215e27ddfe068f6faa86df6be9694f7",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            75,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_14.png",
+          "sha256": "d5350eee85562767c666ad06a7cd0129e5ce587e97a9a64021f76205f4d72d71",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            32,
+            59,
+            472,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_15.png",
+          "sha256": "5522b69d4358c1e50401570855b616c3785b54f6c3608bed4a560f0a6ebeabcf",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            35,
+            56,
+            473,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_16.png",
+          "sha256": "41ccdb4ed06439039ad61cf6a8a31e7647aa69e105faf5a52ef250559e39a06b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            58,
+            53,
+            454,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_17.png",
+          "sha256": "cdb5dfbc3cc8dc5b21857bec3d3323c86c56e88986146596b0202d054959eeac",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            54,
+            53,
+            456,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_18.png",
+          "sha256": "3590beaacfcd946bd160ef2c5f2ef4e3707fdfe0686149a1f355be91cf99d3cf",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            48,
+            53,
+            457,
+            491
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_19.png",
+          "sha256": "168a5d0e94ad41d845282ca4db11e76566824ed8f6e2c4259897a9019a972a2a",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            43,
+            53,
+            461,
+            490
+          ]
+        },
+        {
+          "path": "frames/counterattack/counterattack_20.png",
+          "sha256": "48a142b3e8526cd23f41f42d83368d3d3e9ae8ded448c29b62e6bd5bad97a75b",
+          "size_px": [
+            512,
+            512
+          ],
+          "bounds_alpha24": [
+            40,
+            53,
+            469,
+            490
+          ]
+        }
+      ],
+      "contact_sheet": "previews/batch_04_counterattack_contact.png"
+    }
+  },
+  "not_integrated": true
+}

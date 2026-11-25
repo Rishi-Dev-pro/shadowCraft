@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"executioner_horizontal_slash"
+display_name = "Executioner Horizontal Slash"
+kind = 0
+startup_frames = 20
+active_frames = 4
+recovery_frames = 30
+base_damage = 16.0
+knockback = Vector2(215, 55)
+hitstun_seconds = 0.4
+hitbox_size = Vector2(164, 92)
+hitbox_offset = Vector2(170, -192)
+active_hitbox_offsets = PackedVector2Array(155, -198, 174, -190, 170, -180, 156, -188)
+animation_name = &"horizontal_slash"
+hit_reaction = 1
+hit_stop_seconds = 0.06
+impact_scale = 1.18

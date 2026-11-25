@@ -1,9 +1,13 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=37 format=3]
 
 [ext_resource type="Script" path="res://scripts/arenas/MovementTestArenaController.gd" id="1_arena_ctrl"]
+[ext_resource type="Texture2D" path="res://assets/arenas/moonlit_dojo/moonlit_dojo_background.png" id="2_dojo_bg"]
 [ext_resource type="PackedScene" path="res://scenes/combat/training_dummy.tscn" id="3_dummy"]
 [ext_resource type="Script" path="res://scripts/arenas/arena_character_spawner.gd" id="4_spawner"]
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="5_pause_menu"]
+[ext_resource type="Texture2D" path="res://assets/ui/portraits/kai_hud_portrait.png" id="6_kai_portrait"]
+[ext_resource type="Texture2D" path="res://assets/enemies/robotic_minion/animations/idle/frame_01.png" id="7_minion_portrait_source"]
+[ext_resource type="Texture2D" path="res://assets/characters/razen/animations/idle_signature/idle_signature_01.png" id="8_razen_portrait_source"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1280, 160)
@@ -11,30 +15,271 @@ size = Vector2(1280, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(40, 720)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
-size = Vector2(280, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_minion_hud_portrait"]
+atlas = ExtResource("7_minion_portrait_source")
+region = Rect2(76, 0, 360, 292)
 
-[sub_resource type="LabelSettings" id="LabelSettings_title"]
-font_size = 20
-font_color = Color(0.85, 0.75, 1, 1)
-outline_size = 2
-outline_color = Color(0.3, 0.1, 0.5, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_razen_hud_portrait"]
+atlas = ExtResource("8_razen_portrait_source")
+region = Rect2(76, 0, 360, 300)
 
-[sub_resource type="LabelSettings" id="LabelSettings_sub"]
-font_size = 13
-font_color = Color(0.7, 0.65, 0.8, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bg"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_telemetry"]
-font_size = 14
-font_color = Color(0.9, 0.85, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait_p1"]
+bg_color = Color(0.045, 0.03, 0.075, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.62, 0.35, 0.95, 0.95)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.48, 0.18, 0.85, 0.45)
+shadow_size = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health"]
-bg_color = Color(0.43, 0.18, 0.66, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_portrait_cpu"]
+bg_color = Color(0.07, 0.03, 0.04, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.92, 0.22, 0.35, 0.95)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0.85, 0.15, 0.28, 0.45)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge_p1"]
+bg_color = Color(0.52, 0.18, 0.85, 0.95)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.67, 0.38, 0.93, 0.85)
+border_color = Color(0.82, 0.58, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge_cpu"]
+bg_color = Color(0.85, 0.15, 0.28, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.55, 0.68, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg_p1"]
+bg_color = Color(0.06, 0.04, 0.09, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.22, 0.65, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(-0.25, 0)
+shadow_color = Color(0.2, 0.08, 0.35, 0.4)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg_cpu"]
+bg_color = Color(0.09, 0.035, 0.05, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 0.18, 0.25, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(0.25, 0)
+shadow_color = Color(0.35, 0.08, 0.12, 0.4)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghost_p1"]
+bg_color = Color(0.95, 0.68, 0.18, 0.88)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(-0.25, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ghost_cpu"]
+bg_color = Color(0.98, 0.48, 0.18, 0.88)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(0.25, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_health_fill"]
+bg_color = Color(0.62, 0.24, 0.95, 1)
+border_width_top = 2
+border_color = Color(0.9, 0.72, 1, 0.95)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(-0.25, 0)
+shadow_color = Color(0.62, 0.24, 0.95, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crimson_fill"]
+bg_color = Color(0.88, 0.16, 0.32, 1)
+border_width_top = 2
+border_color = Color(1, 0.65, 0.75, 0.95)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+skew = Vector2(0.25, 0)
+shadow_color = Color(0.88, 0.16, 0.32, 0.6)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_center_plaque"]
+bg_color = Color(0.04, 0.03, 0.065, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.32, 0.78, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.3, 0.12, 0.45, 0.5)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dock_panel"]
+bg_color = Color(0.035, 0.025, 0.055, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.48, 0.28, 0.68, 0.65)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0.2, 0.1, 0.3, 0.4)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keycap"]
+bg_color = Color(0.09, 0.065, 0.14, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42, 0.28, 0.6, 0.7)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_name_p1"]
+font_size = 20
+font_color = Color(0.96, 0.93, 1, 1)
+outline_size = 3
+outline_color = Color(0.32, 0.12, 0.52, 0.9)
+shadow_size = 4
+shadow_color = Color(0.12, 0.04, 0.22, 0.95)
+shadow_offset = Vector2(1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_name_cpu"]
+font_size = 20
+font_color = Color(1, 0.92, 0.94, 1)
+outline_size = 3
+outline_color = Color(0.55, 0.1, 0.2, 0.9)
+shadow_size = 4
+shadow_color = Color(0.22, 0.04, 0.08, 0.95)
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sub_p1"]
+font_size = 10
+font_color = Color(0.72, 0.65, 0.85, 0.85)
+shadow_size = 2
+shadow_color = Color(0.05, 0.02, 0.08, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sub_cpu"]
+font_size = 10
+font_color = Color(0.85, 0.6, 0.68, 0.85)
+shadow_size = 2
+shadow_color = Color(0.08, 0.02, 0.04, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp_p1"]
+font_size = 13
+font_color = Color(0.95, 0.92, 1, 1)
+outline_size = 1
+outline_color = Color(0.25, 0.1, 0.4, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp_cpu"]
+font_size = 13
+font_color = Color(1, 0.9, 0.92, 1)
+outline_size = 1
+outline_color = Color(0.4, 0.08, 0.15, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pips_p1"]
+font_size = 9
+font_color = Color(0.78, 0.45, 1, 0.9)
+shadow_size = 2
+shadow_color = Color(0.5, 0.2, 0.8, 0.6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pips_cpu"]
+font_size = 9
+font_color = Color(1, 0.4, 0.5, 0.9)
+shadow_size = 2
+shadow_color = Color(0.8, 0.15, 0.25, 0.6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_badge"]
+font_size = 10
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_emblem"]
+font_size = 10
+font_color = Color(0.82, 0.65, 0.98, 0.95)
+shadow_size = 2
+shadow_color = Color(0.45, 0.18, 0.7, 0.7)
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 14
+font_color = Color(0.96, 0.93, 1, 1)
+outline_size = 2
+outline_color = Color(0.38, 0.15, 0.6, 0.95)
+shadow_size = 4
+shadow_color = Color(0.08, 0.04, 0.14, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_round"]
+font_size = 11
+font_color = Color(0.86, 0.8, 0.94, 0.95)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jewels"]
+font_size = 9
+font_color = Color(0.72, 0.62, 0.85, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_keycap_key"]
+font_size = 11
+font_color = Color(0.98, 0.95, 1, 1)
+outline_size = 1
+outline_color = Color(0.2, 0.1, 0.35, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_keycap_action"]
+font_size = 10
+font_color = Color(0.72, 0.68, 0.82, 0.9)
 
 [node name="MovementTestArena" type="Node2D"]
 script = ExtResource("1_arena_ctrl")
@@ -44,6 +289,14 @@ is_showcase_mode = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.06, 0.05, 0.09, 1)
+visible = false
+
+[node name="MoonlitDojoBackground" type="Sprite2D" parent="."]
+texture = ExtResource("2_dojo_bg")
+position = Vector2(640, 360)
+scale = Vector2(0.76555, 0.76546)
+z_index = -100
+texture_filter = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
@@ -64,6 +317,7 @@ offset_top = -80.0
 offset_right = 640.0
 offset_bottom = 80.0
 color = Color(0.1, 0.08, 0.15, 1)
+visible = false
 
 [node name="FloorLine" type="ColorRect" parent="Environment/Floor"]
 offset_left = -640.0
@@ -71,6 +325,7 @@ offset_top = -82.0
 offset_right = 640.0
 offset_bottom = -80.0
 color = Color(0.5, 0.25, 0.8, 0.8)
+visible = false
 
 [node name="LeftWall" type="StaticBody2D" parent="Environment"]
 position = Vector2(20, 360)
@@ -86,6 +341,7 @@ offset_top = -360.0
 offset_right = 20.0
 offset_bottom = 360.0
 color = Color(0.08, 0.06, 0.12, 1)
+visible = false
 
 [node name="WallBorder" type="ColorRect" parent="Environment/LeftWall"]
 offset_left = 18.0
@@ -93,6 +349,7 @@ offset_top = -360.0
 offset_right = 20.0
 offset_bottom = 360.0
 color = Color(0.4, 0.2, 0.65, 0.5)
+visible = false
 
 [node name="RightWall" type="StaticBody2D" parent="Environment"]
 position = Vector2(1260, 360)
@@ -108,6 +365,7 @@ offset_top = -360.0
 offset_right = 20.0
 offset_bottom = 360.0
 color = Color(0.08, 0.06, 0.12, 1)
+visible = false
 
 [node name="WallBorder" type="ColorRect" parent="Environment/RightWall"]
 offset_left = -20.0
@@ -115,194 +373,562 @@ offset_top = -360.0
 offset_right = -18.0
 offset_bottom = 360.0
 color = Color(0.4, 0.2, 0.65, 0.5)
-
-[node name="ElevatedPlatform" type="StaticBody2D" parent="Environment"]
-position = Vector2(640, 492)
-collision_layer = 1
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/ElevatedPlatform"]
-shape = SubResource("RectangleShape2D_platform")
-one_way_collision = true
-
-[node name="Visual" type="ColorRect" parent="Environment/ElevatedPlatform"]
-offset_left = -140.0
-offset_top = -12.0
-offset_right = 140.0
-offset_bottom = 12.0
-color = Color(0.14, 0.11, 0.2, 1)
-
-[node name="PlatformLine" type="ColorRect" parent="Environment/ElevatedPlatform"]
-offset_left = -140.0
-offset_top = -14.0
-offset_right = 140.0
-offset_bottom = -12.0
-color = Color(0.6, 0.3, 0.9, 0.8)
-
-[node name="Label" type="Label" parent="Environment/ElevatedPlatform"]
-offset_left = -100.0
-offset_top = -35.0
-offset_right = 100.0
-offset_bottom = -15.0
-text = "Elevated Platform"
-label_settings = SubResource("LabelSettings_sub")
-horizontal_alignment = 1
+visible = false
 
 [node name="Fighters" type="Node2D" parent="."]
 
 [node name="DummyTarget" type="Node2D" parent="Fighters"]
-position = Vector2(960, 560)
+position = Vector2(920, 560)
 
 [node name="TrainingDummy" parent="Fighters/DummyTarget" instance=ExtResource("3_dummy")]
-
-[node name="Label" type="Label" parent="Fighters/DummyTarget"]
-offset_left = -90.0
-offset_top = -255.0
-offset_right = 90.0
-offset_bottom = -230.0
-text = "TRAINING DUMMY"
-label_settings = SubResource("LabelSettings_sub")
-horizontal_alignment = 1
+position = Vector2(0, 0)
+ai_enabled = false
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 1280.0
 offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="TitleLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 25.0
-offset_right = 800.0
-offset_bottom = 55.0
-text = "SHADOWCRAFT 2D — TRAINING ARENA"
-label_settings = SubResource("LabelSettings_title")
+[node name="PlayerPortraitFrame" type="Panel" parent="UI"]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 106.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_portrait_p1")
 
-[node name="SubtitleLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 55.0
-offset_right = 800.0
-offset_bottom = 80.0
-text = "Movement + combat: walk, jump, crouch, Light Jab (Z), Front Kick (X)"
-label_settings = SubResource("LabelSettings_sub")
+[node name="KaiPortrait" type="TextureRect" parent="UI"]
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 103.0
+offset_bottom = 99.0
+texture = ExtResource("6_kai_portrait")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
 
-[node name="InstructionsPanel" type="PanelContainer" parent="UI"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 90.0
-offset_right = 440.0
-offset_bottom = 165.0
+[node name="RazenPortrait" type="TextureRect" parent="UI"]
+visible = false
+offset_left = 23.0
+offset_top = 19.0
+offset_right = 103.0
+offset_bottom = 99.0
+texture = SubResource("AtlasTexture_razen_hud_portrait")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
 
-[node name="Margin" type="MarginContainer" parent="UI/InstructionsPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
+[node name="P1Badge" type="Panel" parent="UI"]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 44.0
+offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge_p1")
 
-[node name="Label" type="Label" parent="UI/InstructionsPanel/Margin"]
-layout_mode = 2
-text = "D / Right: Forward  |  A / Left: Backward  |  Shift + Forward: Run
-Space: Jump  |  S / Down: Crouch  |  Z: Light Jab  |  X: Front Kick  |  ESC: Pause"
-label_settings = SubResource("LabelSettings_sub")
-
-[node name="TelemetryPanel" type="PanelContainer" parent="UI"]
-layout_mode = 0
-offset_left = 860.0
-offset_top = 25.0
-offset_right = 1240.0
-offset_bottom = 165.0
-
-[node name="Margin" type="MarginContainer" parent="UI/TelemetryPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 10
-
-[node name="VBox" type="VBoxContainer" parent="UI/TelemetryPanel/Margin"]
-layout_mode = 2
-
-[node name="Header" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "TELEMETRY DIAGNOSTICS"
-label_settings = SubResource("LabelSettings_sub")
-
-[node name="StateValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "STATE: IDLE"
-label_settings = SubResource("LabelSettings_telemetry")
-
-[node name="VelocityValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "X: 0.0 | Y: 0.0 px/s"
-label_settings = SubResource("LabelSettings_telemetry")
-
-[node name="GroundedValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "Grounded: YES"
-label_settings = SubResource("LabelSettings_telemetry")
-
-[node name="FacingValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "Facing: RIGHT"
-label_settings = SubResource("LabelSettings_telemetry")
-
-[node name="AnimValue" type="Label" parent="UI/TelemetryPanel/Margin/VBox"]
-layout_mode = 2
-text = "Animation: idle_signature"
-label_settings = SubResource("LabelSettings_telemetry")
+[node name="P1Text" type="Label" parent="UI/P1Badge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "P1"
+horizontal_alignment = 1
+vertical_alignment = 1
+label_settings = SubResource("LabelSettings_badge")
 
 [node name="KaiHealthLabel" type="Label" parent="UI"]
-offset_left = 480.0
-offset_top = 92.0
-offset_right = 640.0
-offset_bottom = 118.0
-text = "PLAYER"
-label_settings = SubResource("LabelSettings_sub")
+offset_left = 116.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 40.0
+text = "KAI"
+label_settings = SubResource("LabelSettings_name_p1")
 
-[node name="KaiHealth" type="ProgressBar" parent="UI"]
-offset_left = 480.0
-offset_top = 120.0
-offset_right = 640.0
-offset_bottom = 138.0
+[node name="PlayerSubLabel" type="Label" parent="UI"]
+offset_left = 118.0
+offset_top = 38.0
+offset_right = 360.0
+offset_bottom = 52.0
+text = "THE SHADOW DISCIPLE"
+label_settings = SubResource("LabelSettings_sub_p1")
+
+[node name="KaiHealthValue" type="Label" parent="UI"]
+offset_left = 370.0
+offset_top = 34.0
+offset_right = 496.0
+offset_bottom = 52.0
+text = "100 / 100"
+horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_hp_p1")
+
+[node name="KaiHealthBg" type="Panel" parent="UI"]
+offset_left = 116.0
+offset_top = 54.0
+offset_right = 496.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar_bg_p1")
+
+[node name="KaiGhostHealth" type="ProgressBar" parent="UI"]
+offset_left = 116.0
+offset_top = 54.0
+offset_right = 496.0
+offset_bottom = 74.0
 max_value = 100.0
 value = 100.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+theme_override_styles/background = SubResource("StyleBoxEmpty_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ghost_p1")
 show_percentage = false
+
+[node name="KaiHealth" type="ProgressBar" parent="UI"]
+offset_left = 116.0
+offset_top = 54.0
+offset_right = 496.0
+offset_bottom = 74.0
+max_value = 100.0
+value = 100.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_health_fill")
+show_percentage = false
+
+[node name="PlayerPips" type="Label" parent="UI"]
+offset_left = 118.0
+offset_top = 77.0
+offset_right = 260.0
+offset_bottom = 92.0
+text = "◆  ◆  ◆  ◆"
+label_settings = SubResource("LabelSettings_pips_p1")
+
+[node name="OpponentPortraitFrame" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -106.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 102.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_portrait_cpu")
+
+[node name="MinionPortrait" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -103.0
+offset_top = 19.0
+offset_right = -23.0
+offset_bottom = 99.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_minion_hud_portrait")
+expand_mode = 1
+stretch_mode = 5
+texture_filter = 1
+
+[node name="CPUBadge" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge_cpu")
+
+[node name="CPUText" type="Label" parent="UI/CPUBadge"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CPU"
+horizontal_alignment = 1
+vertical_alignment = 1
+label_settings = SubResource("LabelSettings_badge")
 
 [node name="DummyHealthLabel" type="Label" parent="UI"]
-offset_left = 660.0
-offset_top = 92.0
-offset_right = 820.0
-offset_bottom = 118.0
-text = "TRAINING DUMMY"
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = 16.0
+offset_right = -116.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "ROBOTIC MINION"
 horizontal_alignment = 2
-label_settings = SubResource("LabelSettings_sub")
+label_settings = SubResource("LabelSettings_name_cpu")
 
-[node name="DummyHealth" type="ProgressBar" parent="UI"]
-offset_left = 660.0
-offset_top = 120.0
-offset_right = 820.0
-offset_bottom = 138.0
+[node name="OpponentSubLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -360.0
+offset_top = 38.0
+offset_right = -118.0
+offset_bottom = 52.0
+grow_horizontal = 0
+text = "DOJO GUARDIAN · TACTICAL UNIT"
+horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_sub_cpu")
+
+[node name="DummyHealthValue" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -496.0
+offset_top = 34.0
+offset_right = -370.0
+offset_bottom = 52.0
+grow_horizontal = 0
+text = "120 / 120"
+label_settings = SubResource("LabelSettings_hp_cpu")
+
+[node name="DummyHealthBg" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -496.0
+offset_top = 54.0
+offset_right = -116.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar_bg_cpu")
+
+[node name="DummyGhostHealth" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -496.0
+offset_top = 54.0
+offset_right = -116.0
+offset_bottom = 74.0
+grow_horizontal = 0
 max_value = 120.0
 value = 120.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_health")
+fill_mode = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ghost_cpu")
 show_percentage = false
 
-[node name="CombatEvent" type="Label" parent="UI"]
-offset_left = 470.0
-offset_top = 150.0
-offset_right = 830.0
-offset_bottom = 176.0
-text = "Z  Light Jab     X  Front Kick"
+[node name="DummyHealth" type="ProgressBar" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -496.0
+offset_top = 54.0
+offset_right = -116.0
+offset_bottom = 74.0
+grow_horizontal = 0
+max_value = 120.0
+value = 120.0
+fill_mode = 1
+theme_override_styles/background = SubResource("StyleBoxEmpty_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_crimson_fill")
+show_percentage = false
+
+[node name="OpponentPips" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 77.0
+offset_right = -118.0
+offset_bottom = 92.0
+grow_horizontal = 0
+text = "◆  ◆  ◆  ◆"
+horizontal_alignment = 2
+label_settings = SubResource("LabelSettings_pips_cpu")
+
+[node name="CenterIdentityPanel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 14.0
+offset_right = 122.0
+offset_bottom = 86.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_center_plaque")
+
+[node name="CenterEmblem" type="Label" parent="UI/CenterIdentityPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 18.0
+grow_horizontal = 2
+text = "◈  ECLIPSE  ◈"
 horizontal_alignment = 1
-label_settings = SubResource("LabelSettings_sub")
+label_settings = SubResource("LabelSettings_emblem")
+
+[node name="RoundLogo" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 31.0
+offset_right = 122.0
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "SHADOWCRAFT 2D"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_title")
+
+[node name="CenterDivider" type="ColorRect" parent="UI/CenterIdentityPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 5.0
+offset_right = -28.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.55, 0.35, 0.75, 0.5)
+
+[node name="RoundIndicator" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 54.0
+offset_right = 122.0
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "—  R O U N D   1  —"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_round")
+
+[node name="RoundMarkers" type="Label" parent="UI/CenterIdentityPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "◇  ◇     VS     ◇  ◇"
+horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_jewels")
+
+[node name="ControlDock" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -373.0
+offset_top = -52.0
+offset_right = 373.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dock_panel")
+
+[node name="DockRow" type="HBoxContainer" parent="UI/ControlDock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="Key_Combo" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Combo"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Combo/HBox"]
+layout_mode = 2
+text = "[ Z ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Combo/HBox"]
+layout_mode = 2
+text = "Combo"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Key_Heavy" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Heavy"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Heavy/HBox"]
+layout_mode = 2
+text = "[ C ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Heavy/HBox"]
+layout_mode = 2
+text = "Heavy"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Key_Kick" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Kick"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Kick/HBox"]
+layout_mode = 2
+text = "[ X ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Kick/HBox"]
+layout_mode = 2
+text = "Kick"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Sep1" type="VSeparator" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+
+[node name="Key_Move" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Move"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Move/HBox"]
+layout_mode = 2
+text = "[ A / D ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Move/HBox"]
+layout_mode = 2
+text = "Move"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Key_Run" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Run"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Run/HBox"]
+layout_mode = 2
+text = "[ Shift ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Run/HBox"]
+layout_mode = 2
+text = "Run"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Key_Jump" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Jump"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Jump/HBox"]
+layout_mode = 2
+text = "[ Space ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Jump/HBox"]
+layout_mode = 2
+text = "Jump"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Key_Crouch" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Crouch"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Crouch/HBox"]
+layout_mode = 2
+text = "[ S ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Crouch/HBox"]
+layout_mode = 2
+text = "Crouch"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="Sep2" type="VSeparator" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+
+[node name="Key_Pause" type="PanelContainer" parent="UI/ControlDock/DockRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="HBox" type="HBoxContainer" parent="UI/ControlDock/DockRow/Key_Pause"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Key" type="Label" parent="UI/ControlDock/DockRow/Key_Pause/HBox"]
+layout_mode = 2
+text = "[ Esc ]"
+label_settings = SubResource("LabelSettings_keycap_key")
+
+[node name="Action" type="Label" parent="UI/ControlDock/DockRow/Key_Pause/HBox"]
+layout_mode = 2
+text = "Pause"
+label_settings = SubResource("LabelSettings_keycap_action")
+
+[node name="ControlsStrip" type="Label" parent="UI"]
+visible = false
+offset_left = 24.0
+offset_top = 677.0
+offset_right = 980.0
+offset_bottom = 706.0
+text = "A / ← Back   D / → Forward   Shift + Forward Run   Space Jump   S / ↓ Crouch   Z Jab → Cross → Heavy   C Direct Heavy   X Kick   Esc Pause"
+
+[node name="Branding" type="Label" parent="UI"]
+visible = false
+offset_left = 1030.0
+offset_top = 677.0
+offset_right = 1255.0
+offset_bottom = 704.0
+text = "SHADOWCRAFT · TRAIN / FIGHT / EVOLVE"
 
 [node name="ArenaCharacterSpawner" type="Node" parent="."]
 script = ExtResource("4_spawner")
+spawn_position = Vector2(360, 560)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 script = ExtResource("5_pause_menu")

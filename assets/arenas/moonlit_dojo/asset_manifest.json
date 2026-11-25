@@ -1,0 +1,32 @@
+{
+  "package_id": "moonlit_dojo_hud",
+  "visual_reference": "User-provided ShadowCraft_ Moonlit Dojo Duel screenshot; environment and layout guidance only. Character and HUD artwork were not cropped from the screenshot.",
+  "provenance": "Original assets generated with the built-in image generation tool on 2026-11-11. Dojo background prompt used the screenshot for composition and palette; Kai portrait used the approved Kai V2 idle sprite as an identity reference. Functional HUD text and health values are Godot nodes, not rasterized.",
+  "assets": [
+    {
+      "path": "assets/arenas/moonlit_dojo/moonlit_dojo_background.png",
+      "role": "full-bleed static dojo environment behind separate fighters and HUD",
+      "dimensions_px": [
+        1672,
+        941
+      ],
+      "format": "RGB PNG",
+      "transparency": false,
+      "source_tool": "built-in image_gen",
+      "approval_status": "in-engine layout validation pending"
+    },
+    {
+      "path": "assets/ui/portraits/kai_hud_portrait.png",
+      "role": "Kai V2 HUD portrait only",
+      "dimensions_px": [
+        1254,
+        1254
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "source_identity_asset": "assets/characters/kai_v2/animations/idle_signature/idle_01.png",
+      "source_tool": "built-in image_gen",
+      "approval_status": "in-engine layout validation pending"
+    }
+  ]
+}

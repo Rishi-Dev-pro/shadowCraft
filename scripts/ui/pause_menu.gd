@@ -1,7 +1,10 @@
 extends CanvasLayer
 
+const StoryProgressionState = preload("res://scripts/systems/story_progression.gd")
+
 var _panel: PanelContainer
 var _resume_button: Button
+var _world_map_button: Button
 var _change_button: Button
 
 func _ready() -> void:
@@ -10,6 +13,11 @@ func _ready() -> void:
 	visible = false
 
 func _process(_delta: float) -> void:
+	var scene: Node = get_tree().current_scene
+	if scene != null and scene.has_meta(&"round_finished"):
+		return
+	if Input.is_key_pressed(KEY_CTRL) or Input.is_key_pressed(KEY_ALT):
+		return
 	if InputMap.has_action("pause_menu") and Input.is_action_just_pressed("pause_menu"):
 		_toggle_pause()
 
@@ -19,11 +27,14 @@ func _build_menu() -> void:
 	veil.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(veil)
 
+	var center: CenterContainer = CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(center)
+
 	_panel = PanelContainer.new()
-	_panel.position = Vector2(440.0, 220.0)
-	_panel.size = Vector2(400.0, 280.0)
+	_panel.custom_minimum_size = Vector2(400.0, 280.0)
 	_panel.add_theme_stylebox_override("panel", _panel_style())
-	add_child(_panel)
+	center.add_child(_panel)
 
 	var column: VBoxContainer = VBoxContainer.new()
 	column.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -36,10 +47,13 @@ func _build_menu() -> void:
 	heading.add_theme_color_override("font_color", Color(0.92, 0.82, 1.0))
 	column.add_child(heading)
 	_resume_button = _make_button("RESUME")
+	_world_map_button = _make_button("WORLD MAP")
 	_change_button = _make_button("CHANGE CHARACTER")
 	column.add_child(_resume_button)
+	column.add_child(_world_map_button)
 	column.add_child(_change_button)
 	_resume_button.pressed.connect(_resume)
+	_world_map_button.pressed.connect(_open_world_map)
 	_change_button.pressed.connect(_change_character)
 
 func _make_button(text_value: String) -> Button:
@@ -81,9 +95,22 @@ func _resume() -> void:
 	visible = false
 	get_tree().paused = false
 
+func _open_world_map() -> void:
+	visible = false
+	get_tree().paused = false
+	var progression: StoryProgressionState = get_node_or_null("/root/StoryProgression") as StoryProgressionState
+	if progression != null:
+		progression.end_guardian_encounter()
+	var error: Error = get_tree().change_scene_to_file("res://scenes/ui/world_map.tscn")
+	if error != OK:
+		push_error("Could not return to world map: " + error_string(error))
+
 func _change_character() -> void:
 	visible = false
 	get_tree().paused = false
+	var progression: StoryProgressionState = get_node_or_null("/root/StoryProgression") as StoryProgressionState
+	if progression != null:
+		progression.end_guardian_encounter()
 	var error: Error = get_tree().change_scene_to_file("res://scenes/ui/character_select.tscn")
 	if error != OK:
 		push_error("Could not return to character selection: " + error_string(error))

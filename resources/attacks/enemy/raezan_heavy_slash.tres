@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"raezan_heavy_slash"
+display_name = "Raezan Heavy Slash"
+kind = 0
+startup_frames = 22
+active_frames = 4
+recovery_frames = 32
+base_damage = 21.0
+knockback = Vector2(280, 78)
+hitstun_seconds = 0.38
+hitbox_size = Vector2(166, 108)
+hitbox_offset = Vector2(174, -200)
+animation_name = &"heavy_slash"
+hit_reaction = 2
+hit_stop_seconds = 0.075
+impact_scale = 1.32

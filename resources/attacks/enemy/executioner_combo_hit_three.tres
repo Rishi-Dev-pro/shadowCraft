@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"executioner_combo_hit_three"
+display_name = "Executioner Combo Finishing Slash"
+kind = 0
+startup_frames = 12
+active_frames = 5
+recovery_frames = 38
+base_damage = 11.0
+knockback = Vector2(230, 58)
+hitstun_seconds = 0.34
+hitbox_size = Vector2(174, 100)
+hitbox_offset = Vector2(174, -184)
+active_hitbox_offsets = PackedVector2Array(158, -194, 170, -188, 182, -182, 190, -176, 196, -170)
+animation_name = &"three_hit_combo"
+hit_reaction = 1
+hit_stop_seconds = 0.065
+impact_scale = 1.18

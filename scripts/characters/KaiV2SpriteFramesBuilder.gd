@@ -1,6 +1,7 @@
 extends SceneTree
 
 const MANIFEST_PATH: String = "res://assets/characters/kai_v2/import_manifest.json"
+const COMBAT_PHASE2_MANIFEST_PATH: String = "res://assets/characters/kai_v2/combat_phase2_step2_art_manifest.json"
 const OUTPUT_PATH: String = "res://assets/characters/kai_v2/kai_v2_sprite_frames.tres"
 
 func _init() -> void:
@@ -29,7 +30,13 @@ func _init() -> void:
 		"jump": {"speed": 8.0, "loop": false},
 		"landing": {"speed": 12.0, "loop": false},
 		"light_jab": {"speed": 30.0, "loop": false},
-		"front_kick": {"speed": 30.0, "loop": false}
+		"front_kick": {"speed": 30.0, "loop": false},
+		"cross_punch": {"speed": 30.0, "loop": false},
+		"heavy_punch": {"speed": 30.0, "loop": false},
+		"heavy_hit": {"speed": 8.0, "loop": false},
+		"knockdown": {"speed": 10.0, "loop": false},
+		"defeated": {"speed": 6.0, "loop": false},
+		"getup": {"speed": 10.0, "loop": false}
 	}
 	var failed: bool = false
 	for group_value: Variant in manifest.get("groups", []):
@@ -74,6 +81,43 @@ func _init() -> void:
 			atlas_frame.atlas = sheet
 			atlas_frame.region = Rect2((frame_index % 3) * 512, int(frame_index / 3) * 512, 512, 512)
 			sprite_frames.add_frame(animation_name, atlas_frame)
+	var combat_manifest_file: FileAccess = FileAccess.open(ProjectSettings.globalize_path(COMBAT_PHASE2_MANIFEST_PATH), FileAccess.READ)
+	if combat_manifest_file == null:
+		push_error("Kai V2 Combat Phase 2 art manifest could not be opened: %s" % COMBAT_PHASE2_MANIFEST_PATH)
+		quit(1)
+		return
+	var combat_manifest_value: Variant = JSON.parse_string(combat_manifest_file.get_as_text())
+	combat_manifest_file.close()
+	if not combat_manifest_value is Dictionary or not combat_manifest_value.get("animations") is Array:
+		push_error("Kai V2 Combat Phase 2 art manifest is malformed")
+		quit(1)
+		return
+	for sequence_value: Variant in combat_manifest_value["animations"]:
+		if not sequence_value is Dictionary:
+			failed = true
+			continue
+		var sequence: Dictionary = sequence_value
+		var animation_name: String = str(sequence.get("name", ""))
+		var frame_count: int = int(sequence.get("frame_count", 0))
+		if not animation_settings.has(animation_name) or frame_count <= 0:
+			push_error("Kai V2 Combat Phase 2 animation definition is invalid: %s" % animation_name)
+			failed = true
+			continue
+		sprite_frames.add_animation(animation_name)
+		sprite_frames.set_animation_speed(animation_name, float(sequence.get("fps", 30.0)))
+		sprite_frames.set_animation_loop(animation_name, bool(sequence.get("loop", false)))
+		var frame_paths: Array = sequence.get("frame_paths", [])
+		for frame_path_value: Variant in frame_paths:
+			var frame_path: String = "res://" + str(frame_path_value)
+			var texture: Texture2D = ResourceLoader.load(frame_path) as Texture2D
+			if texture == null or texture.get_size() != Vector2(512, 512):
+				push_error("Kai V2 punch frame is missing or not 512x512: %s" % frame_path)
+				failed = true
+				continue
+			sprite_frames.add_frame(animation_name, texture)
+		if frame_paths.size() != frame_count or sprite_frames.get_frame_count(animation_name) != frame_count:
+			push_error("Kai V2 punch animation frame count mismatch: %s" % animation_name)
+			failed = true
 	if failed or sprite_frames.get_animation_names().size() != animation_settings.size():
 		push_error("Kai V2 SpriteFrames resource was not built completely")
 		quit(1)

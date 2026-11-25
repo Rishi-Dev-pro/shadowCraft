@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"the_initiate_roundhouse"
+display_name = "Initiate Roundhouse"
+kind = 1
+startup_frames = 20
+active_frames = 3
+recovery_frames = 32
+base_damage = 9.5
+knockback = Vector2(180, 42)
+hitstun_seconds = 0.42
+hitbox_size = Vector2(106, 68)
+hitbox_offset = Vector2(136, -122)
+active_hitbox_offsets = PackedVector2Array(128, -116, 140, -126, 136, -122)
+animation_name = &"roundhouse"
+stance = 0
+hit_reaction = 1
+hit_stop_seconds = 0.06
+impact_scale = 1.14

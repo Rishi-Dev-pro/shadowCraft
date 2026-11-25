@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scripts/characters/CharacterController2D.gd" id="1_controller"]
 [ext_resource type="Resource" path="res://resources/characters/kai.tres" id="2_character_data"]
@@ -8,8 +8,7 @@
 [ext_resource type="Script" path="res://scripts/combat/hitbox_2d.gd" id="6_hitbox"]
 [ext_resource type="Script" path="res://scripts/combat/hurtbox_2d.gd" id="7_hurtbox"]
 [ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="8_combat"]
-[ext_resource type="Resource" path="res://resources/attacks/light_jab.tres" id="9_jab"]
-[ext_resource type="Resource" path="res://resources/attacks/front_kick.tres" id="10_kick"]
+[ext_resource type="Resource" path="res://resources/movesets/kai_moveset.tres" id="9_moveset"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kai_v2"]
 radius = 28.0
@@ -80,5 +79,5 @@ shape = SubResource("CapsuleShape2D_player_hurtbox")
 
 [node name="CombatController" type="Node" parent="."]
 script = ExtResource("8_combat")
-punch_attack = ExtResource("9_jab")
-kick_attack = ExtResource("10_kick")
+moveset = ExtResource("9_moveset")
+passive_back_guard_reduction = 0.4

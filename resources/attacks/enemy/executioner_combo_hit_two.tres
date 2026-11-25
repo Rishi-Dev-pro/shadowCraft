@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"executioner_combo_hit_two"
+display_name = "Executioner Combo Slash Two"
+kind = 0
+startup_frames = 9
+active_frames = 3
+recovery_frames = 14
+base_damage = 7.0
+knockback = Vector2(170, 34)
+hitstun_seconds = 0.24
+hitbox_size = Vector2(148, 86)
+hitbox_offset = Vector2(164, -190)
+active_hitbox_offsets = PackedVector2Array(158, -194, 174, -186, 164, -182)
+animation_name = &"three_hit_combo"
+hit_reaction = 0

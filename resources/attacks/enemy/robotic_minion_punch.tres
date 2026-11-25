@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"robotic_minion_punch"
+display_name = "Minion Punch"
+kind = 0
+startup_frames = 12
+active_frames = 3
+recovery_frames = 20
+base_damage = 7.0
+knockback = Vector2(105, 38)
+hitstun_seconds = 0.28
+hitbox_size = Vector2(78, 48)
+hitbox_offset = Vector2(118, -205)
+active_hitbox_offsets = PackedVector2Array(118, -205, 124, -205, 120, -205)
+animation_name = &""
+stance = 0
+hit_reaction = 0

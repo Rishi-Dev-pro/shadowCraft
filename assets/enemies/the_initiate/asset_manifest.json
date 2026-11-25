@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "character": "The Initiate",
+  "origin": "Original character and pose artwork generated with OpenAI ImageGen built-in from the user-provided Guardian portrait and existing robotic minion artwork as identity/design references; no reference pixels were used as frame content.",
+  "license": "Original proprietary ShadowCraft artwork",
+  "character_reference": "assets/enemies/the_initiate/source/guardian_ready_reference.png",
+  "reference_note": "The ready reference retains the robotic guardian silhouette, purple armor, and visor while integrating a feminine athletic frame, ponytail, and sakura shoulder insignia.",
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_anchor_y": 496,
+  "source_tool": "scripts/enemies/import_the_initiate_art.py",
+  "transparent_background": true,
+  "animations": [
+    {
+      "name": "idle",
+      "source_sheet": "assets/enemies/the_initiate/source/idle_guard_sheet.png",
+      "source_dimensions_px": [
+        1263,
+        1246
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 7.0,
+      "loop": true,
+      "phase_map": [
+        "ready",
+        "breathing",
+        "guard_settle",
+        "ready"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/idle/idle_01.png",
+        "assets/enemies/the_initiate/frames/idle/idle_02.png",
+        "assets/enemies/the_initiate/frames/idle/idle_03.png",
+        "assets/enemies/the_initiate/frames/idle/idle_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/idle_contact.png"
+    },
+    {
+      "name": "walk",
+      "source_sheet": "assets/enemies/the_initiate/source/walk_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 9.0,
+      "loop": true,
+      "phase_map": [
+        "contact_left",
+        "passing",
+        "contact_right",
+        "recovery"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/walk/walk_01.png",
+        "assets/enemies/the_initiate/frames/walk/walk_02.png",
+        "assets/enemies/the_initiate/frames/walk/walk_03.png",
+        "assets/enemies/the_initiate/frames/walk/walk_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/walk_contact.png"
+    },
+    {
+      "name": "punch",
+      "source_sheet": "assets/enemies/the_initiate/source/light_punch_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 60.0,
+      "loop": false,
+      "phase_map": [
+        "guard",
+        "anticipation",
+        "contact",
+        "recovery"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/punch/punch_01.png",
+        "assets/enemies/the_initiate/frames/punch/punch_02.png",
+        "assets/enemies/the_initiate/frames/punch/punch_03.png",
+        "assets/enemies/the_initiate/frames/punch/punch_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/punch_contact.png",
+      "frame_durations_at_60_fps": [
+        3,
+        7,
+        3,
+        21
+      ]
+    },
+    {
+      "name": "heavy_punch",
+      "source_sheet": "assets/enemies/the_initiate/source/heavy_punch_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 60.0,
+      "loop": false,
+      "phase_map": [
+        "guard",
+        "load",
+        "contact",
+        "follow_through_recovery"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_01.png",
+        "assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_02.png",
+        "assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_03.png",
+        "assets/enemies/the_initiate/frames/heavy_punch/heavy_punch_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/heavy_punch_contact.png",
+      "frame_durations_at_60_fps": [
+        7,
+        11,
+        3,
+        26
+      ]
+    },
+    {
+      "name": "kick",
+      "source_sheet": "assets/enemies/the_initiate/source/front_kick_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 60.0,
+      "loop": false,
+      "phase_map": [
+        "guard",
+        "knee_chamber",
+        "extension_contact",
+        "recoil_guard"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/kick/kick_01.png",
+        "assets/enemies/the_initiate/frames/kick/kick_02.png",
+        "assets/enemies/the_initiate/frames/kick/kick_03.png",
+        "assets/enemies/the_initiate/frames/kick/kick_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/kick_contact.png",
+      "frame_durations_at_60_fps": [
+        6,
+        11,
+        3,
+        24
+      ]
+    },
+    {
+      "name": "roundhouse",
+      "source_sheet": "assets/enemies/the_initiate/source/roundhouse_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 60.0,
+      "loop": false,
+      "phase_map": [
+        "guard",
+        "hip_load",
+        "roundhouse_contact",
+        "recoil_guard"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/roundhouse/roundhouse_01.png",
+        "assets/enemies/the_initiate/frames/roundhouse/roundhouse_02.png",
+        "assets/enemies/the_initiate/frames/roundhouse/roundhouse_03.png",
+        "assets/enemies/the_initiate/frames/roundhouse/roundhouse_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/roundhouse_contact.png",
+      "frame_durations_at_60_fps": [
+        7,
+        13,
+        3,
+        30
+      ]
+    },
+    {
+      "name": "hit",
+      "source_sheet": "assets/enemies/the_initiate/source/hit_knockdown_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 2,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 12.0,
+      "loop": false,
+      "phase_map": [
+        "impact_recoil",
+        "stagger"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/hit/hit_01.png",
+        "assets/enemies/the_initiate/frames/hit/hit_02.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/hit_contact.png"
+    },
+    {
+      "name": "death",
+      "source_sheet": "assets/enemies/the_initiate/source/hit_knockdown_sheet.png",
+      "source_dimensions_px": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "frame_count": 4,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "fps": 8.0,
+      "loop": false,
+      "phase_map": [
+        "stagger",
+        "fall",
+        "ground_impact",
+        "defeated_ground_pose"
+      ],
+      "frame_paths": [
+        "assets/enemies/the_initiate/frames/death/death_01.png",
+        "assets/enemies/the_initiate/frames/death/death_02.png",
+        "assets/enemies/the_initiate/frames/death/death_03.png",
+        "assets/enemies/the_initiate/frames/death/death_04.png"
+      ],
+      "contact_sheet": "assets/enemies/the_initiate/previews/death_contact.png"
+    }
+  ]
+}

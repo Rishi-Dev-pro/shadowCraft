@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if combat_controller != null and combat_controller.is_animation_locked():
+		if animated_sprite.animation != &"landing":
+			_landing_active = false
 		return
 	if not _landing_active:
 		_sync_animation()
@@ -44,12 +46,16 @@ func _desired_animation() -> StringName:
 	return &"idle_signature"
 
 func _on_state_changed(_old_state: CharacterController2D.State, new_state: CharacterController2D.State) -> void:
+	if combat_controller != null and combat_controller.is_animation_locked():
+		return
 	if new_state == CharacterController2D.State.JUMP:
 		animated_sprite.play(&"jump")
 	elif not _landing_active:
 		_sync_animation()
 
 func _on_landed(_impact_velocity_y: float) -> void:
+	if combat_controller != null and combat_controller.is_animation_locked():
+		return
 	_landing_active = true
 	animated_sprite.play(&"landing")
 

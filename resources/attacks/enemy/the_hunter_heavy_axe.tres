@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"the_hunter_heavy_axe"
+display_name = "Hunter Overhead Chop"
+kind = 0
+startup_frames = 36
+active_frames = 4
+recovery_frames = 38
+base_damage = 16.0
+knockback = Vector2(235, 78)
+hitstun_seconds = 0.52
+hitbox_size = Vector2(138, 122)
+hitbox_offset = Vector2(164, -205)
+active_hitbox_offsets = PackedVector2Array(154, -222, 164, -211, 177, -197, 166, -190)
+animation_name = &"heavy_axe"
+hit_reaction = 1
+hit_stop_seconds = 0.085
+impact_scale = 1.2

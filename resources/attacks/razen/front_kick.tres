@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"razen_front_kick"
+display_name = "Front Kick"
+kind = 1
+startup_frames = 6
+active_frames = 2
+recovery_frames = 8
+base_damage = 18.0
+knockback = Vector2(250, 95)
+hitstun_seconds = 0.42
+hitbox_size = Vector2(88, 42)
+hitbox_offset = Vector2(150, -216)
+active_hitbox_offsets = PackedVector2Array(150, -216, 142, -218)
+animation_name = &"front_kick"
+stance = 0
+hit_reaction = 0
+hit_stop_seconds = 0.065
+impact_scale = 1.25

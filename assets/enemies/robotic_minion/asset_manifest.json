@@ -1,0 +1,25 @@
+{
+  "character_id": "robotic_minion",
+  "display_name": "Robotic Minion",
+  "role": "training enemy base visual",
+  "visual_reference": "User-provided ShadowCraft Minion Animation Reference sheet (design guidance only)",
+  "provenance": "Original transparent character sprite generated with the built-in image generation tool; not cropped from the reference sheet.",
+  "source_art": "source/robotic_minion_guard_generated.png",
+  "game_asset": "sprites/robotic_minion_guard.png",
+  "dimensions": [512, 512],
+  "format": "PNG RGBA",
+  "anchor": "bottom center; transparent canvas ground baseline y=492",
+  "scene_usage": "TrainingDummy/Silhouette/MinionSprite; scale 0.66; local position (0, -156)",
+  "sprite_frames_resource": "robotic_minion_sprite_frames.tres",
+  "animation_status": "Frame-by-frame movement, attack, hit and knockdown clips integrated with the training dummy AI.",
+  "animations": {
+    "idle": { "frames": 6, "fps": 8, "loop": true },
+    "walk": { "frames": 8, "fps": 12, "loop": true },
+    "punch": { "frames": 6, "fps": 12, "loop": false },
+    "kick": { "frames": 8, "fps": 12, "loop": false },
+    "hit": { "frames": 4, "fps": 12, "loop": false },
+    "death": { "frames": 8, "fps": 12, "loop": false },
+    "guard": { "frames": 1, "fps": 0, "loop": false }
+  }
+}
+

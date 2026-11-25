@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AttackData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://resources/attacks/attack_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+attack_id = &"the_hunter_light_axe"
+display_name = "Hunter Quick Axe Slash"
+kind = 0
+startup_frames = 18
+active_frames = 3
+recovery_frames = 37
+base_damage = 10.5
+knockback = Vector2(145, 32)
+hitstun_seconds = 0.32
+hitbox_size = Vector2(118, 80)
+hitbox_offset = Vector2(145, -202)
+active_hitbox_offsets = PackedVector2Array(145, -202, 157, -200, 149, -197)
+animation_name = &"light_axe"
+hit_reaction = 0
+hit_stop_seconds = 0.05

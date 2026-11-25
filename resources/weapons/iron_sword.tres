@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://resources/weapons/weapon_data.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/iron_sword.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_script")
+weapon_id = &"iron_sword"
+display_name = "Iron Sword"
+category = 0
+material_tier = 2
+weapon_scene = ExtResource("2_scene")

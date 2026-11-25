@@ -1,0 +1,220 @@
+{
+  "character": "Raezan, The Betrayer King",
+  "pipeline": "Frame-based AnimatedSprite2D + SpriteFrames following The Executioner organization",
+  "frame_size_px": [
+    512,
+    512
+  ],
+  "ground_line_y": 491,
+  "runtime_visual_scale_reference": 0.72,
+  "weapon": "res://assets/weapons/void_blade/void_blade.png",
+  "weapon_independent": true,
+  "not_integrated": false,
+  "status": "Integrated with the shared frame-based Executioner architecture and final-boss arena encounter flow",
+  "batches": [
+    {
+      "batch": 1,
+      "animations": {
+        "idle": 8,
+        "walk_forward": 8,
+        "walk_backward": 8
+      },
+      "frames": 24
+    },
+    {
+      "batch": 2,
+      "animations": {
+        "light_slash": 16,
+        "heavy_slash": 16,
+        "horizontal_slash": 16,
+        "vertical_slash": 16
+      },
+      "frames": 64
+    },
+    {
+      "batch": 3,
+      "animations": {
+        "five_hit_combo": 20,
+        "dash_attack": 16
+      },
+      "frames": 36
+    },
+    {
+      "batch": 4,
+      "animations": {
+        "guard": 12,
+        "parry": 16,
+        "counterattack": 20
+      },
+      "frames": 48
+    },
+    {
+      "batch": 5,
+      "animations": {
+        "void_step": 16,
+        "void_burst": 20
+      },
+      "frames": 36
+    },
+    {
+      "batch": 6,
+      "animations": {
+        "hit_reaction": 16,
+        "knockback": 16,
+        "ko": 20
+      },
+      "frames": 52
+    },
+    {
+      "batch": 7,
+      "animations": {
+        "turn": 8,
+        "phase2_idle": 8,
+        "phase2_walk_forward": 8,
+        "phase2_walk_backward": 8,
+        "phase2_finisher": 16,
+        "phase2_void_burst": 20
+      },
+      "frames": 68
+    }
+  ],
+  "total_frames": 332,
+  "validation": {
+    "all_frames_rgba_512": true,
+    "all_frames_have_transparency": true,
+    "no_exact_duplicate_frames_per_animation": true,
+    "problems": []
+  },
+  "prior_user_selected_reference_sheets": [
+    {
+      "action": "Idle",
+      "frame_count_in_reference": 16,
+      "file": "source/prior_user_selected_sheets/idle_16_frames.png",
+      "source_file_name": "codex-clipboard-19aac1fa-6e30-4620-abe4-701d50263b1f.png",
+      "source_canvas_px": [
+        416,
+        425
+      ],
+      "approximate_cell_px": [
+        104,
+        106
+      ],
+      "background": "opaque dark gray (alpha=255)",
+      "role": "preserved visual reference; not imported as production frames because cells are too small and background removal could damage dark armor/sword edges"
+    },
+    {
+      "action": "Turn",
+      "frame_count_in_reference": 8,
+      "file": "source/prior_user_selected_sheets/turn_8_frames.png",
+      "source_file_name": "codex-clipboard-be6be989-238b-48d5-8bc3-61f44aca95c2.png",
+      "source_canvas_px": [
+        662,
+        355
+      ],
+      "approximate_cell_px": [
+        165,
+        177
+      ],
+      "background": "opaque dark gray (alpha=255)",
+      "role": "preserved visual reference; not imported as production frames because cells are too small and background removal could damage dark armor/sword edges"
+    },
+    {
+      "action": "Void Burst",
+      "frame_count_in_reference": 20,
+      "file": "source/prior_user_selected_sheets/void_burst_20_frames.png",
+      "source_file_name": "codex-clipboard-29732032-7c51-41ec-8f51-194f7683e591.png",
+      "source_canvas_px": [
+        489,
+        406
+      ],
+      "approximate_cell_px": [
+        98,
+        102
+      ],
+      "background": "opaque dark gray (alpha=255)",
+      "role": "preserved visual reference; not imported as production frames because cells are too small and background removal could damage dark armor/sword edges"
+    },
+    {
+      "action": "Void Step",
+      "frame_count_in_reference": 16,
+      "file": "source/prior_user_selected_sheets/void_step_16_frames.png",
+      "source_file_name": "codex-clipboard-02892ebf-33af-4e89-995f-358c7458442c.png",
+      "source_canvas_px": [
+        491,
+        487
+      ],
+      "approximate_cell_px": [
+        123,
+        122
+      ],
+      "background": "opaque dark gray (alpha=255)",
+      "role": "preserved visual reference; not imported as production frames because cells are too small and background removal could damage dark armor/sword edges"
+    }
+  ],
+  "user_feedback_review": {
+    "uploaded_sheets_preserved_under": "source/prior_user_selected_sheets/",
+    "production_use": "not imported as gameplay frames; used as visual continuity/choreography references",
+    "reason": "All four have fully opaque alpha and low-resolution inconsistent cells. Chroma-keying the near-black background risks removing dark character/weapon pixels or leaving a fringe; upscaling cells to 512px would blur the approved art.",
+    "current_production_counts": {
+      "idle": 8,
+      "turn": 8,
+      "void_step": 16,
+      "void_burst": 20
+    }
+  },
+  "runtime_integration": {
+    "architecture": "Executioner-style frame-based AnimatedSprite2D with SpriteFrames",
+    "weapon_art_in_character_frames": true,
+    "independent_reusable_weapon_resource": true,
+    "weapon_scene_overlay_enabled": false,
+    "weapon_note": "Character frame artwork already depicts the Void Blade in-hand. The independent weapon asset/data/scene are preserved for reuse, but are not layered over the frames to avoid a duplicate sword."
+  },
+  "refinements": [
+    {
+      "date": "2026-11-17",
+      "name": "guard_defense_poses",
+      "source": "source/batches/guard_refinement/guard_refinement_2x2.png",
+      "source_note": "Generated from the approved transparent Raezan idle frame as the character and exact Void Blade grip reference; the original source sheet is preserved.",
+      "frame_count": 4,
+      "frame_size_px": [
+        512,
+        512
+      ],
+      "ground_line_y": 491,
+      "animations": {
+        "guard_entry": [
+          1,
+          2
+        ],
+        "guard_hold": [
+          2
+        ],
+        "guard_impact": [
+          3
+        ],
+        "guard_release": [
+          4
+        ]
+      },
+      "transparent_rgba": true
+    }
+  ],
+  "selected_replacements": [
+    {
+      "batch": 8,
+      "selection": "User-selected previously generated Phase 2 sheets",
+      "pipeline": "Frame-based SpriteFrames; originals preserved",
+      "source_directory": "source/batches/batch_08_selected/",
+      "animations": {
+        "phase2_finisher": 16,
+        "phase2_void_burst": 20
+      },
+      "frame_size_px": [
+        512,
+        512
+      ],
+      "ground_line_y": 491,
+      "alpha": "Original RGBA alpha retained; no chroma key or edge removal"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c8k72m0pwq4n2"]
+
+[ext_resource type="Script" path="res://scripts/ui/world_map/journey_panel.gd" id="1_journey"]
+
+[node name="JourneyPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 720)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -392.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_journey")

@@ -5,15 +5,17 @@ const JAB_COLOR: Color = Color(0.84, 0.68, 1.0, 0.94)
 const KICK_COLOR: Color = Color(0.94, 0.84, 1.0, 0.97)
 
 var _is_kick: bool = false
+var _scale_multiplier: float = 1.0
 
-func play(attack_kind: AttackData.AttackKind) -> void:
+func play(attack_kind: AttackData.AttackKind, scale_multiplier: float = 1.0) -> void:
 	_is_kick = attack_kind == AttackData.AttackKind.KICK
+	_scale_multiplier = maxf(scale_multiplier, 0.5)
 	queue_redraw()
-	scale = Vector2(0.42, 0.42)
+	scale = Vector2(0.42, 0.42) * _scale_multiplier
 	var duration: float = 0.16 if _is_kick else 0.12
 	var effect_tween: Tween = create_tween()
 	effect_tween.set_parallel(true)
-	effect_tween.tween_property(self, "scale", Vector2.ONE, duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	effect_tween.tween_property(self, "scale", Vector2.ONE * _scale_multiplier, duration).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	effect_tween.tween_property(self, "modulate:a", 0.0, duration)
 	effect_tween.chain().tween_callback(queue_free)
 

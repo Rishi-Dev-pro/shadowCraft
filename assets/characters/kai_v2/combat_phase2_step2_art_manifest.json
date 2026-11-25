@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "asset_scope": "Approved Combat Phase 2 Step 2 art integrated into the character SpriteFrames and per-fighter AttackData; Step 3 moves remain excluded.",
+  "source_tool": "OpenAI ImageGen built-in",
+  "generation_date": "2026-11-11",
+  "reference_policy": "User-provided Combat Animation Sprite Sheet was used for pose rhythm and style guidance only; no reference pixels were cropped or reused. Character identity references were used only to preserve the approved Kai V2 and Razen designs. All new animation poses were generated as original artwork.",
+  "normalization": "Row-major cell slicing; detached low-area components removed by keeping the largest alpha-connected silhouette; whole character cell uniformly fitted to established character height; anchored to character-specific ground baseline; transparent RGBA 512x512 frames.",
+  "characters": {
+    "kai_v2": [
+      {
+        "name": "cross_punch",
+        "source_sheet": "assets/characters/kai_v2/source/combat_phase2_step2/cross_punch_3x2.png",
+        "source_dimensions_px": [
+          1536,
+          1024
+        ],
+        "source_grid": [
+          3,
+          2
+        ],
+        "frame_count": 6,
+        "frame_dimensions_px": [
+          512,
+          512
+        ],
+        "format": "RGBA PNG",
+        "transparent_background": true,
+        "ground_anchor_y": 496,
+        "target_character_height_px": 480,
+        "phase_map": [
+          "guard",
+          "anticipation",
+          "drive",
+          "contact",
+          "follow_through",
+          "recovery"
+        ],
+        "description": "Precise rear-hand cross with grounded base, clear torso rotation, contact, follow-through and return to guard.",
+        "frame_paths": [
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_01.png",
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_02.png",
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_03.png",
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_04.png",
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_05.png",
+          "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_06.png"
+        ],
+        "contact_sheet": "assets/characters/kai_v2/previews/cross_punch_contact.png"
+      },
+      {
+        "name": "heavy_punch",
+        "source_sheet": "assets/characters/kai_v2/source/combat_phase2_step2/heavy_punch_5x2.png",
+        "source_dimensions_px": [
+          1983,
+          793
+        ],
+        "source_grid": [
+          5,
+          2
+        ],
+        "frame_count": 10,
+        "frame_dimensions_px": [
+          512,
+          512
+        ],
+        "format": "RGBA PNG",
+        "transparent_background": true,
+        "ground_anchor_y": 496,
+        "target_character_height_px": 480,
+        "phase_map": [
+          "guard",
+          "anticipation",
+          "deep_wind_up",
+          "drive_start",
+          "drive",
+          "contact",
+          "follow_through",
+          "recoil",
+          "recovery",
+          "guard_return"
+        ],
+        "description": "Committed rear-hand heavy cross with a longer load, leg drive, clear impact, controlled recoil and guarded recovery.",
+        "frame_paths": [
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_01.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_02.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_03.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_04.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_05.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_06.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_07.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_08.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_09.png",
+          "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_10.png"
+        ],
+        "contact_sheet": "assets/characters/kai_v2/previews/heavy_punch_contact.png"
+      }
+    ],
+    "razen": [
+      {
+        "name": "cross_punch",
+        "source_sheet": "assets/characters/razen/source/animation_sheets/cross_punch_combat_4x2.png",
+        "source_dimensions_px": [
+          1774,
+          887
+        ],
+        "source_grid": [
+          4,
+          2
+        ],
+        "frame_count": 8,
+        "frame_dimensions_px": [
+          512,
+          512
+        ],
+        "format": "RGBA PNG",
+        "transparent_background": true,
+        "ground_anchor_y": 488,
+        "target_character_height_px": 464,
+        "phase_map": [
+          "guard",
+          "anticipation",
+          "weight_load",
+          "drive_start",
+          "extension",
+          "contact",
+          "follow_through",
+          "recovery"
+        ],
+        "description": "Disciplined, powerful cross with planted support, hip rotation, contact, short follow-through and guard recovery.",
+        "frame_paths": [
+          "assets/characters/razen/animations/cross_punch/cross_punch_01.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_02.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_03.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_04.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_05.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_06.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_07.png",
+          "assets/characters/razen/animations/cross_punch/cross_punch_08.png"
+        ],
+        "contact_sheet": "assets/characters/razen/previews/cross_punch_contact.png"
+      },
+      {
+        "name": "heavy_punch",
+        "source_sheet": "assets/characters/razen/source/animation_sheets/heavy_punch_combat_6x2.png",
+        "source_dimensions_px": [
+          2172,
+          724
+        ],
+        "source_grid": [
+          6,
+          2
+        ],
+        "frame_count": 12,
+        "frame_dimensions_px": [
+          512,
+          512
+        ],
+        "format": "RGBA PNG",
+        "transparent_background": true,
+        "ground_anchor_y": 488,
+        "target_character_height_px": 464,
+        "phase_map": [
+          "guard",
+          "weight_shift",
+          "coil",
+          "deep_wind_up",
+          "drive_start",
+          "extension",
+          "contact",
+          "follow_through",
+          "recoil",
+          "arm_recovery",
+          "weight_settle",
+          "guard_return"
+        ],
+        "description": "Committed heavy cross with extended anticipation, grounded rear-foot drive, strong hip rotation, readable contact, controlled recoil and balanced return.",
+        "frame_paths": [
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_01.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_02.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_03.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_04.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_05.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_06.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_07.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_08.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_09.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_10.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_11.png",
+          "assets/characters/razen/animations/heavy_punch/heavy_punch_12.png"
+        ],
+        "contact_sheet": "assets/characters/razen/previews/heavy_punch_contact.png"
+      }
+    ]
+  },
+  "character": "kai_v2",
+  "animations": [
+    {
+      "name": "cross_punch",
+      "source_sheet": "assets/characters/kai_v2/source/combat_phase2_step2/cross_punch_3x2.png",
+      "source_dimensions_px": [
+        1536,
+        1024
+      ],
+      "source_grid": [
+        3,
+        2
+      ],
+      "frame_count": 6,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "target_character_height_px": 480,
+      "phase_map": [
+        "guard",
+        "anticipation",
+        "drive",
+        "contact",
+        "follow_through",
+        "recovery"
+      ],
+      "description": "Precise rear-hand cross with grounded base, clear torso rotation, contact, follow-through and return to guard.",
+      "frame_paths": [
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_01.png",
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_02.png",
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_03.png",
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_04.png",
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_05.png",
+        "assets/characters/kai_v2/animations/attacks/cross_punch/cross_punch_06.png"
+      ],
+      "contact_sheet": "assets/characters/kai_v2/previews/cross_punch_contact.png",
+      "fps": 30.0,
+      "loop": false
+    },
+    {
+      "name": "heavy_punch",
+      "source_sheet": "assets/characters/kai_v2/source/combat_phase2_step2/heavy_punch_5x2.png",
+      "source_dimensions_px": [
+        1983,
+        793
+      ],
+      "source_grid": [
+        5,
+        2
+      ],
+      "frame_count": 10,
+      "frame_dimensions_px": [
+        512,
+        512
+      ],
+      "format": "RGBA PNG",
+      "transparent_background": true,
+      "ground_anchor_y": 496,
+      "target_character_height_px": 480,
+      "phase_map": [
+        "guard",
+        "anticipation",
+        "deep_wind_up",
+        "drive_start",
+        "drive",
+        "contact",
+        "follow_through",
+        "recoil",
+        "recovery",
+        "guard_return"
+      ],
+      "description": "Committed rear-hand heavy cross with a longer load, leg drive, clear impact, controlled recoil and guarded recovery.",
+      "frame_paths": [
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_01.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_02.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_03.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_04.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_05.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_06.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_07.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_08.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_09.png",
+        "assets/characters/kai_v2/animations/attacks/heavy_punch/heavy_punch_10.png"
+      ],
+      "contact_sheet": "assets/characters/kai_v2/previews/heavy_punch_contact.png",
+      "fps": 30.0,
+      "loop": false
+    }
+  ],
+  "integration": {
+    "status": "integrated; Godot runtime verification pending",
+    "sprite_frames_resource": "assets/characters/kai_v2/kai_v2_sprite_frames.tres",
+    "animation_names": [
+      "cross_punch",
+      "heavy_punch"
+    ],
+    "attack_data_resources": [
+      "resources/attacks/kai/cross_punch.tres",
+      "resources/attacks/kai/heavy_punch.tres"
+    ],
+    "chain": "light_jab (Z) -> cross_punch (Z) -> heavy_punch (C); heavy_punch also starts directly on C"
+  }
+}

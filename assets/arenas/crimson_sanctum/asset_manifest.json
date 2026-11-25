@@ -1,0 +1,16 @@
+{
+  "package_id": "crimson_sanctum",
+  "location": "The Executioner's temple territory",
+  "provenance": "Original background generated with the built-in image generation tool on 2026-11-17 from the user's World Map and ShadowCraft stage direction. No character, weapon, HUD, or World Map pixels were reused.",
+  "assets": [
+    {
+      "path": "assets/arenas/crimson_sanctum/crimson_sanctum_background.png",
+      "role": "full-bleed 2D fighting arena background",
+      "dimensions_px": [1672, 941],
+      "format": "PNG",
+      "transparent": false,
+      "source_tool": "built-in image_gen",
+      "scene": "scenes/arenas/CrimsonSanctum.tscn"
+    }
+  ]
+}
